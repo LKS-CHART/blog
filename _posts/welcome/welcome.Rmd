@@ -1,13 +1,11 @@
 ---
-title: "Welcome to DSAA Blog"
+title: "Welcome to the DSAA Blog"
 description: |
-  Welcome to our new blog, DSAA Blog. We hope you enjoy 
-  reading what we have to say!
+  Welcome to the new home of our blog!
 author:
-  - name: Nora Jones 
-    url: https://example.com/norajones
-    affiliation: Spacely Sprockets
-    affiliation_url: https://example.com/spacelysprokets
+  - name: DSAA Team 
+    affiliation: DSAA, Unity Health Toronto
+    affiliation_url: https://chartdatascience.ca
 date: 07-16-2020
 output:
   distill::distill_article:
@@ -22,5 +20,4 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-
-
+# Hello world!
