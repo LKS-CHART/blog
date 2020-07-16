@@ -1,18 +1,34 @@
 [
   {
-    "path": "posts/welcome/",
-    "title": "Welcome to DSAA Blog",
-    "description": "Welcome to our new blog, DSAA Blog. We hope you enjoy \nreading what we have to say!",
+    "path": "posts/2020-07-16-new-post/",
+    "title": "New Post",
+    "description": "A short description of the post.",
     "author": [
       {
-        "name": "Nora Jones",
-        "url": "https://example.com/norajones"
+        "name": "David Dai",
+        "url": {}
       }
     ],
     "date": "2020-07-16",
     "categories": [],
     "preview": {},
-    "last_modified": "2020-07-16T12:29:52-04:00",
+    "last_modified": "2020-07-16T12:56:23-04:00",
+    "input_file": {}
+  },
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to the DSAA Blog",
+    "description": "Welcome to the new home of our blog!",
+    "author": [
+      {
+        "name": "DSAA Team",
+        "url": {}
+      }
+    ],
+    "date": "2020-07-16",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-07-16T12:56:08-04:00",
     "input_file": {}
   }
 ]
