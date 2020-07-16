@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!-- saved from url=(0093)https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/ -->
+<html lang="en" class="css-transform wf-notosans-n4-active wf-arimo-n4-active wf-arimo-i4-active wf-arimo-n7-active wf-arimo-i7-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<title>CHARTextract: A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog</title>
+<script src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/webfont.js.download" type="text/javascript" async=""></script><script type="text/javascript">
+  WebFontConfig = {"google":{"families":["Noto+Sans:r:latin,latin-ext","Arimo:r,i,b,bi:latin,latin-ext"]}};
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = 'https://s0.wp.com/wp-content/plugins/custom-fonts/js/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+	})();
+</script><style id="jetpack-custom-fonts-css">.wf-active body{font-family:"Arimo",sans-serif}.wf-active .main-navigation{font-family:"Arimo",sans-serif}.wf-active .post-content cite{font-family:"Arimo",sans-serif}.wf-active code, .wf-active kbd, .wf-active pre{font-family:"Arimo",sans-serif}.wf-active .gallery-caption{font-family:"Arimo",sans-serif}.wf-active .post-content fieldset legend, .wf-active .widget-content fieldset legend{font-family:"Arimo",sans-serif}.wf-active .post-content label{font-family:"Arimo",sans-serif}.wf-active .post-content input, .wf-active .post-content textarea, .wf-active .widget-content input, .wf-active .widget-content textarea{font-family:"Arimo",sans-serif}.wf-active .post-content input[type="button"], .wf-active .post-content input[type="reset"], .wf-active .post-content input[type="submit"], .wf-active .widget-content input[type="button"], .wf-active .widget-content input[type="reset"], .wf-active .widget-content input[type="submit"]{font-family:"Arimo",sans-serif}.wf-active .posts .format-link .post-content p{font-family:"Arimo",sans-serif}.wf-active .posts .format-quote .post-content blockquote{font-family:"Arimo",sans-serif}.wf-active .posts .format-quote .post-content cite{font-family:"Arimo",sans-serif}.wf-active .posts .format-status .post-content p{font-family:"Arimo",sans-serif}.wf-active .posts .format-status .post-content a.more-link{font-family:"Arimo",sans-serif}.wf-active .single .format-status .post-content{font-family:"Arimo",sans-serif}.wf-active .comments-title-container, .wf-active #content #menu_widget caption, .wf-active #infinite-footer .container{font-family:"Arimo",sans-serif}.wf-active .comment-author .fn{font-family:"Arimo",sans-serif}.wf-active .comment-form input[type="email"], .wf-active .comment-form input[type="text"], .wf-active .comment-form input[type="url"], .wf-active .comment-form textarea, .wf-active div#respond textarea{font-family:"Arimo",sans-serif}.wf-active .form-submit #submit{font-family:"Arimo",sans-serif}.wf-active .footer .search-field, .wf-active .wrapper .search-field{font-family:"Arimo",sans-serif}.wf-active #wp-calendar caption{font-family:"Arimo",sans-serif}.wf-active #content #menu_widget .updated-at{font-family:"Arimo",sans-serif}.wf-active .credits p{font-family:"Arimo",sans-serif}@media (max-width: 1440px){.wf-active .main-navigation li > a, .wf-active .main-navigation li > a{font-family:"Arimo",sans-serif}}.wf-active .site-title{font-family:"Noto Sans",sans-serif;font-size:1.575em;font-style:normal;font-weight:400}.wf-active .header-search-block .search-field{font-family:"Noto Sans",sans-serif;font-size:1.75em;font-weight:400;font-style:normal}.wf-active .post-header .post-title{font-family:"Noto Sans",sans-serif;font-size:0.875em;font-weight:400;font-style:normal}.wf-active .post-header .post-title em{font-weight:400;font-style:normal}.wf-active .post-content h1, .wf-active .post-content h2, .wf-active .post-content h3, .wf-active .post-content h4, .wf-active .post-content h5, .wf-active .post-content h6{font-family:"Noto Sans",sans-serif;font-weight:400;font-style:normal}.wf-active .post-content h1 em, .wf-active .post-content h2 em, .wf-active .post-content h3 em{font-weight:400;font-style:normal}.wf-active .post-content h1{font-size:1.4em;font-style:normal;font-weight:400}.wf-active .post-content h2{font-size:1.225em;font-style:normal;font-weight:400}.wf-active .post-content h3{font-size:1.05em;font-style:normal;font-weight:400}.wf-active .post-content h4{font-size:0.875em;font-weight:400;font-style:normal}.wf-active .post-content h5{font-size:0.7em;font-weight:400;font-style:normal}.wf-active .post-content h6{font-size:0.63em;font-weight:400;font-style:normal}.wf-active .post-content blockquote{font-size:0.7em;font-weight:400;font-weight:400;font-style:normal}.wf-active .posts .post-content h1{font-size:1.12em;font-style:normal;font-weight:400}.wf-active .posts .post-content h2{font-size:1.05em;font-style:normal;font-weight:400}.wf-active .posts .post-content h3{font-size:0.91em;font-style:normal;font-weight:400}.wf-active .posts .post-content h4{font-size:0.84em;font-style:normal;font-weight:400}.wf-active .posts .post-content h5{font-size:0.77em;font-style:normal;font-weight:400}.wf-active .posts .post-content h6{font-size:0.56em;font-style:normal;font-weight:400}.wf-active .posts .format-link .link-header h2 a{font-size:0.56em;font-weight:400;font-style:normal}.wf-active .posts .format-quote .post-content blockquote > *{font-style:normal;font-weight:400}.wf-active .single .post-title{font-size:1.575em;font-style:normal;font-weight:400}.wf-active .single .format-quote .post-content blockquote > *{font-style:normal;font-weight:400}.wf-active .entry-author .author-title{font-family:"Noto Sans",sans-serif;font-size:0.77em;font-weight:400;font-style:normal}.wf-active .comments-title{font-size:1.225em;font-weight:400;font-family:"Noto Sans",sans-serif;font-style:normal}.wf-active .add-comment-title{font-size:0.7rem;font-weight:400;font-style:normal}.wf-active .comment-content h1, .wf-active .comment-content h2, .wf-active .comment-content h3, .wf-active .comment-content h4, .wf-active .comment-content h5, .wf-active .comment-content h6{font-family:"Noto Sans",sans-serif;font-size:0.84em;font-weight:400;font-style:normal}.wf-active .pingbacks-title{font-family:"Noto Sans",sans-serif;font-size:0.875em;font-style:normal;font-weight:400}.wf-active .comment-reply-title{font-family:"Noto Sans",sans-serif;font-size:1.225em;font-weight:400;font-style:normal}.wf-active .author-info h4{font-family:"Noto Sans",sans-serif;font-size:1.05em;font-weight:400;font-style:normal}.wf-active .author-info h5{font-family:"Noto Sans",sans-serif;font-style:normal;font-weight:400}.wf-active .page-title h5{font-family:"Noto Sans",sans-serif;font-size:0.63em;font-weight:400;font-style:normal}.wf-active .page-title h3{font-family:"Noto Sans",sans-serif;font-size:1.225em;font-weight:400;font-style:normal}.wf-active .widget-title{font-family:"Noto Sans",sans-serif;font-size:0.63em;font-weight:400;font-style:normal}.wf-active .footer .widget-title{font-size:0.553em;font-style:normal;font-weight:400}</style>
+
+<!-- Async WordPress.com Remote Login -->
+
+<link rel="dns-prefetch" href="https://s0.wp.com/">
+<link rel="dns-prefetch" href="https://sciencedotdatadotblog.wordpress.com/">
+<link rel="dns-prefetch" href="https://wordpress.com/">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="alternate" type="application/rss+xml" title="Welcome to the LKS-CHART Data Science Blog » Feed" href="https://science.data.blog/feed/">
+<link rel="alternate" type="application/rss+xml" title="Welcome to the LKS-CHART Data Science Blog » Comments Feed" href="https://science.data.blog/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Welcome to the LKS-CHART Data Science Blog » CHARTextract: A rule-based approach to chart abstraction Comments Feed" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/feed/">
+	<script type="text/javascript">
+		/* <![CDATA[ */
+		function addLoadEvent(func) {
+			var oldonload = window.onload;
+			if (typeof window.onload != 'function') {
+				window.onload = func;
+			} else {
+				window.onload = function () {
+					oldonload();
+					func();
+				}
+			}
+		}
+		/* ]]> */
+	</script>
+			<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/72x72\/","ext":".png","svgUrl":"https:\/\/s0.wp.com\/wp-content\/mu-plugins\/wpcom-smileys\/twemoji\/2\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/s0.wp.com\/wp-includes\/js\/wp-emoji-release.min.js?m=1582709031h&ver=5.4.2"}};
+			/*! This file is auto-generated */
+			!function(e,a,t){var r,n,o,i,p=a.createElement("canvas"),s=p.getContext&&p.getContext("2d");function c(e,t){var a=String.fromCharCode;s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,e),0,0);var r=p.toDataURL();return s.clearRect(0,0,p.width,p.height),s.fillText(a.apply(this,t),0,0),r===p.toDataURL()}function l(e){if(!s||!s.fillText)return!1;switch(s.textBaseline="top",s.font="600 32px Arial",e){case"flag":return!c([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])&&(!c([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!c([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]));case"emoji":return!c([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340])}return!1}function d(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(i=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},o=0;o<i.length;o++)t.supports[i[o]]=l(i[o]),t.supports.everything=t.supports.everything&&t.supports[i[o]],"flag"!==i[o]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[i[o]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(r=t.source||{}).concatemoji?d(r.concatemoji):r.wpemoji&&r.twemoji&&(d(r.twemoji),d(r.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/wp-emoji-release.min.js.download" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel="stylesheet" id="all-css-0-1" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/saved_resource(1)" type="text/css" media="all">
+<style id="wp-block-library-inline-css">
+.has-text-align-justify {
+	text-align:justify;
+}
+</style>
+<style id="global-styles-inline-css">
+:root {
+	--wp--preset--color--black: #000000;
+	--wp--preset--color--cyan-bluish-gray: #abb8c3;
+	--wp--preset--color--light-green-cyan: #7bdcb5;
+	--wp--preset--color--luminous-vivid-amber: #fcb900;
+	--wp--preset--color--luminous-vivid-orange: #ff6900;
+	--wp--preset--color--pale-cyan-blue: #8ed1fc;
+	--wp--preset--color--pale-pink: #f78da7;
+	--wp--preset--color--vivid-cyan-blue: #0693e3;
+	--wp--preset--color--vivid-green-cyan: #00d084;
+	--wp--preset--color--vivid-purple: #9b51e0;
+	--wp--preset--color--vivid-red: #cf2e2e;
+	--wp--preset--color--white: #ffffff;
+	--wp--preset--font-size--small: 13;
+	--wp--preset--font-size--normal: 16;
+	--wp--preset--font-size--medium: 20;
+	--wp--preset--font-size--large: 36;
+	--wp--preset--font-size--huge: 48;
+	--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);
+	--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);
+	--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);
+	--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);
+	--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);
+	--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);
+	--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);
+	--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);
+	--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);
+	--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);
+	--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);
+	--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);
+}
+
+</style>
+<link rel="stylesheet" id="all-css-2-1" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/saved_resource(2)" type="text/css" media="all">
+<style id="baskerville-2-style-inline-css">
+ { clip: rect(1px, 1px, 1px, 1px); height: 1px; position: absolute; overflow: hidden; width: 1px; }
+</style>
+<link crossorigin="anonymous" rel="stylesheet" id="baskerville-2-fonts-css" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/css" media="all">
+<link rel="stylesheet" id="all-css-4-1" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/saved_resource(3)" type="text/css" media="all">
+<link rel="stylesheet" id="print-css-5-1" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/global-print.css" type="text/css" media="print">
+<link rel="stylesheet" id="all-css-6-1" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/actionbar.css" type="text/css" media="all">
+<style id="jetpack-global-styles-frontend-style-inline-css">
+:root { --font-headings: unset; --font-base: unset; --font-headings-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; --font-base-default: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;}
+</style>
+<link rel="stylesheet" id="all-css-8-1" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/saved_resource(4)" type="text/css" media="all">
+<script>
+var related_posts_js_options = {"post_heading":"h4"};
+</script>
+<script type="text/javascript" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/saved_resource(5)"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://sciencedotdatadotblog.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://s0.wp.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Preparing family medicine trainees for the information revolution" href="https://science.data.blog/2019/06/13/preparing-family-medicine-trainees-for-the-information-revolution/">
+<link rel="next" title="The importance of thoughtful data analysis in healthcare" href="https://science.data.blog/2020/03/03/the-importance-of-thoughtful-data-analysis-in-healthcare/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/">
+<link rel="shortlink" href="https://wp.me/pa8FIV-4f">
+<link rel="alternate" type="application/json+oembed" href="https://public-api.wordpress.com/oembed/?format=json&amp;url=https%3A%2F%2Fscience.data.blog%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="https://public-api.wordpress.com/oembed/?format=xml&amp;url=https%3A%2F%2Fscience.data.blog%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="CHARTextract: A rule-based approach to chart abstraction">
+<meta property="og:url" content="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/">
+<meta property="og:description" content="By: Chloé Pou-Prom CHARTextract is a rule-based information extraction tool that allows for quick and easy refinement of keyword-matching based rules. By combining physician knowledge and keyword-b…">
+<meta property="article:published_time" content="2019-07-09T16:52:30+00:00">
+<meta property="article:modified_time" content="2019-07-09T17:28:38+00:00">
+<meta property="og:site_name" content="Welcome to the LKS-CHART Data Science Blog">
+<meta property="og:image" content="https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png">
+<meta property="og:image:width" content="710">
+<meta property="og:image:height" content="470">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:creator" content="@Chart_DataSci">
+<meta name="twitter:site" content="@Chart_DataSci">
+<meta name="twitter:text:title" content="CHARTextract: A rule-based approach to chart abstraction">
+<meta name="twitter:image" content="https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png?w=640">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+
+<!-- End Jetpack Open Graph Tags -->
+<link rel="search" type="application/opensearchdescription+xml" href="https://science.data.blog/osd.xml" title="Welcome to the LKS-CHART Data Science Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="https://s1.wp.com/opensearch.xml" title="WordPress.com">
+<meta name="theme-color" content="#ffffff">
+<link rel="pingback" href="https://science.data.blog/xmlrpc.php"><meta name="application-name" content="Welcome to the LKS-CHART Data Science Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-task" content="name=Subscribe;action-uri=https://science.data.blog/feed/;icon-uri=https://sciencedotdatadotblog.files.wordpress.com/2018/08/cropped-lks-chart.png?w=16"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=https://s0.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=https://s0.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=https://s0.wp.com/i/favicon.ico"><meta name="description" content="By: Chloé Pou-Prom CHARTextract is a rule-based information extraction tool that allows for quick and easy refinement of keyword-matching based rules. By combining physician knowledge and keyword-based pattern matching, CHARTextract allows us to extract patient attributes from unstructured free-text notes. We are releasing the CHARTextract tool and 20+ rulesets (the list keeps growing!) that you can…">
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; }
+</style>
+	<link rel="amphtml" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/amp/"><style type="text/css" id="custom-colors-css">.header-search-block .search-field::-webkit-input-placeholder{color:rgba(255,255,255,.7)}.header-search-block .search-field:-moz-placeholder{color:rgba(255,255,255,.7)}.header-search-block .search-field::-moz-placeholder{color:rgba(255,255,255,.7)}.header-search-block .search-field:-ms-input-placeholder{color:rgba(255,255,255,.7)}.main-navigation li>a,.main-navigation ul ul a,.main-navigation ul ul ul a,.main-navigation ul ul ul ul a,.main-navigation ul ul ul ul ul a{color:rgba(255,255,255,.6)}.main-navigation li:before{color:rgba(255,255,255,.3)}.main-navigation .has-children>a:after,.main-navigation .menu-item-has-children>a:after,.main-navigation .page_item_has_children>a:after{border-top-color:rgba(255,255,255,.6)}.single .post-meta-container:before,.author-links a{background-color:rgba(255,255,255,.2)}.posts .format-status .post-content p{text-shadow:rgba(0,0,0,.3)}.nav-next a:hover,.nav-previous a:hover,.nav-next a:focus,.nav-previous a:focus,.post-edit-link:hover,.post-edit-link:focus,.single .post-meta p a:hover,.single .post-meta p a:focus{opacity:.6}.footer .tagcloud a,.footer .widget_tag_cloud a,.footer .wp_widget_tag_cloud a{background-color:rgba(255,255,255,.1)}.footer #wp-calendar thead th{border-color:rgba(255,255,255,.2)}.rtl #infinite-handle span{border:0}#infinite-handle span button{background-color:transparent}@media (max-width:700px){.single .post-meta{background-color:rgba(255,255,255,.2)}}.posts-navigation a,.post .mejs-container.mejs-audio .mejs-controls .mejs-playpause-button button:before,.page .mejs-container.mejs-audio .mejs-controls .mejs-playpause-button button:before,.post .mejs-container.mejs-audio .mejs-controls .mejs-volume-button button:before,.page .mejs-container.mejs-audio .mejs-controls .mejs-volume-button button:before,.post .mejs-container.mejs-audio .mejs-controls .mejs-mute button:before,.page .mejs-container.mejs-audio .mejs-controls .mejs-mute button:before,.post .mejs-container.mejs-audio .mejs-controls .mejs-unmute button:before,.page .mejs-container.mejs-audio .mejs-controls .mejs-unmute button:before,.nav-next a:hover,.nav-previous a:hover,.nav-next a:focus,.nav-previous a:focus,.post-edit-link:hover,.post-edit-link:focus,.single .post-meta p a:hover,.single .post-meta p a:focus,.author-title,.author-bio,.author-info .author-links a{color:#fff}.single .post-meta p,.single .post-meta p a,.single .post-meta time,.single .post-meta>a,.post-navigation a,.entry-author .author-bio,.author-link:before,.entry-author .author-title,.post .sticky-post i.fa,.page-title{color:#fff}.footer .widget-content,.footer #wp-calendar,.footer #wp-calendar thead,.footer #wp-calendar tfoot a{color:#fff}.footer .widget-content,.footer #wp-calendar,.footer #wp-calendar thead,.footer #wp-calendar tfoot a{color:rgba(255,255,255,.6)}.author-link:hover:before,.author-link:focus:before,.author-info .author-links a:hover,.author-info .author-links a:focus,.comment.bypostauthor:after,.tagcloud a:hover,.tagcloud a:focus,.widget_tag_cloud a:hover,.widget_tag_cloud a:focus,.wp_widget_tag_cloud a:hover,.wp_widget_tag_cloud a:focus,.footer .tagcloud a:hover,.footer .tagcloud a:focus,.footer .widget_tag_cloud a:hover,.footer .widget_tag_cloud a:focus,.footer .wp_widget_tag_cloud a:hover,.footer .wp_widget_tag_cloud a:focus,.comment-edit-link:hover:before,.comment-edit-link:focus:before,.comment-reply-link:hover:before,.comment-reply-link:focus:before{color:#353535}.footer .tagcloud a,.footer .widget_tag_cloud a,.footer .wp_widget_tag_cloud a{color:#fff}.double-bounce1,.double-bounce2{background-color:#6d6d6d}body,.infinite-container{background-color:#fff}.posts .post-meta{background-color:#fff}.posts .post-meta{background-color:rgba(255,255,255,.1)}.comment-inner{background-color:#fff}.comment-inner{background-color:rgba(255,255,255,.2)}.comment-edit-link,.comment-reply-link,.comment-form input[type=text]:focus,.comment-form input[type=email]:focus,.comment-form input[type=url]:focus,.comment-form textarea:focus,div#respond textarea:focus,.form-submit #submit,.posts-navigation a,#infinite-handle span,.wrapper .search-field:focus,.author-info .author-links a{background-color:#4e4d4a}.posts-navigation a:hover,.posts-navigation a:focus,#infinite-handle span:hover,#infinite-handle span:focus{background-color:#343331}.bg-dark,.bg-graphite{background-color:#1f1e1d}.main-navigation ul ul li{background-color:#2c2b2a}.main-navigation ul li>ul:before{border-bottom-color:#2c2b2a}.main-navigation ul ul ul li{background-color:#393836}.main-navigation ul ul ul ul li,.main-navigation ul ul ul ul ul li{background-color:#464542}.footer .widget_search .search-field{background-color:#121211}.footer .search-field:focus{background-color:#464542}.footer .widget{border-top-color:#1a1918}.tagcloud a,.widget_tag_cloud a,.wp_widget_tag_cloud a{background-color:#4e4d4a}.single .post-meta-container{background-color:#4e4d4a}.posts .format-aside .post-content,.posts .format-link .post-content,.posts .format-quote .post-content,.posts .format-status .post-content,.post .mejs-container.mejs-audio,.page .mejs-container.mejs-audio{background-color:#4e4d4a}.post-content input[type=submit],.post-content input[type=reset],.post-content input[type=button],.widget-content input[type=submit],.widget-content input[type=reset],.widget-content input[type=button],.post-content pre{background-color:#4e4d4a}.post-header .post-title,.post-header .post-title a,.single .format-quote .post-content blockquote>*,.comments-title,.comment-author .fn,.comment-author .fn a,.pingbacks-title,.comment-reply-title{color:#4e4d4a}.page-title{color:#4e4d4a}.post .mejs-audio .mejs-controls .mejs-time-rail .mejs-time-total,.page .mejs-audio .mejs-controls .mejs-time-rail .mejs-time-total,.post .sticky-post{background-color:#343331}.post .sticky-post:after{border-left-color:#343331}.post .sticky-post:after{border-right-color:#343331}.post .mejs-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total,.page .mejs-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total,.post .mejs-audio .mejs-controls .mejs-time-rail .mejs-time-loaded,.page .mejs-audio .mejs-controls .mejs-time-rail .mejs-time-loaded{background-color:#1a1918}.post-content fieldset legend,.widget-content fieldset legend,.comment.bypostauthor:after,.comment-edit-link:hover,.comment-edit-link:focus,.comment-reply-link:hover,.comment-reply-link:focus,.pingbacklist .pingback a:hover,.pingbacklist .pingback a:focus,.form-submit #submit:hover,.form-submit #submit:focus,.author-link:hover:before,.author-link:focus:before,.author-info .author-links a:hover,.author-info .author-links a:focus,.tagcloud a:hover,.tagcloud a:focus,.widget_tag_cloud a:hover,.widget_tag_cloud a:focus,.wp_widget_tag_cloud a:hover,.wp_widget_tag_cloud a:focus,.footer .tagcloud a:hover,.footer .tagcloud a:focus,.footer .widget_tag_cloud a:hover,.footer .widget_tag_cloud a:focus,.footer .wp_widget_tag_cloud a:hover,.footer .wp_widget_tag_cloud a:focus,.post-content input[type=submit]:hover,.post-content input[type=submit]:focus,.post-content input[type=reset]:hover,.post-content input[type=reset]:focus,.post-content input[type=button]:hover,.post-content input[type=button]:focus,.widget-content input[type=submit]:hover,.widget-content input[type=submit]:focus,.widget-content input[type=reset]:hover,.widget-content input[type=reset]:focus,.widget-content input[type=button]:hover,.widget-content input[type=button]:focus{background-color:#56b2cb}.post .mejs-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,.page .mejs-audio .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current,.post .mejs-audio .mejs-controls .mejs-time-rail .mejs-time-current,.page .mejs-audio .mejs-controls .mejs-time-rail .mejs-time-current{background-color:#56b2cb}.entry-author:after{border-left-color:#56b2cb}.entry-author:after{border-right-color:#56b2cb}.entry-author:before{background-color:#56b2cb}body a,body a:hover,body a:focus,.post-header .post-title a:hover,.post-header .post-title a:focus,.posts .post-meta a:hover,.posts .post-meta a:focus,.comment-author .fn a:hover,.comment-author .fn a:focus,.author-info h4 a:hover,.author-info h4 a:focus,#content #menu_widget a,#wp-calendar a,.widget-content ul li:before,.error404 .widget_recent_entries li:before,.widget_flickr #flickr_badge_uber_wrapper a:hover,.widget_flickr #flickr_badge_uber_wrapper a:link,.widget_flickr #flickr_badge_uber_wrapper a:active,.widget_flickr #flickr_badge_uber_wrapper a:visited,#infinite-footer .blog-info a:hover{color:#24778d}.posts .format-link .link-header h2 a,.author-link,.author-link:hover{color:#a0cfde}.site-title a:hover,.site-title a:focus,.jetpack-social-navigation a:hover,.jetpack-social-navigation a:focus{color:#8bc7d9}.posts .post-meta a{color:#389fbc}body .footer a,.footer #wp-calendar a{color:#56b2cb}</style>
+<link rel="icon" href="https://sciencedotdatadotblog.files.wordpress.com/2018/08/cropped-lks-chart.png?w=32" sizes="32x32">
+<link rel="icon" href="https://sciencedotdatadotblog.files.wordpress.com/2018/08/cropped-lks-chart.png?w=192" sizes="192x192">
+<link rel="apple-touch-icon" href="https://sciencedotdatadotblog.files.wordpress.com/2018/08/cropped-lks-chart.png?w=180">
+<meta name="msapplication-TileImage" content="https://sciencedotdatadotblog.files.wordpress.com/2018/08/cropped-lks-chart.png?w=270">
+<link rel="stylesheet" type="text/css" id="gravatar-card-css" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/hovercard.min.css"><link rel="stylesheet" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/css(1)" media="all"><link rel="stylesheet" type="text/css" id="gravatar-card-services-css" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/services.min.css"></head>
+
+<body class="post-template-default single single-post postid-263 single-format-gallery custom-background customizer-styles-applied no-featured-image highlander-enabled highlander-light custom-colors">
+
+	<a class="screen-reader-text skip-link" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/#content">Skip to content</a>
+
+	<header class="header section small-padding bg-dark bg-image" style="background-image: url(https://sciencedotdatadotblog.files.wordpress.com/2018/09/cropped-doctor-data-science-lks-chart-2.png);" role="banner">
+
+		<a href="https://science.data.blog/" rel="home">
+			<div class="cover"></div>
+		</a>
+
+		<a href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/#search-container" class="screen-reader-text search-toggle">Search</a>
+		<div class="header-search-block bg-graphite hidden" id="search-container">
+			<form role="search" method="get" class="search-form" action="https://science.data.blog/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search …" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>		</div> <!-- /header-search-block -->
+
+		<div class="header-inner section-inner">
+
+			
+							<p class="site-title"><a href="https://science.data.blog/" rel="home">Welcome to the LKS-CHART Data Science Blog</a></p>
+			
+			
+		</div> <!-- /header-inner -->
+	</header> <!-- /header -->
+
+	<div class="navigation section no-padding bg-dark">
+		<nav id="site-navigation" class="navigation-inner section-inner clear" role="navigation">
+			<button class="nav-toggle fleft" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+			<div class="main-navigation">
+				<ul id="primary-menu" class="menu"><li id="menu-item-6" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6"><a href="https://science.data.blog/">Blog Home</a></li>
+<li id="menu-item-74" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74"><a target="_blank" rel="noopener noreferrer" href="http://www.chartdatascience.ca/">Visit Our Website</a></li>
+<li id="menu-item-125" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-125"><a href="https://science.data.blog/category/article/">Articles</a></li>
+<li id="menu-item-126" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-126"><a href="https://science.data.blog/category/publication/">Publications</a></li>
+</ul>			</div>
+
+			<a class="search-toggle search-icon fright" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/#">Open Search</a>
+		</nav> <!-- /navigation-inner -->
+	</div> <!-- /navigation -->
+
+<div class="wrapper section medium-padding">
+	<main class="section-inner clear" role="main">
+
+				<div class="content clear fleft" id="content">
+
+			
+
+	<article id="post-263" class="post-263 post type-post status-publish format-gallery has-post-thumbnail hentry category-article tag-chart-abstraction tag-healthcare tag-hospitals tag-machine-learning tag-nlp tag-rule-based-approach post_format-post-format-gallery clear">
+
+		<header class="post-header"><h1 class="post-title entry-title"><a href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/" rel="bookmark">CHARTextract: A rule-based approach to chart&nbsp;abstraction</a></h1></header>			<div class="featured-media">
+				<img width="710" height="470" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png" class="attachment-baskerville-2-post-image size-baskerville-2-post-image wp-post-image" alt="" srcset="https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png 710w, https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png?w=150 150w, https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png?w=300 300w" sizes="(max-width: 710px) 100vw, 710px" data-attachment-id="272" data-permalink="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1/" data-orig-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png" data-orig-size="710,470" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="predictive-thursdays–is-your-machine-learning-implementation-debt-free-_1" data-image-description="" data-medium-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png?w=300" data-large-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/predictive-thursdays-is-your-machine-learning-implementation-debt-free-_1.png?w=710">			</div> <!-- /featured-media -->
+
+		
+			<div class="post-content clear">
+				<p>By: <a href="https://www.chartdatascience.ca/chloe-pou-prom"><span style="color:#00ccff;">Chloé Pou-Prom</span></a></p>
+<p>CHARTextract is a rule-based information extraction tool that allows for quick and easy refinement of keyword-matching based rules. By combining physician knowledge and keyword-based pattern matching, CHARTextract allows us to extract patient attributes from unstructured free-text notes. We are <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://lks-chart.github.io/CHARTextract-docs/08-downloads/tool_download.html">releasing the CHARTextract tool</a>&nbsp;</span>and <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://lks-chart.github.io/CHARTextract-docs/08-downloads/rulesets.html">20+ rulesets</a></span> (the list keeps growing!) that you can use and modify to your heart’s desire. We are also <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://github.com/LKS-CHART/CHARTextract">open-sourcing our codebase</a></span>, so you can download it and customize it to fit your specific use cases.</p>
+<h2><span style="text-decoration:underline;">Clinical Notes and Chart Abstraction</span></h2>
+<p>Clinical text data (such as discharge summaries, nurse notes, consult notes, and radiology reports) are rich in information. Being able to efficiently extract this information can lead to a better understanding of a patient population. For example, a clinic may be interested in extracting the following variables from their consult notes:</p>
+<ol>
+<li>What treatments are their patient population on?</li>
+<li>What are the success/failure rates of those treatments?</li>
+</ol>
+<p>In the example dictated consult note below, we can see that the patient is currently being treated with copaxone and that they are not exhibiting any reactions to the treatment. Reading through each consult note and extracting these two variables (i.e., treatment and presence of adverse reactions to treatment) can be time-consuming.</p>
+<p>&nbsp;</p>
+<p><img data-attachment-id="264" data-permalink="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/chartextract/" data-orig-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/chartextract.png" data-orig-size="669,867" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Chartextract" data-image-description="" data-medium-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/chartextract.png?w=231" data-large-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/chartextract.png?w=669" class="alignnone size-full wp-image-264" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/chartextract.png" alt="Chartextract" srcset="https://sciencedotdatadotblog.files.wordpress.com/2019/07/chartextract.png 669w, https://sciencedotdatadotblog.files.wordpress.com/2019/07/chartextract.png?w=116 116w, https://sciencedotdatadotblog.files.wordpress.com/2019/07/chartextract.png?w=231 231w" sizes="(max-width: 669px) 100vw, 669px"></p>
+<h6 style="text-align:center;"><span style="color:#000000;"><em>Example consult note graciously generated by <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://www.chartdatascience.ca/josh-murray">Josh Murray</a></span>&nbsp;</em></span></h6>
+<p>If a patient is reacting well to a drug, a physician may dictate something like “…is tolerating the treatment …”. In such cases, employing a keyword search will be useful. Of course a sentence that contains the words “…is tolerating the treatment quite well…” bears more weight than something like “… seems to be tolerating the treatment…” or&nbsp; “… is probably tolerating the treatment…”.</p>
+<p>Hmm… Interesting. There are patterns in the notes, and some patterns are more important than others. Let’s leverage this!</p>
+<h2><span style="text-decoration:underline;">CHARTextract: Automating chart abstraction by leveraging word patterns and clinical experts&nbsp;</span></h2>
+<p>Relying on the intuition that there exist patterns in clinical notes and that some patterns are more useful than others, we developed CHARTextract – a tool that allows us to write “rules” for chart abstraction. The tool’s backend relies on a weighted keyword search. More specifically, CHARTextract combines:</p>
+<ol>
+<li>regular expression matches (think of this as a flexible or smart keyword search), and</li>
+<li>weighting (this is where the intuition that some sentences are more important than others comes in).</li>
+</ol>
+<p>CHARTextract helps clinicians and data scientists work together to write “rules” for information extraction. Here at LKS-CHART, we are fortunate to work with <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://www.chartdatascience.ca/collaborators">a great number of clinical collaborators</a></span>. We make use of their expertise by incorporating them into our rule-building workflow as much as possible.</p>
+<p>We start off with a small sample of labeled data (e.g., consult notes in which a chart abstractor has identified the treatment and the success/failure of the treatment). From this data, we can then build our rules. This is where the clinical knowledge of our collaborators comes into play.</p>
+<p>After starting off with an initial set of rules, the tool displays mismatches (i.e., any discrepancy between the label of the data point and the prediction of the tool) and shows why [1], there is a mismatch.</p>
+<p>&nbsp;</p>
+<p><img data-attachment-id="266" data-permalink="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/giphy/" data-orig-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/giphy.gif" data-orig-size="480,254" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="rule_refinement_view_mismatch" data-image-description="" data-medium-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/giphy.gif?w=300" data-large-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/giphy.gif?w=480" class="alignnone size-full wp-image-266" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/giphy.gif" alt="rule_refinement_view_mismatch"></p>
+<p>The interface then lets you toggle back and forth between viewing the mismatched instances and viewing the rules. We can then modify the rules on-the-fly.</p>
+<p><img data-attachment-id="269" data-permalink="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/giphy-1/" data-orig-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/giphy-1.gif" data-orig-size="480,254" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="giphy (1)" data-image-description="" data-medium-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/giphy-1.gif?w=300" data-large-file="https://sciencedotdatadotblog.files.wordpress.com/2019/07/giphy-1.gif?w=480" class="alignnone size-full wp-image-269" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/giphy-1.gif" alt="giphy (1)"></p>
+<h2><span style="text-decoration:underline;">Download CHARTextract</span></h2>
+<p>We have released the CHARTextract tool and existing rulesets for variable extraction.</p>
+<p>You can download the tool and rulesets <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://lks-chart.github.io/CHARTextract-docs/downloads">here</a></span>, and read up on the documentation <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://lks-chart.github.io/CHARTextract-docs/">here</a></span> [2].</p>
+<p>We welcome contributions to CHARTextract. There are many ways to contribute to CHARTextract:</p>
+<ul>
+<li><span style="color:#00ccff;"><a style="color:#00ccff;" href="https://github.com/LKS-CHART/CHARTextract/issues">Add new features to the tool</a>.</span></li>
+<li><span style="color:#00ccff;"><a style="color:#00ccff;" href="https://lks-chart.github.io/CHARTextract-docs/08-downloads/rulesets.html">Contribute new rulesets</a>.</span></li>
+<li><span style="color:#00ccff;"><a style="color:#00ccff;" href="https://github.com/LKS-CHART/CHARTextract/issues">Flag any issues or bugs with the tool.</a></span></li>
+</ul>
+<p>&nbsp;</p>
+<hr>
+<p>[1] Physicians like to <em>trust</em> the model/software/tool you’re throwing at them.</p>
+<p>[2] We strongly recommend getting started with <span style="color:#00ccff;"><a style="color:#00ccff;" href="https://lks-chart.github.io/CHARTextract-docs/07-tutorials/02-smoking-variable-example.html">this tutorial</a></span> to familiarize yourself with the tool</p>
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled sd-sharing-enabled"><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-263" class="share-twitter sd-button share-icon no-text" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/?share=twitter&amp;nb=1" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-149830373-263-5f1087c49135e" data-src="//widgets.wp.com/likes/index.html?ver=20190321#blog_id=149830373&amp;post_id=263&amp;origin=sciencedotdatadotblog.wordpress.com&amp;obj_id=149830373-263-5f1087c49135e&amp;domain=science.data.blog" data-name="like-post-frame-149830373-263-5f1087c49135e"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-149830373-263-5f1087c49135e" height="55px" width="100%" frameborder="0" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/index.html"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div id="jp-relatedposts" class="jp-relatedposts" style="display: block;">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="54" data-post-format="false"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://science.data.blog/2018/07/28/open-source-nlp-tools-for-information-extraction-from-free-form-text/" title="Open-source NLP tools for information extraction from free-form text" data-origin="263" data-position="0">Open-source NLP tools for information extraction from free-form text</a></span><span class="jp-relatedposts-post-context">In "Article"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="251" data-post-format="gallery"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://science.data.blog/2019/05/09/ed-nurse-assignment/" title="ED Nurse Assignment" data-origin="263" data-position="1">ED Nurse Assignment</a></span><span class="jp-relatedposts-post-context">In "Article"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="233" data-post-format="gallery"><span class="jp-relatedposts-post-title"><a class="jp-relatedposts-post-a" href="https://science.data.blog/2018/11/23/correcting-misspelled-medical-words-in-raw-text-data-with-r/" title="Correcting Misspelled Medical Words in Raw Text Data with R" data-origin="263" data-position="2">Correcting Misspelled Medical Words in Raw Text Data with R</a></span><span class="jp-relatedposts-post-context">In "Article"</span></p></div></div></div>			</div><!--/.post-content-->
+
+		
+			<footer class="post-meta-container clear">
+				
+				<div class="post-meta clear">
+					
+	<time class="post-date updated" datetime="2019-07-09">
+		<i class="fa fa-clock-o"></i>
+		July 9, 2019	</time>
+
+				<p class="post-categories"><i class="fa fa-folder-open"></i><a href="https://science.data.blog/category/article/" rel="category tag">Article</a></p>
+	
+	<p class="post-tags"><i class="fa fa-tag"></i><a href="https://science.data.blog/tag/chart-abstraction/" rel="tag">chart abstraction</a>, <a href="https://science.data.blog/tag/healthcare/" rel="tag">healthcare</a>, <a href="https://science.data.blog/tag/hospitals/" rel="tag">hospitals</a>, <a href="https://science.data.blog/tag/machine-learning/" rel="tag">machine learning</a>, <a href="https://science.data.blog/tag/nlp/" rel="tag">NLP</a>, <a href="https://science.data.blog/tag/rule-based-approach/" rel="tag">rule-based approach</a></p>
+					
+	<nav class="navigation post-navigation" role="navigation" aria-label="Posts">
+		<h2 class="screen-reader-text">Post navigation</h2>
+		<div class="nav-links"><div class="nav-previous"><a href="https://science.data.blog/2019/06/13/preparing-family-medicine-trainees-for-the-information-revolution/" rel="prev">Preparing family medicine trainees for the information&nbsp;revolution</a></div><div class="nav-next"><a href="https://science.data.blog/2020/03/03/the-importance-of-thoughtful-data-analysis-in-healthcare/" rel="next">The importance of thoughtful data analysis in&nbsp;healthcare</a></div></div>
+	</nav>									</div>
+			</footer> <!-- /post-meta-container -->
+			
+
+
+	<p class="nocomments">Comments are closed.</p>
+
+
+
+	</article> <!-- /post -->
+
+
+		</div> <!-- /content -->
+
+		
+
+	<aside class="sidebar fright" role="complementary">
+		<div id="blog_subscription-3" class="widget widget_blog_subscription jetpack_subscription_widget"><div class="widget-content clear"><h3 class="widget-title"><label for="subscribe-field">Follow the LKS-CHART Blog</label></h3>
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8">
+									<p>Enter your email address to follow this blog and receive notifications of new posts by email.</p>
+						<div class="jetpack-subscribe-count">
+							<p>
+							Join 16 other followers							</p>
+						</div>
+											<p id="subscribe-email">
+						<input type="text" name="email" style="width: 95%; padding: 1px 10px" placeholder="Enter your email address" value="">					</p>
+				
+				<p id="subscribe-submit">
+                    <input type="hidden" name="action" value="subscribe">
+                    <input type="hidden" name="blog_id" value="149830373">
+                    <input type="hidden" name="source" value="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/">
+                    <input type="hidden" name="sub-type" value="widget">
+                    <input type="hidden" name="redirect_fragment" value="blog_subscription-3">
+					<input type="hidden" id="_wpnonce" name="_wpnonce" value="da3e27422d">                    <button type="submit">
+	                    Follow                    </button>
+                </p>
+            </form>
+			
+</div></div><div id="tag_cloud-3" class="widget widget_tag_cloud"><div class="widget-content clear"><h3 class="widget-title">Categories</h3><div style="overflow: hidden;"><a href="https://science.data.blog/category/article/" style="font-size: 275%; padding: 1px; margin: 1px;" title="Article (9)">Article</a> <a href="https://science.data.blog/category/publication/" style="font-size: 125%; padding: 1px; margin: 1px;" title="Publication (3)">Publication</a> <a href="https://science.data.blog/category/uncategorized/" style="font-size: 100%; padding: 1px; margin: 1px;" title="Uncategorized (2)">Uncategorized</a> </div></div></div><div id="archives-3" class="widget widget_archive"><div class="widget-content clear"><h3 class="widget-title">Archives</h3>		<ul>
+				<li><a href="https://science.data.blog/2020/03/">March 2020</a></li>
+	<li><a href="https://science.data.blog/2019/07/">July 2019</a></li>
+	<li><a href="https://science.data.blog/2019/06/">June 2019</a></li>
+	<li><a href="https://science.data.blog/2019/05/">May 2019</a></li>
+	<li><a href="https://science.data.blog/2019/01/">January 2019</a></li>
+	<li><a href="https://science.data.blog/2018/11/">November 2018</a></li>
+	<li><a href="https://science.data.blog/2018/10/">October 2018</a></li>
+	<li><a href="https://science.data.blog/2018/09/">September 2018</a></li>
+	<li><a href="https://science.data.blog/2018/07/">July 2018</a></li>
+		</ul>
+			</div></div>	</aside><!-- /sidebar -->
+
+
+	</main> <!-- /section-inner -->
+</div> <!-- /wrapper -->
+
+
+	<div class="footer bg-graphite" id="footer">
+		<div class="section-inner row clear" role="complementary">
+
+			 <!-- /sidebar-2 -->
+
+			 <!-- /sidebar-3 -->
+
+			 <!-- /sidebar-4 -->
+
+		</div> <!-- /section-inner -->
+	</div> <!-- /footer -->
+
+
+	<div class="credits section bg-dark small-padding">
+		<div class="credits-inner section-inner clear">
+
+			<p class="credits-left fleft">
+				<a href="https://wordpress.com/?ref=footer_custom_svg" title="Create a website or blog at WordPress.com" rel="nofollow"><svg style="fill: currentColor; position: relative; top: 1px;" width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-labelledby="title" role="img">
+				<desc id="title">Create a website or blog at WordPress.com</desc>
+				<path d="M12.5225848,4.97949746 C13.0138466,5.87586309 13.2934037,6.90452431 13.2934037,7.99874074 C13.2934037,10.3205803 12.0351007,12.3476807 10.1640538,13.4385638 L12.0862862,7.88081544 C12.4453251,6.98296834 12.5648813,6.26504621 12.5648813,5.62667922 C12.5648813,5.39497674 12.549622,5.17994084 12.5225848,4.97949746 L12.5225848,4.97949746 Z M7.86730089,5.04801561 C8.24619178,5.02808979 8.58760099,4.98823815 8.58760099,4.98823815 C8.9267139,4.94809022 8.88671369,4.44972248 8.54745263,4.46957423 C8.54745263,4.46957423 7.52803983,4.54957381 6.86996227,4.54957381 C6.25158863,4.54957381 5.21247202,4.46957423 5.21247202,4.46957423 C4.87306282,4.44972248 4.83328483,4.96816418 5.17254589,4.98823815 C5.17254589,4.98823815 5.49358462,5.02808979 5.83269753,5.04801561 L6.81314716,7.73459399 L5.43565839,11.8651647 L3.14394256,5.04801561 C3.52312975,5.02808979 3.86416859,4.98823815 3.86416859,4.98823815 C4.20305928,4.94809022 4.16305906,4.44972248 3.82394616,4.46957423 C3.82394616,4.46957423 2.80475558,4.54957381 2.14660395,4.54957381 C2.02852925,4.54957381 1.88934333,4.54668493 1.74156477,4.54194422 C2.86690406,2.83350881 4.80113651,1.70529256 6.99996296,1.70529256 C8.638342,1.70529256 10.1302017,2.33173369 11.2498373,3.35765419 C11.222726,3.35602457 11.1962815,3.35261718 11.1683554,3.35261718 C10.5501299,3.35261718 10.1114609,3.89113285 10.1114609,4.46957423 C10.1114609,4.98823815 10.4107217,5.42705065 10.7296864,5.94564049 C10.969021,6.36482346 11.248578,6.90326506 11.248578,7.68133501 C11.248578,8.21992476 11.0413918,8.84503256 10.7696866,9.71584277 L10.1417574,11.8132391 L7.86730089,5.04801561 Z M6.99996296,14.2927074 C6.38218192,14.2927074 5.78595654,14.2021153 5.22195356,14.0362644 L7.11048207,8.54925635 L9.04486267,13.8491542 C9.05760348,13.8802652 9.07323319,13.9089317 9.08989995,13.9358945 C8.43574834,14.1661896 7.73285573,14.2927074 6.99996296,14.2927074 L6.99996296,14.2927074 Z M0.706448182,7.99874074 C0.706448182,7.08630113 0.902152921,6.22015756 1.25141403,5.43749503 L4.25357806,13.6627848 C2.15393732,12.6427902 0.706448182,10.4898387 0.706448182,7.99874074 L0.706448182,7.99874074 Z M6.99996296,0.999 C3.14016476,0.999 0,4.13905746 0,7.99874074 C0,11.8585722 3.14016476,14.999 6.99996296,14.999 C10.8596871,14.999 14,11.8585722 14,7.99874074 C14,4.13905746 10.8596871,0.999 6.99996296,0.999 L6.99996296,0.999 Z" id="wordpress-logo-simplified-cmyk" stroke="none" fill="“currentColor”" fill-rule="evenodd"></path>
+			</svg></a>
+				
+							</p>
+
+			<p class="credits-right fright">
+				<a class="tothetop" title="To the top" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/#">Up ↑</a>
+			</p>
+		</div> <!-- /credits-inner -->
+	</div> <!-- /credits -->
+
+<!--  -->
+<script src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/gprofiles.js.download"></script>
+<script>
+var WPGroHo = {"my_hash":""};
+</script>
+<script type="text/javascript" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/wpgroho.js.download"></script>
+
+	<script>
+		//initialize and attach hovercards to all gravatars
+		jQuery( document ).ready( function( $ ) {
+
+			if (typeof Gravatar === "undefined"){
+				return;
+			}
+
+			if ( typeof Gravatar.init !== "function" ) {
+				return;
+			}			
+
+			Gravatar.profile_cb = function( hash, id ) {
+				WPGroHo.syncProfileData( hash, id );
+			};
+			Gravatar.my_hash = WPGroHo.my_hash;
+			Gravatar.init( 'body', '#wp-admin-bar-my-account' );
+		});
+	</script>
+
+		<div style="display:none">
+	</div>
+
+	<div id="carousel-reblog-box">
+		<form action="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/#" name="carousel-reblog">
+			<textarea id="carousel-reblog-content" name="carousel-reblog-content" placeholder="Add your thoughts here... (optional)"></textarea>
+			<label for="carousel-reblog-to-blog-id" id="carousel-reblog-lblogid">Post to</label>
+			<select name="carousel-reblog-to-blog-id" id="carousel-reblog-to-blog-id">
+						</select>
+
+			<div class="submit">
+				<span class="canceltext"><a href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/#" class="cancel">Cancel</a></span>
+				<input type="submit" name="carousel-reblog-submit" class="button" id="carousel-reblog-submit" value="Reblog Post">
+				<input type="hidden" id="carousel-reblog-blog-id" value="149830373">
+				<input type="hidden" id="carousel-reblog-blog-url" value="https://science.data.blog">
+				<input type="hidden" id="carousel-reblog-blog-title" value="Welcome to the LKS-CHART Data Science Blog">
+				<input type="hidden" id="carousel-reblog-post-url" value="">
+				<input type="hidden" id="carousel-reblog-post-title" value="">
+			</div>
+
+			<input type="hidden" id="_wpnonce" name="_wpnonce" value="d2459cd0a6"><input type="hidden" name="_wp_http_referer" value="/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/">		</form>
+
+		<div class="arrow"></div>
+	</div>
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/science.data.blog\/2019\/07\/09\/chartextract-a-rule-based-approach-to-chart-abstraction\/":263};
+	</script>
+				<link rel="stylesheet" id="all-css-0-2" href="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/jetpack-carousel.css" type="text/css" media="all">
+<script>
+var comment_like_text = {"loading":"Loading..."};
+</script>
+<script>
+var actionbardata = {"siteID":"149830373","siteName":"Welcome to the LKS-CHART Data Science Blog","siteURL":"https:\/\/science.data.blog","icon":"<img alt='' src='https:\/\/sciencedotdatadotblog.files.wordpress.com\/2018\/08\/cropped-lks-chart.png?w=50' class='avatar avatar-50' height='50' width='50' \/>","canManageOptions":"","canCustomizeSite":"","isFollowing":"","themeSlug":"pub\/baskerville-2","signupURL":"https:\/\/wordpress.com\/start\/","loginURL":"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fscience.data.blog%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F&signup_flow=account&domain=science.data.blog","themeURL":"https:\/\/wordpress.com\/theme\/baskerville-2\/","xhrURL":"https:\/\/science.data.blog\/wp-admin\/admin-ajax.php","nonce":"e6d2cb9113","isSingular":"1","isFolded":"","isLoggedIn":"","isMobile":"","subscribeNonce":"<input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"da3e27422d\" \/>","referer":"https:\/\/science.data.blog\/2019\/07\/09\/chartextract-a-rule-based-approach-to-chart-abstraction\/","canFollow":"1","feedID":"85798026","statusMessage":"","customizeLink":"https:\/\/sciencedotdatadotblog.wordpress.com\/wp-admin\/customize.php?url=https%3A%2F%2Fsciencedotdatadotblog.wordpress.com%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F","postID":"263","shortlink":"https:\/\/wp.me\/pa8FIV-4f","canEditPost":"","editLink":"https:\/\/wordpress.com\/post\/science.data.blog\/263","statsLink":"https:\/\/wordpress.com\/stats\/post\/263\/science.data.blog","i18n":{"view":"View site","follow":"Follow","following":"Following","edit":"Edit","login":"Log in","signup":"Sign up","customize":"Customize","report":"Report this content","themeInfo":"Get theme: Baskerville 2","shortlink":"Copy shortlink","copied":"Copied","followedText":"New posts from this site will now appear in your <a href=\"https:\/\/wordpress.com\/read\">Reader<\/a>","foldBar":"Collapse this bar","unfoldBar":"Expand this bar","editSubs":"Manage subscriptions","viewReader":"View site in Reader","viewReadPost":"View post in Reader","subscribe":"Sign me up","enterEmail":"Enter your email address","followers":"","alreadyUser":"Already have a WordPress.com account? <a href=\"https:\/\/wordpress.com\/log-in?redirect_to=https%3A%2F%2Fscience.data.blog%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F&signup_flow=account&domain=science.data.blog\">Log in now.<\/a>","stats":"Stats"}};
+</script>
+<script>
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/science.data.blog\/wp-admin\/admin-ajax.php","nonce":"94f82d87fc","display_exif":"1","display_comments":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/sciencedotdatadotblog.wordpress.com\/wp-login.php?redirect_to=https%3A%2F%2Fscience.data.blog%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F","blog_id":"149830373","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>","reblog":"Reblog","reblogged":"Reblogged","reblog_add_thoughts":"Add your thoughts here... (optional)","reblogging":"Reblogging...","post_reblog":"Post Reblog","stats_query_args":"blog=149830373&v=wpcom&tz=-4&user_id=0&subd=sciencedotdatadotblog","is_public":"1","reblog_enabled":""};
+</script>
+<script>
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":"1"};
+</script>
+<script type="text/javascript" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/saved_resource(6)"></script><div id="actionbar" class="actnbr-pub-baskerville-2 actnbr-has-follow"><ul><li class="actnbr-btn actnbr-hidden"> 			    	<a class="actnbr-action actnbr-actn-follow" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a> 			    	<div class="actnbr-popover tip tip-top-left actnbr-notice"> 			    		<div class="tip-arrow"></div> 			    		<div class="tip-inner actnbr-follow-bubble"></div> 			    	</div> 			    </li><li class="actnbr-ellipsis actnbr-hidden"> 			  <svg class="gridicon gridicon__ellipsis" height="24" width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><circle cx="5" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle></g></svg> 			  <div class="actnbr-popover tip tip-top-left actnbr-more"> 			  	<div class="tip-arrow"></div> 			  	<div class="tip-inner"> 				  <ul> 				    <li class="actnbr-sitename actnbr-hidden"><a href="https://science.data.blog/"><img alt="" src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/cropped-lks-chart.png" class="avatar avatar-50" height="50" width="50"> Welcome to the LKS-CHART Data Science Blog</a></li> 				   	<li class="actnbr-folded-customize actnbr-hidden"><a href="https://sciencedotdatadotblog.wordpress.com/wp-admin/customize.php?url=https%3A%2F%2Fsciencedotdatadotblog.wordpress.com%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F"><svg class="gridicon gridicon__customize" height="20px" width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M2 6c0-1.505.78-3.08 2-4 0 .845.69 2 2 2 1.657 0 3 1.343 3 3 0 .386-.08.752-.212 1.09.74.594 1.476 1.19 2.19 1.81L8.9 11.98c-.62-.716-1.214-1.454-1.807-2.192C6.753 9.92 6.387 10 6 10c-2.21 0-4-1.79-4-4zm12.152 6.848l1.34-1.34c.607.304 1.283.492 2.008.492 2.485 0 4.5-2.015 4.5-4.5 0-.725-.188-1.4-.493-2.007L18 9l-2-2 3.507-3.507C18.9 3.188 18.225 3 17.5 3 15.015 3 13 5.015 13 7.5c0 .725.188 1.4.493 2.007L3 20l2 2 6.848-6.848c1.885 1.928 3.874 3.753 5.977 5.45l1.425 1.148 1.5-1.5-1.15-1.425c-1.695-2.103-3.52-4.092-5.448-5.977z" data-reactid=".2.1.1:0.1b.0"></path></g></svg><span>Customize<span></span></span></a></li> 				    <li class="actnbr-folded-follow actnbr-hidden"><a class="actnbr-action actnbr-actn-follow" href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/"><svg class="gridicon gridicon__follow" height="24px" width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g><path d="M23 16v2h-3v3h-2v-3h-3v-2h3v-3h2v3h3zM20 2v9h-4v3h-3v4H4c-1.1 0-2-.9-2-2V2h18zM8 13v-1H4v1h4zm3-3H4v1h7v-1zm0-2H4v1h7V8zm7-4H4v2h14V4z"></path></g></svg><span>Follow</span></a></li> 					<li class="actnbr-signup actnbr-hidden"><a href="https://wordpress.com/start/">Sign up</a></li> 				    <li class="actnbr-login actnbr-hidden"><a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fscience.data.blog%2F2019%2F07%2F09%2Fchartextract-a-rule-based-approach-to-chart-abstraction%2F&amp;signup_flow=account&amp;domain=science.data.blog">Log in</a></li> 				     				    <li class="actnbr-shortlink actnbr-hidden"><a href="https://wp.me/pa8FIV-4f">Copy shortlink</a></li> 				    <li class="flb-report actnbr-hidden"><a href="http://en.wordpress.com/abuse/">Report this content</a></li> 				     				     				    <li class="actnbr-subs actnbr-hidden"><a href="https://subscribe.wordpress.com/">Manage subscriptions</a></li> 				    <li class="actnbr-fold actnbr-hidden"><a href="https://science.data.blog/2019/07/09/chartextract-a-rule-based-approach-to-chart-abstraction/">Collapse this bar</a></li> 			      </ul> 			    </div> 		      </div> 		    </li> 	      </ul></div>
+<script type="text/javascript">
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+</script>
+<script type="text/javascript">
+// <![CDATA[
+(function() {
+try{
+  if ( window.external &&'msIsSiteMode' in window.external) {
+    if (window.external.msIsSiteMode()) {
+      var jl = document.createElement('script');
+      jl.type='text/javascript';
+      jl.async=true;
+      jl.src='/wp-content/plugins/ie-sitemode/custom-jumplist.php';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(jl, s);
+    }
+  }
+}catch(e){}
+})();
+// ]]>
+</script>		<iframe src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/master.html" scrolling="no" id="likes-master" name="likes-master" style="display:none;"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+<script src="./CHARTextract_ A rule-based approach to chart abstraction – Welcome to the LKS-CHART Data Science Blog_files/w.js.download" type="text/javascript" async="" defer=""></script>
+<script type="text/javascript">
+_tkq = window._tkq || [];
+_stq = window._stq || [];
+_tkq.push(['storeContext', {'blog_id':'149830373','blog_tz':'-4','user_lang':'en','blog_lang':'en','user_id':'0'}]);
+_stq.push(['view', {'blog':'149830373','v':'wpcom','tz':'-4','user_id':'0','post':'263','subd':'sciencedotdatadotblog'}]);
+_stq.push(['extra', {'crypt':'UE40eW5QN0p8M2Y/RE1TaVhzUzFMbjdWNHpwZGhTayxPSUFCMGNrd29+Smw0TDhnZmRTK0hlRi9QSGh6bi9GXVhBJWIlZlR5U1JMLU8/MkNtblkvY1czc21LS1FaSjdBbXYrdUs/Ykc4NXZXU352NmQmWH5BJSU2MFN6LXJBNXBTRjFJejFkLFItOFNNN1RZVz9VdWhrW3E2bzhxS05YeWV+cmFPVDBBUWR8b0g/fnBvZ0JoWG94OUZ8Nk92cHRHZE1VVV90fFtiYWctUTgmLCZBXXNLW1ZuZ2VbNUE3XW9qdWpfNkkybV1WbzRxdVE0SXJfTHdwRzZbUW8rYUpjPUNZNyZ3UFNtSXkmQk5KUCs2OTFlbmc3dkdMN3JrcV1vOTd2UENpdXFxV3FxVmpBU05fWDB+YkVxUWRjdFV2aCxIT0w='}]);
+_stq.push([ 'clickTrackerInit', '149830373', '263' ]);
+	</script>
+<noscript><img src="https://pixel.wp.com/b.gif?v=noscript" style="height:0px;width:0px;overflow:hidden" alt="" /></noscript>
+<script>
+if ( 'object' === typeof wpcom_mobile_user_agent_info ) {
+
+	wpcom_mobile_user_agent_info.init();
+	var mobileStatsQueryString = "";
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedPlatformName )
+		mobileStatsQueryString += "&x_" + 'mobile_platforms' + '=' + wpcom_mobile_user_agent_info.matchedPlatformName;
+	
+	if( false !== wpcom_mobile_user_agent_info.matchedUserAgentName )
+		mobileStatsQueryString += "&x_" + 'mobile_devices' + '=' + wpcom_mobile_user_agent_info.matchedUserAgentName;
+	
+	if( wpcom_mobile_user_agent_info.isIPad() )
+		mobileStatsQueryString += "&x_" + 'ipad_views' + '=' + 'views';
+
+	if( "" != mobileStatsQueryString ) {
+		new Image().src = document.location.protocol + '//pixel.wp.com/g.gif?v=wpcom-no-pv' + mobileStatsQueryString + '&baba=' + Math.random();
+	}
+	
+}
+</script>
+
+
+<div class="comment-likes-overlay" style="display: none;"></div></body></html>
