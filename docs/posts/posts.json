@@ -1,0 +1,18 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Welcome to DSAA Blog",
+    "description": "Welcome to our new blog, DSAA Blog. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "Nora Jones",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-07-16",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-07-16T12:29:52-04:00",
+    "input_file": {}
+  }
+]
