@@ -14,7 +14,7 @@ Changes to the `main` branch will launch a new job and re-render the blog.
 
 - Start a new branch
 
-- Create a new post: `distill::create_post("TITLE OF YOUR BLOG POST", draf = TRUE)` This will create a new folder in the `_posts` folder. This is where you will work on your blog post. 
+- Create a new post: `distill::create_post("TITLE OF YOUR BLOG POST", draft = TRUE)` This will create a new folder in the `_posts` folder. In this folder you will find a new Rmd file. The Rmd file is the one you will edit with your blog post content.
 
 - Edit the header of the Rmd file to include the correct author information and to add categories to the blog post.
 
@@ -44,8 +44,8 @@ Changes to the `main` branch will launch a new job and re-render the blog.
     
 - When it's time to release a new blog post, create a new PR with the following changes: 
 
-    - In the Rmd file, update `draft: true` to `draft: false`.
+    - In the blog post Rmd file, update `draft: true` to `draft: false`.
     
-    - In the Rmd file, set the date to the release date.
+    - In the blog post Rmd file, set the date to the release date.
 
 - Once the PR is merged to the `main` branch, the changes will be reflected on the blog.

@@ -4,12 +4,12 @@ Provide a summary of your blog post here.
 
 # Checklist
 
-[ ] I can successfully knit the Rmd file.
+[ ] I can successfully knit the blog post Rmd file.
 
-[ ] Figures, graphs, tables render properly in the Rmd file.
+[ ] Figures, graphs, tables render properly in the blog post Rmd file.
 
 [ ] Abbreviations are expanded/explained.
 
-[ ] The Rmd file header contains the post title, post description, author information, and categories.
+[ ] The blog post Rmd file header contains the post title, post description, author information, and categories.
 
-[ ] The blog post content (Rmd, figures, tables, etc.) does not contains any PHI.
+[ ] The blog post content (Rmd file, figures, tables, etc.) does not contains any PHI.
