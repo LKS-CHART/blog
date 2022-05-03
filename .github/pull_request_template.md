@@ -10,4 +10,4 @@ Provide a summary of your blog post here.
 
 [ ] Abbreviations are expanded/explained.
 
-[ ] The Rmd file header contains the post title, post description, and author information.
+[ ] The Rmd file header contains the post title, post description, author information, and categories.

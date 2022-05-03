@@ -16,6 +16,8 @@ Changes to the `main` branch will launch a new job and re-render the blog.
 
 - Create a new post: `distill::create_post("TITLE OF YOUR BLOG POST", draf = TRUE)` This will create a new folder in the `_posts` folder. This is where you will work on your blog post. 
 
+- Edit the header of the Rmd file to include the correct author information and to add categories to the blog post.
+
 - Write your blog post following [Markdown syntax](https://www.markdownguide.org/basic-syntax/).
 
 - To render your blog post, knit the document.
@@ -34,7 +36,7 @@ Changes to the `main` branch will launch a new job and re-render the blog.
 
 - Make any edits based on the comments from the reviewers.
 
-- Merge the PR when it's approved
+- Merge the PR when it's approved.
 
 ## Blog team
 
