@@ -2,7 +2,9 @@
 
 This is the repo for the AA blog.
 
-Link: 
+Link: https://lks-chart.github.io/blog/
+
+Changes to the `main` branch will launch a new job and re-render the blog.
 
 # Contribute to the blog
 
@@ -19,6 +21,8 @@ Link:
 - To render your blog post, knit the document.
 
 - To render the entire website, run the `Build Website` command in the Build tab of RStudio.
+
+- For more details, refer to the [Style Guidelines and Formatting](https://app.clickup.com/2346452/v/dc/27kem-18987/27kem-51722) document.
 
 # Review process
 
