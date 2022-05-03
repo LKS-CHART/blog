@@ -1,9 +1,27 @@
 ---
 title: "About this blog"
 description: |
-  Some additional details about the blog
+  This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+We are the Advanced Analytics (AA) team within the [Data Science and Advanced Analytics (DSAA)](https://www.chartdatascience.ca/) group at [Unity Health Toronto](https://unityhealth.to/). Our team is based at St. Michael's Hospital. 
+
+We work on healthcare projects that aim to **improve patient outcomes and hospital efficiency**. 
+
+Here, you will find blog posts written by various members of the AA team. Blogs will be released on a monthly basis and will cover a wide variety of topics:
+
+- Deploying machine learning algorithms in the hospital
+
+- Insights into what it's like working in a data science team within the healthcare setting
+
+- Summaries of our journal club discussions
+
+- Cool/interesting/fun data science things we run into in our day-to-day work
+
+- ... and more!
+
+Happy reading!

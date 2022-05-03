@@ -10,6 +10,10 @@ date: 07-16-2020
 output:
   distill::distill_article:
     self_contained: false
+preview: logo.png
+categories:
+  - R
+  - fun
 ---
 
 ```{r setup, include=FALSE}
