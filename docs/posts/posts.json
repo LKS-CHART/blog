@@ -10,10 +10,13 @@
       }
     ],
     "date": "2020-07-16",
-    "categories": [],
+    "categories": [
+      "R",
+      "fun"
+    ],
     "contents": "\nHello world!\n\n\n\n",
-    "preview": {},
-    "last_modified": "2022-05-03T11:30:57-04:00",
+    "preview": "posts/welcome/logo.png",
+    "last_modified": "2022-05-03T12:01:20-04:00",
     "input_file": {}
   }
 ]
