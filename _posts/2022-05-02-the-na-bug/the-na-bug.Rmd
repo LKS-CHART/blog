@@ -89,9 +89,13 @@ data %>%
 
 Depending on the context, the symbol meant something different! Our data extraction pipeline was interpreting the chemical element `Na` as "not available"!
 
-We were able to fix the _NA bug_ and after re-deploying, sodium counts were back to normal (as seen in Figure \@ref(fig:fixedna)).
+The fix was quite straightforward. We updated the parameters of one of our function calls to specify that `''` (empty string) should be used to represent `NA`. From the [documentation of the RODBC package](https://cran.r-project.org/web/packages/RODBC/RODBC.pdf):
 
-The fix was quite simple, but the problem we uncovered lead to plenty of follow-up questions! 
+> `na.strings`: character string(s) to be mapped to NA when reading character data, default "NA"
+
+After deploying this fix, sodium counts were back to normal (as seen in Figure \@ref(fig:fixedna)).
+
+While the fix was a simple one-line change, the problem we uncovered lead to plenty of follow-up questions! 
 
 - Were there other cases where the same symbol meant two different things based on the context? 
 
