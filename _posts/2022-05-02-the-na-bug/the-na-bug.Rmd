@@ -1,7 +1,7 @@
 ---
 title: "Ooh na na... where are my sodium labs?"
 description: |
-  The NA bug, or, what happens when the same word is used in different contexts.
+  The NA bug, or, what happens when the same word is used in different contexts. [5 min read]
 author:
   - name: Chloe Pou-Prom
     affiliation: DSAA, Unity Health Toronto
@@ -9,7 +9,7 @@ author:
 date: 2022-05-02
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
 categories:
   - language-R
   - project-chartwatch
