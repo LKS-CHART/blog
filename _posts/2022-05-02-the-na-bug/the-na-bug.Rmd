@@ -42,7 +42,7 @@ daily_counts_post_fix <- data %>%
 
 ## Silent deployment
 
-Our team had been working endlessly on developing [CHARTwatch](https://www.chartdatascience.ca/the-projects/an-early-warning-system-for-general-internal-medicine-), an early warning system and in November 2019, we were ready to move to our **silent deployment** phase. This phase involved deploying our system and, as the name suggests it, running it _silently_. More concretely, our entire pipeline was running (from data extraction to data processing to model prediction), but no outputs were going to the end-user. 
+Our team had been working actively on developing [CHARTwatch](https://www.chartdatascience.ca/the-projects/an-early-warning-system-for-general-internal-medicine-), an early warning system for patients in general internal medicine at St. Michael's Hospital. In November 2019 we were ready to move to a **silent deployment phase**, which means our entire pipeline was running (from data extraction to data processing to model prediction), but no outputs were going to the end-user.
 
 Typically, the goal of the silent deployment phase is to uncover unexpected behaviors with the data, system, or model. During model development and evaluation, we had only worked with _historical extracts of the data_. When moving from historical data to _live data_, there's the risk of running into data issues [@cohen_problems_2021].
 
@@ -55,7 +55,7 @@ Typically, the goal of the silent deployment phase is to uncover unexpected beha
 
 ## Monitoring labs
 
-We had set up a monitoring dashboard to measure model inputs and model outputs. On close inspection, we made a discovery that was unquestioNAbly odd... no sodium labs had been measured since we had moved to silent testing!
+We had set up a monitoring dashboard to measure model inputs and model outputs. On close inspection, we made a discovery that was unquestio**na**bly odd... no sodium labs had been measured since we had moved to silent testing!
 
 ```{r missingna, fig.cap="Daily counts of lab measurements: this includes counts for calcium (CA), chloride (CL), glucose (GLPOC), potassium (K), and sodium (NA)."}
 daily_counts_pre_fix %>%
@@ -66,7 +66,7 @@ daily_counts_pre_fix %>%
     dyLegend(width = 400)
 ```
 
-This made NA sense at all. Sodium is measured in routinely ordered blood tests. It'll usually get ordered alongside other tests (such as calcium, chloride, glucose, and potassium) as part of a [basic metabolic panel](https://www.healthline.com/health/sodium-blood). In Figure \@ref(fig:missingna), we look at the daily counts of labs on units in which CHARTwatch was silently deployed. 
+Did this make sense? **NA**! Sodium is measured in routinely ordered blood tests. It'll usually get ordered alongside other tests (such as calcium, chloride, glucose, and potassium) as part of a [basic metabolic panel](https://www.healthline.com/health/sodium-blood). In Figure \@ref(fig:missingna), we look at the daily counts of labs on units in which CHARTwatch was silently deployed. 
 The other labs were regularly measured, but our pipeline had not detected a single sodium lab. There was NA way sodium would be missing!
 
 ## The NA bug
