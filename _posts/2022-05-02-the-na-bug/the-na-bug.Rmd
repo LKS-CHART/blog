@@ -1,0 +1,115 @@
+---
+title: "Ooh na na... where are my sodium labs?"
+description: |
+  The NA bug, or, what happens when the same word is used in different contexts. [5 min read]
+author:
+  - name: Chloe Pou-Prom
+    affiliation: DSAA, Unity Health Toronto
+    affiliation_url: https://chartdatascience.ca
+date: 2022-05-02
+output:
+  distill::distill_article:
+    toc: true
+categories:
+  - language-R
+  - project-chartwatch
+  - post-miscellaneous
+draft: true
+preview: preview.PNG
+bibliography: references.bib
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r load_date, echo = FALSE}
+library(here)
+library(xts)
+library(dygraphs)
+library(dplyr)
+library(ggplot2)
+data <- read.csv(file.path(here::here(), "_posts/2022-05-02-the-na-bug", "daily_electrolyte_counts.csv"), stringsAsFactors = FALSE) %>%
+  mutate(date = as.Date(date))
+
+daily_counts_pre_fix <- data %>%
+    filter(cohort == "pre-fix")
+
+daily_counts_post_fix <- data %>%
+    filter(cohort == "post-fix")
+```
+
+## Silent deployment
+
+Our team had been working actively on developing [CHARTwatch](https://www.chartdatascience.ca/the-projects/an-early-warning-system-for-general-internal-medicine-), an early warning system for patients in general internal medicine at St. Michael's Hospital. In November 2019 we were ready to move to a **silent deployment phase**, which means our entire pipeline was running (from data extraction to data processing to model prediction), but no outputs were going to the end-user.
+
+Typically, the goal of the silent deployment phase is to uncover unexpected behaviors with the data, system, or model. During model development and evaluation, we had only worked with _historical extracts of the data_. When moving from historical data to _live data_, there's the risk of running into data issues [@cohen_problems_2021].
+
+- The data can be different due to **external factors**. For example, all of our models were trained on data prior to COVID-19, but shortly after the beginning of our silent deployment phase, we began to observe cases of COVID-19 in the hospital.
+
+- The data can be different due to **data entry errors**. For example, a body temperature could incorrectly be entered as 3700 °C instead of 37.00 °C.
+
+- The data can be different due to **selection bias**. For example, during training we excluded patients with really short and really long visits, as they were rare. However, we may encounter these kinds of visits in the live data.
+
+
+## Monitoring labs
+
+We had set up a monitoring dashboard to measure model inputs and model outputs. On close inspection, we made a discovery that was unquestio**na**bly odd... no sodium labs had been measured since we had moved to silent testing!
+
+```{r missingna, fig.cap="Daily counts of lab measurements: this includes counts for calcium (CA), chloride (CL), glucose (GLPOC), potassium (K), and sodium (NA)."}
+daily_counts_pre_fix %>%
+    select(-date, -cohort) %>%
+    xts(order.by = daily_counts_pre_fix$date) %>%
+    dygraph(main = "Electrolyte counts")  %>%
+    dyOptions(stackedGraph = TRUE) %>%
+    dyLegend(width = 400)
+```
+
+Did this make sense? **NA**! Sodium is measured in routinely ordered blood tests. It'll usually get ordered alongside other tests (such as calcium, chloride, glucose, and potassium) as part of a [basic metabolic panel](https://www.healthline.com/health/sodium-blood). In Figure \@ref(fig:missingna), we look at the daily counts of labs on units in which CHARTwatch was silently deployed. 
+The other labs were regularly measured, but our pipeline had not detected a single sodium lab. There was NA way sodium would be missing!
+
+## The NA bug
+
+After hours of detective work, we found the issue:
+
+- In R, the programming language we used to develop CHARTwatch, the symbol `NA` stands for "not available" and is used to represent missing data.
+
+- In chemistry, `Na` is the symbol used to represent the chemical element of sodium.
+
+```{r fixedna, fig.cap="Daily counts of lab measurements after fixing the NA bug"}
+data %>%
+    select(-date, -cohort) %>%
+    xts(order.by = data$date) %>%
+    dygraph(main = "Electrolyte counts")  %>%
+    dyOptions(stackedGraph = TRUE) %>%
+    dyLegend(width = 400)
+```
+
+
+Depending on the context, the symbol meant something different! Our data extraction pipeline was interpreting the chemical element `Na` as "not available"!
+
+The fix was quite straightforward. We updated the parameters of one of our function calls to specify that `""` (empty string) should be used to represent "not available", instead of `"NA"`. From the [documentation of the RODBC package](https://cran.r-project.org/web/packages/RODBC/RODBC.pdf):
+
+> `na.strings`: character string(s) to be mapped to `NA` when reading character data, default "NA"
+
+After deploying this fix, sodium counts were back to normal (as seen in Figure \@ref(fig:fixedna)).
+
+While the fix was a simple one-line change, the problem we uncovered lead to plenty of follow-up questions! 
+
+- Were there other cases where the same symbol meant two different things based on the context? 
+
+- What does our electronic health record use to represent a missing value? Do they go with a number that's biologically impossible? (e.g., a body temperature of -1000) Do they use a specific symbol/term? (e.g., "not measured", "missing") 
+
+- How are these decisions made? 
+
+Recently, there's been a push for improvement in data quality standards, such as "Datasheets for Datasets" [@gebru_datasheets_2021] and the explosion of [features stores, model stores, and evaluation stores](https://www.mihaileric.com/posts/mlops-is-a-mess/)^[What kind of "store" do we think is next? 🤔].
+
+
+## Takeaways
+
+- NA (sodium) ≠ NA (not available)
+
+- Silent deployment is important.
+
+- Thorough metadata and data quality standards are important to mitigating these kinds of issues.
