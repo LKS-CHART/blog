@@ -6,7 +6,7 @@ author:
   - name: Chloe Pou-Prom
     affiliation: DSAA, Unity Health Toronto
     affiliation_url: https://chartdatascience.ca
-date: 2022-05-02
+date: 2022-05-09
 output:
   distill::distill_article:
     toc: true
@@ -14,7 +14,7 @@ categories:
   - language-R
   - project-chartwatch
   - post-miscellaneous
-draft: true
+draft: false
 preview: preview.PNG
 bibliography: references.bib
 ---
@@ -30,7 +30,7 @@ library(xts)
 library(dygraphs)
 library(dplyr)
 library(ggplot2)
-data <- read.csv(file.path(here::here(), "_posts/2022-05-02-the-na-bug", "daily_electrolyte_counts.csv"), stringsAsFactors = FALSE) %>%
+data <- read.csv(file.path(here::here(), "_posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs", "daily_electrolyte_counts.csv"), stringsAsFactors = FALSE) %>%
   mutate(date = as.Date(date))
 
 daily_counts_pre_fix <- data %>%
