@@ -6,6 +6,14 @@ Link: https://lks-chart.github.io/blog/
 
 Changes to the `main` branch will launch a new job and re-render the blog.
 
+# Blog Team
+
+- Derek Beaton
+
+- Chloe Pou-Prom
+
+- Meggie Debnath
+
 # Contribute to the blog
 
 - Clone this repo
@@ -16,7 +24,15 @@ Changes to the `main` branch will launch a new job and re-render the blog.
 
 - Create a new post: `distill::create_post("TITLE OF YOUR BLOG POST", draft = TRUE)` This will create a new folder in the `_posts` folder. In this folder you will find a new Rmd file. The Rmd file is the one you will edit with your blog post content.
 
-- Edit the header of the Rmd file to include the correct author information and to add categories to the blog post.
+- Edit the header of the Rmd file to include the correct author information and to add categories to the blog post. 
+
+    - Include the type of post: e.g., `post-journal-club`, `post-extended-standup`, `post-paper-summary` (for DSAA papers), `post-perspective` (opinions, perspectives on healthcare/data science/work), `post-miscellaneous`
+
+    -  If relevant, include a language category: e.g., `language-R`, `language-python`, `language-javascript`
+    
+    -  If relevant, include the project: e.g., `project-chartwatch`, `project-rushh`, `project-hemo`
+    
+    - Other categories could for example be the package/library name (e.g., `funneljoin`, `modelstudio`), a data-science topic (e.g., `anomaly-detection`, `dei`), or a modeling technique or ML field (e.g., `logistic-regression`, `nlp`)
 
 - Write your blog post following [Markdown syntax](https://www.markdownguide.org/basic-syntax/).
 
@@ -47,5 +63,9 @@ Changes to the `main` branch will launch a new job and re-render the blog.
     - In the blog post Rmd file, update `draft: true` to `draft: false`.
     
     - In the blog post Rmd file, set the date to the release date.
+
+    - Rename the blog post directory with the `distill::rename_post` command.
+
+- Re-knit the blog post and re-build the website.
 
 - Once the PR is merged to the `main` branch, the changes will be reflected on the blog.
