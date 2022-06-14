@@ -34,7 +34,7 @@ Bias is a part of human nature, coming from the limited view of the world that a
 ```{r out.extra="class=external", fig.cap="Different types of bias that can exist when training machine learning models [source](https://www.sciencedirect.com/science/article/pii/S2666389921002026)"}
 knitr::include_graphics("ai-biases.jpg")
 ```
-There are a few different ways bias can affect the prediction or decision made by an algorithm:
+There are a few different ways bias can affect the prediction or decision made by an algorithm [@norori_addressing_2021]:
 
 * **Human bias**: underlying bias within the data caused by societal inequities and biased human decision-making
 * **Data-driven bias**: when training data is not representative of the population in which the algorithm will be applied
