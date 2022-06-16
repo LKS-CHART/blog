@@ -1,19 +1,19 @@
 ---
 title: "Is my AI Discriminatory?"
 description: |
-  A discussion about bias in healthcare AI, and building models with fairness and ethics in mind [5 min read]
+  A discussion about bias in healthcare AI, and building models with fairness and ethics in mind. [5 min read]
 author:
   - name: Meggie Debnath
     affiliation: DSAA, Unity Health Toronto
     affiliation_url: https://chartdatascience.ca
-date: 2022-06-13
+date: 2022-06-21
 output:
   distill::distill_article:
     toc: true
 categories:
   - post-journal-club
   - bias-fairness-ethics
-draft: true
+draft: false
 preview: ai-biases.jpg
 bibliography: refer.bib
 ---
