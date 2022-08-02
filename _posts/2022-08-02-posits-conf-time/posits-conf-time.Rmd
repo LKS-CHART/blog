@@ -1,0 +1,132 @@
+---
+title: "POS...IT's conf() time"
+description: |
+  Pause, it's time to write about RStudio conf(2022).
+author:
+  - name: Maitreyee Sidhaye & Chloe Pou-Prom
+    url: {}
+date: 2022-08-02
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - post-miscellaneous
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# 2 years before
+
+Picture this: it's January 2020, you're in Toronto, it's the middle of winter, you're just back from vacation... and you're suffering from FOMO because your teammates are in sunny San Francisco collecting hex stickers, taking selfies with Hadley, and having the time of their lives at rstudio::conf 2020.
+
+We were jealous.
+
+Fast-forward 2 years and WE are the ones living the dream!
+
+# 2 weeks before
+
+This was the first time for both of us and we wanted to be ready. Here's how you can do it too!
+
+<input type="checkbox" unchecked>  **Download the RStudio conf app and bookmark all the talks that interest you**. We asked our teammates which topics would be most relevant for the team. We ended up with the following: data science for healthcare, working with Quarto, working with Python, putting things in deployment/production, enhancements to tidymodels, best practices, MLOps/DevOps, training/teaching.</input>
+
+- [ ] **Watch old talks**. These can all be found [here](). We recommend: [debugging](), [RStudio announcing they are PBC](), and [end-to-end data science](https://www.rstudio.com/resources/rstudioconf-2020/deploying-end-to-end-data-science-with-shiny-plumber-and-pins/).
+
+
+- [ ] **Make a list of places you want to visit.** We prepared our [sight-seeing and food map](). 
+
+- [ ] **Reach out to people who will be attending.** The motto for this year's conference was _"It’s always better when we’re together"_. Keeping that in mind, we reached out to our awesome RStudio customer success rep and to our friends that work in healthcare that we met through the Rstudio Community Meetup. It was great to see them in-person!
+
+# During
+
+
+Focus on the content of the talk. All material will be available online.
+
+**All** the talks were excellent. The conference put in support for speech coaching and it paid off. All the talks were engaging. The talks were framed as stories. The material was easy-to-digest. 
+
+Do not skip the keynotes!!! 
+
+HADLEY, shortly after making the Posit rebranding announcement: "Now some of you may be wondering... where are our new stickers?"
+
+[pause]
+
+HADLEY: Now, if you all take a look under your seat...
+
+Intense shuffling sounds can be heard as THE AUDIENCE begins to search under their seat. People gasp and laugh as they pull envelopes from under their seat. MAITREYEE and CHLOE take their envelopes and find two stickers!
+
+[INSERT PHOTO OF STICKER]
+
+LATER IN THE EVENING...
+
+Hadley reassures that the Posit rebranding will not affect the shape of the stickers!
+
+
+- We got to experience our very own Oprah moment during the first keynote when the [Posit announcement was made](). 
+
+
+
+Get social! There are plenty of opportunities: the night social events + special groups
+Groups of interest:
+- r-ladies 
+[INSERT PICTURE]
+- LATAM speakers
+- birds of a feather groups! healthcare!!
+Attend events!
+
+RStudio is committed to keeping their events inclusive and welcoming, which is highlighted by the Pac-man concept. Throughout the conference, we felt that.
+- pronoun pins
+
+- masks mandatory
+
+- COVID pins
+
+Take down key points, but you don't need to write down everything. Materials are available. If not, most speakers are on Twitter and are happy to answer.
+
+GRAB DESSERT BEFORE LUNCH!!! The dessert table is the first to run out.
+
+Grab t-shirts and hex stickers for your teammates.
+
+# 2 days after
+
+The three post-conference Rs: 
+Reflect think react
+(w)Rite talk present 
+share Release
+
+**Reflect**: Think about talks that stood out to you.
+
+We both liked: Quarto!! [link to material] And it seems like the community is keen too, because there is already an [Awesome List]() for Quarto!
+
+Maitreyee:
+- highlights of the knitr package
+- 3D
+- shiny without a server
+- tidyclust 
+
+Chloe:
+- COVID Alaska
+- WTF AITA https://wtf-aita.com/
+- data science education w Flint water dataset
+- quilt
+
+w(R)ite: write a blog post! (this!!)
+
+Release:
+sharing the extra Shirts and stickers!
+How can we take our findings and apply them...
+
+
+# 2 months after...?
+
+We want to leverage Quarto.
+
+Try Python for Shiny. Our team has a mix of R and Python developers, some who have used Shiny and some who have not.
+
+Create consistent templates and color schemes for organization. Branding is important!
+
+Onboarding - give agency to newcomers. This came up during a few talks. Let the newcomers make changes to your company guide (here at DSAA, we have the DSAA handbook that is used for onboarding purposes). 
+
+Share learning materials. From Jeff Leek's closing keynote: "Mentorship is a debt you don't pay off, you pay it forward". We want to share some of the cool work we do and resources/tutorials, what it's like working as a data scientist in healthcare. This blog is a step towards that.
