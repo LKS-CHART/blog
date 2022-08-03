@@ -3,10 +3,12 @@ title: "POS...IT's conf() time 🥁"
 description: |
   Pause, it's time to write about RStudio conf(2022). [10 min read]
 author:
-  - name: Maitreyee Sidhaye 
-    url: {}
+  - name: Maitreyee Sidhaye
+    affiliation: DSAA, Unity Health Toronto
+    affiliation_url: https://chartdatascience.ca
   - name: Chloe Pou-Prom
-    url: {https://twitter.com/chloepouprom}
+    affiliation: DSAA, Unity Health Toronto
+    affiliation_url: https://chartdatascience.ca
 date: 2022-08-02
 output:
   distill::distill_article:
