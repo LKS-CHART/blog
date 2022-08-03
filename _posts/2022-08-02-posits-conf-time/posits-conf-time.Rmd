@@ -3,12 +3,14 @@ title: "POS...IT's conf() time"
 description: |
   Pause, it's time to write about RStudio conf(2022).
 author:
-  - name: Maitreyee Sidhaye & Chloe Pou-Prom
+  - name: Maitreyee Sidhaye 
     url: {}
+  - name: Chloe Pou-Prom
+    url: {https://twitter.com/chloepouprom}
 date: 2022-08-02
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
 categories:
   - post-miscellaneous
 draft: false
@@ -19,15 +21,21 @@ draft: false
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# 2 years before
+## 2 years before
 
-Picture this. It's January 2020, you're in Toronto, it's the middle of winter, you're just back from vacation... and you're suffering from FOMO^[fear of missing out] because your teammates are in sunny San Francisco collecting hex stickers, taking selfies with Hadley, and having the time of their lives at [rstudio::conf(2020)](https://www.rstudio.com/resources/rstudioconf-2020/).
+Picture this. It's January 2020, you're in Toronto, it's the middle of winter, you're just back from vacation... and you're suffering from FOMO^[FOMO = fear of missing out] because your teammates are in sunny San Francisco collecting hex stickers, taking selfies with Hadley, and having the time of their lives at [rstudio::conf(2020)](https://www.rstudio.com/resources/rstudioconf-2020/).
 
 We were jealous.
 
-Fast-forward 2 years and WE are the ones living the dream!
+_Fast-forward_... and now WE are the ones living the dream! ✨
 
-# 2 weeks before
+```{r out.extra="class=external", fig.cap="Peep the cool background wall!"}
+knitr::include_graphics("rstudio_wall.jpg")
+```
+
+
+
+## 2 weeks before
 
 This was the first time for both of us and we wanted to be ready. Here's how you can do it too!
 
@@ -38,12 +46,11 @@ This was the first time for both of us and we wanted to be ready. Here's how you
 
 <input type="checkbox" unchecked>  **Make a list of places you want to visit.** We prepared our [sight-seeing and food map](). </input>
 
-<input type="checkbox" unchecked>  [ ] **Reach out to people who will be attending.** The motto for this year's conference was _"It’s always better when we’re together"_. Keeping that in mind, we reached out to our awesome RStudio customer success rep and to our friends that work in healthcare that we met through the Rstudio Community Meetup. It was great to see them in-person!</input>
+<input type="checkbox" unchecked>  **Reach out to people who will be attending.** The motto for this year's conference was _"It’s always better when we’re together"_. Keeping that in mind, we reached out to our awesome RStudio customer success rep and to our friends that work in healthcare that we met through the Rstudio Community Meetup. It was great to see them in-person!</input>
 
-# During
+## During
 
-
-## Do not skip the keynotes!
+### Do not skip the keynotes!
 
 We got to experience our very own Oprah moment during the first keynote when the [Posit announcement was made](). Below is a sensationalized retelling of what happened during the very first talk.
 
@@ -55,13 +62,13 @@ We got to experience our very own Oprah moment during the first keynote when the
 
 Intense shuffling sounds can be heard as **THE AUDIENCE** begins to search under their seat. People gasp and laugh as they pull envelopes from under their seat. **MAITREYEE** and **CHLOE** take their envelopes and find two stickers!
 
-[INSERT PHOTO OF STICKER]
+[TODO: INSERT PHOTO OF STICKERS]
 
 [LATER IN THE EVENING...]
 
-[INSERT HADLEY TWEET]</blockquote></div>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">In the interest of avoiding widespread panic we’re not moving away from hexagons for package stickers. posit isn’t a package so it gets a different shape <a href="https://twitter.com/hashtag/rstudioconf?src=hash&amp;ref_src=twsrc%5Etfw">#rstudioconf</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/1552290395454951424?ref_src=twsrc%5Etfw">July 27, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></blockquote></div>
 
-## Focus on the content of the talk
+### Focus on the content of the talk
 
 All material will be available online.
 
@@ -70,12 +77,14 @@ All material will be available online.
 
 
 
-## Get social! 
+### Get social! 
 
 There are plenty of opportunities: the night social events + special groups
 Groups of interest:
 - r-ladies 
-[INSERT PICTURE]
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hello from <a href="https://twitter.com/hashtag/RLadies?src=hash&amp;ref_src=twsrc%5Etfw">#RLadies</a> at <a href="https://twitter.com/hashtag/RStudioConf?src=hash&amp;ref_src=twsrc%5Etfw">#RStudioConf</a>!! 👋<a href="https://twitter.com/hashtag/RStudioConf2022?src=hash&amp;ref_src=twsrc%5Etfw">#RStudioConf2022</a> <a href="https://t.co/G9gqxpdnw7">pic.twitter.com/G9gqxpdnw7</a></p>&mdash; R-Ladies Global (@RLadiesGlobal) <a href="https://twitter.com/RLadiesGlobal/status/1553030919828766728?ref_src=twsrc%5Etfw">July 29, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 - LATAM speakers
 - birds of a feather groups! healthcare!!
 Attend events!
@@ -93,13 +102,13 @@ Take down key points, but you don't need to write down everything. Materials are
 
 GRAB DESSERT BEFORE LUNCH!!! The dessert table is the first to run out.
 
-## Hex stickers!
+### Hex stickers!
 
 Grab t-shirts and hex stickers for your teammates.
 
 Drop by the rLadies event and grab more hex stickers and a COOL CARD DECK
 
-# 2 days after
+## 2 days after
 
 The three post-conference Rs: 
 Reflect think react
@@ -137,7 +146,7 @@ sharing the extra Shirts and stickers!
 How can we take our findings and apply them...
 
 
-# 2 months after...?
+## 2 months after...?
 
 We want to leverage Quarto. We hope to move this blog to Quarto.
 
