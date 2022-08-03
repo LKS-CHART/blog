@@ -39,7 +39,7 @@ This was the first time for both of us and we wanted to be ready. Here's how you
 
 <input type="checkbox" unchecked>  **Download the RStudio conf app and bookmark all the talks that interest you**. We asked our teammates which topics would be most relevant for the team. We ended up with the following: data science for healthcare, working with Quarto, working with Python, putting things in deployment/production, enhancements to tidymodels, best practices, MLOps/DevOps, training/teaching.</input>
 
-<input type="checkbox" unchecked> **Watch old talks**. These can all be found [here](https://www.rstudio.com/resources/rstudioconf-2020/). We recommend: [debugging](), [RStudio announcing they are PBC](https://www.rstudio.com/resources/rstudioconf-2020/open-source-software-for-data-science/), and [end-to-end data science](https://www.rstudio.com/resources/rstudioconf-2020/deploying-end-to-end-data-science-with-shiny-plumber-and-pins/).</input>
+<input type="checkbox" unchecked> **Watch old talks**. These can all be found [here](https://www.rstudio.com/resources/rstudioconf-2020/). We recommend: [debugging](https://www.rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable/), [RStudio announcing they are PBC](https://www.rstudio.com/resources/rstudioconf-2020/open-source-software-for-data-science/), and [end-to-end data science](https://www.rstudio.com/resources/rstudioconf-2020/deploying-end-to-end-data-science-with-shiny-plumber-and-pins/).</input>
 
 <input type="checkbox" unchecked>  **Make a list of places you want to visit.** We prepared our [sight-seeing and food map](https://goo.gl/maps/pfWeRWhJoPyZFg779). </input>
 
