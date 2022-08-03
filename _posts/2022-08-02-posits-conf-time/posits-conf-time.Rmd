@@ -160,3 +160,5 @@ Onboarding - give agency to newcomers. This came up during a few talks. Let the 
 Share learning materials. From Jeff Leek's closing keynote: "Mentorship is a debt you don't pay off, you pay it forward". We want to share some of the cool work we do and resources/tutorials, what it's like working as a data scientist in healthcare. This blog is a step towards that.
 
 Create our own hex sticker!
+
+Continue attending workshops, eg Quarto coming up!
