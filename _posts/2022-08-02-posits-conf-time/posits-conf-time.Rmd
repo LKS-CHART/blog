@@ -59,7 +59,9 @@ We got to experience our very own Oprah moment during the first keynote when the
 
 Intense shuffling sounds can be heard as **THE AUDIENCE** begins to search under their seat. People gasp and laugh as they pull envelopes from under their seat. **MAITREYEE** and **CHLOE** take their envelopes and find two stickers!
 
-[TODO: INSERT PHOTO OF STICKERS]
+```{r out.extra="class=external", fig.cap="Sticker reveal!"}
+knitr::include_graphics("r_posit_stickers.jpg")
+```
 
 [LATER IN THE EVENING...]
 
