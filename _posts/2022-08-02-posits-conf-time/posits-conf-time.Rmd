@@ -47,6 +47,7 @@ This was the first time for both of us and we wanted to be ready. Here's how you
 
 
 
+
 ## During
 
 ### Do not skip the keynotes!
@@ -61,13 +62,17 @@ We got to experience our very own Oprah moment during the first keynote when the
 
 Intense shuffling sounds can be heard as **THE AUDIENCE** begins to search under their seat. People gasp and laugh as they pull envelopes from under their seat. **MAITREYEE** and **CHLOE** take their envelopes and find two stickers!
 
-[TODO: INSERT PHOTO OF STICKERS]
+```{r out.extra="class=external", fig.cap="Sticker reveal!"}
+knitr::include_graphics("r_posit_stickers.jpg")
+```
 
 [LATER IN THE EVENING...]
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">In the interest of avoiding widespread panic we’re not moving away from hexagons for package stickers. posit isn’t a package so it gets a different shape <a href="https://twitter.com/hashtag/rstudioconf?src=hash&amp;ref_src=twsrc%5Etfw">#rstudioconf</a></p>&mdash; Hadley Wickham (@hadleywickham) <a href="https://twitter.com/hadleywickham/status/1552290395454951424?ref_src=twsrc%5Etfw">July 27, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></blockquote></div>
 
 ### Focus on the content of the talk
+
+Take down key points, but you don't need to write down everything. Materials are available online. If not, most speakers are on Twitter and are happy to answer.
 
 **All** the talks were excellent. The conference put in support for speech coaching and it paid off. All the talks were engaging. The talks were framed as stories. The material was easy-to-digest. 
 
@@ -79,7 +84,8 @@ All material will be available online.
 There are plenty of opportunities for socializing and networking. 
 
 Groups of interest:
-- r-ladies 
+
+- R-ladies 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hello from <a href="https://twitter.com/hashtag/RLadies?src=hash&amp;ref_src=twsrc%5Etfw">#RLadies</a> at <a href="https://twitter.com/hashtag/RStudioConf?src=hash&amp;ref_src=twsrc%5Etfw">#RStudioConf</a>!! 👋<a href="https://twitter.com/hashtag/RStudioConf2022?src=hash&amp;ref_src=twsrc%5Etfw">#RStudioConf2022</a> <a href="https://t.co/G9gqxpdnw7">pic.twitter.com/G9gqxpdnw7</a></p>&mdash; R-Ladies Global (@RLadiesGlobal) <a href="https://twitter.com/RLadiesGlobal/status/1553030919828766728?ref_src=twsrc%5Etfw">July 29, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -87,7 +93,7 @@ Groups of interest:
 - birds of a feather groups! healthcare!!
 
 
-RStudio is committed to keeping their events inclusive and welcoming, which is highlighted by the Pac-man concept. Throughout the conference, we felt that.
+RStudio is committed to keeping their events inclusive and welcoming, which is highlighted by the [Pac-man concept](https://ericholscher.com/blog/2017/aug/2/pacman-rule-conferences/). Throughout the conference, we felt that.
 - pronoun pins
 
 - masks mandatory
@@ -96,7 +102,7 @@ RStudio is committed to keeping their events inclusive and welcoming, which is h
 
 - diversity scholarship
 
-Take down key points, but you don't need to write down everything. Materials are available. If not, most speakers are on Twitter and are happy to answer.
+
 
 GRAB DESSERT BEFORE LUNCH!!! The dessert table is the first to run out.
 
@@ -104,7 +110,7 @@ GRAB DESSERT BEFORE LUNCH!!! The dessert table is the first to run out.
 
 Grab t-shirts and hex stickers for your teammates.
 
-Drop by the rLadies event and grab more hex stickers and a COOL CARD DECK
+Drop by the rLadies event and grab more hex stickers and a [COOL CARD DECK]().
 
 ## 2 days after
 
@@ -115,7 +121,7 @@ share Release
 
 **Reflect**: Think about talks that stood out to you.
 
-We both liked: Quarto!! [link to material] And it seems like the community is keen too, because there is already an [Awesome List]() for Quarto!
+We both liked: Quarto!! [link to material] And it seems like the community is keen too, because there is already an [Awesome List](https://github.com/mcanouil/awesome-quarto) for Quarto!
 
 Maitreyee's favorite talks:
 
@@ -160,3 +166,5 @@ Onboarding - give agency to newcomers. This came up during a few talks. Let the 
 Share learning materials. From Jeff Leek's closing keynote: "Mentorship is a debt you don't pay off, you pay it forward". We want to share some of the cool work we do and resources/tutorials, what it's like working as a data scientist in healthcare. This blog is a step towards that.
 
 Create our own hex sticker!
+
+Continue attending workshops, eg Quarto coming up!
