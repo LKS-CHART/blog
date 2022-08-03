@@ -51,7 +51,7 @@ This was the first time for both of us and we wanted to be ready. Here's how you
 
 ### Do not skip the keynotes!
 
-We got to experience our very own Oprah moment during the first keynote when the [Posit announcement was made](). Below is a sensationalized retelling of what happened during the very first talk.
+We got to experience our very own Oprah moment during the first keynote when the [Posit announcement was made](https://www.rstudio.com/blog/rstudio-is-becoming-posit/). Below is a sensationalized retelling of what happened during the very first talk.
 
 <div style="font-family: 'Courier New';"><blockquote>**HADLEY**, shortly after making the Posit rebranding announcement: "Now some of you may be wondering... where are our new stickers?"
 
@@ -69,16 +69,15 @@ Intense shuffling sounds can be heard as **THE AUDIENCE** begins to search under
 
 ### Focus on the content of the talk
 
-All material will be available online.
-
 **All** the talks were excellent. The conference put in support for speech coaching and it paid off. All the talks were engaging. The talks were framed as stories. The material was easy-to-digest. 
 
-
+All material will be available online.
 
 
 ### Get social! 
 
-There are plenty of opportunities: the night social events + special groups
+There are plenty of opportunities for socializing and networking. 
+
 Groups of interest:
 - r-ladies 
 
@@ -86,7 +85,7 @@ Groups of interest:
 
 - LATAM speakers
 - birds of a feather groups! healthcare!!
-Attend events!
+
 
 RStudio is committed to keeping their events inclusive and welcoming, which is highlighted by the Pac-man concept. Throughout the conference, we felt that.
 - pronoun pins
@@ -147,9 +146,12 @@ How can we take our findings and apply them...
 
 ## 2 months after...?
 
-We want to leverage Quarto. We hope to move this blog to Quarto.
+We hope to achieve the following:
 
-Try Python for Shiny. Our team has a mix of R and Python developers, some who have used Shiny and some who have not.
+
+- **Integrate Quarto into our workflows**. We hope to move this blog to Quarto. [This tutorial](https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/) will be a great starting point.
+
+- **Try Python for Shiny. Our team has a mix of R and Python developers, some who have used Shiny and some who have not.
 
 Create consistent templates and color schemes for organization. Branding is important!
 
