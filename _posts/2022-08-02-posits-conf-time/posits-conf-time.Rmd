@@ -39,11 +39,11 @@ This was the first time for both of us and we wanted to be ready. Here's how you
 
 <input type="checkbox" unchecked>  **Download the RStudio conf app and bookmark all the talks that interest you**. We asked our teammates which topics would be most relevant for the team. We ended up with the following: data science for healthcare, working with Quarto, working with Python, putting things in deployment/production, enhancements to tidymodels, best practices, MLOps/DevOps, training/teaching.</input>
 
-<input type="checkbox" unchecked> **Watch old talks**. These can all be found [here](). We recommend: [debugging](), [RStudio announcing they are PBC](), and [end-to-end data science](https://www.rstudio.com/resources/rstudioconf-2020/deploying-end-to-end-data-science-with-shiny-plumber-and-pins/).</input>
+<input type="checkbox" unchecked> **Watch old talks**. These can all be found [here](https://www.rstudio.com/resources/rstudioconf-2020/). We recommend: [debugging](), [RStudio announcing they are PBC](https://www.rstudio.com/resources/rstudioconf-2020/open-source-software-for-data-science/), and [end-to-end data science](https://www.rstudio.com/resources/rstudioconf-2020/deploying-end-to-end-data-science-with-shiny-plumber-and-pins/).</input>
 
-<input type="checkbox" unchecked>  **Make a list of places you want to visit.** We prepared our [sight-seeing and food map](). </input>
+<input type="checkbox" unchecked>  **Make a list of places you want to visit.** We prepared our [sight-seeing and food map](https://goo.gl/maps/pfWeRWhJoPyZFg779). </input>
 
-<input type="checkbox" unchecked>  **Reach out to people who will be attending.** The motto for this year's conference was _"It’s always better when we’re together"_. Keeping that in mind, we reached out to our awesome RStudio customer success rep and to our friends that work in healthcare that we met through the Rstudio Community Meetup. It was great to see them in-person!</input>
+<input type="checkbox" unchecked>  **Reach out to people who will be attending.** The motto for this year's conference was _"We're always better when we’re together"_. Keeping that in mind, we reached out to our awesome RStudio customer success rep and to our friends that work in healthcare that we met through the Rstudio Community Meetup. It was great to see them in-person!</input>
 
 ## During
 
@@ -76,9 +76,11 @@ All material will be available online.
 
 ### Get social! 
 
-There are plenty of opportunities: the night social events + special groups
+There are plenty of opportunities: the night social events + special groups  
+
 Groups of interest:
-- r-ladies 
+
+- R-ladies 
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Hello from <a href="https://twitter.com/hashtag/RLadies?src=hash&amp;ref_src=twsrc%5Etfw">#RLadies</a> at <a href="https://twitter.com/hashtag/RStudioConf?src=hash&amp;ref_src=twsrc%5Etfw">#RStudioConf</a>!! 👋<a href="https://twitter.com/hashtag/RStudioConf2022?src=hash&amp;ref_src=twsrc%5Etfw">#RStudioConf2022</a> <a href="https://t.co/G9gqxpdnw7">pic.twitter.com/G9gqxpdnw7</a></p>&mdash; R-Ladies Global (@RLadiesGlobal) <a href="https://twitter.com/RLadiesGlobal/status/1553030919828766728?ref_src=twsrc%5Etfw">July 29, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
