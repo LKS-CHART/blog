@@ -1,5 +1,5 @@
 ---
-title: "POS...IT's conf() time"
+title: "POS...IT's conf() time 🥁"
 description: |
   Pause, it's time to write about RStudio conf(2022).
 author:
@@ -33,8 +33,6 @@ _Fast-forward_... and now WE are the ones living the dream! ✨
 knitr::include_graphics("rstudio_wall.jpg")
 ```
 
-
-
 ## 2 weeks before
 
 This was the first time for both of us and we wanted to be ready. Here's how you can do it too!
@@ -42,7 +40,6 @@ This was the first time for both of us and we wanted to be ready. Here's how you
 <input type="checkbox" unchecked>  **Download the RStudio conf app and bookmark all the talks that interest you**. We asked our teammates which topics would be most relevant for the team. We ended up with the following: data science for healthcare, working with Quarto, working with Python, putting things in deployment/production, enhancements to tidymodels, best practices, MLOps/DevOps, training/teaching.</input>
 
 <input type="checkbox" unchecked> **Watch old talks**. These can all be found [here](). We recommend: [debugging](), [RStudio announcing they are PBC](), and [end-to-end data science](https://www.rstudio.com/resources/rstudioconf-2020/deploying-end-to-end-data-science-with-shiny-plumber-and-pins/).</input>
-
 
 <input type="checkbox" unchecked>  **Make a list of places you want to visit.** We prepared our [sight-seeing and food map](). </input>
 
@@ -131,13 +128,13 @@ Maitreyee's favorite talks:
 
 Chloe's favorite talks:
 
+- [Designing a Socially Critical Data Science Course](https://rstudioconf2022.sched.com/event/11iYY/designing-a-socially-critical-data-science-course) by Brian Danielak
+
 - [How Anchorage Built Alaska's Vaccine Finder with R](https://rstudioconf2022.sched.com/event/11iYq/how-anchorage-built-alaskas-vaccine-finder-with-r) by Ben Matheson detailed the amazing work that the Anchorage Innovation Team did to develop and deploy a [mobile vaccine finder](https://anchoragecovidtest.org/). During the talk, Ben highlighted the importance of building and rolling out a MVP (minimum viable product).
 
 - [What they forgot to teach you about industry transitions from academia (WTF AITA)](https://rstudioconf2022.sched.com/event/11iZQ/what-they-forgot-to-teach-you-about-industry-transitions-from-academia-wtf-aita) by Travis Gerke offered some great advice on poeple searching for jobs. While this talk focused on those transitioning from academia to industry, the materials presented will be useful to many! Check out [the cool website](https://wtf-aita.com/)! 
 
-- [Designing a Socially Critical Dta Science Course](https://rstudioconf2022.sched.com/event/11iYY/designing-a-socially-critical-data-science-course) by Brian Danielak
-
-- quilt
+- [A Journey to Data Science: Tools for Equity and Diversity in STEM](https://rstudioconf2022.sched.com/event/11ib8/a-journey-to-data-science-tools-for-equity-and-diversity-in-stem) by Ileana Fenwick
 
 w(R)ite: write a blog post! (this!!)
 
