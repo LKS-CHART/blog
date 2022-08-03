@@ -13,7 +13,8 @@ output:
     toc: true
 categories:
   - post-miscellaneous
-draft: false
+preview: rstudio_wall.jpg
+draft: true
 ---
 
 
@@ -29,8 +30,8 @@ We were jealous.
 
 _Fast-forward_... and now WE are the ones living the dream! ✨
 
-```{r out.extra="class=external", fig.cap="Peep the cool background wall!"}
-knitr::include_graphics("rstudio_wall.jpg")
+```{r out.extra="class=external", fig.cap="Check out the view! Now we are the ones creating FOMO 😎"}
+knitr::include_graphics("display_pic.jpg")
 ```
 
 ## 2 weeks before
@@ -100,60 +101,41 @@ RStudio is committed to keeping their events inclusive and welcoming, which is h
 
 Speaking of stickers... make sure to **grab hex stickers for your teammates**.
 
+```{r out.extra="class=external", fig.cap="Sharing the swag!"}
+knitr::include_graphics("hex_for_team.jpg")
+```
 
-## 2 days after
+## 2 business days later
 
-The three post-conference Rs: 
-Reflect think react
-(w)Rite talk present 
-share Release
+These were our favorite talks:
 
-**Reflect**: Think about talks that stood out to you.
-
-We both liked: Quarto!! [link to material] And it seems like the community is keen too, because there is already an [Awesome List](https://github.com/mcanouil/awesome-quarto) for Quarto!
-
-Maitreyee's favorite talks:
-
-- highlights of the knitr package
-
-- 3D
-
-- shiny without a server
-
-- tidyclust 
-
-Chloe's favorite talks:
-
-- [Designing a Socially Critical Data Science Course](https://rstudioconf2022.sched.com/event/11iYY/designing-a-socially-critical-data-science-course) by Brian Danielak
+- [Hello Quarto: Share • Collaborate • Teach • Reimagine](mine.quarto.pub/hello-quarto) by Mine Cetinkaya-Rundel & Julia Stewart Lowndes gave us a glimpse of all the awesome things we could do with Quarto. We were super excited after watching this. And it seems like the community is keen too, because there is already an [Awesome List](https://github.com/mcanouil/awesome-quarto) for Quarto!
 
 - [How Anchorage Built Alaska's Vaccine Finder with R](https://rstudioconf2022.sched.com/event/11iYq/how-anchorage-built-alaskas-vaccine-finder-with-r) by Ben Matheson detailed the amazing work that the Anchorage Innovation Team did to develop and deploy a [mobile vaccine finder](https://anchoragecovidtest.org/). During the talk, Ben highlighted the importance of building and rolling out a MVP (minimum viable product).
 
+- [Introducing workboots: Generate prediction intervals from tidymodel workflows](https://sched.co/11iZW) by Mark Rieke introduced us to an R package for generating bootstrap prediction intervals within a tidymodel workflow. For a field like healthcare where uncertainty is relevant, this will be useful for us to incorporate in our projects, most of which are built with the tidymodels workflow.
+
 - [What they forgot to teach you about industry transitions from academia (WTF AITA)](https://rstudioconf2022.sched.com/event/11iZQ/what-they-forgot-to-teach-you-about-industry-transitions-from-academia-wtf-aita) by Travis Gerke offered some great advice on poeple searching for jobs. While this talk focused on those transitioning from academia to industry, the materials presented will be useful to many! Check out [the cool website](https://wtf-aita.com/)! 
 
-- [A Journey to Data Science: Tools for Equity and Diversity in STEM](https://rstudioconf2022.sched.com/event/11ib8/a-journey-to-data-science-tools-for-equity-and-diversity-in-stem) by Ileana Fenwick
+- [A Journey to Data Science: Tools for Equity and Diversity in STEM](https://rstudioconf2022.sched.com/event/11ib8/a-journey-to-data-science-tools-for-equity-and-diversity-in-stem) by Ileana Fenwick highlighted open science tools and communities to further equity and diversity in STEM. 
 
-w(R)ite: write a blog post! (this!!)
-
-Release:
-sharing the extra Shirts and stickers!
-How can we take our findings and apply them...
+- [Building a ggplot2 rollercoaster: Creating amazing 3D data visualizations in R](https://sched.co/11ibS) by Tyler Morgan-Wall showcased some cool things that can be done with `ggplot2`. [Check out this awesome video!!](https://www.tylermw.com/wp-content/uploads/2021/03/ggrollerwideprevnew4.mp4)
 
 
-## 2 months after...?
+
+## 2 months later...?
 
 We hope to achieve the following:
 
+- **Create our own hex sticker!** 
 
 - **Integrate Quarto into our workflows**. We hope to move this blog to Quarto. [This tutorial](https://blog.djnavarro.net/posts/2022-04-20_porting-to-quarto/) will be a great starting point.
 
-- **Try Python for Shiny. Our team has a mix of R and Python developers, some who have used Shiny and some who have not.
+- **Try Python for Shiny**. Our team has a mix of R and Python developers, some who have used Shiny and some who have not. 
 
-Create consistent templates and color schemes for organization. Branding is important!
+- **Create templates with consistent color schemes**. This came up during many of the Quarto-related talks. A quick and easy way to make reporting easier is to use consistent branding.
 
-Onboarding - give agency to newcomers. This came up during a few talks. Let the newcomers make changes to your company guide (here at DSAA, we have the DSAA handbook that is used for onboarding purposes). 
+- **Give agency to newcomers during onboarding**. This came up during many talks. The idea is to let newcomers contribute to the code on Day 1.
 
-Share learning materials. From Jeff Leek's closing keynote: "Mentorship is a debt you don't pay off, you pay it forward". We want to share some of the cool work we do and resources/tutorials, what it's like working as a data scientist in healthcare. This blog is a step towards that.
+- **Share learning materials**. From Jeff Leek's closing keynote: _"Mentorship is a debt you don't pay off, you pay it forward"_. We want to share some of the cool work we do and resources/tutorials, what it's like working as a data scientist in healthcare. This blog is a step towards that.
 
-Create our own hex sticker!
-
-Continue attending workshops, eg Quarto coming up!
