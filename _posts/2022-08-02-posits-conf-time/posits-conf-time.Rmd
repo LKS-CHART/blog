@@ -1,7 +1,7 @@
 ---
 title: "POS...IT's conf() time 🥁"
 description: |
-  Pause, it's time to write about RStudio conf(2022).
+  Pause, it's time to write about RStudio conf(2022). [10 min read]
 author:
   - name: Maitreyee Sidhaye 
     url: {}
