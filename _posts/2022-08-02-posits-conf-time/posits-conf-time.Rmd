@@ -119,7 +119,7 @@ share Release
 
 We both liked: Quarto!! [link to material] And it seems like the community is keen too, because there is already an [Awesome List]() for Quarto!
 
-Maitreyee:
+Maitreyee's favorite talks:
 
 - highlights of the knitr package
 
@@ -129,13 +129,13 @@ Maitreyee:
 
 - tidyclust 
 
-Chloe:
+Chloe's favorite talks:
 
-- COVID Alaska
+- [How Anchorage Built Alaska's Vaccine Finder with R](https://rstudioconf2022.sched.com/event/11iYq/how-anchorage-built-alaskas-vaccine-finder-with-r) by Ben Matheson detailed the amazing work that the Anchorage Innovation Team did to develop and deploy a [mobile vaccine finder](https://anchoragecovidtest.org/). During the talk, Ben highlighted the importance of building and rolling out a MVP (minimum viable product).
 
-- WTF AITA https://wtf-aita.com/
+- [What they forgot to teach you about industry transitions from academia (WTF AITA)](https://rstudioconf2022.sched.com/event/11iZQ/what-they-forgot-to-teach-you-about-industry-transitions-from-academia-wtf-aita) by Travis Gerke offered some great advice on poeple searching for jobs. While this talk focused on those transitioning from academia to industry, the materials presented will be useful to many! Check out [the cool website](https://wtf-aita.com/)! 
 
-- data science education w Flint water dataset
+- [Designing a Socially Critical Dta Science Course](https://rstudioconf2022.sched.com/event/11iYY/designing-a-socially-critical-data-science-course) by Brian Danielak
 
 - quilt
 
