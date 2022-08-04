@@ -6,14 +6,14 @@
       "description": "This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto",
       "author": [],
       "contents": "\nWe are the Advanced Analytics (AA) team within the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto. Our team is based at St. Michael’s Hospital.\nWe work on healthcare projects that aim to improve patient outcomes and hospital efficiency.\nHere, you will find blog posts written by various members of the AA team. Blogs will be released on a monthly basis and will cover a wide variety of topics:\nDeploying machine learning algorithms in the hospital\nInsights into what it’s like working in a data science team within the healthcare setting\nSummaries of our journal club discussions\nCool/interesting/fun data science things we run into in our day-to-day work\n… and more!\nHappy reading!\n\n\n\n",
-      "last_modified": "2022-08-04T09:16:23-04:00"
+      "last_modified": "2022-08-04T09:19:03-04:00"
     },
     {
       "path": "index.html",
       "title": "DSAA Blog",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2022-08-04T09:16:24-04:00"
+      "last_modified": "2022-08-04T09:19:04-04:00"
     }
   ],
   "collections": ["posts/posts.json"]
