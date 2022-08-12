@@ -1538,8 +1538,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1 id="my-lazy-journey-to-discovery">My lazy journey to discovery</h1>
 <p>A while back, I was helping<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> out on one of our new projects: an expansion of CHARTWatch to new units. To learn a bit more about CHARTWatch you should read <span class="citation" data-cites="verma_implementing_2021">(<a href="#ref-verma_implementing_2021" role="doc-biblioref">Verma et al. 2021</a>)</span> that explains how to get models in the clinical environment and <span class="citation" data-cites="pou-prom_compute_nodate">(<a href="#ref-pou-prom_compute_nodate" role="doc-biblioref">Pou-Prom et al., n.d.</a>)</span> on all the technical parts required.</p>
 <p>We were doing some data exploration for the project and we had a fairly straight forward question to answer: What is the <em>first</em> event <em>after</em> a procedure for a patient?</p>
-<p>With that question, I dove into the data files we had started to get a feel for what to do<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I had a few files to work with, lots of timestamps all over the place, and knew I had some sort of <code>join</code> type problem. I tried—and failed with—many variations of joins (e.g., <code>fuzzyjoin</code>) and even trying to get what was needed in more manual<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ways. So at that point I thought “someone must have solved this problem.” So at that point I spent a few half days<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> searching. Many fruitless paths later and on the verge of the more manual<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> approaches I finally found what I was looking for: <a href="https://github.com/robinsones/funneljoin"><code>funneljoin</code></a>.</p>
-<p>I had found what I was looking for and started to use <code>funneljoin</code>. But that, too, was a journey through multiple mistakes and misunderstandings all of which are my own<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. But I eventually got <em>exactly what I wanted</em>: a straightforward way to join some data and find very specific events that occur <em>after</em> other events.</p>
+<p>With that question, I dove into the data files we had started to get a feel for what to do<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I had a few files to work with, lots of timestamps all over the place, and knew I had some sort of <code>join</code> type problem. I tried—and failed with—many variations of joins (e.g., <code>fuzzyjoin</code>) and even trying to get what was needed in more manual<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ways. One thought kept ringing in my head: “someone must have solved this problem.” So at that point I spent a few half days<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> searching. Many fruitless paths later and on the verge of the more manual<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> approaches I finally found what I was looking for: <a href="https://github.com/robinsones/funneljoin"><code>funneljoin</code></a>.</p>
+<p>Though <code>funneljoin</code> was what I was looking for, my use of it was also a journey through multiple mistakes and misunderstandings all of which are my own<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. But I eventually got <em>exactly what I wanted</em>: a straightforward way to join some data and find very specific events that occur <em>after</em> other events.</p>
 <h1 id="a-quick-view-of-the-data">A quick view of the data</h1>
 <p>Let’s start out by taking a look at the data. That’ll give us a better sense of the problem and the behavior we’re expecting. We’re going to be working with a <em>tiny</em> example of what the real data could look like. These fake data have been created from real data and then we used <code>uuid</code>, <code>dplyr::group_by</code>, <code>lubridate</code> and some good old fashioned randomization to make it fake.</p>
 <p>We have two data files which look a lot like our real data:</p>
@@ -1976,7 +1976,7 @@ TRAUMA
 </tbody>
 </table>
 </div>
-<p>The first row is the <em>procedure</em> and the second row is <em>the event that happens after specific procedure</em>. At the end of what we do, we want all of those <em>events after procedures</em> because we needed to understand more about patient movements after procedures for some of our modelling.</p>
+<p>The first row is the <em>procedure</em> and the second row is <em>the event that happens after a specific procedure</em>. At the end of what we do, we want all of those <em>events after procedures</em> because we needed to understand more about patient movements after procedures for some of our modelling.</p>
 <h1 id="a-journey-to-find-and-a-journey-through-funneljoin">A journey to find and a journey through <code>funneljoin</code></h1>
 <p>Given that we have two data sets and we know that we want to match on certain things (<code>ENCOUNTER_NUM_ANONYMIZED</code>) but conditional on subsequent time stamps (<code>EVENT_TS_FUZZED</code>), we probably have some sort of <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html"><code>join</code> problem</a>.</p>
 <p>I spent a lot of time trying out a lot of the standard <code>join</code> and <code>merge</code> options we find in <code>R</code>: <code>dplyr</code>, <code>base::merge</code>, and even ventured off into the land of <a href="https://cran.r-project.org/web/packages/fuzzyjoin/index.html"><code>fuzzyjoin</code></a>. I tried a lot of things and all of those things were wrong or overly complicated.</p>
@@ -1997,8 +1997,8 @@ TRAUMA
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>funneljoin</span><span class='op'>)</span>
 
 <span class='va'>join_attempt_one</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/funneljoin/man/after_join.html'>after_join</a></span><span class='op'>(</span>
-  <span class='va'>SPECIFIC_PROCEDURES</span>,
-  <span class='va'>ADT_EVENTS</span>,
+  x <span class='op'>=</span> <span class='va'>SPECIFIC_PROCEDURES</span>,
+  y <span class='op'>=</span> <span class='va'>ADT_EVENTS</span>,
   by_user <span class='op'>=</span> <span class='st'>"ENCOUNTER_NUM_ANONYMIZED"</span>,
   by_time <span class='op'>=</span> <span class='st'>"EVENT_TS_FUZZED"</span>,
   suffix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_PROCEDURES"</span>,<span class='st'>"_ADT"</span><span class='op'>)</span>
@@ -2014,13 +2014,6 @@ TRAUMA
 </div>
 </div>
 <p>Err… it sort of looks like nothing happens. Why is that? Well it’s because our resulting join is empty<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>join_attempt_one</span><span class='op'>)</span>
-</code></pre>
-</div>
-<pre><code>[1] 0 7</code></pre>
-</div>
 <h2 id="my-second-failure">My second failure</h2>
 <p>I clearly missed something<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. On a closer look at the parameters, it seemed like I needed a couple of more to make things work. So I brought them in and tried:</p>
 <ul>
@@ -2032,8 +2025,8 @@ TRAUMA
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>join_attempt_two</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/funneljoin/man/after_join.html'>after_join</a></span><span class='op'>(</span>
-  <span class='va'>SPECIFIC_PROCEDURES</span>,
-  <span class='va'>ADT_EVENTS</span>,
+  x <span class='op'>=</span> <span class='va'>SPECIFIC_PROCEDURES</span>,
+  y <span class='op'>=</span> <span class='va'>ADT_EVENTS</span>,
   by_user <span class='op'>=</span> <span class='st'>"ENCOUNTER_NUM_ANONYMIZED"</span>,
   by_time <span class='op'>=</span> <span class='st'>"EVENT_TS_FUZZED"</span>,
   suffix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_PROCEDURES"</span>,<span class='st'>"_ADT"</span><span class='op'>)</span>,
@@ -2112,8 +2105,8 @@ a4461971-22e1-46e1-8454-aa7fbce54205
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>join_attempt_three</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/funneljoin/man/after_join.html'>after_join</a></span><span class='op'>(</span>
-  <span class='va'>SPECIFIC_PROCEDURES</span>,
-  <span class='va'>ADT_EVENTS</span>,
+  x <span class='op'>=</span> <span class='va'>SPECIFIC_PROCEDURES</span>,
+  y <span class='op'>=</span> <span class='va'>ADT_EVENTS</span>,
   by_user <span class='op'>=</span> <span class='st'>"ENCOUNTER_NUM_ANONYMIZED"</span>,
   by_time <span class='op'>=</span> <span class='st'>"EVENT_TS_FUZZED"</span>,
   suffix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_PROCEDURES"</span>,<span class='st'>"_ADT"</span><span class='op'>)</span>,
@@ -2260,7 +2253,7 @@ TRAUMA
 <p>When we look back at these data and the problem, we probably could have solved this with some <code>dplyr::group_by</code> at the encounter (ID) level, do some checks on the timestamps, and some stuff like that. But we had these two data sets—each used separately for different reasons in the same project—so why not make this easy and intuitive? That’s the major advantage of <code>funneljoin</code> here.</p>
 <p>Maybe the way I solved this problem with <code>funneljoin</code> could have been better<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, but this was really useful for me. It was also a super useful exercise for us to find this package and start to understand it because we deal with <em>a lot of time stamps</em>. We often have frequent questions about order of events, or we have to pull multiple pieces of data together from a variety of source systems and ensure it’s all in the right order.</p>
 <p>And learning <code>funneljoin</code> was fun and you can tell because it’s literally in the name.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
 <div id="ref-pou-prom_compute_nodate" class="csl-entry" role="doc-biblioentry">
 Pou-Prom, Chloé, Joshua Murray, Sebnem Kuzulugil, Muhammad Mamdani, and Amol Verma. n.d. <span>“From <span>Compute</span> to <span>Care</span>: <span>Lessons</span> <span>Learned</span> from <span>Deploying</span> an <span>Early</span> <span>Warning</span> <span>System</span> into <span>Clinical</span> <span>Practice</span>.”</span> <em>Frontiers in Digital Health</em>, 174. <a href="https://www.frontiersin.org/articles/10.3389/fdgth.2022.932123/abstract">https://www.frontiersin.org/articles/10.3389/fdgth.2022.932123/abstract</a>.

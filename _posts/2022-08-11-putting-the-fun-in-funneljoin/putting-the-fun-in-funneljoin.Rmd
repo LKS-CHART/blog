@@ -35,9 +35,9 @@ A while back, I was helping^["helping" is generous: I mostly asked a million stu
 
 We were doing some data exploration for the project and we had a fairly straight forward question to answer: What is the *first* event *after* a procedure for a patient? 
 
-With that question, I dove into the data files we had started to get a feel for what to do^[again: not without asking a million stupid questions and getting back a million fantastic answers]. I had a few files to work with, lots of timestamps all over the place, and knew I had some sort of `join` type problem. I tried---and failed with---many variations of joins (e.g., `fuzzyjoin`) and even trying to get what was needed in more manual^[and very hacky] ways. So at that point I thought "someone must have solved this problem". So at that point I spent a few half days^[a 'few' is defined as a week and 'half day' is defined as 'definitely more than half a day'] searching. Many fruitless paths later and on the verge of the more manual^[and very hacky] approaches I finally found what I was looking for: [`funneljoin`](https://github.com/robinsones/funneljoin). 
+With that question, I dove into the data files we had started to get a feel for what to do^[again: not without asking a million stupid questions and getting back a million fantastic answers]. I had a few files to work with, lots of timestamps all over the place, and knew I had some sort of `join` type problem. I tried---and failed with---many variations of joins (e.g., `fuzzyjoin`) and even trying to get what was needed in more manual^[and very hacky] ways. One thought kept ringing in my head: "someone must have solved this problem". So at that point I spent a few half days^[a 'few' is defined as a week and 'half day' is defined as 'definitely more than half a day'] searching. Many fruitless paths later and on the verge of the more manual^[and very hacky] approaches I finally found what I was looking for: [`funneljoin`](https://github.com/robinsones/funneljoin). 
 
-I had found what I was looking for and started to use `funneljoin`. But that, too, was a journey through multiple mistakes and misunderstandings all of which are my own^[a million stupid questions followed by a million stupid mistakes]. But I eventually got *exactly what I wanted*: a straightforward way to join some data and find very specific events that occur *after* other events.
+Though `funneljoin` was what I was looking for, my use of it was also a journey through multiple mistakes and misunderstandings all of which are my own^[a million stupid questions followed by a million stupid mistakes]. But I eventually got *exactly what I wanted*: a straightforward way to join some data and find very specific events that occur *after* other events.
 
 
 
@@ -132,7 +132,7 @@ ADT_EVENTS %>%
 ```
 
 
-The first row is the *procedure* and the second row is *the event that happens after specific procedure*. At the end of what we do, we want all of those *events after procedures* because we needed to understand more about patient movements after procedures for some of our modelling. 
+The first row is the *procedure* and the second row is *the event that happens after a specific procedure*. At the end of what we do, we want all of those *events after procedures* because we needed to understand more about patient movements after procedures for some of our modelling. 
 
 
 # A journey to find and a journey through `funneljoin` 
@@ -165,8 +165,8 @@ Seems straight forward enough! Let's see what happens:
 library(funneljoin)
 
 join_attempt_one <- after_join(
-  SPECIFIC_PROCEDURES,
-  ADT_EVENTS,
+  x = SPECIFIC_PROCEDURES,
+  y = ADT_EVENTS,
   by_user = "ENCOUNTER_NUM_ANONYMIZED",
   by_time = "EVENT_TS_FUZZED",
   suffix = c("_PROCEDURES","_ADT")
@@ -179,14 +179,6 @@ rmarkdown::paged_table(join_attempt_one)
 
 
 Err... it sort of looks like nothing happens. Why is that? Well it's because our resulting join is empty^[again: I ain't so good at this]
-
-```{r empty_join, echo = TRUE}
-
-
-dim(join_attempt_one)
-
-
-```
 
 ## My second failure
 
@@ -202,8 +194,8 @@ Before we dive into the updated code let's pause for what `type` is and what `fi
 ```{r my_second_failure, echo = TRUE}
 
 join_attempt_two <- after_join(
-  SPECIFIC_PROCEDURES,
-  ADT_EVENTS,
+  x = SPECIFIC_PROCEDURES,
+  y = ADT_EVENTS,
   by_user = "ENCOUNTER_NUM_ANONYMIZED",
   by_time = "EVENT_TS_FUZZED",
   suffix = c("_PROCEDURES","_ADT"),
@@ -242,8 +234,8 @@ What we're missing is the *next* event. Right now, we're getting back the *same 
 ```{r my_first_success, echo = TRUE}
 
 join_attempt_three <- after_join(
-  SPECIFIC_PROCEDURES,
-  ADT_EVENTS,
+  x = SPECIFIC_PROCEDURES,
+  y = ADT_EVENTS,
   by_user = "ENCOUNTER_NUM_ANONYMIZED",
   by_time = "EVENT_TS_FUZZED",
   suffix = c("_PROCEDURES","_ADT"),
