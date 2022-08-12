@@ -1,7 +1,7 @@
 ---
 title: "Putting the fun in `funneljoin`"
 description: |
-  An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package
+  An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package [10 min read]
 author:
   - name: Derek Beaton
     affiliation: DSAA, Unity Health Toronto
@@ -293,5 +293,5 @@ When we look back at these data and the problem, we probably could have solved t
 
 Maybe the way I solved this problem with `funneljoin` could have been better^[almost certainly it could have been better], but this was really useful for me. It was also a super useful exercise for us to find this package and start to understand it because we deal with *a lot of time stamps*. We often have frequent questions about order of events, or we have to pull multiple pieces of data together from a variety of source systems and ensure it's all in the right order.
 
-And `funneljoin` is also fun and you can tell because it's literally in the name.
+And learning `funneljoin` was fun and you can tell because it's literally in the name.
 
