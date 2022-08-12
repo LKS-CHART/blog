@@ -64,7 +64,7 @@ Changes to the `main` branch will launch a new job and re-render the blog.
     
     - In the blog post Rmd file, set the date to the release date.
 
-    - Rename the blog post directory with the `distill::rename_post(post_dir = _posts/[OLD_DIRECTORY], date_prefix=[DATE_TO_BE_PUBLISHED])` where `DATE_TO_BE_PUBLISHED` is in the `"YYYY-MM-DD"` format. 
+    - Rename the blog post directory with the `distill::rename_post_dir(post_dir = "_posts/[OLD_DIRECTORY]", date_prefix="[DATE_TO_BE_PUBLISHED]")` where `DATE_TO_BE_PUBLISHED` is in the `"YYYY-MM-DD"` format. 
 
 - Re-knit the blog post and re-build the website.
 
