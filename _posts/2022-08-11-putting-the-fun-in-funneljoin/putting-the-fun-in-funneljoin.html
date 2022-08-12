@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+<style>
+  div.csl-bib-body { }
+  div.csl-entry {
+    clear: both;
+    }
+  .hanging div.csl-entry {
+    margin-left:2em;
+    text-indent:-2em;
+  }
+  div.csl-left-margin {
+    min-width:2em;
+    float:left;
+  }
+  div.csl-right-inline {
+    margin-left:2em;
+    padding-left:1em;
+  }
+  div.csl-indent {
+    margin-left: 2em;
+  }
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Putting the fun in `funneljoin`</title>
+
+  <meta property="description" itemprop="description" content="An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package"/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-08-11"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-08-11"/>
+  <meta name="article:author" content="Derek Beaton"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Putting the fun in `funneljoin`"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package"/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Putting the fun in `funneljoin`"/>
+  <meta property="twitter:description" content="An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package"/>
+
+  <!--/radix_placeholder_meta_tags-->
+  
+  <meta name="citation_reference" content="citation_title=From Compute to Care: Lessons Learned from Deploying an Early Warning System into Clinical Practice;citation_author=Chloé Pou-Prom;citation_author=Joshua Murray;citation_author=Sebnem Kuzulugil;citation_author=Muhammad Mamdani;citation_author=Amol Verma"/>
+  <meta name="citation_reference" content="citation_title=Implementing machine learning in medicine;citation_publication_date=2021;citation_volume=193;citation_doi=10.1503/cmaj.202434;citation_issn=0820-3946, 1488-2329;citation_author=Amol A. Verma;citation_author=Joshua Murray;citation_author=Russell Greiner;citation_author=Joseph Paul Cohen;citation_author=Kaveh G. Shojania;citation_author=Marzyeh Ghassemi;citation_author=Sharon E. Straus;citation_author=Chloe Pou-Prom;citation_author=Muhammad Mamdani"/>
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","bibliography"]}},"value":[{"type":"character","attributes":{},"value":["Putting the fun in `funneljoin`"]},{"type":"character","attributes":{},"value":["An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","affiliation","affiliation_url","url"]}},"value":[{"type":"character","attributes":{},"value":["Derek Beaton"]},{"type":"character","attributes":{},"value":["DSAA, Unity Health Toronto"]},{"type":"character","attributes":{},"value":["https://chartdatascience.ca"]},{"type":"character","attributes":{},"value":["https://twitter.com/derek__beaton"]}]}]},{"type":"character","attributes":{},"value":["2022-08-11"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]},{"type":"character","attributes":{},"value":["language-R","project-chartwatch","post-miscellaneous","funneljoin"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["references.bib"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["ALL_ADT_EVENTS.csv","putting-the-fun-in-funneljoin_files/anchor-4.2.2/anchor.min.js","putting-the-fun-in-funneljoin_files/bowser-1.9.3/bowser.min.js","putting-the-fun-in-funneljoin_files/crosstalk-1.2.0/css/crosstalk.min.css","putting-the-fun-in-funneljoin_files/crosstalk-1.2.0/js/crosstalk.js","putting-the-fun-in-funneljoin_files/crosstalk-1.2.0/js/crosstalk.js.map","putting-the-fun-in-funneljoin_files/crosstalk-1.2.0/js/crosstalk.min.js","putting-the-fun-in-funneljoin_files/crosstalk-1.2.0/js/crosstalk.min.js.map","putting-the-fun-in-funneljoin_files/crosstalk-1.2.0/scss/crosstalk.scss","putting-the-fun-in-funneljoin_files/datatables-binding-0.24/datatables.js","putting-the-fun-in-funneljoin_files/datatables-css-0.0.0/datatables-crosstalk.css","putting-the-fun-in-funneljoin_files/distill-2.2.21/template.v2.js","putting-the-fun-in-funneljoin_files/dt-core-1.11.3/css/jquery.dataTables.extra.css","putting-the-fun-in-funneljoin_files/dt-core-1.11.3/css/jquery.dataTables.min.css","putting-the-fun-in-funneljoin_files/dt-core-1.11.3/js/jquery.dataTables.min.js","putting-the-fun-in-funneljoin_files/header-attrs-2.14/header-attrs.js","putting-the-fun-in-funneljoin_files/htmlwidgets-1.5.4/htmlwidgets.js","putting-the-fun-in-funneljoin_files/jquery-3.6.0/jquery-3.6.0.js","putting-the-fun-in-funneljoin_files/jquery-3.6.0/jquery-3.6.0.min.js","putting-the-fun-in-funneljoin_files/jquery-3.6.0/jquery-3.6.0.min.map","putting-the-fun-in-funneljoin_files/kePrint-0.0.1/kePrint.js","putting-the-fun-in-funneljoin_files/lightable-0.0.1/lightable.css","putting-the-fun-in-funneljoin_files/pagedtable-1.1/css/pagedtable.css","putting-the-fun-in-funneljoin_files/pagedtable-1.1/js/pagedtable.js","putting-the-fun-in-funneljoin_files/popper-2.6.0/popper.min.js","putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy-bundle.umd.min.js","putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy-light-border.css","putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy.css","putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy.umd.min.js","putting-the-fun-in-funneljoin_files/webcomponents-2.0.0/webcomponents.js","references.bib","SPECIFIC_PROCEDURES.csv"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="putting-the-fun-in-funneljoin_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/kePrint-0.0.1/kePrint.js"></script>
+  <link href="putting-the-fun-in-funneljoin_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
+  <link href="putting-the-fun-in-funneljoin_files/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+  <script src="putting-the-fun-in-funneljoin_files/pagedtable-1.1/js/pagedtable.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/popper-2.6.0/popper.min.js"></script>
+  <link href="putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="putting-the-fun-in-funneljoin_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="putting-the-fun-in-funneljoin_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Putting the fun in `funneljoin`","description":"An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package","authors":[{"author":"Derek Beaton","authorURL":"https://twitter.com/derek__beaton","affiliation":"DSAA, Unity Health Toronto","affiliationURL":"https://chartdatascience.ca","orcidID":""}],"publishedDate":"2022-08-11T00:00:00.000-04:00","citationText":"Beaton, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Putting the fun in funneljoin</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">language-R</div>
+<div class="dt=tag">project-chartwatch</div>
+<div class="dt=tag">post-miscellaneous</div>
+<div class="dt=tag">funneljoin</div>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>An introduction to, an example of, and my (lazy) journey to discovering the <code>funneljoin</code> package</p></p>
+</div>
+
+<div class="d-byline">
+  Derek Beaton <a href="https://twitter.com/derek__beaton" class="uri">https://twitter.com/derek__beaton</a> (DSAA, Unity Health Toronto)<a href="https://chartdatascience.ca" class="uri">https://chartdatascience.ca</a>
+  
+<br/>2022-08-11
+</div>
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#my-lazy-journey-to-discovery">My lazy journey to discovery</a></li>
+<li><a href="#a-quick-view-of-the-data">A quick view of the data</a>
+<ul>
+<li><a href="#a-look-at-the-data">A look at the data</a></li>
+<li><a href="#what-we-want-and-the-behavior-wed-expect">What we want and the behavior we’d expect</a></li>
+</ul></li>
+<li><a href="#a-journey-to-find-and-a-journey-through-funneljoin">A journey to find and a journey through <code>funneljoin</code></a>
+<ul>
+<li><a href="#my-first-failure">My first failure</a></li>
+<li><a href="#my-second-failure">My second failure</a></li>
+<li><a href="#a-third-successful-attempt">A third successful attempt</a></li>
+</ul></li>
+<li><a href="#conclusions">Conclusions</a></li>
+</ul>
+</nav>
+</div>
+<h1 id="my-lazy-journey-to-discovery">My lazy journey to discovery</h1>
+<p>A while back, I was helping<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> out on one of our new projects: an expansion of CHARTWatch to new units. To learn a bit more about CHARTWatch you should read <span class="citation" data-cites="verma_implementing_2021">(<a href="#ref-verma_implementing_2021" role="doc-biblioref">Verma et al. 2021</a>)</span> that explains how to get models in the clinical environment and <span class="citation" data-cites="pou-prom_compute_nodate">(<a href="#ref-pou-prom_compute_nodate" role="doc-biblioref">Pou-Prom et al., n.d.</a>)</span> on all the technical parts required.</p>
+<p>We were doing some data exploration for the project and we had a fairly straight forward question to answer: What is the <em>first</em> event <em>after</em> a procedure for a patient?</p>
+<p>With that question, I dove into the data files we had started to get a feel for what to do<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I had a few files to work with, lots of timestamps all over the place, and knew I had some sort of <code>join</code> type problem. I tried—and failed with—many variations of joins (e.g., <code>fuzzyjoin</code>) and even trying to get what was needed in more manual<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> ways. So at that point I thought “someone must have solved this problem.” So at that point I spent a few half days<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> searching. Many fruitless paths later and on the verge of the more manual<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> approaches I finally found what I was looking for: <a href="https://github.com/robinsones/funneljoin"><code>funneljoin</code></a>.</p>
+<p>I had found what I was looking for and started to use <code>funneljoin</code>. But that, too, was a journey through multiple mistakes and misunderstandings all of which are my own<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. But I eventually got <em>exactly what I wanted</em>: a straightforward way to join some data and find very specific events that occur <em>after</em> other events.</p>
+<h1 id="a-quick-view-of-the-data">A quick view of the data</h1>
+<p>Let’s start out by taking a look at the data. That’ll give us a better sense of the problem and the behavior we’re expecting. We’re going to be working with a <em>tiny</em> example of what the real data could look like. These fake data have been created from real data and then we used <code>uuid</code>, <code>dplyr::group_by</code>, <code>lubridate</code> and some good old fashioned randomization to make it fake.</p>
+<p>We have two data files which look a lot like our real data:</p>
+<ul>
+<li><p>ALL_ADT_EVENTS.csv: A file that contains all the Admit-Discharge-Transfer (ADT) events for patients while they are in the hospital, and</p></li>
+<li><p>SPECIFIC_PROCEDURES.csv: which contains a very specific set of procedures while in the hospital.</p></li>
+</ul>
+<p>It’s very worth noting that all the events in <code>SPECIFIC_PROCEDURES</code> are in <code>ALL_ADT_EVENTS</code>. These are separate for a few reasons including (but certainly not limited to): it’s easier to work with when we want to know only about the procedures, and things like procedures can (and are) pulled from separate pipelines more specific than ADT pipelines.</p>
+<h2 id="a-look-at-the-data">A look at the data</h2>
+<p>Let’s start out by taking a look at some of the ADT file and a few (preselected) rows to highlight these data. And while we’re at it, we’ll see the code, too!</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://here.r-lib.org/'>here</a></span><span class='op'>)</span>       <span class='co'>## for here::here() and referencing files from this .RProj</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>      <span class='co'>## for some processing and those fancy pipes</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://haozhu233.github.io/kableExtra/'>kableExtra</a></span><span class='op'>)</span> <span class='co'>## for some extra fancy looking tables</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/rstudio/rmarkdown'>rmarkdown</a></span><span class='op'>)</span>  <span class='co'>## for some even more extra fancy tables</span>
+
+<span class='va'>ADT_EVENTS</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"_posts"</span>,<span class='st'>"2022-08-11-putting-the-fun-in-funneljoin"</span>, <span class='st'>"ALL_ADT_EVENTS.csv"</span><span class='op'>)</span> <span class='op'>)</span>
+
+<span class='va'>ADT_EVENTS</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>12</span>, <span class='fl'>13</span>, <span class='fl'>16</span>, <span class='fl'>20</span>, <span class='fl'>21</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED
+</th>
+<th style="text-align:left;">
+FROM_SERVICE
+</th>
+<th style="text-align:left;">
+TO_SERVICE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-05-10 06:08:10
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+ED TRIAGE
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-05-10 06:13:24
+</td>
+<td style="text-align:left;">
+ED TRIAGE
+</td>
+<td style="text-align:left;">
+ED TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-05-10 06:54:10
+</td>
+<td style="text-align:left;">
+ED TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-13 11:32:48
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-18 19:53:13
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-28 02:14:32
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-29 22:09:10
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In our table we see some (preselected) rows and all of our columns. We’re looking at just 1 patient (<code>ENCOUNTER_NUM_ANONYMIZED</code>) with a snapshot of some of their events (<code>EVENT_TS_FUZZED</code>), which service they were coming from (<code>FROM_SERVICE</code>) and which service they were going to (<code>TO_SERVICE</code>).</p>
+<p>Let’s now take a look at the <code>SPECIFIC_PROCEDURES</code> data</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>SPECIFIC_PROCEDURES</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span> <span class='fu'>here</span><span class='fu'>::</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"_posts"</span>,<span class='st'>"2022-08-11-putting-the-fun-in-funneljoin"</span>, <span class='st'>"SPECIFIC_PROCEDURES.csv"</span><span class='op'>)</span> <span class='op'>)</span>
+
+<span class='va'>SPECIFIC_PROCEDURES</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED
+</th>
+<th style="text-align:left;">
+FROM_SERVICE
+</th>
+<th style="text-align:left;">
+TO_SERVICE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 21:34:13
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7cc7972a-58a1-4c78-a0dc-83021c6dc0c6
+</td>
+<td style="text-align:left;">
+2083-06-02 10:46:45
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7cc7972a-58a1-4c78-a0dc-83021c6dc0c6
+</td>
+<td style="text-align:left;">
+2083-06-22 02:59:57
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87d439b0-4f26-4b73-8df3-bf5dbbf34ca7
+</td>
+<td style="text-align:left;">
+2090-09-05 15:01:52
+</td>
+<td style="text-align:left;">
+NEUROSURGERY
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE NEURO SURGERY
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We’re showing <em>all</em> of <code>SPECIFIC_PROCEDURES</code> because it’s much smaller. It has the same structure as the ADT file (and that’s because the procedures are a subset of all the ADT events). Now that we see the procedures we can also see that it’s an event in <code>ADT_EVENTS</code>. The first <code>SPECIFIC_PROCEDURE</code>:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>SPECIFIC_PROCEDURES</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED
+</th>
+<th style="text-align:left;">
+FROM_SERVICE
+</th>
+<th style="text-align:left;">
+TO_SERVICE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>and now the ADT events with the event before, the procedure event, and the event <em>after</em> (which is what we want to specifically identify; eventually that is).</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ADT_EVENTS</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>15</span>, <span class='fl'>16</span>, <span class='fl'>17</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED
+</th>
+<th style="text-align:left;">
+FROM_SERVICE
+</th>
+<th style="text-align:left;">
+TO_SERVICE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-18 20:02:58
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 19:54:10
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A fun note before we move on: When you look at these data you’ll see some <code>NA</code> in there. Those <code>NA</code> are <code>R</code>s <code>NA</code> which is effectively missing data. In this case <code>NA</code> is absolutely not NA which is sodium (sodium is not a service). You should really take a look at some of the <a href="https://lks-chart.github.io/blog/posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/">“fun”</a> with <code>NA</code> we’ve had.</p>
+<h2 id="what-we-want-and-the-behavior-wed-expect">What we want and the behavior we’d expect</h2>
+<p>Our task was to identify <em>the event that happens after specific procedures</em>. From the above, we can see an example of that:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ADT_EVENTS</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>16</span>, <span class='fl'>17</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED
+</th>
+<th style="text-align:left;">
+FROM_SERVICE
+</th>
+<th style="text-align:left;">
+TO_SERVICE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 19:54:10
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The first row is the <em>procedure</em> and the second row is <em>the event that happens after specific procedure</em>. At the end of what we do, we want all of those <em>events after procedures</em> because we needed to understand more about patient movements after procedures for some of our modelling.</p>
+<h1 id="a-journey-to-find-and-a-journey-through-funneljoin">A journey to find and a journey through <code>funneljoin</code></h1>
+<p>Given that we have two data sets and we know that we want to match on certain things (<code>ENCOUNTER_NUM_ANONYMIZED</code>) but conditional on subsequent time stamps (<code>EVENT_TS_FUZZED</code>), we probably have some sort of <a href="https://dplyr.tidyverse.org/reference/mutate-joins.html"><code>join</code> problem</a>.</p>
+<p>I spent a lot of time trying out a lot of the standard <code>join</code> and <code>merge</code> options we find in <code>R</code>: <code>dplyr</code>, <code>base::merge</code>, and even ventured off into the land of <a href="https://cran.r-project.org/web/packages/fuzzyjoin/index.html"><code>fuzzyjoin</code></a>. I tried a lot of things and all of those things were wrong or overly complicated.</p>
+<p>So instead of just writing some code to find the next line in the ADT events data after a matching line in the procedures data, I spent a few<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> half days<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> searching for a package that probably does the thing I’m looking for. It took me quite a while and a variety of search terms (e.g., “time series join,” “join events after,” “fuzzyjoin for time,” “why doesn’t this specific thing I want exist and why am I so bad at this?”) until I eventually found <a href="https://github.com/robinsones/funneljoin"><code>funneljoin</code></a><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>.</p>
+<p>The <code>funneljoin</code> package includes a lot of <code>join</code> options for time series data. In particular <code>after_join</code> is when we’re looking for events in one data set that occur <em>after</em> events in another data set. That was exactly what I was looking for. Though <code>after_join</code> was the key to solving my problems, I still had a few more problems<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a> but did eventually figure it all out and it was <em>magical</em>. Let’s walk through three examples with these data and <code>after_join</code> to show where I failed and where I eventually succeeded.</p>
+<h2 id="my-first-failure">My first failure</h2>
+<p>I dove into <code>after_join</code> with, basically, the default parameters. So let’s break this down:</p>
+<ul>
+<li><code>x</code> is our procedures data because that’s our reference point: we want ADT events <em>after</em> procedures</li>
+<li><code>y</code> is our ADT data to get those events after procedures</li>
+<li><code>by_user</code> is the column we use for identifiers (<code>ENCOUNTER_NUM_ANONYMIZED</code>); this is a very typical parameter to expect in <code>join</code> and <code>merge</code>, as we usually want to join data sets based on some identifier</li>
+<li><code>by_time</code> is the column we use to find the events (<code>EVENT_TS_FUZZED</code>); this is how <code>funneljoin</code> makes use of time series data</li>
+<li><code>suffix</code> appends labels to the newly created columns after the join, respectively for <code>x</code> then <code>y</code></li>
+</ul>
+<p>Seems straight forward enough! Let’s see what happens:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'>funneljoin</span><span class='op'>)</span>
+
+<span class='va'>join_attempt_one</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/funneljoin/man/after_join.html'>after_join</a></span><span class='op'>(</span>
+  <span class='va'>SPECIFIC_PROCEDURES</span>,
+  <span class='va'>ADT_EVENTS</span>,
+  by_user <span class='op'>=</span> <span class='st'>"ENCOUNTER_NUM_ANONYMIZED"</span>,
+  by_time <span class='op'>=</span> <span class='st'>"EVENT_TS_FUZZED"</span>,
+  suffix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_PROCEDURES"</span>,<span class='st'>"_ADT"</span><span class='op'>)</span>
+<span class='op'>)</span>
+
+<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='va'>join_attempt_one</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ENCOUNTER_NUM_ANONYMIZED"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EVENT_TS_FUZZED_PROCEDURES"],"name":[2],"type":["chr"],"align":["left"]},{"label":["FROM_SERVICE_PROCEDURES"],"name":[3],"type":["chr"],"align":["left"]},{"label":["TO_SERVICE_PROCEDURES"],"name":[4],"type":["chr"],"align":["left"]},{"label":["EVENT_TS_FUZZED_ADT"],"name":[5],"type":["chr"],"align":["left"]},{"label":["FROM_SERVICE_ADT"],"name":[6],"type":["chr"],"align":["left"]},{"label":["TO_SERVICE_ADT"],"name":[7],"type":["chr"],"align":["left"]}],"data":[],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>Err… it sort of looks like nothing happens. Why is that? Well it’s because our resulting join is empty<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/base/dim.html'>dim</a></span><span class='op'>(</span><span class='va'>join_attempt_one</span><span class='op'>)</span>
+</code></pre>
+</div>
+<pre><code>[1] 0 7</code></pre>
+</div>
+<h2 id="my-second-failure">My second failure</h2>
+<p>I clearly missed something<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. On a closer look at the parameters, it seemed like I needed a couple of more to make things work. So I brought them in and tried:</p>
+<ul>
+<li><code>mode</code> is <code>inner</code> which is a specific type of join which is basically <em>the intersection</em></li>
+<li><code>type</code> here is one of many options on how to think about the join and we set it to <code>first-firstafter</code></li>
+</ul>
+<p>Before we dive into the updated code let’s pause for what <code>type</code> is and what <code>first-firstafter</code> means. Heavily borrowing from the <code>funneljoin</code> site:</p>
+<p><em>first-firstafter</em>: Take the first x, then the first y <em>after</em> that. For example, we have the first procedure for the first patient in the procedures (x) data, and we want the first event from the ADT (y) data that occurs afterwards. We don’t want all afterward, we don’t want any before. Just the one! So let’s try it:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>join_attempt_two</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/funneljoin/man/after_join.html'>after_join</a></span><span class='op'>(</span>
+  <span class='va'>SPECIFIC_PROCEDURES</span>,
+  <span class='va'>ADT_EVENTS</span>,
+  by_user <span class='op'>=</span> <span class='st'>"ENCOUNTER_NUM_ANONYMIZED"</span>,
+  by_time <span class='op'>=</span> <span class='st'>"EVENT_TS_FUZZED"</span>,
+  suffix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_PROCEDURES"</span>,<span class='st'>"_ADT"</span><span class='op'>)</span>,
+  mode <span class='op'>=</span> <span class='st'>"inner"</span>,
+  type <span class='op'>=</span> <span class='st'>"first-firstafter"</span>
+<span class='op'>)</span>
+
+<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='va'>join_attempt_two</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ENCOUNTER_NUM_ANONYMIZED"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EVENT_TS_FUZZED_PROCEDURES"],"name":[2],"type":["chr"],"align":["left"]},{"label":["FROM_SERVICE_PROCEDURES"],"name":[3],"type":["chr"],"align":["left"]},{"label":["TO_SERVICE_PROCEDURES"],"name":[4],"type":["chr"],"align":["left"]},{"label":["EVENT_TS_FUZZED_ADT"],"name":[5],"type":["chr"],"align":["left"]},{"label":["FROM_SERVICE_ADT"],"name":[6],"type":["chr"],"align":["left"]},{"label":["TO_SERVICE_ADT"],"name":[7],"type":["chr"],"align":["left"]}],"data":[{"1":"a4461971-22e1-46e1-8454-aa7fbce54205","2":"2082-06-22 10:27:06","3":"TRAUMA","4":"INTENSIVE CARE TRAUMA","5":"2082-06-22 10:27:06","6":"TRAUMA","7":"INTENSIVE CARE TRAUMA"},{"1":"7cc7972a-58a1-4c78-a0dc-83021c6dc0c6","2":"2083-06-02 10:46:45","3":"TRAUMA","4":"INTENSIVE CARE TRAUMA","5":"2083-06-02 10:46:45","6":"TRAUMA","7":"INTENSIVE CARE TRAUMA"},{"1":"87d439b0-4f26-4b73-8df3-bf5dbbf34ca7","2":"2090-09-05 15:01:52","3":"NEUROSURGERY","4":"INTENSIVE CARE NEURO SURGERY","5":"2090-09-05 15:01:52","6":"NEUROSURGERY","7":"INTENSIVE CARE NEURO SURGERY"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>The above shows the whole table but let’s take a closer look at something…</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED_PROCEDURES
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED_ADT
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7cc7972a-58a1-4c78-a0dc-83021c6dc0c6
+</td>
+<td style="text-align:left;">
+2083-06-02 10:46:45
+</td>
+<td style="text-align:left;">
+2083-06-02 10:46:45
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87d439b0-4f26-4b73-8df3-bf5dbbf34ca7
+</td>
+<td style="text-align:left;">
+2090-09-05 15:01:52
+</td>
+<td style="text-align:left;">
+2090-09-05 15:01:52
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Well that didn’t <em>quite</em> work because it’s actually finding the same time stamped events. So we’re not <em>yet</em> finding the first event after but we’ve at least got something. So… what are we missing?</p>
+<h2 id="a-third-successful-attempt">A third successful attempt</h2>
+<p>What we’re missing is the <em>next</em> event. Right now, we’re getting back the <em>same event</em>. Fortunately there’s a parameter for that:</p>
+<ul>
+<li><code>min_gap</code> allows us to specify how much time there must be in between the <code>first-firstafter</code> events. There are also two companion parameters to this: <code>max_gap</code> and <code>gap_col</code> which tell us, respectively, the <em>maximum</em> time between events and a column to include the gap in time itself. For fun, let’s also add in <code>gap_col</code> so we can see the amount of time between events.</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>join_attempt_three</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/funneljoin/man/after_join.html'>after_join</a></span><span class='op'>(</span>
+  <span class='va'>SPECIFIC_PROCEDURES</span>,
+  <span class='va'>ADT_EVENTS</span>,
+  by_user <span class='op'>=</span> <span class='st'>"ENCOUNTER_NUM_ANONYMIZED"</span>,
+  by_time <span class='op'>=</span> <span class='st'>"EVENT_TS_FUZZED"</span>,
+  suffix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"_PROCEDURES"</span>,<span class='st'>"_ADT"</span><span class='op'>)</span>,
+  mode <span class='op'>=</span> <span class='st'>"inner"</span>,
+  type <span class='op'>=</span> <span class='st'>"first-firstafter"</span>,
+  min_gap <span class='op'>=</span> <span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>as.difftime</a></span><span class='op'>(</span><span class='fl'>1</span>,units<span class='op'>=</span><span class='st'>"secs"</span><span class='op'>)</span>,
+  gap_col <span class='op'>=</span> <span class='cn'>TRUE</span>
+<span class='op'>)</span>
+
+<span class='fu'>rmarkdown</span><span class='fu'>::</span><span class='fu'><a href='https://pkgs.rstudio.com/rmarkdown/reference/paged_table.html'>paged_table</a></span><span class='op'>(</span><span class='va'>join_attempt_three</span><span class='op'>)</span>
+</code></pre>
+</div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["ENCOUNTER_NUM_ANONYMIZED"],"name":[1],"type":["chr"],"align":["left"]},{"label":["EVENT_TS_FUZZED_PROCEDURES"],"name":[2],"type":["chr"],"align":["left"]},{"label":["FROM_SERVICE_PROCEDURES"],"name":[3],"type":["chr"],"align":["left"]},{"label":["TO_SERVICE_PROCEDURES"],"name":[4],"type":["chr"],"align":["left"]},{"label":[".gap"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["EVENT_TS_FUZZED_ADT"],"name":[6],"type":["chr"],"align":["left"]},{"label":["FROM_SERVICE_ADT"],"name":[7],"type":["chr"],"align":["left"]},{"label":["TO_SERVICE_ADT"],"name":[8],"type":["chr"],"align":["left"]}],"data":[{"1":"a4461971-22e1-46e1-8454-aa7fbce54205","2":"2082-06-22 10:27:06","3":"TRAUMA","4":"INTENSIVE CARE TRAUMA","5":"34024","6":"2082-06-22 19:54:10","7":"INTENSIVE CARE TRAUMA","8":"TRAUMA"},{"1":"7cc7972a-58a1-4c78-a0dc-83021c6dc0c6","2":"2083-06-02 10:46:45","3":"TRAUMA","4":"INTENSIVE CARE TRAUMA","5":"1222979","6":"2083-06-16 14:29:44","7":"INTENSIVE CARE TRAUMA","8":"INTENSIVE CARE TRAUMA"},{"1":"87d439b0-4f26-4b73-8df3-bf5dbbf34ca7","2":"2090-09-05 15:01:52","3":"NEUROSURGERY","4":"INTENSIVE CARE NEURO SURGERY","5":"74931","6":"2090-09-06 11:50:43","7":"INTENSIVE CARE NEURO SURGERY","8":"NEUROSURGERY"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+</div>
+<p>Oh that looks like we did it! Let’s look at just the snapshot of encounter numbers and timestamps with the <code>.gap</code> column:</p>
+<div class="layout-chunk" data-layout="l-body">
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED_PROCEDURES
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED_ADT
+</th>
+<th style="text-align:right;">
+.gap
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+2082-06-22 19:54:10
+</td>
+<td style="text-align:right;">
+34024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7cc7972a-58a1-4c78-a0dc-83021c6dc0c6
+</td>
+<td style="text-align:left;">
+2083-06-02 10:46:45
+</td>
+<td style="text-align:left;">
+2083-06-16 14:29:44
+</td>
+<td style="text-align:right;">
+1222979
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+87d439b0-4f26-4b73-8df3-bf5dbbf34ca7
+</td>
+<td style="text-align:left;">
+2090-09-05 15:01:52
+</td>
+<td style="text-align:left;">
+2090-09-06 11:50:43
+</td>
+<td style="text-align:right;">
+74931
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>OH I THINK WE REALLY DID DO IT. Let’s just take a quick look back at an earlier chunk of code and verify based on <em>just</em> the ADT file for just one example<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>ADT_EVENTS</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span><span class='op'>(</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>16</span>, <span class='fl'>17</span><span class='op'>)</span> <span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kbl.html'>kbl</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'>kableExtra</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/kableExtra/man/kable_styling.html'>kable_styling</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
+</div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+ENCOUNTER_NUM_ANONYMIZED
+</th>
+<th style="text-align:left;">
+EVENT_TS_FUZZED
+</th>
+<th style="text-align:left;">
+FROM_SERVICE
+</th>
+<th style="text-align:left;">
+TO_SERVICE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 10:27:06
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+a4461971-22e1-46e1-8454-aa7fbce54205
+</td>
+<td style="text-align:left;">
+2082-06-22 19:54:10
+</td>
+<td style="text-align:left;">
+INTENSIVE CARE TRAUMA
+</td>
+<td style="text-align:left;">
+TRAUMA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h1 id="conclusions">Conclusions</h1>
+<p>The first conclusion is that <code>funneljoin</code> is awesome and the second conclusion is that I’m lazy. It is also a safe assumption to conclude that I’ve used an excessive amount of unnecessary footnotes<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.</p>
+<p>When we look back at these data and the problem, we probably could have solved this with some <code>dplyr::group_by</code> at the encounter (ID) level, do some checks on the timestamps, and some stuff like that. But we had these two data sets—each used separately for different reasons in the same project—so why not make this easy and intuitive? That’s the major advantage of <code>funneljoin</code> here.</p>
+<p>Maybe the way I solved this problem with <code>funneljoin</code> could have been better<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>, but this was really useful for me. It was also a super useful exercise for us to find this package and start to understand it because we deal with <em>a lot of time stamps</em>. We often have frequent questions about order of events, or we have to pull multiple pieces of data together from a variety of source systems and ensure it’s all in the right order.</p>
+<p>And <code>funneljoin</code> is also fun and you can tell because it’s literally in the name.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-pou-prom_compute_nodate" class="csl-entry" role="doc-biblioentry">
+Pou-Prom, Chloé, Joshua Murray, Sebnem Kuzulugil, Muhammad Mamdani, and Amol Verma. n.d. <span>“From <span>Compute</span> to <span>Care</span>: <span>Lessons</span> <span>Learned</span> from <span>Deploying</span> an <span>Early</span> <span>Warning</span> <span>System</span> into <span>Clinical</span> <span>Practice</span>.”</span> <em>Frontiers in Digital Health</em>, 174. <a href="https://www.frontiersin.org/articles/10.3389/fdgth.2022.932123/abstract">https://www.frontiersin.org/articles/10.3389/fdgth.2022.932123/abstract</a>.
+</div>
+<div id="ref-verma_implementing_2021" class="csl-entry" role="doc-biblioentry">
+Verma, Amol A., Joshua Murray, Russell Greiner, Joseph Paul Cohen, Kaveh G. Shojania, Marzyeh Ghassemi, Sharon E. Straus, Chloe Pou-Prom, and Muhammad Mamdani. 2021. <span>“Implementing Machine Learning in Medicine.”</span> <em>CMAJ</em> 193 (34): E1351–57. <a href="https://doi.org/10.1503/cmaj.202434">https://doi.org/10.1503/cmaj.202434</a>.
+</div>
+</div>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>“helping” is generous: I mostly asked a million stupid questions and as we’ve seen, spent many days finding a package to do what I want instead of just doing it<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>again: not without asking a million stupid questions and getting back a million fantastic answers<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>and very hacky<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>a ‘few’ is defined as a week and ‘half day’ is defined as ‘definitely more than half a day’<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>and very hacky<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>a million stupid questions followed by a million stupid mistakes<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>again: not a few<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>again: definitely more than half days<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>found is a generous term, I more so stumbled across it with no recollection how I found it after a week<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>Did I mention I’m bad at this?<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>again: I ain’t so good at this<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>this is a generous way of saying I didn’t read the documentation<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p>we really should verify for all but have I mentioned I’m lazy?<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p>not enough footnotes and they are totally necessary<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p>almost certainly it could have been better<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom">
+<h3 id="references">References</h3>
+<div id="references-listing"></div>
+</div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
