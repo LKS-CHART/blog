@@ -18,6 +18,7 @@ categories:
   - post-miscellaneous
   - funneljoin
 draft: false
+preview: preview.png
 bibliography: references.bib
 ---
 
