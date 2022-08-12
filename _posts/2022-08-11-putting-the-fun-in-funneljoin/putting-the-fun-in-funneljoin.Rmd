@@ -64,7 +64,9 @@ library(dplyr)      ## for some processing and those fancy pipes
 library(kableExtra) ## for some extra fancy looking tables
 library(rmarkdown)  ## for some even more extra fancy tables
 
-ADT_EVENTS <- read.csv( here::here("_posts","2022-08-11-putting-the-fun-in-funneljoin", "ALL_ADT_EVENTS.csv") )
+ADT_FILE_PATH <- here::here("_posts","2022-08-11-putting-the-fun-in-funneljoin", "ALL_ADT_EVENTS.csv")
+ADT_EVENTS <- read.csv(ADT_FILE_PATH, 
+                        stringsAsFactors = FALSE)
 
 ADT_EVENTS %>%
   slice( c(1, 2, 3, 12, 13, 16, 20, 21) ) %>%
@@ -80,7 +82,9 @@ Let's now take a look at the `SPECIFIC_PROCEDURES` data
 
 ```{r read_show_procedures, echo= TRUE}
 
-SPECIFIC_PROCEDURES <- read.csv( here::here("_posts","2022-08-11-putting-the-fun-in-funneljoin", "SPECIFIC_PROCEDURES.csv") )
+PROCEDURE_FILE_PATH <- here::here("_posts","2022-08-11-putting-the-fun-in-funneljoin", "SPECIFIC_PROCEDURES.csv")
+SPECIFIC_PROCEDURES <- read.csv(PROCEDURE_FILE_PATH,
+                                 stringsAsFactors = FALSE)
 
 SPECIFIC_PROCEDURES %>%
   kableExtra::kbl() %>%
