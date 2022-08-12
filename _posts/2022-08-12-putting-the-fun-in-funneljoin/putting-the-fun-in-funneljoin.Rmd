@@ -7,7 +7,7 @@ author:
     affiliation: DSAA, Unity Health Toronto
     affiliation_url: https://chartdatascience.ca
     url: https://twitter.com/derek__beaton
-date: 2022-08-11
+date: 2022-08-12
 output:
   distill::distill_article:
     self_contained: false
@@ -17,7 +17,7 @@ categories:
   - project-chartwatch
   - post-miscellaneous
   - funneljoin
-draft: true
+draft: false
 bibliography: references.bib
 ---
 
@@ -64,7 +64,7 @@ library(dplyr)      ## for some processing and those fancy pipes
 library(kableExtra) ## for some extra fancy looking tables
 library(rmarkdown)  ## for some even more extra fancy tables
 
-ADT_FILE_PATH <- here::here("_posts","2022-08-11-putting-the-fun-in-funneljoin", "ALL_ADT_EVENTS.csv")
+ADT_FILE_PATH <- here::here("_posts","2022-08-12-putting-the-fun-in-funneljoin", "ALL_ADT_EVENTS.csv")
 ADT_EVENTS <- read.csv(ADT_FILE_PATH, 
                         stringsAsFactors = FALSE)
 
@@ -82,7 +82,7 @@ Let's now take a look at the `SPECIFIC_PROCEDURES` data
 
 ```{r read_show_procedures, echo= TRUE}
 
-PROCEDURE_FILE_PATH <- here::here("_posts","2022-08-11-putting-the-fun-in-funneljoin", "SPECIFIC_PROCEDURES.csv")
+PROCEDURE_FILE_PATH <- here::here("_posts","2022-08-12-putting-the-fun-in-funneljoin", "SPECIFIC_PROCEDURES.csv")
 SPECIFIC_PROCEDURES <- read.csv(PROCEDURE_FILE_PATH,
                                  stringsAsFactors = FALSE)
 
