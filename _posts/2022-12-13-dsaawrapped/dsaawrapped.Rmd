@@ -36,7 +36,7 @@ Enjoy some stats!!
     
 - Project with the most team members whose names start with _M_^: Hemodialysis
 
-    - The Hemodialysis project is...
+    - The Hemodialysis project is a weekly email alert that gets sent to clinicians at the St. Michael's Hospital hemodialysis clinics. The goal of the project is to predict a patient's risk of a hospital visit in the 30 days following their dialysis sessions.
     
 
 # Product families
