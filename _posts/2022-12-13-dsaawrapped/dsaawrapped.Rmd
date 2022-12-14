@@ -16,7 +16,7 @@ draft: true
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-The end of the year is a time for reflection, reminiscing, and sharing screenshots of our Spotify Wrapped. For those who are unfamiliar, Spotify Wrapped is a yearly marketing campaign by Spotify, where they compile streaming data and create a personalized graphic for each user. ^[We surveyed the members on DSAA and found that the most listened music genre is: ???] 
+The end of the year is a time for reflection, reminiscing, and sharing screenshots of our Spotify Wrapped. For those who are unfamiliar, Spotify Wrapped is a yearly marketing campaign by Spotify, where they compile streaming data and create a personalized graphic for each user. ^[We surveyed the members on DSAA and found that the most listened music genre is _Pop_, followed by various interesting variations of _Indie_ (indie pop, indie soul, indie Québécois).] 
 
 In the spirit of data, end-of-year reflections, and colorful infographics, we thought it would be fun to create our very own DSAA wrapped!
 
@@ -28,13 +28,13 @@ Enjoy some stats!!
 
 2022 was a busy year with lots of projects!!
 
-- Total \# of projects deployed: 7
+- Total \# of projects deployed: 9
 
 - Most viewed project: Ops Centre
 
-    - The Ops Centre project is....
+    - The Ops Centre project is.... [TODO: add Ops Centre description]
     
-- Project with the most team members whose names start with _M_^: Hemodialysis
+- Project with the most team members whose names start with _M_: Hemodialysis
 
     - The Hemodialysis project is a weekly email alert that gets sent to clinicians at the St. Michael's Hospital hemodialysis clinics. The goal of the project is to predict a patient's risk of a hospital visit in the 30 days following their dialysis sessions.
     
@@ -53,9 +53,9 @@ What's a product family?
 
 Some product family stats!
 
-- Number of product families: ??
+- Number of product families: 6
 
-- Product family with the most projects: Patient Flow??
+- Product family with the most projects: Workforce Optimization
 
 # DSAA and improvement
 
@@ -65,7 +65,7 @@ Some product family stats!
 
     - The sprint improvement week is one full week dedicated to DSAA process improvement work in the areas of data infrastructure, source system optimization, DevOps, data governance, databases, analytics and project management processes, and more! The DSAA team works together to clear a backlog of tasks, and then we share our accomplishments through demos at the end of the week.
     
-    - Some notable achievements from past sprint improvement weeks are ...
+    - Some notable achievements from past sprint improvement weeks are: our very own DSAA handbook, maintenance and update of internall-developed packages, experimenting with containers!
     
 - \# of blog posts: 5
   
@@ -79,7 +79,7 @@ Some product family stats!
 
 - \# of Advanced Analytics mini-demos: 8
 
-    - Mini-demos are lead by a different Advanced Analytics team member..... Add link to Derek's funneljoin here
+    - Mini-demos are lead by a different Advanced Analytics team member..... [TODO: Add link to Derek's funneljoin here]
     
 # DSAA's social committee
 
@@ -97,10 +97,10 @@ Our team's social committee (a.k.a. the Party Planning Committee) (a.k.a. the Pa
     
 - \# of pizzas made by DSAA team members: $\infty$
 
-[add pics of pizza here???]
+[TODO: add pics of pizza here???]
 
 - Most requested album: The Charlie Brown Christmas soundtrack
 
-    - [something baout solo work together channel]
+    - During the year, many of our team members would hop on a Zoom call, play some music, and work together. The most played album was the [Charlie Brown Christmas soundtrack](link), very closely followed by [lo-fi chill hip hop](link).
 
 
