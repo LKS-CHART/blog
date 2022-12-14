@@ -63,7 +63,7 @@ Some product family stats!
 
 - \# of sprint improvement weeks: 3
 
-    - The sprint improvement week is a week where we....
+    - The sprint improvement week is one full week dedicated to DSAA process improvement work in the areas of data infrastructure, source system optimization, DevOps, data governance, databases, analytics and project management processes, and more! The DSAA team works together to clear a backlog of tasks, and then we share our accomplishments through demos at the end of the week.
     
     - Some notable achievements from past sprint improvement weeks are ...
     
