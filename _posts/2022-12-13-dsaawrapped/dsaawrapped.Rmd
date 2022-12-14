@@ -73,7 +73,7 @@ Some product family stats!
     
 - \# of journal club sessions lead by the Advanced Analytics team: at least 16
 
-    - We covered the following topics: [add links to ethics & DEI], anomaly detection^[blog post coming soon! :-)], survival analysis, Canadian healthcare.
+    - We covered the following topics: [AI ethics, equity, & inclusion](https://github.com/LKS-CHART/AA_journal_club/tree/main/2022_01_Ethics_Bias_Inclusion), anomaly detection^[blog post coming soon! :-)], survival analysis, Canadian healthcare.
     
 - \# of "sheets" created: 3
 
