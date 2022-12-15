@@ -3,7 +3,7 @@ title: "DSAA Wrapped"
 description: |
   Reflecting on 2022.
 author:
-  - name: Chloe Pou-Prom, Meggie Debnath, Derek Beaton, Cathy Zhu
+  - name: Chloe Pou-Prom, Meggie Debnath, Derek Beaton, and Cathy Zhu on behalf of DSAA
 date: 2022-12-13
 output:
   distill::distill_article:
@@ -36,7 +36,7 @@ Enjoy some stats!!
     
 - Project with the most team members whose names start with _M_: Hemodialysis
 
-    - The Hemodialysis project is a weekly email alert that gets sent to clinicians at the St. Michael's Hospital hemodialysis clinics. The goal of the project is to predict a patient's risk of a hospital visit in the 30 days following their dialysis sessions.
+    - The Hemodialysis project is a weekly digest tool for clinicians at the St. Michael's Hospital hemodialysis clinics. The tool provides patients' risks of a unplanned hospital visits. 
     
 
 # Product families
@@ -121,7 +121,7 @@ Our team's social committee (a.k.a. the Party Planning Committee) (a.k.a. the Pa
 
 Some things you can expect in the new year:
 
-- More blog posts!!!!!!!!^[We promised a few in this blog post...]
+- More blog posts!!!!!!!!^[We promised a few in this blog post, so now we're on the hook!]
 
 - More pizza!
 
