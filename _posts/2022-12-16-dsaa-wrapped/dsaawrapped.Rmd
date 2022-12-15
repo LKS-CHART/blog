@@ -1,7 +1,7 @@
 ---
 title: "DSAA Wrapped"
 description: |
-  Reflecting on 2022.
+  Reflecting on 2022. [5 min read]
 author:
   - name: Chloe Pou-Prom, Meggie Debnath, Derek Beaton, and Cathy Zhu on behalf of DSAA
 date: 2022-12-13
@@ -11,7 +11,7 @@ output:
 categories:
   - post-miscellaneous
 draft: false
-preview: dsaa_wrapped.PNG
+preview: dsaa_wrapped_preview.PNG
 ---
 
 
