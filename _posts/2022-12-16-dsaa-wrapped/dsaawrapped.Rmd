@@ -8,7 +8,10 @@ date: 2022-12-13
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+categories:
+  - post-miscellaneous
+draft: false
+preview: dsaa_wrapped.PNG
 ---
 
 
@@ -20,9 +23,11 @@ The end of the year is a time for reflection, reminiscing, and sharing screensho
 
 In the spirit of data, end-of-year reflections, and colorful infographics, we thought it would be fun to create our very own DSAA wrapped!
 
-![](dsaa_wrapped.PNG)
+Enjoy some stats!! 
 
-Enjoy some stats!!
+```{r}
+knitr::include_graphics("dsaa_wrapped.PNG")
+```
 
 # Projects
 
@@ -41,7 +46,7 @@ Enjoy some stats!!
 
 # Product families
 
-2022 was the year of _product families_.^[Blog post coming soon!! :fingers_crossed:]
+2022 was the year of _product families_.^[Blog post coming soon!! 🤞]
 
 ![](https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fimages.squarespace-cdn.com%2Fcontent%2Fv1%2F58b3cae5d1758e0132a008c6%2F1582078446179-VU0VAYNPOV4P3JIBKNIY%2FIt%2527s%2BAbout%2BFamily%2BLogo%2B1500.png%3Fformat%3D1000w)
 
@@ -80,7 +85,7 @@ Some product family stats!
 
     - We covered the following topics: [AI ethics, equity, & inclusion](https://github.com/LKS-CHART/AA_journal_club/tree/main/2022_01_Ethics_Bias_Inclusion), anomaly detection^[blog post coming soon! :-)], survival analysis, Canadian healthcare.
     
-- \# of "sheets" created: 3^[Blog post coming soon!!! :prayer_hands:]
+- \# of "sheets" created: 3^[Blog post coming soon!!! 🙏]
 
     - Templates! Templates! Templates! We worked on templates for: [Datasheet](https://arxiv.org/abs/1803.09010), [Factsheet](https://aifs360.mybluemix.net/examples), and [Models ~~card~~ sheet](https://vetiver.rstudio.com/learn-more/model-card.html).
 
