@@ -1,0 +1,185 @@
+---
+title: "One Does Not Simply Process and De-Identify Clinical Notes"
+description: |
+  Accompanying blog post for the TMLS workshop "NLP for Healthcare: Challenges With Processing and De-Identifying Clinical Notes".
+author:
+  - name: Chloe Pou-Prom, Vaakesan Sundrelingam
+    url: {}
+date: 2022-12-21
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+categories:
+    - post-miscellaneous
+    - post-talks
+preview: clinical_note_example.PNG
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+> This is a summary blog post for the workshop "NLP for Healthcare: Challenges With Processing and De-Identifying Clinical Notes", given on November 28, 2022 as part of the [Toronto Machine Learning Summit](https://www.torontomachinelearning.com/). Slides for the workshop can be found [here](slides_NLP_for_healthcare.pdf) and an accompanying Jupyter notebook can be found [here](https://github.com/GEMINI-Medicine/TMLS2022).
+
+Text data is ubiquitous in the hospital, from admission notes to radiology reports to operative summaries. 
+
+Below is an example operative summary, a type of note that gets written following a surgery. Notice that it includes a mixture of semi-structured and unstructured information. At the top of the note, there are fields for patient information. The `CLINICAL NOTE` field then contains text on the patient's medical history and the `OPERATIVE NOTE` field focuses on what happens in the operating room.
+
+```
+GAMGEE, SAMWISE
+MRN: 123-4567
+D.O.B. Jul-09-1983
+DATE OF OR: June 11, 2019
+PROCEDURE START TIME: 8:27 p.m.
+SURGEON: Dr. Galadriel
+ASSISTANTS: Dr. B. Baggins, second clinical fellow; Dr. F. Baggins, PGY5 
+ANESTHESIA: General.
+CLINICAL NOTE: Mr. Gamgee is a 39-year-old male with past medical history 
+significant for transient ischemic attack and cerebrovascular accident 
+and type 2 diabetes mellitus. His medication includes Aspirin and Plavix. 
+She had a fall on June 8, 2019, and he was transferred to a local 
+hospital and his imaging demonstrated no evidence of intracranial hemorrhage. 
+OPERATIVE NOTE: The patient was brought to the operating room. Briefing 
+was done. Preoperative antibiotics were given. At the end of the 
+procedure, all the counts were correct. There were no intraoperative 
+complications. The patient is being transferred to the intensive care 
+unit intubated.
+```
+
+There are plenty of things you can do with healthcare text data:
+
+- For example, we can [extract EDSS from clinical notes of patients with Multiple Sclerosis](https://doi.org/10.2196/25157).
+
+- We can also [determine rates of delirium in hospital from radiology reports](link tbd).
+
+## Challenges of working with healthcare text data
+
+Text data can be difficult to work with:
+
+- The data may have **flexible formatting** or **atypical grammar**.
+
+- The data will contain **language specific to the medical domain**.
+
+- The data may contain some **misspellings**.
+
+- There may be a **delay in when data is available**
+
+  - This is needs to be considered if you're thinking of developing a _real-time solution_.
+  
+- Different **data entry** and **data storage** strategies will affect the text data.
+
+  - For example, in the case of _electronic data entry_, the systems for data entry may contain free text fields or pre-populated templates. Resulting notes will vary greatly!
+  
+  - For example, a data storage strategy which relies on _appending updates to the same entry_ will result in a very long note.
+  
+- Text data, and more generally _healthcare data_ is difficult to share. There are quite a few steps requires to get access to healthcare data, especially if you're not already working at the hospital or part of an affiliate research group.
+
+  - These steps are there for a reason: to _mitigate data breaches_.
+  
+  - However, sharing data is _important_, as it can contribute to [machine learning progress](https://journals.plos.org/digitalhealth/article?id=10.1371/journal.pdig.0000102) and to [public health and health-realted research](https://www.ipc.on.ca/wp-content/uploads/2016/11/anonymization.pdf)
+  
+If you're going to share data, you need to de-identify it!
+
+## Data de-identification
+
+### Identifiers
+
+De-identifying data requires removing **direct** and **indirect** identifiers.
+
+- Direct identifiers are names, addresses, etc.
+
+- Indirect identifiers are gender, marital status, location, etc.
+
+- Removing direct identifiers is not enough, since indirect identifiers can be used alone, or together, to re-identify an individual.
+
+### Why de-identify data?
+
+There are ethical obligations to multiple authorities and formal agreements with various parties to de-identify the data before using it or sharing it.
+
+- **Personal Health Information Privacy Act (PHIPA)**
+
+  - PHIPA permits disclosures of Personal Health Information (PHI) without consent for research purposes, if the researcher:
+  
+    - prepares a research plan that meets certain requirements, and
+    
+    - a Research Ethics Board (REB) approves the plan
+
+- **Research Ethics Board (REB)**
+
+  - The REB provides approval
+  
+  - Here, at Unity Health Toronto, data users are required to complete training for the _Tri-Council Policy Statement on Ethical Conduct for Research Involving Humans (TCPS2)_^[See https://ethics.gc.ca/eng/tcps2-eptc2_2018_chapter5-chapitre5.html for more details.].
+  
+  - TCPS2 outlines 3 approaches to protect research participant privacy^[(1) Use fully anonymized data; (2) Use data de-identified with a key held by a trusted third party; or (3) Collect identifiable data and take measures to de-identify the data as soon as possible] .
+  
+
+- **Data Sharing Agreements (DSA)**
+
+  - A DSA helps mitigate the risk of re-identification for _non-public releases_^[There are different kinds of release models: non-public release, public release, semi-public release].
+  
+  - A DSA identifies the parameters which govern the collection, transmission, storage, security, analysis, re-use, archiving, and destruction of data.
+
+Things to consider when looking for a de-identification tool:
+
+- **Speed**
+
+- **Accuracy**
+
+- **Interpretability**
+
+- **Context**
+
+- **Cost**
+
+## pydeid
+
+The GEMINI team has developed `pydeid`, a Python-based open source de-identification software that identifies and replaces PHI in free-text clinical data. The software is available for download [here](link)!
+
+A few facts about `pydeid`:
+
+- `pydeid` is regex-based and is a Python re-implementation of the [Physionet Deid tool]().
+
+- `pydeid` was developed to work with the Canadian healthcare text^[Existing open source regex-based tools are US-based].
+
+### Surrogate replacement
+
+`pydeid`'s features include PHI de-identification and _surrogate replacement_. The latter is particularly important, since it reduces the risk of exposing identifiable information. 
+
+For example, let's say we are given the following input string:
+
+```
+Frodo Baggins was born in The Shire on September 22, 2968 and 
+Peregrin Took was born in The Shire on April 8 2290.
+```
+
+This is what the de-identified output could look like _without surrogate replacement_:
+
+```
+*** *** was born in *** on *** and 
+Peregrin Took was born in *** on ***.
+```
+
+Without surrogate replacement, it becomes obvious that "Peregrin Took" was missed by de-identification. However, if we include surrogate replacement, the output looks something like this:
+
+```
+
+Saradoc Brandybuck was born in Rivendell on 1988/11/28 and 
+Peregrin Took was born in Rivendell on 1990/10/17.
+```
+
+When we allow for surrogate replacement, it's harder to tell if any entities were missed by the de-identification. The overall goal is to _reduce risk of re-identification_.
+
+### `pydeid` vs `PhysioNet deid`
+
+One of the motivations for developing `pydeid` was that the GEMINI team needed a tool that was fast. Below are the results of running both `pydeid` and `PhsyioNet deid` on the _Lord of the Rings_ movie scripts.
+
+| | chars/s | s/note | total time (s)|
+|-|---------|--------|---------------|
+| `Physionet deid` | 3,208.28  | 31.44 | 94.31 |
+| `deid`           | 29,093.58 | 3.43  | 10.40 |
+
+
+For a full list of `pydeid` features, refer to [the demo](https://github.com/GEMINI-Medicine/TMLS2022).
+
