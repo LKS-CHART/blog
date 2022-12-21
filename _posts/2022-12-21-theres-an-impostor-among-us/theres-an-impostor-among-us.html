@@ -87,635 +87,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>DSAA Blog</title>
+  <title>There's An Impostor Among Us</title>
+
+  <meta property="description" itemprop="description" content="A brief introduction to anomaly detection."/>
 
 
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-12-21"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-12-21"/>
+  <meta name="article:author" content="Chloe Pou-Prom, Neil Mistry, Derek Beaton"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="DSAA Blog"/>
+  <meta property="og:title" content="There&#39;s An Impostor Among Us"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="A brief introduction to anomaly detection."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="DSAA Blog"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="DSAA Blog"/>
+  <meta property="twitter:title" content="There&#39;s An Impostor Among Us"/>
+  <meta property="twitter:description" content="A brief introduction to anomaly detection."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["DSAA Blog"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft"]}},"value":[{"type":"character","attributes":{},"value":["There's An Impostor Among Us"]},{"type":"character","attributes":{},"value":["A brief introduction to anomaly detection.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chloe Pou-Prom, Neil Mistry, Derek Beaton"]}]}]},{"type":"character","attributes":{},"value":["2022-12-21"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["post-journal-club","anomaly-detection"]},{"type":"logical","attributes":{},"value":[true]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["theres-an-impostor-among-us_files/anchor-4.2.2/anchor.min.js","theres-an-impostor-among-us_files/bowser-1.9.3/bowser.min.js","theres-an-impostor-among-us_files/distill-2.2.21/template.v2.js","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-1-1.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-1-2.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-2-1.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-3-1.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-4-1.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-5-1.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-6-1.png","theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-7-1.png","theres-an-impostor-among-us_files/header-attrs-2.19/header-attrs.js","theres-an-impostor-among-us_files/jquery-3.6.0/jquery-3.6.0.js","theres-an-impostor-among-us_files/jquery-3.6.0/jquery-3.6.0.min.js","theres-an-impostor-among-us_files/jquery-3.6.0/jquery-3.6.0.min.map","theres-an-impostor-among-us_files/popper-2.6.0/popper.min.js","theres-an-impostor-among-us_files/tippy-6.2.7/tippy-bundle.umd.min.js","theres-an-impostor-among-us_files/tippy-6.2.7/tippy-light-border.css","theres-an-impostor-among-us_files/tippy-6.2.7/tippy.css","theres-an-impostor-among-us_files/tippy-6.2.7/tippy.umd.min.js","theres-an-impostor-among-us_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description || ''}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -2034,338 +1438,406 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.19/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="theres-an-impostor-among-us_files/header-attrs-2.19/header-attrs.js"></script>
+  <script src="theres-an-impostor-among-us_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="theres-an-impostor-among-us_files/popper-2.6.0/popper.min.js"></script>
+  <link href="theres-an-impostor-among-us_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="theres-an-impostor-among-us_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="theres-an-impostor-among-us_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="theres-an-impostor-among-us_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="theres-an-impostor-among-us_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="theres-an-impostor-among-us_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="theres-an-impostor-among-us_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"DSAA Blog","authors":[]}
+{"title":"There's An Impostor Among Us","description":"A brief introduction to anomaly detection.","authors":[{"author":"Chloe Pou-Prom, Neil Mistry, Derek Beaton","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-12-21T00:00:00.000-05:00","citationText":"Beaton, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">DSAA Blog</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).on("load", function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      page_category = decodeURIComponent(page_category)
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="DSAA Blog">DSAA Blog</h1>
-<a href="posts/2022-12-16-dsaa-wrapped/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["post-miscellaneous"]}</script>
-<div class="metadata">
-<div class="publishedDate">Dec. 13, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Chloe Pou-Prom, Meggie Debnath, Derek Beaton, and Cathy Zhu on behalf of DSAA</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2022-12-16-dsaa-wrapped/dsaa_wrapped_preview.PNG"/>
-</div>
-<div class="description">
-<h2>DSAA Wrapped</h2>
-<div class="dt-tags">
-<div class="dt-tag">post-miscellaneous</div>
-</div>
-<p>Reflecting on 2022. [5 min read]</p>
-</div>
-</a>
-<a href="posts/2022-08-12-putting-the-fun-in-funneljoin/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["language-R","project-chartwatch","post-miscellaneous","funneljoin"]}</script>
-<div class="metadata">
-<div class="publishedDate">Aug. 12, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Derek Beaton</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2022-08-12-putting-the-fun-in-funneljoin/preview.png"/>
-</div>
-<div class="description">
-<h2>Putting the fun in `funneljoin`</h2>
-<div class="dt-tags">
-<div class="dt-tag">language-R</div>
-<div class="dt-tag">project-chartwatch</div>
-<div class="dt-tag">post-miscellaneous</div>
-<div class="dt-tag">funneljoin</div>
-</div>
-<p>An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package. [10 min read]</p>
-</div>
-</a>
-<a href="posts/2022-08-04-posits-conf-time/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["post-miscellaneous"]}</script>
-<div class="metadata">
-<div class="publishedDate">Aug. 4, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Maitreyee Sidhaye</div>
-<div class="dt-author">Chloe Pou-Prom</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2022-08-04-posits-conf-time/rstudio_wall.jpg"/>
-</div>
-<div class="description">
-<h2>POS...IT's conf() time 🥁</h2>
-<div class="dt-tags">
-<div class="dt-tag">post-miscellaneous</div>
-</div>
-<p>Pause, it's time to write about RStudio conf(2022). [10 min read]</p>
-</div>
-</a>
-<a href="posts/2022-06-21-is-my-ai-discriminatory/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["post-journal-club","bias-fairness-ethics"]}</script>
-<div class="metadata">
-<div class="publishedDate">June 21, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Meggie Debnath</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2022-06-21-is-my-ai-discriminatory/ai-biases.jpg"/>
-</div>
-<div class="description">
-<h2>Is my AI Discriminatory?</h2>
-<div class="dt-tags">
-<div class="dt-tag">post-journal-club</div>
-<div class="dt-tag">bias-fairness-ethics</div>
-</div>
-<p>A discussion about bias in healthcare AI, and building models with fairness and ethics in mind. [5 min read]</p>
-</div>
-</a>
-<a href="posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["language-R","project-chartwatch","post-miscellaneous"]}</script>
-<div class="metadata">
-<div class="publishedDate">May 9, 2022</div>
-<div class="dt-authors">
-<div class="dt-author">Chloe Pou-Prom</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/preview.PNG"/>
-</div>
-<div class="description">
-<h2>Ooh na na... where are my sodium labs?</h2>
-<div class="dt-tags">
-<div class="dt-tag">language-R</div>
-<div class="dt-tag">project-chartwatch</div>
-<div class="dt-tag">post-miscellaneous</div>
-</div>
-<p>The NA bug, or, what happens when the same word is used in different contexts. [5 min read]</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:Articles">Articles</a>
-<span class="category-count">(5)</span>
-</li>
-<li>
-<a href="#category:bias-fairness-ethics">bias-fairness-ethics</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:funneljoin">funneljoin</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:language-R">language-R</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:post-journal-club">post-journal-club</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:post-miscellaneous">post-miscellaneous</a>
-<span class="category-count">(4)</span>
-</li>
-<li>
-<a href="#category:project-chartwatch">project-chartwatch</a>
-<span class="category-count">(2)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>DSAA Blog</h1>
+<h1>There’s An Impostor Among Us</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">post-journal-club</div>
+<div class="dt=tag">anomaly-detection</div>
+</div>
 <!--/radix_placeholder_categories-->
-
+<p><p>A brief introduction to anomaly detection.</p></p>
 </div>
 
+<div class="d-byline">
+  Chloe Pou-Prom, Neil Mistry, Derek Beaton  
+  
+<br/>2022-12-21
+</div>
 
 <div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<p>Anomaly detection consists in identifying rare events. There are many
+many many <em>many</em> ways to do anomaly detection. As part of the
+Advanced Analytics team’s journal club series, we spent 6ish months
+diving into anomaly detection, learning about distances, principal
+components analysis, clustering, isolation forests, control charts and
+<em>more</em>.</p>
+<p>Skip ahead to <a href="#additional-resources">the end of this
+post</a> if you want to see everything we covered!</p>
+<p>So, what are some examples of anomaly detection techniques? To better
+illustrate these techniques, let’s first start by loading some example
+data!</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:unnamed-chunk-1">Table 1: </span>Example data</caption>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 20%" />
+<col style="width: 14%" />
+<col style="width: 22%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">vital_sbpdiastolic</th>
+<th style="text-align: right;">vital_sbpsystolic</th>
+<th style="text-align: right;">vital_spulse</th>
+<th style="text-align: right;">vital_srespirations</th>
+<th style="text-align: right;">vital_stemperature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">106</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">36.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">78</td>
+<td style="text-align: right;">127</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">36.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">36.7</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">63</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">36.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">81</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">92</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">36.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">77</td>
+<td style="text-align: right;">141</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">37.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In the example above, each row represents vital sign measurements.
+This is what the columns mean:</p>
+<ul>
+<li><p><code>vital_sbpdiastolic</code>: diastolic blood
+pressure</p></li>
+<li><p><code>vital_sbpsystolic</code>: systolic blood pressure</p></li>
+<li><p><code>vital_spulse</code>: pulse (heart rate)</p></li>
+<li><p><code>vital_srespirations</code>: respiratory rate</p></li>
+<li><p><code>vital_stemperature</code>: body temperature</p></li>
+</ul>
+<p>Let’s look at a few summary statistics!</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: right;">min</th>
+<th style="text-align: right;">max</th>
+<th style="text-align: right;">q01</th>
+<th style="text-align: right;">q25</th>
+<th style="text-align: right;">q50</th>
+<th style="text-align: right;">q75</th>
+<th style="text-align: right;">q99</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">vital_sbpdiastolic</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">60.0</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">74.0</td>
+<td style="text-align: right;">81.0</td>
+<td style="text-align: right;">107.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">vital_sbpsystolic</td>
+<td style="text-align: right;">72.0</td>
+<td style="text-align: right;">1217</td>
+<td style="text-align: right;">104.0</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">130.0</td>
+<td style="text-align: right;">146.0</td>
+<td style="text-align: right;">190.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">vital_spulse</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: right;">586</td>
+<td style="text-align: right;">62.0</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: right;">92.0</td>
+<td style="text-align: right;">121.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">vital_srespirations</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">18.0</td>
+<td style="text-align: right;">20.0</td>
+<td style="text-align: right;">28.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">vital_stemperature</td>
+<td style="text-align: right;">33.6</td>
+<td style="text-align: right;">363</td>
+<td style="text-align: right;">35.5</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">36.4</td>
+<td style="text-align: right;">36.8</td>
+<td style="text-align: right;">38.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Hmm… The quantiles seem very reasonable, but if we look at the
+minimum and maximum, there are some <em>interesting</em> values… like a
+body temperature of 363 degrees???? Systolic blood pressure of 1217??
+Whoa!</p>
+<p>Let’s dig a bit deeper and plot some things! For ease of
+visualization, we’ll only focus on two variables: the diastolic and
+systolic blood pressure:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+</div>
+<p>Okay, looks like most of the blood pressure measurements cluster in
+one area, but visually we can see that there are a few
+<em>outliers</em>.</p>
+<p>Is there a way to <em>automatically</em> detect those outliers?</p>
+<h2 id="lets-try-using-distances">Let’s try using distances!</h2>
+<p><code>TODO</code></p>
+<h2 id="what-if-we-wanted-to-try-out-unsupervised-approaches">What if we
+wanted to try out unsupervised approaches?</h2>
+<p>A common unsupervised anomaly detection technique is the <a
+href="https://www.naftaliharris.com/blog/visualizing-k-means-clustering/">k-means
+algorithm</a>. The intuition behind k-means is that <em>each point in a
+cluster should be near the center of that cluster</em>.</p>
+<p>In R, we can compute the k-means clusters using the
+<code>kmeans</code> function and then visualize the results using the
+<code>factoextra</code> package. Below, we cluster the data into <em>3
+clusters</em><a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.sthda.com/english/rpkgs/factoextra'>factoextra</a></span><span class='op'>)</span>
+<span class='va'>kmean</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/kmeans.html'>kmeans</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>, <span class='fl'>3</span>, nstart <span class='op'>=</span> <span class='fl'>25</span><span class='op'>)</span> <span class='co'># Uses Euclidean distance</span>
+<span class='fu'><a href='https://rdrr.io/pkg/factoextra/man/fviz_cluster.html'>fviz_cluster</a></span><span class='op'>(</span><span class='va'>kmean</span>,
+             data <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/scale.html'>scale</a></span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>,
+             palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#2E9FDF"</span>, <span class='st'>"#00AFBB"</span>, <span class='st'>"#E7B800"</span><span class='op'>)</span>,
+             geom <span class='op'>=</span> <span class='st'>"point"</span>,
+             ellipse.type <span class='op'>=</span> <span class='st'>"convex"</span>,
+             ggtheme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+</div>
+<p>Notice the blue circle that appears in the upper left corner! What
+does it mean? Which data point does it represent? The
+<code>fviz_cluster</code> function will plot the data using the first
+and second principal components. If we wanted to, we could plot our data
+using 2 variables:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/pkg/factoextra/man/fviz_cluster.html'>fviz_cluster</a></span><span class='op'>(</span><span class='va'>kmean</span>,
+             data <span class='op'>=</span> <span class='va'>data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://rdrr.io/pkg/dplyr/man/select.html'>select</a></span><span class='op'>(</span><span class='va'>vital_sbpdiastolic</span>, <span class='va'>vital_sbpsystolic</span><span class='op'>)</span>,
+             palette <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"#2E9FDF"</span>, <span class='st'>"#00AFBB"</span>, <span class='st'>"#E7B800"</span><span class='op'>)</span>,
+             geom <span class='op'>=</span> <span class='st'>"point"</span>,
+             ellipse.type <span class='op'>=</span> <span class='st'>"convex"</span>,
+             ggtheme <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggtheme.html'>theme_bw</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+</div>
+<p>It’s a bit hard to tell, but in the plot where we only show the
+diastolic and systolic blood pressures, the blue circle appears in the
+cluster of yellow squares…</p>
+<p>Cool! Now, what if I want to try a different unsupervised approach?
+Like… DBSCAN?<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a></p>
+<p>How well does DBSCAN work on our vitals data? We can use the
+<code>fpc</code> library to run the DBSCAN algorithm.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+</div>
+<p>The black dots correspond to the data points that could not be mapped
+to a cluster, according to the DBSCAN algorithm. These would be
+considered outliers.</p>
+<p>Now let’s see what the results look like if we focus on just the
+blood pressure variables:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="theres-an-impostor-among-us_files/figure-html5/unnamed-chunk-7-1.png" width="624" data-distill-preview=1 /></p>
+</div>
+<h2 id="what-if-we-tried-a-supervised-approach">What if we tried a
+supervised approach?</h2>
+<p><code>TODO</code></p>
+<h2 id="additional-resources">Additional resources</h2>
+<p>Below are the full list of topics and readings that we dove into for
+our journal club series on anomaly detection.</p>
+<table>
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 67%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Topics</th>
+<th style="text-align: left;">Reading Materials</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Introduction, distances, PCA</td>
+<td style="text-align: left;"><a
+href="https://personal.utdallas.edu/~herve/Abdi-Distance2007-pretty.pdf">Distance</a>,
+<a
+href="https://personal.utdallas.edu/~herve/abdi-awPCA2010.pdf">PCA</a>,
+<a href="https://hal.archives-ouvertes.fr/hal-01125713/document">PCA for
+statistical control processes</a>, <a
+href="http://arxiv.org/abs/1709.07045">MCD and extensions</a>, <a
+href="https://www.biorxiv.org/content/10.1101/333005v3">Generalized
+MCD</a>, <a
+href="https://onlinelibrary.wiley.com/doi/abs/10.1111/anzs.12144">CorrMax</a>,
+<a href="https://doi.org/10.1080/00401706.2017.1340909">Deviating
+cells</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Unsupervised anomaly detection: clustering
+approaches</td>
+<td style="text-align: left;"><a
+href="https://mdsr-book.github.io/mdsr2e/ch-learningII.html#clustering">“Clustering”
+chapter from <em>Modern Data Science with R</em></a>, Chapter 14 from
+<em>The Elements of Statistical Learning: Data Mining, Inference, and
+Prediction, Second Edition</em>, “Clustering” chapter from <em>An
+Introduction to Statistical Learning: with applications in R</em>, <a
+href="https://scikit-learn.org/stable/auto_examples/neighbors/plot_lof_outlier_detection.html#">Local
+Outlier Factor example</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Unsupervised anomaly detection:
+examples</td>
+<td style="text-align: left;">“Patient Privacy Violation Detection in
+Healthcare Critical Infrastructures: An Investigation Using
+Density-Based Benchmarking” (2020), <a
+href="https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf">DBSCAN</a>, <a
+href="https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/">DBSCAN
+visualization</a>,“Density-Based Outlier Detection for Safeguarding
+Electronic Patient Record Systems” (2019), “Healthcare and anomaly
+detection: using machine learning to predict anomalies in heart rate
+data” (2021), “Tracking down the Villains: Outlier Detection at Netflix”
+(2017)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Supervised anomaly detection: linear
+models and residuals</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Supervised anomaly detection: XGBOD,
+isolation forests</td>
+<td style="text-align: left;">[scikit-learn’s outlier detection
+documentation](<a href="https://pyod.readthedocs.io/en/latest/"
+class="uri">https://pyod.readthedocs.io/en/latest/</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">- <a
+href="https://scikit-learn.org/stable/modules/outlier_detection.html#"
+class="uri">https://scikit-learn.org/stable/modules/outlier_detection.html#</a>)</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Univariate and exploratory approaches</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data validation</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Anomaly detection in production: RPCA</td>
+<td style="text-align: left;"><a
+href="https://doi.org/10.1198/004017004000000563">Robust PCA</a>, <a
+href="http://arxiv.org/abs/0912.3599">Robust PCA (a different one)</a>,
+<a
+href="https://netflixtechblog.com/rad-outlier-detection-on-big-data-d6b0494371cc">Netflix
+outlier detection with robust PCA</a>, <a
+href="https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/#overview">Azure’s
+anomaly detector</a>, <a
+href="https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/introducing-multivariate-anomaly-detection/ba-p/2260679">Introduction
+Multivariate Anomaly Detection</a>, <a
+href="https://arxiv.org/abs/2009.02040"
+class="uri">https://arxiv.org/abs/2009.02040</a></td>
+</tr>
+</tbody>
+</table>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Why 3 clusters? Why not 4 or 5 or 2?<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The best way to describe how DBSCAN works is with a
+visual: <a
+href="https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/"
+class="uri">https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/</a><a
+href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

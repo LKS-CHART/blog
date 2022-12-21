@@ -1,0 +1,180 @@
+---
+title: "There's An Impostor Among Us"
+description: |
+  A brief introduction to anomaly detection.
+author:
+  - name: Chloe Pou-Prom, Neil Mistry, Derek Beaton
+date: 2022-12-21
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - post-journal-club
+  - anomaly-detection
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+library(tidyr)
+library(lubridate)
+library(ggplot2)
+library(knitr)
+```
+
+```{r load_data, echo = FALSE}
+START_DATE <- as.Date("2022-01-01")
+END_DATE <- as.Date("2022-06-01")
+data <- read.csv("Z:/DSAA_Deployment/chartwatch_project/monitoring_dashboard/vitals_data.csv") %>%
+  select(ENCOUNTER_NUM, timestamp, vital_sbpdiastolic, vital_sbpsystolic, vital_spulse, vital_stemperature, vital_srespirations) %>%
+  mutate(timestamp = ymd_hms(timestamp)) %>%
+  filter(timestamp >= START_DATE & timestamp <= END_DATE) %>%
+  pivot_longer(cols = contains("vital")) %>%
+  filter(!is.na(value)) %>%
+  unique() %>%
+  group_by(ENCOUNTER_NUM, name) %>%
+  arrange(timestamp) %>%
+  slice(1) %>%
+  ungroup() %>%
+  select(-timestamp) %>%
+  pivot_wider() %>%
+  filter(!is.na(vital_sbpdiastolic) & !is.na(vital_sbpsystolic) & !is.na(vital_spulse) & !is.na(vital_stemperature) & !is.na(vital_srespirations)) %>%
+  select(-ENCOUNTER_NUM)
+```
+
+Anomaly detection consists in identifying rare events. There are many many many _many_ ways to do anomaly detection. As part of the Advanced Analytics team's journal club series, we spent 6ish months diving into anomaly detection, learning about distances, principal components analysis, clustering, isolation forests, control charts and _more_. 
+
+Skip ahead to [the end of this post](#additional-resources) if you want to see everything we covered!
+
+So, what are some examples of anomaly detection techniques? To better illustrate these techniques, let's first start by loading some example data!
+
+```{r echo = FALSE}
+data %>% 
+    head() %>%
+    kable(caption = "Example data")
+```
+
+In the example above, each row represents vital sign measurements. This is what the columns mean:
+
+- `vital_sbpdiastolic`: diastolic blood pressure
+
+- `vital_sbpsystolic`: systolic blood pressure
+
+- `vital_spulse`: pulse (heart rate)
+
+- `vital_srespirations`: respiratory rate
+
+- `vital_stemperature`: body temperature
+
+Let's look at a few summary statistics!
+
+
+
+```{r echo = FALSE}
+data %>%
+  pivot_longer(cols = contains("vital")) %>%
+  group_by(name) %>%
+  summarize(
+    min = min(value), max = max(value), q01 = quantile(value, 0.1), q25 = quantile(value, 0.25), q50 = quantile(value, 0.50), q75 = quantile(value, 0.75), q99 = quantile(value, 0.99)
+  ) %>%
+  kable()
+```
+
+Hmm... The quantiles seem very reasonable, but if we look at the minimum and maximum, there are some _interesting_ values... like a body temperature of 363 degrees???? Systolic blood pressure of 1217?? Whoa! 
+
+Let's dig a bit deeper and plot some things! For ease of visualization, we'll only focus on two variables: the diastolic and systolic blood pressure:
+
+```{r echo = FALSE}
+data %>%
+  ggplot(aes(x = vital_sbpdiastolic, y = vital_sbpsystolic)) +
+  geom_point() + 
+  theme_classic()
+```
+
+Okay, looks like most of the blood pressure measurements cluster in one area, but visually we can see that there are a few _outliers_. 
+
+Is there a way to _automatically_ detect those outliers?
+
+
+## Let's try using distances!
+
+`TODO`
+
+## What if we wanted to try out unsupervised approaches?
+
+A common unsupervised anomaly detection technique is the [k-means algorithm](https://www.naftaliharris.com/blog/visualizing-k-means-clustering/). The intuition behind k-means is that _each point in a cluster should be near the center of that cluster_.
+
+In R, we can compute the k-means clusters using the `kmeans` function and then visualize the results using the `factoextra` package. Below, we cluster the data into _3 clusters_^[Why 3 clusters? Why not 4 or 5 or 2?].
+
+```{r echo = TRUE}
+library(factoextra)
+kmean <- kmeans(scale(data), 3, nstart = 25) # Uses Euclidean distance
+fviz_cluster(kmean,
+             data = scale(data),
+             palette = c("#2E9FDF", "#00AFBB", "#E7B800"),
+             geom = "point",
+             ellipse.type = "convex",
+             ggtheme = theme_bw())
+```
+
+Notice the blue circle that appears in the upper left corner! What does it mean? Which data point does it represent? The `fviz_cluster` function will plot the data using the first and second principal components. If we wanted to, we could plot our data using 2 variables:
+
+```{r echo = TRUE}
+fviz_cluster(kmean,
+             data = data %>% select(vital_sbpdiastolic, vital_sbpsystolic),
+             palette = c("#2E9FDF", "#00AFBB", "#E7B800"),
+             geom = "point",
+             ellipse.type = "convex",
+             ggtheme = theme_bw())
+```
+
+It's a bit hard to tell, but in the plot where we only show the diastolic and systolic blood pressures, the blue circle appears in the cluster of yellow squares...
+
+Cool! Now, what if I want to try a different unsupervised approach? Like... DBSCAN?^[The best way to describe how DBSCAN works is with a visual: https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/] 
+
+How well does DBSCAN work on our vitals data? We can use the `fpc` library to run the DBSCAN algorithm.
+
+```{r}
+library(fpc) # Uses Euclidean distance
+# You can calculate the distance independently and give that as input to the function
+db_results <- fpc::dbscan(data, eps = 1, MinPts = 4, scale = TRUE)
+fviz_cluster(db_results, 
+             scale(data),
+             geom = "point",
+             ggtheme = theme_bw())
+```
+
+The black dots correspond to the data points that could not be mapped to a cluster, according to the DBSCAN algorithm. These would be considered outliers.
+
+Now let's see what the results look like if we focus on just the blood pressure variables:
+
+```{r preview=TRUE}
+fviz_cluster(db_results, 
+             data %>% select(vital_sbpdiastolic, vital_sbpsystolic),
+             geom = "point",
+             ggtheme = theme_bw())
+```
+
+
+## What if we tried a supervised approach?
+
+`TODO`
+
+## Additional resources
+
+Below are the full list of topics and readings that we dove into for our journal club series on anomaly detection.
+
+
+| Topics| Reading Materials |
+|:--------| :------------------|
+| Introduction, distances, PCA | [Distance](https://personal.utdallas.edu/~herve/Abdi-Distance2007-pretty.pdf), [PCA](https://personal.utdallas.edu/~herve/abdi-awPCA2010.pdf), [PCA for statistical control processes](https://hal.archives-ouvertes.fr/hal-01125713/document), [MCD and extensions](http://arxiv.org/abs/1709.07045), [Generalized MCD](https://www.biorxiv.org/content/10.1101/333005v3), [CorrMax](https://onlinelibrary.wiley.com/doi/abs/10.1111/anzs.12144), [Deviating cells](https://doi.org/10.1080/00401706.2017.1340909)  |
+| Unsupervised anomaly detection: clustering approaches | ["Clustering" chapter from _Modern Data Science with R_](https://mdsr-book.github.io/mdsr2e/ch-learningII.html#clustering), Chapter 14 from _The Elements of Statistical Learning: Data Mining, Inference, and Prediction, Second Edition_, "Clustering" chapter from _An Introduction to Statistical Learning: with applications in R_, [Local Outlier Factor example](https://scikit-learn.org/stable/auto_examples/neighbors/plot_lof_outlier_detection.html#)
+| Unsupervised anomaly detection: examples | “Patient Privacy Violation Detection in Healthcare Critical Infrastructures: An Investigation Using Density-Based Benchmarking” (2020), [DBSCAN](https://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf), [DBSCAN visualization](https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/),“Density-Based Outlier Detection for Safeguarding Electronic Patient Record Systems” (2019), “Healthcare and anomaly detection: using machine learning to predict anomalies in heart rate data” (2021), “Tracking down the Villains: Outlier Detection at Netflix” (2017) |
+| Supervised anomaly detection: linear models and residuals | |
+| Supervised anomaly detection: XGBOD, isolation forests | [scikit-learn's outlier detection documentation](https://pyod.readthedocs.io/en/latest/
+- https://scikit-learn.org/stable/modules/outlier_detection.html#) |
+| Univariate and exploratory approaches | |
+| Data validation | |
+| Anomaly detection in production: RPCA | [Robust PCA](https://doi.org/10.1198/004017004000000563), [Robust PCA (a different one)](http://arxiv.org/abs/0912.3599), [Netflix outlier detection with robust PCA](https://netflixtechblog.com/rad-outlier-detection-on-big-data-d6b0494371cc), [Azure's anomaly detector](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/#overview), [Introduction Multivariate Anomaly Detection](https://techcommunity.microsoft.com/t5/ai-cognitive-services-blog/introducing-multivariate-anomaly-detection/ba-p/2260679), https://arxiv.org/abs/2009.02040 |
