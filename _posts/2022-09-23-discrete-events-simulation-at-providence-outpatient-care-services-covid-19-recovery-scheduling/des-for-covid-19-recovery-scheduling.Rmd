@@ -23,10 +23,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Intro
 
-Discrete Events Simulations (DES) are stochastic models which allow us to simulate a real world system or process.  It is modelled by a system as a (discrete) sequence of events in time.  Each event occurs at a particular instant in time and marks a change of state in the system, e.g. An arrival of a patient, or the delivery of a container of parts.  
-This type of model is particularly useful in simulating queues or systems which have a sequence of steps (particularly manufacturing, or call centers).  Because queuing models become increasingly complex to solve, as we increase the number of nodes, DES may be the only solution to model these systems.  DES can be modelled with simple routing rules and probabilities of events occurring.
+Discrete Events Simulations (DES) are stochastic models which allow us to simulate a real world system or process.  It is modelled by a system as a sequence of events in time.  Each event occurs at a particular instant in time and marks a change of state in the system, e.g. An arrival of a patient, or the delivery of a container of parts.  
+This type of model is particularly useful in simulating queues or systems which have a sequence of steps (particularly manufacturing, call centers or healthcare).  Because queuing models become increasingly complex to solve, as we increase the number of nodes, DES may be the only solution to model these systems.  DES can be modelled with simple routing rules and probabilities of events occurring.  E.g. You don't know exactly when the next patient will arrive to the ED, what kind of symptoms or conditions they may display, and what kind of treatment they would need.
 
-These simulations are useful to test hypothetical changes in the system.  For instance, say you wish to add an extra teller to a grocery store, what would be the impact to customer wait times?  Is it worth the additional staffing cost?  What if we only added this teller during peak customer times?  What is the cost to benefit then?
+These simulations are can be used to test hypothetical changes in the system.  For instance, say you wish to add an 
+
+
+act to customer wait times?  Is it worth the additional staffing cost?  What if we only added this teller during peak customer times?  What is the cost to benefit then?
 DES has long been proven successful in manufacturing, services, and supply chain sectors in solving complex resourcing and efficiency questions.  With growing concern on increasing costs to provide healthcare, and perceived lack of efficiency, there is growing usage of DES in healthcare.
 DES is commonly used to test schedules (for operating rooms, nursing, emergency department staffing, or other resourcing), test equipment purchase decisions (how many IV pumps are required to provide full coverage to the hospital?), space requirements (how many patient rooms, waiting chairs, do we need in this ED?) and even managing patient admissions and scheduling procedures.
 
