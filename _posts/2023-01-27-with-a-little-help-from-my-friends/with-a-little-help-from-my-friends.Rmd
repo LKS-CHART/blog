@@ -4,7 +4,7 @@ description: |
   Accompanying blog post for the Posit Community talk: "With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”.
 author:
   - name: Chloe Pou-Prom
-date: 2022-12-19
+date: 2023-01-27
 output:
   distill::distill_article:
     self_contained: false
