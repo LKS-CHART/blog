@@ -1,0 +1,158 @@
+---
+title: "With A Little Help From My Friends"
+description: |
+  Accompanying blog post for the Posit Community talk: "With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”.
+author:
+  - name: Chloe Pou-Prom
+date: 2022-12-19
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - post-miscellaneous
+  - post-talks
+draft: false
+preview: this_is_fine.png
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+> This is a summary of "With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital", a talk given on November 15, 2022 as part of the [Posit Enterprise Community Meetup](https://www.meetup.com/posit-enterprise-community-meetup/) series. A recording of the talk is available [here](https://www.youtube.com/watch?v=3PSNMV7SdNE) and a PDF of the accompanying slides can be found [here](slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf).
+
+# A success story
+
+Here at DSAA, we developed CHARTwatch, an early warning system for detecting patient deterioration. The system runs every hour:
+
+- First, CHARTwatch ingests laboratory values, vital measurements, and demographics.
+
+- Then, CHARTwatch classifies each visit into the following group: <span style="color:red; font-weight: bold;">High risk</span> vs <span style="color: gold; font-weight: bold;">Medium risk</span> vs <span style="color: green; font-weight: bold;">Low risk</span>.
+
+- The risk group predictions are then delivered through different methods:
+  
+  - Emails 
+        
+  - Updates to a front-end tool
+        
+  - Alerts sent to phones
+
+Finally, on August 2020, CHARTwatch went live and we were able to deploy to the General Internal Medicine (GIM) ward!! Developing and deploying CHARTwatch was a difficult feat and wouldn't have been possible without the help of a few friends...
+
+# Tools for development
+
+### Database connections 
+
+There are various data systems in the hospital, all with their own quirks and intricacies. In order to make it easier for the Advanced Analytics team to work with the different hospital databases, we developed `chartdb`, an internal R package. 
+        
+  - The connection functions follow the same pattern, making it easier for data scientists and data analysts to work with databases.
+  
+```{r echo = TRUE, eval=FALSE, fig.cap="Example connection functions"}
+con_a <- chartdb::connect_databaseA(username = ..., password = ...)
+con_b <- chartdb::connect_databaseB(username = ..., password = ...)
+con_edw <- chartdb::connect_edw(username = ..., password = ...)
+con_soarian <- chartdb::connect_soarian(username = ..., password = ...)
+con_mak <- chartdb::connect_mak(username = ..., password = ...)
+con_syngo <- chartdb::connect_syngo(username = ..., password = ...)
+```
+
+### A reproducible environment
+
+> A one-sentence horror story: "It works on my machine."
+
+![](this_is_fine.png)
+
+- To improve reproducibility, we use [renv](https://rstudio.github.io/renv/articles/renv.html), an R package for R dependency management.
+  
+- When setting up your `renv` environment, the `renv.lock` will keep track of the different packages (and their versions!!). If a new person needs to work on the project, they can use the `renv.lock` file to download the same packages and the same package versions! Woohoo!
+
+### Package-based development
+
+Why write a package?
+
+- [Plenty! Of! Reasons!](https://r-pkgs.org/)
+
+- In particular, writing a package makes it easy to share code and knowledge with others.
+
+- And, writing a package greatly reduces the amount of times you're copy-pasting code. Really, it's a win-win-win situation!
+
+### Environment! Environment! Environments 
+
+We typically work with 3 different environment.
+
+- The _development_ environment is the one on your local computer or your development server.
+
+- The _staging_ environment is as close to the "real" deployment environment as possible.
+
+- The _production_ environment is where things actually get deployed. Speaking of production environments, now's a great time to talk about _the tools we need for deployment_. Before doing that though, time for...
+
+# An interlude
+
+A multi-sentence horror story: 
+
+> In earlier attempts to deploy CHARTwatch, we were using multiple CRON jobs... that called different bash scripts... which then called different Python/R/Java scripts. Oh, and we had no separate environments. Or rather, we only had **one** environment, where
+`test environment = staging environment = production environment`
+
+![](ac_ghost.png)
+
+
+# Tools for deployment
+
+Interlude over! Let's looks the tools we need for deployment.
+
+### Authentication
+
+![](https://media.pocketgamer.com/artwork/na-29890-1584367347/Animal-Crossing-New-Horizon-Switch-11.jpg)
+
+We rely on Posit Connect for this. Posit Connect works with the hospital Active Directory, which enables administrators to manage permissions and access. What does this mean?
+
+  - Developers don't need to keep track of an extra server username and password.
+
+  - End-users can log in with their hospital credentials!
+
+### Scheduling
+
+Posit Connect also gives us the ability to schedule scripts through their admin interface.
+
+### Downtime 
+
+Knowing when things don't work is crucial for deployment.
+
+- We use `jarvis`, our own internally-developed R package, to email and Slack notifications alerting us of issues.
+
+- Each project will also have **downtime protocol** which defines the steps that various team members must take when something isn't working.
+
+  - For example, when a CHARTwatch downtime affects end-users, an email alert is sent to the entire hospital. Not all projects will require something like this, but since CHARTwatch is embedded in clinical care, many  need to be aware of the downtime.
+  
+### A secure way to download internally-developed packages
+
+We need to limit who can access the hospital network. Posit Package Manager is a repository package management that lets us download packages while being disconnected from the Internet.
+
+### An implementation plan
+
+Deploying an early warning system in the hospital involves working with many different groups. All worked together to develop the implementation plan. Some takeaways from the implementation plan:
+
+- Consider existing resources! There's no point in re-implementing a workflow that already exists.
+
+  - For example, notifications were designed so that they fit within existing processes. Emails to charge nurses were sent at times that made the most sense based on their shifts.
+  
+- Have a silent deployment period! This is useful for identifying unexpected bugs.
+
+  - One bug we found in silent deployment was caused by a [particular NAsty lab...](https://lks-chart.github.io/blog/posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/)
+  
+# Find out more
+
+This is a very very very _very_ brief overview of CHARTwatch and how we develop and deploy models in the hospital. Check out the reading list below for more details.
+
+- To learn more about CHARTwatch's model development and validation, see: [“Preparing a Clinical Support Model for Silent Mode in General Internal Medicine” by Nestor et al. (2020)](https://proceedings.mlr.press/v126/nestor20a.html).
+
+- To learn more about the process changes that were required for CHARTwatch's implementation, see: [“Implementing Machine Learning in Medicine” by Verma et al. (2021)](https://doi.org/10.1503/cmaj.202434)
+
+- To read all about the technical infrastructure that lead to CHARTwatch's deployment, see: [“From Compute to Care: Lessons Learned from Deploying an Early Warning System into Clinical Practice” by Pou-Prom et al. (2022)](https://doi.org/10.3389/fdgth.2022.932123)
+
+- To find out all about the data that is used to train CHARTwatch, see: ["GIM, a dataset for predicting patient deterioration in the General Internal Medicine ward (version 1.0.0)" by Kuzulugil et al. (2022)](https://doi.org/10.57764/5rq7-xj70)
+
+- This white paper by [Signal1](https://signal1.ai/): ["The Burden of Clinical Deterioration
+and How One Hospital is Tackling it
+with Machine Learning"](https://drive.google.com/file/d/1SejbynUXfyKgz4PGOf_5Ymn_oBMdUnh3/view)
