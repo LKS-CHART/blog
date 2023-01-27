@@ -20,7 +20,7 @@ preview: this_is_fine.png
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-> This is a summary of "With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital", a talk given on November 15, 2022 as part of the [Posit Enterprise Community Meetup](https://www.meetup.com/posit-enterprise-community-meetup/) series. A recording of the talk is available [here]() and a PDF of the accompanying slides can be found [here](slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf).
+> This is a summary of "With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital", a talk given on November 15, 2022 as part of the [Posit Enterprise Community Meetup](https://www.meetup.com/posit-enterprise-community-meetup/) series. A recording of the talk is available [here](https://www.youtube.com/watch?v=3PSNMV7SdNE) and a PDF of the accompanying slides can be found [here](slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf).
 
 # A success story
 
@@ -152,3 +152,7 @@ This is a very very very _very_ brief overview of CHARTwatch and how we develop 
 - To read all about the technical infrastructure that lead to CHARTwatch's deployment, see: [“From Compute to Care: Lessons Learned from Deploying an Early Warning System into Clinical Practice” by Pou-Prom et al. (2022)](https://doi.org/10.3389/fdgth.2022.932123)
 
 - To find out all about the data that is used to train CHARTwatch, see: ["GIM, a dataset for predicting patient deterioration in the General Internal Medicine ward (version 1.0.0)" by Kuzulugil et al. (2022)](https://doi.org/10.57764/5rq7-xj70)
+
+- This white paper by [Signal1](https://signal1.ai/): ["The Burden of Clinical Deterioration
+and How One Hospital is Tackling it
+with Machine Learning"](https://drive.google.com/file/d/1SejbynUXfyKgz4PGOf_5Ymn_oBMdUnh3/view)

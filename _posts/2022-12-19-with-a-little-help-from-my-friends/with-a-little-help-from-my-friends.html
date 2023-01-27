@@ -23,7 +23,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -1438,7 +1437,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="with-a-little-help-from-my-friends_files/header-attrs-2.19/header-attrs.js"></script>
+  <script src="with-a-little-help-from-my-friends_files/header-attrs-2.14/header-attrs.js"></script>
   <script src="with-a-little-help-from-my-friends_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="with-a-little-help-from-my-friends_files/popper-2.6.0/popper.min.js"></script>
   <link href="with-a-little-help-from-my-friends_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1476,9 +1475,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="dt=tag">post-talks</div>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>Accompanying blog post for the Posit Community talk: “With A
-Little Help From My Friends: Tools and insights for developing and
-deploying in the hospital”.</p></p>
+<p><p>Accompanying blog post for the Posit Community talk: “With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1489,46 +1486,26 @@ deploying in the hospital”.</p></p>
 
 <div class="d-article">
 <blockquote>
-<p>This is a summary of “With A Little Help From My Friends: Tools and
-insights for developing and deploying in the hospital”, a talk given on
-November 15, 2022 as part of the <a
-href="https://www.meetup.com/posit-enterprise-community-meetup/">Posit
-Enterprise Community Meetup</a> series. A recording of the talk is
-available <a href="">here</a> and a PDF of the accompanying slides can
-be found <a
-href="slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf">here</a>.</p>
+<p>This is a summary of “With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”, a talk given on November 15, 2022 as part of the <a href="https://www.meetup.com/posit-enterprise-community-meetup/">Posit Enterprise Community Meetup</a> series. A recording of the talk is available <a href="https://www.youtube.com/watch?v=3PSNMV7SdNE">here</a> and a PDF of the accompanying slides can be found <a href="slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf">here</a>.</p>
 </blockquote>
 <h1 id="a-success-story">A success story</h1>
-<p>Here at DSAA, we developed CHARTwatch, an early warning system for
-detecting patient deterioration. The system runs every hour:</p>
+<p>Here at DSAA, we developed CHARTwatch, an early warning system for detecting patient deterioration. The system runs every hour:</p>
 <ul>
-<li><p>First, CHARTwatch ingests laboratory values, vital measurements,
-and demographics.</p></li>
-<li><p>Then, CHARTwatch classifies each visit into the following group:
-<span style="color:red; font-weight: bold;">High risk</span> vs <span
-style="color: gold; font-weight: bold;">Medium risk</span> vs <span
-style="color: green; font-weight: bold;">Low risk</span>.</p></li>
-<li><p>The risk group predictions are then delivered through different
-methods:</p>
+<li><p>First, CHARTwatch ingests laboratory values, vital measurements, and demographics.</p></li>
+<li><p>Then, CHARTwatch classifies each visit into the following group: <span style="color:red; font-weight: bold;">High risk</span> vs <span style="color: gold; font-weight: bold;">Medium risk</span> vs <span style="color: green; font-weight: bold;">Low risk</span>.</p></li>
+<li><p>The risk group predictions are then delivered through different methods:</p>
 <ul>
 <li><p>Emails</p></li>
 <li><p>Updates to a front-end tool</p></li>
 <li><p>Alerts sent to phones</p></li>
 </ul></li>
 </ul>
-<p>Finally, on August 2020, CHARTwatch went live and we were able to
-deploy to the General Internal Medicine (GIM) ward!! Developing and
-deploying CHARTwatch was a difficult feat and wouldn’t have been
-possible without the help of a few friends…</p>
+<p>Finally, on August 2020, CHARTwatch went live and we were able to deploy to the General Internal Medicine (GIM) ward!! Developing and deploying CHARTwatch was a difficult feat and wouldn’t have been possible without the help of a few friends…</p>
 <h1 id="tools-for-development">Tools for development</h1>
 <h3 id="database-connections">Database connections</h3>
-<p>There are various data systems in the hospital, all with their own
-quirks and intricacies. In order to make it easier for the Advanced
-Analytics team to work with the different hospital databases, we
-developed <code>chartdb</code>, an internal R package.</p>
+<p>There are various data systems in the hospital, all with their own quirks and intricacies. In order to make it easier for the Advanced Analytics team to work with the different hospital databases, we developed <code>chartdb</code>, an internal R package.</p>
 <ul>
-<li>The connection functions follow the same pattern, making it easier
-for data scientists and data analysts to work with databases.</li>
+<li>The connection functions follow the same pattern, making it easier for data scientists and data analysts to work with databases.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1547,130 +1524,73 @@ for data scientists and data analysts to work with databases.</li>
 </blockquote>
 <p><img src="this_is_fine.png" /></p>
 <ul>
-<li><p>To improve reproducibility, we use <a
-href="https://rstudio.github.io/renv/articles/renv.html">renv</a>, an R
-package for R dependency management.</p></li>
-<li><p>When setting up your <code>renv</code> environment, the
-<code>renv.lock</code> will keep track of the different packages (and
-their versions!!). If a new person needs to work on the project, they
-can use the <code>renv.lock</code> file to download the same packages
-and the same package versions! Woohoo!</p></li>
+<li><p>To improve reproducibility, we use <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a>, an R package for R dependency management.</p></li>
+<li><p>When setting up your <code>renv</code> environment, the <code>renv.lock</code> will keep track of the different packages (and their versions!!). If a new person needs to work on the project, they can use the <code>renv.lock</code> file to download the same packages and the same package versions! Woohoo!</p></li>
 </ul>
 <h3 id="package-based-development">Package-based development</h3>
 <p>Why write a package?</p>
 <ul>
 <li><p><a href="https://r-pkgs.org/">Plenty! Of! Reasons!</a></p></li>
-<li><p>In particular, writing a package makes it easy to share code and
-knowledge with others.</p></li>
-<li><p>And, writing a package greatly reduces the amount of times you’re
-copy-pasting code. Really, it’s a win-win-win situation!</p></li>
+<li><p>In particular, writing a package makes it easy to share code and knowledge with others.</p></li>
+<li><p>And, writing a package greatly reduces the amount of times you’re copy-pasting code. Really, it’s a win-win-win situation!</p></li>
 </ul>
-<h3 id="environment-environment-environments">Environment! Environment!
-Environments</h3>
+<h3 id="environment-environment-environments">Environment! Environment! Environments</h3>
 <p>We typically work with 3 different environment.</p>
 <ul>
-<li><p>The <em>development</em> environment is the one on your local
-computer or your development server.</p></li>
-<li><p>The <em>staging</em> environment is as close to the “real”
-deployment environment as possible.</p></li>
-<li><p>The <em>production</em> environment is where things actually get
-deployed. Speaking of production environments, now’s a great time to
-talk about <em>the tools we need for deployment</em>. Before doing that
-though, time for…</p></li>
+<li><p>The <em>development</em> environment is the one on your local computer or your development server.</p></li>
+<li><p>The <em>staging</em> environment is as close to the “real” deployment environment as possible.</p></li>
+<li><p>The <em>production</em> environment is where things actually get deployed. Speaking of production environments, now’s a great time to talk about <em>the tools we need for deployment</em>. Before doing that though, time for…</p></li>
 </ul>
 <h1 id="an-interlude">An interlude</h1>
 <p>A multi-sentence horror story:</p>
 <blockquote>
-<p>In earlier attempts to deploy CHARTwatch, we were using multiple CRON
-jobs… that called different bash scripts… which then called different
-Python/R/Java scripts. Oh, and we had no separate environments. Or
-rather, we only had <strong>one</strong> environment, where
-<code>test environment = staging environment = production environment</code></p>
+<p>In earlier attempts to deploy CHARTwatch, we were using multiple CRON jobs… that called different bash scripts… which then called different Python/R/Java scripts. Oh, and we had no separate environments. Or rather, we only had <strong>one</strong> environment, where <code>test environment = staging environment = production environment</code></p>
 </blockquote>
 <p><img src="ac_ghost.png" /></p>
 <h1 id="tools-for-deployment">Tools for deployment</h1>
 <p>Interlude over! Let’s looks the tools we need for deployment.</p>
 <h3 id="authentication">Authentication</h3>
-<p><img
-src="https://media.pocketgamer.com/artwork/na-29890-1584367347/Animal-Crossing-New-Horizon-Switch-11.jpg" /></p>
-<p>We rely on Posit Connect for this. Posit Connect works with the
-hospital Active Directory, which enables administrators to manage
-permissions and access. What does this mean?</p>
+<p><img src="https://media.pocketgamer.com/artwork/na-29890-1584367347/Animal-Crossing-New-Horizon-Switch-11.jpg" /></p>
+<p>We rely on Posit Connect for this. Posit Connect works with the hospital Active Directory, which enables administrators to manage permissions and access. What does this mean?</p>
 <ul>
-<li><p>Developers don’t need to keep track of an extra server username
-and password.</p></li>
+<li><p>Developers don’t need to keep track of an extra server username and password.</p></li>
 <li><p>End-users can log in with their hospital credentials!</p></li>
 </ul>
 <h3 id="scheduling">Scheduling</h3>
-<p>Posit Connect also gives us the ability to schedule scripts through
-their admin interface.</p>
+<p>Posit Connect also gives us the ability to schedule scripts through their admin interface.</p>
 <h3 id="downtime">Downtime</h3>
 <p>Knowing when things don’t work is crucial for deployment.</p>
 <ul>
-<li><p>We use <code>jarvis</code>, our own internally-developed R
-package, to email and Slack notifications alerting us of
-issues.</p></li>
-<li><p>Each project will also have <strong>downtime protocol</strong>
-which defines the steps that various team members must take when
-something isn’t working.</p>
+<li><p>We use <code>jarvis</code>, our own internally-developed R package, to email and Slack notifications alerting us of issues.</p></li>
+<li><p>Each project will also have <strong>downtime protocol</strong> which defines the steps that various team members must take when something isn’t working.</p>
 <ul>
-<li>For example, when a CHARTwatch downtime affects end-users, an email
-alert is sent to the entire hospital. Not all projects will require
-something like this, but since CHARTwatch is embedded in clinical care,
-many need to be aware of the downtime.</li>
+<li>For example, when a CHARTwatch downtime affects end-users, an email alert is sent to the entire hospital. Not all projects will require something like this, but since CHARTwatch is embedded in clinical care, many need to be aware of the downtime.</li>
 </ul></li>
 </ul>
-<h3 id="a-secure-way-to-download-internally-developed-packages">A secure
-way to download internally-developed packages</h3>
-<p>We need to limit who can access the hospital network. Posit Package
-Manager is a repository package management that lets us download
-packages while being disconnected from the Internet.</p>
+<h3 id="a-secure-way-to-download-internally-developed-packages">A secure way to download internally-developed packages</h3>
+<p>We need to limit who can access the hospital network. Posit Package Manager is a repository package management that lets us download packages while being disconnected from the Internet.</p>
 <h3 id="an-implementation-plan">An implementation plan</h3>
-<p>Deploying an early warning system in the hospital involves working
-with many different groups. All worked together to develop the
-implementation plan. Some takeaways from the implementation plan:</p>
+<p>Deploying an early warning system in the hospital involves working with many different groups. All worked together to develop the implementation plan. Some takeaways from the implementation plan:</p>
 <ul>
-<li><p>Consider existing resources! There’s no point in re-implementing
-a workflow that already exists.</p>
+<li><p>Consider existing resources! There’s no point in re-implementing a workflow that already exists.</p>
 <ul>
-<li>For example, notifications were designed so that they fit within
-existing processes. Emails to charge nurses were sent at times that made
-the most sense based on their shifts.</li>
+<li>For example, notifications were designed so that they fit within existing processes. Emails to charge nurses were sent at times that made the most sense based on their shifts.</li>
 </ul></li>
-<li><p>Have a silent deployment period! This is useful for identifying
-unexpected bugs.</p>
+<li><p>Have a silent deployment period! This is useful for identifying unexpected bugs.</p>
 <ul>
-<li>One bug we found in silent deployment was caused by a <a
-href="https://lks-chart.github.io/blog/posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/">particular
-NAsty lab…</a></li>
+<li>One bug we found in silent deployment was caused by a <a href="https://lks-chart.github.io/blog/posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/">particular NAsty lab…</a></li>
 </ul></li>
 </ul>
 <h1 id="find-out-more">Find out more</h1>
-<p>This is a very very very <em>very</em> brief overview of CHARTwatch
-and how we develop and deploy models in the hospital. Check out the
-reading list below for more details.</p>
+<p>This is a very very very <em>very</em> brief overview of CHARTwatch and how we develop and deploy models in the hospital. Check out the reading list below for more details.</p>
 <ul>
-<li><p>To learn more about CHARTwatch’s model development and
-validation, see: <a
-href="https://proceedings.mlr.press/v126/nestor20a.html">“Preparing a
-Clinical Support Model for Silent Mode in General Internal Medicine” by
-Nestor et al. (2020)</a>.</p></li>
-<li><p>To learn more about the process changes that were required for
-CHARTwatch’s implementation, see: <a
-href="https://doi.org/10.1503/cmaj.202434">“Implementing Machine
-Learning in Medicine” by Verma et al. (2021)</a></p></li>
-<li><p>To read all about the technical infrastructure that lead to
-CHARTwatch’s deployment, see: <a
-href="https://doi.org/10.3389/fdgth.2022.932123">“From Compute to Care:
-Lessons Learned from Deploying an Early Warning System into Clinical
-Practice” by Pou-Prom et al. (2022)</a></p></li>
-<li><p>To find out all about the data that is used to train CHARTwatch,
-see: <a href="https://doi.org/10.57764/5rq7-xj70">“GIM, a dataset for
-predicting patient deterioration in the General Internal Medicine ward
-(version 1.0.0)” by Kuzulugil et al. (2022)</a></p></li>
+<li><p>To learn more about CHARTwatch’s model development and validation, see: <a href="https://proceedings.mlr.press/v126/nestor20a.html">“Preparing a Clinical Support Model for Silent Mode in General Internal Medicine” by Nestor et al. (2020)</a>.</p></li>
+<li><p>To learn more about the process changes that were required for CHARTwatch’s implementation, see: <a href="https://doi.org/10.1503/cmaj.202434">“Implementing Machine Learning in Medicine” by Verma et al. (2021)</a></p></li>
+<li><p>To read all about the technical infrastructure that lead to CHARTwatch’s deployment, see: <a href="https://doi.org/10.3389/fdgth.2022.932123">“From Compute to Care: Lessons Learned from Deploying an Early Warning System into Clinical Practice” by Pou-Prom et al. (2022)</a></p></li>
+<li><p>To find out all about the data that is used to train CHARTwatch, see: <a href="https://doi.org/10.57764/5rq7-xj70">“GIM, a dataset for predicting patient deterioration in the General Internal Medicine ward (version 1.0.0)” by Kuzulugil et al. (2022)</a></p></li>
+<li><p>This white paper by <a href="https://signal1.ai/">Signal1</a>: <a href="https://drive.google.com/file/d/1SejbynUXfyKgz4PGOf_5Ymn_oBMdUnh3/view">“The Burden of Clinical Deterioration and How One Hospital is Tackling it with Machine Learning”</a></p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
