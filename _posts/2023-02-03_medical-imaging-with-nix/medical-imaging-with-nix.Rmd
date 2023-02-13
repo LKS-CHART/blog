@@ -1,5 +1,5 @@
 ---
-title: Reproducible medical imaging software environments in Nix,</br> or,</br> Living in the future is hard.
+title: Reproducible medical imaging software environments in Nix, or, Living in the future is hard.
 description: |
   My journey creating a reproducible environment for building medical imaging machine learning models with Nix
 author:
@@ -10,14 +10,12 @@ output:
     self_contained: false
 categories:
   - post-miscellaneous
-draft: true
-#preview: this_is_fine.png
+draft: false
+preview: future-compute-v2.jpg
 ---
 
 
-I want to tell a story, advertise a product, and gripe about technology all at the same time. For readers
-who don't know me, I'm Chris Hammill, a senior data scientist on Unity Health Toronto's Data Science and Advanced
-Analytics team. I've been thinking for a long time about how to build software environments that are resilient to the
+I've been thinking for a long time about how to build software environments that are resilient to the
 ravages of time and that others can pick up and use effectively at their leisure. So when in the course of my work
 at DSAA I needed to develop an effective environment for doing machine learning on medical imaging data, I jumped at
 the chance. The fruit of that labour is:
@@ -27,7 +25,7 @@ https://github.com/LKS-CHART/medical-imaging-nix
 a working environment of software, defined in software. It allows me or anyone else to reproduce my work or use the
 exact software computing environment I use. What do I mean by environment? In this case I mean isolated collections of 
 programs, packages, and libraries that can be used together, but don't interact with the rest of your software. 
-The concept might be familiar if you've worked with [renv](https://posit.co/blog/renv-project-environments-for-r/), [conda](https://docs.conda.io/en/latest/), or [lmod]()https://lmod.readthedocs.io/en/latest/).
+The concept might be familiar if you've worked with [renv](https://posit.co/blog/renv-project-environments-for-r/), [conda](https://docs.conda.io/en/latest/), or [lmod](https://lmod.readthedocs.io/en/latest/).
 
 The project is powered by [nix](https://nixos.org/), a futuristic technology gaining a foothold among certain groups of 
 software developers and computing enthusiasts. Renowned for its ability to almost fully deterministically and reproducibly 
@@ -43,7 +41,7 @@ files, pytorch and tensorflow with GPU support enabled. All^[well, most anyway] 
 scientist needs to hit the ground  running on a new project. It can be forked and expanded to include other kinds of
 dependencies, you could add julia, rust, fortran, and many others with just a few lines of code.
 
-The environment can be compiled into a singularity container^[I will probably switch to or add docker before long] for 
+The environment can be compiled into a [apptainer container](https://apptainer.org/)^[I will probably switch to or add docker before long] for 
 portability to places that don't have nix. To get started with the environment you need nix installed with flakes 
 enabled but a new project can be initialized as simply as:
 
@@ -192,7 +190,7 @@ I don't know. I've sunk considerable cost into building this environment so one 
 
 Would cutting down my effort by 75% at the risk of some amount of computational irreproducibility and unportability be worth it?
 
-Is this a case of good enough practices trumping best practices? 
+Is this a case of [good enough practices](https://doi.org/10.1371/journal.pcbi.1005510) trumping best practices? 
 
 I'm not sure, but now that it's built I know that I will be able to revisit this exact environment for many years to come. I've acquired the
 skills to fix package sets as issues arise, so it's not a large burden any longer to develop. If I can iron out a few more details about
@@ -203,6 +201,28 @@ Would I encourage others to adopt the strategy of creating a nix environment fro
 go it alone. Sharing working flakes and overlays for data scientists to springboard off of makes this type of reproducible, portable, futuristic
 software versioning possible^[and of course contributing back to nixpkgs where you can], but keep your [novelty budget](https://shimweasel.com/2018/08/25/novelty-budgets) in mind, you might be wise to
 [pick boring technology](https://boringtechnology.club/). 
+
+## Future directions
+
+My plans are to continue improving and refining this environment. Future directions I'd plan to investigate are:
+
+- Improving the code quality of the overlay, for example converting from explicit find-replaces to `pythonRelaxDeps` in the code that
+  generates python package builds.
+- Contributing upstream. I've had a few PRs back to nixpkgs go through, and some stagnated from slow feedback cycles. I should commit to
+  giving back to the community when capacity allows.
+- Figure out how to interleave package version sets for python. In general if I want a version of software from nixpkgs commit A and some 
+  other software from commit B, I can just [use two versions of nixpkgs in my flake](https://github.com/LKS-CHART/medical-imaging-nix/blob/e85b0fbf5ee0cbbfa74c548a63a7025506fc91f2/flake.nix#L5-L6). Unfortunately it
+  is not so simple to do with python packages, instead of building the desired package against your versions of all other python packages it
+  will try to bring in its own, which breaks python installs. I suspect I can "borrow" ideas from mach-nix for this.
+- Generalize the graphics driver pinning, or at least provide a shell script to automatically patch the flake to the current system 
+  graphics driver. 
+- Continue adding/packaging useful software so that this environment stays productive and portable for years to come.
+- Conveniently for me, one of the very few other nix medical imaging machine learning people just joined our team, so I'm sure
+he'll have many useful suggestions to improve things.
+
+I like many others think that approaches like nix will become more prevalent in the future, and it's nice to get a taste of it now
+even if there are pain points.
+  
 
 <script type="text/javascript">
   (function(){
