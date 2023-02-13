@@ -111,7 +111,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","preview"]}},"value":[{"type":"character","attributes":{},"value":["Reproducible medical imaging software environments in Nix, or, Living in the future is hard."]},{"type":"character","attributes":{},"value":["My journey creating a reproducible environment for building medical imaging machine learning models with Nix\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chris Hammill"]}]}]},{"type":"character","attributes":{},"value":["2023-01-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["post-miscellaneous"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["future-compute-v2.jpg"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","preview"]}},"value":[{"type":"character","attributes":{},"value":["Reproducible medical imaging software environments in Nix, or, Living in the future is hard."]},{"type":"character","attributes":{},"value":["My journey creating a reproducible environment for building medical imaging machine learning models with Nix\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chris Hammill"]}]}]},{"type":"character","attributes":{},"value":["2023-01-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["infrastructure","deployment-environments","nix"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["future-compute-v2.jpg"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1471,7 +1471,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>Reproducible medical imaging software environments in Nix, or, Living in the future is hard.</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-<div class="dt=tag">post-miscellaneous</div>
+<div class="dt=tag">infrastructure</div>
+<div class="dt=tag">deployment-environments</div>
+<div class="dt=tag">nix</div>
 </div>
 <!--/radix_placeholder_categories-->
 <p><p>My journey creating a reproducible environment for building medical imaging machine learning models with Nix</p></p>
@@ -1541,6 +1543,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>Figure out how to interleave package version sets for python. In general if I want a version of software from nixpkgs commit A and some other software from commit B, I can just <a href="https://github.com/LKS-CHART/medical-imaging-nix/blob/e85b0fbf5ee0cbbfa74c548a63a7025506fc91f2/flake.nix#L5-L6">use two versions of nixpkgs in my flake</a>. Unfortunately it is not so simple to do with python packages, instead of building the desired package against your versions of all other python packages it will try to bring in its own, which breaks python installs. I suspect I can “borrow” ideas from mach-nix for this.</li>
 <li>Generalize the graphics driver pinning, or at least provide a shell script to automatically patch the flake to the current system graphics driver.</li>
 <li>Continue adding/packaging useful software so that this environment stays productive and portable for years to come.</li>
+<li>Conveniently for me, one of the very few other nix medical imaging machine learning people just joined our team, so I’m sure he’ll have many useful suggestions to improve things.</li>
 </ul>
 <p>I like many others think that approaches like nix will become more prevalent in the future, and it’s nice to get a taste of it now even if there are pain points.</p>
 <script type="text/javascript">

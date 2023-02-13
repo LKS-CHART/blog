@@ -9,7 +9,9 @@ output:
   distill::distill_article:
     self_contained: false
 categories:
-  - post-miscellaneous
+  - infrastructure
+  - deployment-environments
+  - nix
 draft: false
 preview: future-compute-v2.jpg
 ---
