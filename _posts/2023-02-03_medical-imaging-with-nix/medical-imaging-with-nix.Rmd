@@ -1,7 +1,7 @@
 ---
 title: Reproducible medical imaging software environments in Nix, or, Living in the future is hard.
 description: |
-  My journey creating a reproducible environment for building medical imaging machine learning models with Nix
+  My journey creating a reproducible environment for building medical imaging machine learning models with Nix.
 author:
   - name: Chris Hammill
 date: 2023-01-27
@@ -30,18 +30,20 @@ programs, packages, and libraries that can be used together, but don't interact 
 The concept might be familiar if you've worked with [renv](https://posit.co/blog/renv-project-environments-for-r/), [conda](https://docs.conda.io/en/latest/), or [lmod](https://lmod.readthedocs.io/en/latest/).
 
 The project is powered by [nix](https://nixos.org/), a futuristic technology gaining a foothold among certain groups of 
-software developers and computing enthusiasts. Renowned for its ability to almost fully deterministically and reproducibly 
-build software, enabling strongly isolated environments.
+software developers devops people, and programming language researchers. Renowned for its ability to almost fully 
+deterministically and reproducibly build software, it enables strongly isolated environments.
 
 ## What is medical-imaging-nix?
 
-The repo above is a [nix](https://nixos.org/) flake that generates a software environment that can be used as a 
+The repo above is a [nix](https://nixos.org/) project^[specifically a nix [flake](https://www.tweag.io/blog/2020-05-25-flakes/), something 
+like a library or package, useful for combining different projects that use nix] that generates a software environment that can be used as a 
 starting point for future projects. 
 
 The environment contains R, python, jupyter, a suite of tools for working with medical imaging 
 files, pytorch and tensorflow with GPU support enabled. All^[well, most anyway] the things a medical imaging data 
 scientist needs to hit the ground  running on a new project. It can be forked and expanded to include other kinds of
-dependencies, you could add julia, rust, fortran, and many others with just a few lines of code.
+dependencies, you could add julia^[although it is recommended you manage julia packages not using nix.], rust, fortran, 
+and many others with just a few lines of code.
 
 The environment can be compiled into a [apptainer container](https://apptainer.org/)^[I will probably switch to or add docker before long] for 
 portability to places that don't have nix. To get started with the environment you need nix installed with flakes 
@@ -55,9 +57,9 @@ nix develop
 ```
 
 the first time you run this it will take a very long time, because it will build most of the software universe from
-scratch for you^[including pytorch and tensorflow, let it run overnight.]. But after that all subsequent calls
-to nix develop will quickly drop you into your shiny new environment. If you're ready to package up your environment into
-a container you can run
+scratch for you^[including pytorch and tensorflow, let it run overnight. This is mostly due to CUDA, I explain a bit later]. 
+But after that all subsequent calls to nix develop will quickly drop you into your shiny new environment. If you're 
+ready to package up your environment into a container you can run:
 
 ```sh
 nix build
@@ -70,7 +72,7 @@ image to anywhere it might be needed.
 
 I decided to build the environment using nix^[Nix can mean a lot of things: https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html],
 it is a package manager, a build system, and a programming language. The programming language allows you to write code that builds software, the build
-system builds the software and caches it in a content addressable store, and the package manager gives you access to those packages.
+system builds the software and caches it in a content addressable store, and the package manager-like features give you access to those packages.
 This allows you to generate supercharged versions of conda environments, renvs, and can even obviate the need to use docker. I'll
 explain the advantages in a moment.
 
@@ -139,11 +141,13 @@ by each user. For smaller orgs you might be able to get away with a single nix-s
 So far I might have sounded effusive, if not fanboyish about the space alien wizard technology that can replace apt, conda, renv, etc. but
 there are real and significant sharp corners to nix and nixpkgs especially for data science. First off while nixpkgs includes every single
 package available on CRAN at the time of last snapshot, its coverage of pypi is piddly. Nixpkgs includes ~5200 python3.10 packages, whereas
-pypi has ~432k packages. In order to put together the data science environment I built, I needed to package or modify 33 python packages. Some 
+pypi has ~432k packages^[to be fair, pypi doesn't have package quality standards, many of these are abandoned or malware]. In order to put 
+together the data science environment I built, I needed to package or modify 33 python packages. Some 
 medical imaging related, some for working with jupyter notebooks, some machine learning related. And while generally not very 
 challenging once I got the hang of it, some are quite thorny to package. Most are 
-properly built from source, but some are just a thin wrapper around the wheels available on pypi, which defeats the purpose of nix^[although
-I would argue incrementally better is still better, a few risky packages is better than all risky packages.]. Nix also encourages you to
+properly built from source, but some are just a thin wrapper around the wheels available on pypi, which defeats the purpose of nix^[by
+introducing possible system dependencies and portability issues, although I would argue incrementally better is still better, a few 
+risky packages is better than all risky packages.]. Nix also encourages you to
 run the full test suite for the packages, but often test code is scrubbed from packages on pypi, so unless you get the code from github you
 may not have the tests. And you might need to disable some tests because nix's test environment is immutable, and builds are disallowed from
 downloading supplemental data by default, which sometimes breaks test code, so either you have to patch the tests yourself or you turn them 
