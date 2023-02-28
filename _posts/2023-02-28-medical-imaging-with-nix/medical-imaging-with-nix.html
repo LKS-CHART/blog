@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["future-compute-v2.jpg","medical-imaging-with-nix_files/anchor-4.2.2/anchor.min.js","medical-imaging-with-nix_files/bowser-1.9.3/bowser.min.js","medical-imaging-with-nix_files/distill-2.2.21/template.v2.js","medical-imaging-with-nix_files/header-attrs-2.14/header-attrs.js","medical-imaging-with-nix_files/jquery-3.6.0/jquery-3.6.0.js","medical-imaging-with-nix_files/jquery-3.6.0/jquery-3.6.0.min.js","medical-imaging-with-nix_files/jquery-3.6.0/jquery-3.6.0.min.map","medical-imaging-with-nix_files/popper-2.6.0/popper.min.js","medical-imaging-with-nix_files/tippy-6.2.7/tippy-bundle.umd.min.js","medical-imaging-with-nix_files/tippy-6.2.7/tippy-light-border.css","medical-imaging-with-nix_files/tippy-6.2.7/tippy.css","medical-imaging-with-nix_files/tippy-6.2.7/tippy.umd.min.js","medical-imaging-with-nix_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["comments.tmpl.html","future-compute-v2.jpg","medical-imaging-with-nix_files/anchor-4.2.2/anchor.min.js","medical-imaging-with-nix_files/bowser-1.9.3/bowser.min.js","medical-imaging-with-nix_files/distill-2.2.21/template.v2.js","medical-imaging-with-nix_files/header-attrs-2.14/header-attrs.js","medical-imaging-with-nix_files/jquery-3.6.0/jquery-3.6.0.js","medical-imaging-with-nix_files/jquery-3.6.0/jquery-3.6.0.min.js","medical-imaging-with-nix_files/jquery-3.6.0/jquery-3.6.0.min.map","medical-imaging-with-nix_files/popper-2.6.0/popper.min.js","medical-imaging-with-nix_files/tippy-6.2.7/tippy-bundle.umd.min.js","medical-imaging-with-nix_files/tippy-6.2.7/tippy-light-border.css","medical-imaging-with-nix_files/tippy-6.2.7/tippy.css","medical-imaging-with-nix_files/tippy-6.2.7/tippy.umd.min.js","medical-imaging-with-nix_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1489,20 +1489,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>I’ve been thinking for a long time about how to build software environments that are resilient to the ravages of time and that others can pick up and use effectively at their leisure. So when in the course of my work at DSAA I needed to develop an effective environment for doing machine learning on medical imaging data, I jumped at the chance. The fruit of that labour is:</p>
 <p><a href="https://github.com/LKS-CHART/medical-imaging-nix" class="uri">https://github.com/LKS-CHART/medical-imaging-nix</a></p>
 <p>a working environment of software, defined in software. It allows me or anyone else to reproduce my work or use the exact software computing environment I use. What do I mean by environment? In this case I mean isolated collections of programs, packages, and libraries that can be used together, but don’t interact with the rest of your software. The concept might be familiar if you’ve worked with <a href="https://posit.co/blog/renv-project-environments-for-r/">renv</a>, <a href="https://docs.conda.io/en/latest/">conda</a>, or <a href="https://lmod.readthedocs.io/en/latest/">lmod</a>.</p>
-<p>The project is powered by <a href="https://nixos.org/">nix</a>, a futuristic technology gaining a foothold among certain groups of software developers devops people, and programming language researchers. Renowned for its ability to almost fully deterministically and reproducibly build software, it enables strongly isolated environments.</p>
+<p>The project is powered by <a href="https://nixos.org/">nix</a>, a futuristic technology gaining a foothold among certain groups of software developers devops people, and programming language researchers<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Renowned for its ability to almost fully deterministically and reproducibly build software, it enables strongly isolated environments.</p>
 <h2 id="what-is-medical-imaging-nix">What is medical-imaging-nix?</h2>
-<p>The repo above is a <a href="https://nixos.org/">nix</a> project<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> that generates a software environment that can be used as a starting point for future projects.</p>
-<p>The environment contains R, python, jupyter, a suite of tools for working with medical imaging files, pytorch and tensorflow with GPU support enabled. All<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> the things a medical imaging data scientist needs to hit the ground running on a new project. It can be forked and expanded to include other kinds of dependencies, you could add julia<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, rust, fortran, and many others with just a few lines of code.</p>
-<p>The environment can be compiled into a <a href="https://apptainer.org/">apptainer container</a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> for portability to places that don’t have nix. To get started with the environment you need nix installed with flakes enabled but a new project can be initialized as simply as:</p>
+<p>The repo above is a <a href="https://nixos.org/">nix</a> project<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> that generates a software environment that can be used as a starting point for future projects.</p>
+<p>The environment contains R, python, jupyter, a suite of tools for working with medical imaging files, pytorch and tensorflow with GPU support enabled. All<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> the things a medical imaging data scientist needs to hit the ground running on a new project. It can be forked and expanded to include other kinds of dependencies, you could add julia<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, rust, fortran, and many others with just a few lines of code.</p>
+<p>The environment can be compiled into a <a href="https://apptainer.org/">apptainer container</a><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> for portability to places that don’t have nix. To get started with the environment you need nix installed with flakes enabled but a new project can be initialized as simply as:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> my-awesome-project</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> my-awesome-project</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> flake init -t github:LKS-CHART/medical-imaging-nix</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> develop</span></code></pre></div>
-<p>the first time you run this it will take a very long time, because it will build most of the software universe from scratch for you<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>. But after that all subsequent calls to nix develop will quickly drop you into your shiny new environment. If you’re ready to package up your environment into a container you can run:</p>
+<p>the first time you run this it will take a very long time, because it will build most of the software universe from scratch for you<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>. But after that all subsequent calls to nix develop will quickly drop you into your shiny new environment. If you’re ready to package up your environment into a container you can run:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">nix</span> build</span></code></pre></div>
 <p>this also takes a while, so start it before a meeting. But once that’s done you can send your environment image to anywhere it might be needed.</p>
 <h2 id="how-does-it-work">How does it work</h2>
-<p>I decided to build the environment using nix<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>, it is a package manager, a build system, and a programming language. The programming language allows you to write code that builds software, the build system builds the software and caches it in a content addressable store, and the package manager-like features give you access to those packages. This allows you to generate supercharged versions of conda environments, renvs, and can even obviate the need to use docker. I’ll explain the advantages in a moment.</p>
+<p>I decided to build the environment using nix<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, it is a package manager, a build system, and a programming language. The programming language allows you to write code that builds software, the build system builds the software and caches it in a content addressable store, and the package manager-like features give you access to those packages. This allows you to generate supercharged versions of conda environments, renvs, and can even obviate the need to use docker. I’ll explain the advantages in a moment.</p>
 <aside>
 <blockquote>
 <p><strong>you, a savvy expert</strong>: but Chris, what about conda, renv, groundhog, pacman, rstudio package manager, and docker?</p>
@@ -1514,27 +1514,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>The nix ecosystem also provides a curated set of a packages referred to as nixpkgs, akin to conda, or debian packages available from apt. Nixpkgs is the <a href="https://repology.org/repositories/graphs">largest set of packages provided by any package manager</a>, so on paper this should mean that building environments with nix should be easier than any of the alternatives, you can just grab your packages from the massive set of packages in nixpkgs.</p>
 <h2 id="but-whats-different">But what’s different?</h2>
 <p>If you talk to users of nix and ask them why nix, the argument is rarely centered on the size of nixpkgs although that is certainly a plus. You’re more likely to hear about how the builds are isolated, they don’t interact with the rest of your software, that the builds are specified in a single programming language, and that versioning of the entire repository can be done through git. These are no mean feats.</p>
-<p>Building software is really hard. If you’ve ever wanted to build someone’s project from source, especially complicated modern projects, it can be a trying ordeal. Software can be built with make, cmake, ymake, autotools, setuptools, R CMD INSTALL, ninja, bazel, shake, and many many more build systems and tools. The extremely brilliant devs who designed the nix build system found ways to hook into most of the other common build systems, and then ecosystem contributors used those tools to create reproducible recipes to build each of the 81k+ packages in nixpkgs. Adding your own additional packages using the nix language and build system is relatively simple<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>, so as your project grows it can absorb new packages into your declaratively specified software environment<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>Building software is really hard. If you’ve ever wanted to build someone’s project from source, especially complicated modern projects, it can be a trying ordeal. Software can be built with make, cmake, ymake, autotools, setuptools, R CMD INSTALL, ninja, bazel, shake, and many many more build systems and tools. The extremely brilliant devs who designed the nix build system found ways to hook into most of the other common build systems, and then ecosystem contributors used those tools to create reproducible recipes to build each of the 81k+ packages in nixpkgs. Adding your own additional packages using the nix language and build system is relatively simple<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, so as your project grows it can absorb new packages into your declaratively specified software environment<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p>Once you’ve built the software, you then have to worry about dynamic dependencies. Dynamically linked C programs rely on dependencies that are hanging around on disk. A program called the linker says go find this particular feature you use when you run the program, if the dependencies providing those features have changed on disk your results could be different. Dynamically linking C programs/libraries relies on a byzantine collection of different types of mutable global state. There is your system default library locations (global state, disk-backed), <code>LIBRARY_PATH</code>/<code>LD_LIBRARY_PATH</code> (global state, shell environment local and disk-backed), pkg-config is sometimes used to configure linking (disk backed global-state pointing to disk-backed global state). Global state has the potential to do like state and change… state. This means your results are balanced on a house of cards where shifting one part of the state could break your results.</p>
 <p>Don’t believe me that this is a real issue? What about <a href="https://community.rstudio.com/t/rstudio-server-returns-wrong-results-without-any-message/54537/2">silently getting the wrong results</a> for your numerical code because you had <code>LD_LIBRARY_PATH</code> or <code>update-alternatives</code> set incorrectly, oof.</p>
 <p>Or not being able to build your software at all because one of your package managers got in the way. This may sound like puritanical nerd worries, but these are real issues I’ve experienced in practice. I was soured on conda long ago when even having it on my executable path broke my ability to build the R package I was developing for work. What happened? Conda’s addition to my <code>PATH</code> overrode my system <code>h5cc</code> a compiler wrapper for building C libraries that depend on HDF5, this linked in the wrong version of HDF5 and prevented my R package from building. I had not asked conda for h5cc, it was pulled in as a dependency of some arbitrary conda package I was using. It’s wasn’t just conda’s fault, the R package itself was an eldritch horror of an autotools build, ditching conda was easier than fixing the R build to ignore conda’s h5cc.</p>
-<p>Nix gets around these issues by not using the system default libraries wherever possible, avoiding <code>LIBRARY_PATH</code>/<code>LD_LIBRARY_PATH</code> wherever possible<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>, and making the places where state is unavoidable immutable (your nix store of built things is read-only). So builds are hermetic and isolated, you can happily have multiple versions of the same C library running around without paying any extra attention to where your C dependencies are coming from. This means you don’t need a separate docker container to have an alternate universe of C libraries to make sure your analysis works, you just have it beside all your normal stuff, and that’s relevatory when you’ve been bitten by these problems enough times.</p>
+<p>Nix gets around these issues by not using the system default libraries wherever possible, avoiding <code>LIBRARY_PATH</code>/<code>LD_LIBRARY_PATH</code> wherever possible<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>, and making the places where state is unavoidable immutable (your nix store of built things is read-only). So builds are hermetic and isolated, you can happily have multiple versions of the same C library running around without paying any extra attention to where your C dependencies are coming from. This means you don’t need a separate docker container to have an alternate universe of C libraries to make sure your analysis works, you just have it beside all your normal stuff, and that’s relevatory when you’ve been bitten by these problems enough times.</p>
 <p>These builds, instead of being an imperative sequence of commands to run to build and install software to a specific place, are written in the nix programming language, a functional programming language designed to make it easy to modify and tweak the build and dependencies so that your software environment is fully specified in code.</p>
 <p>By contrast conda has 8000 prebuilt packages, ubuntu offers an admirable 36k. These builds assume something about the directory layout of your system, and they can be broken by updating system packages using other package manager.</p>
 <p>Nix also empowers you to be your own package repository, significant effort has gone into making builds fully deterministic where possible. This means once I’ve built “pySweetDataToolR.jl” I can give it to you, if we’re on the same architecture you can just slot the relevant parts of my nix store into yours, so for a medium or larger organization you can set up a global cache of nix builds on a server that can be downloaded by each user. For smaller orgs you might be able to get away with a single nix-store that everyone can share. No more N numpys per employee.</p>
 <h2 id="wheres-the-rub">Where’s the rub?</h2>
-<p>So far I might have sounded effusive, if not fanboyish about the space alien wizard technology that can replace apt, conda, renv, etc. but there are real and significant sharp corners to nix and nixpkgs especially for data science. First off while nixpkgs includes every single package available on CRAN at the time of last snapshot, its coverage of pypi is piddly. Nixpkgs includes ~5200 python3.10 packages, whereas pypi has ~432k packages<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. In order to put together the data science environment I built, I needed to package or modify 33 python packages. Some medical imaging related, some for working with jupyter notebooks, some machine learning related. And while generally not very challenging once I got the hang of it, some are quite thorny to package. Most are properly built from source, but some are just a thin wrapper around the wheels available on pypi, which defeats the purpose of nix<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. Nix also encourages you to run the full test suite for the packages, but often test code is scrubbed from packages on pypi, so unless you get the code from github you may not have the tests. And you might need to disable some tests because nix’s test environment is immutable, and builds are disallowed from downloading supplemental data by default, which sometimes breaks test code, so either you have to patch the tests yourself or you turn them off (so guess which you choose if you’re pushing for a deadline).</p>
+<p>So far I might have sounded effusive, if not fanboyish about the space alien wizard technology that can replace apt, conda, renv, etc. but there are real and significant sharp corners to nix and nixpkgs especially for data science. First off while nixpkgs includes every single package available on CRAN at the time of last snapshot, its coverage of pypi is piddly. Nixpkgs includes ~5200 python3.10 packages, whereas pypi has ~432k packages<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. In order to put together the data science environment I built, I needed to package or modify 33 python packages. Some medical imaging related, some for working with jupyter notebooks, some machine learning related. And while generally not very challenging once I got the hang of it, some are quite thorny to package. Most are properly built from source, but some are just a thin wrapper around the wheels available on pypi, which defeats the purpose of nix<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>. Nix also encourages you to run the full test suite for the packages, but often test code is scrubbed from packages on pypi, so unless you get the code from github you may not have the tests. And you might need to disable some tests because nix’s test environment is immutable, and builds are disallowed from downloading supplemental data by default, which sometimes breaks test code, so either you have to patch the tests yourself or you turn them off (so guess which you choose if you’re pushing for a deadline).</p>
 <p>So life in the future is tough, because you become part of the team building it. The future I mean. Since starting my nix journey several years ago I’ve contributed code to nixpkgs more than a few times, but when you are under pressure to achieve actual business goals it can be very frustrating to have to solve these problems yourself. What’s worse is I still feel like a beginner with nix despite having years of experience. Others I’ve encountered like the documentation, participate in the discourse or IRC channels and feel comfortable using nix, my experience hasn’t been so pleasant, with most issues I’ve encountered feeling almost ungoogleable, different learning styles I guess?</p>
 <p>The other place I’ve found nixpkgs to be frustrating to use for python, is upgrading. Unless you’re maintaining your own branch of nixpkgs you are somewhat at the whims of other nixpkg contributors as to what gets upgraded when. And due to a potentially poor choice on strategies the most up-to-date version of nixpkgs may contain a large set of temporarily broken python packages. Often upgrading one package will break many packages that depend on it, not only because the code becomes incompatible, but because it is fashionable in python packaging to set strict version upper bounds, so the package won’t even build (so we can’t check if all the tests still pass with the new version). So I find myself in the position of checking out old versions of files from nixpkgs to build my package overlays when I need to downdate a certain dependency. This is tedious and I should probably switch to maintaining my own version of nixpkgs with my downdates and modifications, but this makes it harder to share with others.</p>
-<p>So this points to the biggest advantage of conda over nix, when conda does not have a package it gets it from pypi, nixpkgs cannot fail over to grabbing from pypi and installing with pip, it also can’t do dependency solving, if the nixpkgs version of a python lib isn’t compatible with another, you have to go find a satisfactory version yourself (or cheat and <a href="https://github.com/LKS-CHART/medical-imaging-nix/blob/2e811b3eb9b931f708d5f4b3658506b496ce24a0/container/overlay.nix#L71">lie about the version requirements</a>^ [I was reminded after the first draft of this post about the existence of <code>pythonRelaxDeps</code>, a way to automatically soften version requirements, I may switch to use this in the future.]). This is painful. There are two nix projects that have aimed to address this problem, <a href="https://github.com/DavHau/mach-nix">mach-nix</a> which has been abandoned<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a>, and <a href="https://github.com/nix-community/poetry2nix">poetry2nix</a> which may solve some of my woes but I haven’t tried it yet.</p>
-<p>Another advantage alluded to already is speed. Compiling things takes time, so unless you’re always getting prebuilt binaries from the nix servers you can be in for long build times. Nix is good at not duplicating build work, but sometimes rebuilding is unavoidable. Say you want to use a newer version of cuda, or gcc, most of your environment will need to be rebuilt<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></p>
-<p>Finally, the last difficulty is with irreducible system dependencies. Nixpkgs, when you’re not using the nix operating system, does not interact well with graphics drivers, there is a wrapper project I use called <a href="https://github.com/guibou/nixGL">NixGL</a> which gives you access to graphics drivers and allows you to run programs that use CUDA<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>. However this has meant I needed to hardcode my graphics driver into the nix flake, severely hindering portability<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>.</p>
+<p>So this points to the biggest advantage of conda over nix, when conda does not have a package it gets it from pypi, nixpkgs cannot fail over to grabbing from pypi and installing with pip, it also can’t do dependency solving, if the nixpkgs version of a python lib isn’t compatible with another, you have to go find a satisfactory version yourself (or cheat and <a href="https://github.com/LKS-CHART/medical-imaging-nix/blob/2e811b3eb9b931f708d5f4b3658506b496ce24a0/container/overlay.nix#L71">lie about the version requirements</a>^ [I was reminded after the first draft of this post about the existence of <code>pythonRelaxDeps</code>, a way to automatically soften version requirements, I may switch to use this in the future.]). This is painful. There are two nix projects that have aimed to address this problem, <a href="https://github.com/DavHau/mach-nix">mach-nix</a> which has been abandoned<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>, and <a href="https://github.com/nix-community/poetry2nix">poetry2nix</a> which may solve some of my woes but I haven’t tried it yet.</p>
+<p>Another advantage alluded to already is speed. Compiling things takes time, so unless you’re always getting prebuilt binaries from the nix servers you can be in for long build times. Nix is good at not duplicating build work, but sometimes rebuilding is unavoidable. Say you want to use a newer version of cuda, or gcc, most of your environment will need to be rebuilt<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a></p>
+<p>Finally, the last difficulty is with irreducible system dependencies. Nixpkgs, when you’re not using the nix operating system, does not interact well with graphics drivers, there is a wrapper project I use called <a href="https://github.com/guibou/nixGL">NixGL</a> which gives you access to graphics drivers and allows you to run programs that use CUDA<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. However this has meant I needed to hardcode my graphics driver into the nix flake, severely hindering portability<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>.</p>
 <h2 id="is-this-worth-it">Is this worth it?</h2>
 <p>I don’t know. I’ve sunk considerable cost into building this environment so one might reasonably expect me to be quite biased.</p>
 <p>Would cutting down my effort by 75% at the risk of some amount of computational irreproducibility and unportability be worth it?</p>
 <p>Is this a case of <a href="https://doi.org/10.1371/journal.pcbi.1005510">good enough practices</a> trumping best practices?</p>
 <p>I’m not sure, but now that it’s built I know that I will be able to revisit this exact environment for many years to come. I’ve acquired the skills to fix package sets as issues arise, so it’s not a large burden any longer to develop. If I can iron out a few more details about merging python package sets from multiple versions of nixpkgs I would think that this is substantively superior to managing my software with conda, apt, renv, and docker.</p>
-<p>Would I encourage others to adopt the strategy of creating a nix environment from scratch for each new project? Probably not, at least don’t go it alone. Sharing working flakes and overlays for data scientists to springboard off of makes this type of reproducible, portable, futuristic software versioning possible<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a>, but keep your <a href="https://shimweasel.com/2018/08/25/novelty-budgets">novelty budget</a> in mind, you might be wise to <a href="https://boringtechnology.club/">pick boring technology</a>.</p>
+<p>Would I encourage others to adopt the strategy of creating a nix environment from scratch for each new project? Probably not, at least don’t go it alone. Sharing working flakes and overlays for data scientists to springboard off of makes this type of reproducible, portable, futuristic software versioning possible<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>, but keep your <a href="https://shimweasel.com/2018/08/25/novelty-budgets">novelty budget</a> in mind, you might be wise to <a href="https://boringtechnology.club/">pick boring technology</a>.</p>
 <h2 id="future-directions">Future directions</h2>
 <p>My plans are to continue improving and refining this environment. Future directions I’d plan to investigate are:</p>
 <ul>
@@ -1546,6 +1546,111 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>Conveniently for me, one of the very few other nix medical imaging machine learning people just joined our team, so I’m sure he’ll have many useful suggestions to improve things.</li>
 </ul>
 <p>I like many others think that approaches like nix will become more prevalent in the future, and it’s nice to get a taste of it now even if there are pain points.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to Ben Darwin, Chloe Pou-Prom, Meggie Debnath, and Derek Beaton for providing useful feedback on drafts of this post.</p>
+<div class="layout-chunk" data-layout="l-body">
+<h2>Comments</h2>
+<p>You can use your Mastodon account to reply to this <a class="link" href="https://mastodon.social/@cfhammill/109944483497018229">post</a>.</p>
+<p><button id="replyButton" href="https://mastodon.social/@cfhammill/109944483497018229">Reply</button></p>
+<dialog id="toot-reply" class="mastodon" data-component="dialog">
+  <h3>Reply to cfhammill's post</h3>
+  <p> With an account on the Fediverse or Mastodon, you can respond to this post. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. </p>
+  <p>Copy and paste this URL into the search field of your favourite Fediverse app or the web interface of your Mastodon server.</p>
+  <div class="copypaste">
+    <input type="text" readonly="" value="https://mastodon.social/@cfhammill/109944483497018229">
+    <button class="button" id="copyButton">Copy</button>
+    <button class="button" id="cancelButton">Close</button>
+  </div>
+</dialog>
+<p id="mastodon-comments-list"></p>
+<button id="load-comment">Load comments</button>
+<noscript><p>You need JavaScript to view the comments.</p></noscript>
+<script src="medical-imaging-with-nix_files/DOMPurify-3.0.0/dist/purify.min.js"></script>
+<style>
+  .mastodon-comment {
+  background-color: #00000007
+  }
+</style>
+<script type="text/javascript">
+    const dialog = document.querySelector('dialog');
+    document.getElementById('replyButton').addEventListener('click', () => {
+        dialog.showModal();
+    });
+    document.getElementById('copyButton').addEventListener('click', () => {
+        navigator.clipboard.writeText('https://mastodon.social/@cfhammill/109944483497018229');
+    });
+    document.getElementById('cancelButton').addEventListener('click', () => {
+        dialog.close();
+    });
+    dialog.addEventListener('keydown', e => {
+        if (e.key === 'Escape') dialog.close();
+    });
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function make_post_loader(){
+        let resp_json = null;
+        let to_load = 0;
+        const load_n = 10;
+
+        function loader(){
+            to_load = to_load + 1
+            if(!resp_json){
+                resp_json = fetch('https://mastodon.social/api/v1/statuses/109944483497018229/context').
+                            then(function(response){ return response.json() });
+            }
+
+            resp_json.then(function (data){
+                if(data['descendants'] &&
+                   Array.isArray(data['descendants']) && 
+                   data['descendants'].length > 0) {
+                    document.getElementById('mastodon-comments-list').innerHTML = "";
+                    data['descendants'].slice(0, load_n * to_load).forEach(function(reply) {
+                        reply.account.display_name = escapeHtml(reply.account.display_name);
+                        reply.account.emojis.forEach(emoji => {
+                            reply.account.display_name = 
+                                reply.account.display_name.replace( `:${emoji.shortcode}: `,
+                                                                    `<img src="${escapeHtml(emoji.static_url)}" alt="Emoji ${emoji.shortcode}" height="20" width="20" /> `);
+                        });
+                        mastodonComment =
+                            `<div class="mastodon-comment">
+  <div class="avatar">
+    <img src="${escapeHtml(reply.account.avatar_static)}" height=60 width=60 alt="">
+    <div>
+      <div class="content">
+        <div class="author">
+          <a href="${reply.account.url}" rel="nofollow">
+            <span>${reply.account.display_name}</span>
+            <span class="disabled">${escapeHtml(reply.account.acct)}</span>
+          </a>
+          <a class="date" href="${reply.uri}" rel="nofollow">
+            ${reply.created_at.substr(0, 10)}
+          </a>
+        </div>
+        <div class="mastodon-comment-content">${reply.content}</div> 
+      </div>
+    </div> `;
+                        document.getElementById('mastodon-comments-list').appendChild(DOMPurify.sanitize(mastodonComment, {'RETURN_DOM_FRAGMENT': true}));
+                        document.getElementById('load-comment').innerText = "Load more"
+                    });
+                } else {
+                    document.getElementById('mastodon-comments-list').innerHTML = "<p>No comments found</p>";
+                }
+            }); 
+        }
+        return loader;
+    }
+
+    document.getElementById("load-comment").addEventListener("click", make_post_loader());
+</script>
+
+</div>
 <script type="text/javascript">
   (function(){
     document.getElementsByClassName("d-title")[0].getElementsByTagName("h1")[0].innerHTML = "Reproducible medical imaging software environments in Nix.</br> or</br> Living in the future is hard."; 
@@ -1555,22 +1660,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <section class="footnotes" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>specifically a nix <a href="https://www.tweag.io/blog/2020-05-25-flakes/">flake</a>, something like a library or package, useful for combining different projects that use nix<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>well, most anyway<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>although it is recommended you manage julia packages not using nix.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>I will probably switch to or add docker before long<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>including pytorch and tensorflow, let it run overnight. This is mostly due to CUDA, I explain a bit later<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>Nix can mean a lot of things: <a href="https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html" class="uri">https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>once you’ve conquered learning it.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p>this is also a pain point, which I’ll talk about later. But it’s painful only because nix allows you to do something that essentially no one would even try to do with other package managers.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p>it does this by patching the produced compiled artifacts to point to their “dynamic” dependencies statically using @rpath<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p>to be fair, pypi doesn’t have package quality standards, many of these are abandoned or malware<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p>by introducing possible system dependencies and portability issues, although I would argue incrementally better is still better, a few risky packages is better than all risky packages.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12" role="doc-endnote"><p>although hopefully returning as part of <a href="https://github.com/nix-community/dream2nix" class="uri">https://github.com/nix-community/dream2nix</a> in the future<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13" role="doc-endnote"><p> a colleague suggests that we create a build farm where a background process builds new versions of things so that there are prebuilt versions always available, but that is an infrastructure investment that hasn’t felt worth it yet. Apparently the issue is that CUDA is technically not free software and by policy the nix build farms won’t build it for us. <a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14" role="doc-endnote"><p>you need to start programs with <code>nixGL&lt;driver&gt; &lt;program&gt;</code> which is irritating, but I think can be fixed in my flake<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15" role="doc-endnote"><p>Ok you’d need to edit one line in the flake but that’s enough of a barrier to discourage users. If anyone in the nix community can help me solve this problem I’d be extremely grateful<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16" role="doc-endnote"><p>and of course contributing back to nixpkgs where you can<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1" role="doc-endnote"><p>a lot of ink has been spilled detailing how nix works and why you should use it. My treatment will be relatively superficial, instead focusing on my efforts and challenges using it in practice. If you are interested in the former I recommend:<br />
+- <a href="https://serokell.io/blog/what-is-nix" class="uri">https://serokell.io/blog/what-is-nix</a><br />
+- <a href="https://revelry.co/insights/development/nix-time/" class="uri">https://revelry.co/insights/development/nix-time/</a> <a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>specifically a nix <a href="https://www.tweag.io/blog/2020-05-25-flakes/">flake</a>, something like a library or package, useful for combining different projects that use nix<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>well, most anyway<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>although it is recommended you manage julia packages not using nix.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>I will probably switch to or add docker before long<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>including pytorch and tensorflow, let it run overnight. This is mostly due to CUDA, I explain a bit later<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>Nix can mean a lot of things: <a href="https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html" class="uri">https://www.haskellforall.com/2022/08/stop-calling-everything-nix.html</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>once you’ve conquered learning it.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p>this is also a pain point, which I’ll talk about later. But it’s painful only because nix allows you to do something that essentially no one would even try to do with other package managers.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>it does this by patching the produced compiled artifacts to point to their “dynamic” dependencies statically using @rpath<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>to be fair, pypi doesn’t have package quality standards, many of these are abandoned or malware<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p>by introducing possible system dependencies and portability issues, although I would argue incrementally better is still better, a few risky packages is better than all risky packages.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p>although hopefully returning as part of <a href="https://github.com/nix-community/dream2nix" class="uri">https://github.com/nix-community/dream2nix</a> in the future<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p> a colleague suggests that we create a build farm where a background process builds new versions of things so that there are prebuilt versions always available, but that is an infrastructure investment that hasn’t felt worth it yet. Apparently the issue is that CUDA is technically not free software and by policy the nix build farms won’t build it for us. <a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p>you need to start programs with <code>nixGL&lt;driver&gt; &lt;program&gt;</code> which is irritating, but I think can be fixed in my flake<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p>Ok you’d need to edit one line in the flake but that’s enough of a barrier to discourage users. If anyone in the nix community can help me solve this problem I’d be extremely grateful<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p>and of course contributing back to nixpkgs where you can<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

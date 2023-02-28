@@ -30,7 +30,12 @@ programs, packages, and libraries that can be used together, but don't interact 
 The concept might be familiar if you've worked with [renv](https://posit.co/blog/renv-project-environments-for-r/), [conda](https://docs.conda.io/en/latest/), or [lmod](https://lmod.readthedocs.io/en/latest/).
 
 The project is powered by [nix](https://nixos.org/), a futuristic technology gaining a foothold among certain groups of 
-software developers devops people, and programming language researchers. Renowned for its ability to almost fully 
+software developers devops people, and programming language researchers^[a lot of ink has been spilled detailing how nix
+works and why you should use it. My treatment will be relatively superficial, instead focusing on my efforts and challenges
+using it in practice. If you are interested in the former I recommend:  
+  - https://serokell.io/blog/what-is-nix  
+  - https://revelry.co/insights/development/nix-time/ 
+]. Renowned for its ability to almost fully 
 deterministically and reproducibly build software, it enables strongly isolated environments.
 
 ## What is medical-imaging-nix?
@@ -228,6 +233,21 @@ he'll have many useful suggestions to improve things.
 
 I like many others think that approaches like nix will become more prevalent in the future, and it's nice to get a taste of it now
 even if there are pain points.
+
+## Acknowledgements
+
+Thanks to Ben Darwin, Chloe Pou-Prom, Meggie Debnath, and Derek Beaton for providing useful feedback on drafts of this post.
+
+```{r, echo=FALSE, asis = TRUE}
+m_user <- "cfhammill"
+m_id <- "109944483497018229"
+m_host <- "mastodon.social"
+
+htmltools::htmlTemplate(
+    "comments.tmpl.html", m_user = m_user, m_id = m_id, m_host = m_host
+)
+```
+
   
 
 <script type="text/javascript">

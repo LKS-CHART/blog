@@ -1,0 +1,101 @@
+<h2>Comments</h2>
+<p>You can use your Mastodon account to reply to this <a class="link" href="https://{{ m_host }}/@{{ m_user }}/{{ m_id }}">post</a>.</p>
+<p><button id="replyButton" href="https://{{ m_host }}/@{{ m_user }}/{{ m_id }}">Reply</button></p>
+<dialog id="toot-reply" class="mastodon" data-component="dialog">
+  <h3>Reply to {{ m_user }}'s post</h3>
+  <p> With an account on the Fediverse or Mastodon, you can respond to this post. Since Mastodon is decentralized, you can use your existing account hosted by another Mastodon server or compatible platform if you don't have an account on this one. </p>
+  <p>Copy and paste this URL into the search field of your favourite Fediverse app or the web interface of your Mastodon server.</p>
+  <div class="copypaste">
+    <input type="text" readonly="" value="https://{{ m_host }}/@{{ m_user }}/{{ m_id }}">
+    <button class="button" id="copyButton">Copy</button>
+    <button class="button" id="cancelButton">Close</button>
+  </div>
+</dialog>
+<p id="mastodon-comments-list"></p>
+<button id="load-comment">Load comments</button>
+<noscript><p>You need JavaScript to view the comments.</p></noscript>
+<script src="medical-imaging-with-nix_files/DOMPurify-3.0.0/dist/purify.min.js"></script>
+<style>
+  .mastodon-comment {
+  background-color: #00000007
+  }
+</style>
+<script type="text/javascript">
+    const dialog = document.querySelector('dialog');
+    document.getElementById('replyButton').addEventListener('click', () => {
+        dialog.showModal();
+    });
+    document.getElementById('copyButton').addEventListener('click', () => {
+        navigator.clipboard.writeText('https://{{ m_host }}/@{{ m_user }}/{{ m_id }}');
+    });
+    document.getElementById('cancelButton').addEventListener('click', () => {
+        dialog.close();
+    });
+    dialog.addEventListener('keydown', e => {
+        if (e.key === 'Escape') dialog.close();
+    });
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function make_post_loader(){
+        let resp_json = null;
+        let to_load = 0;
+        const load_n = 10;
+
+        function loader(){
+            to_load = to_load + 1
+            if(!resp_json){
+                resp_json = fetch('https://{{ m_host }}/api/v1/statuses/{{ m_id }}/context').
+                            then(function(response){ return response.json() });
+            }
+
+            resp_json.then(function (data){
+                if(data['descendants'] &&
+                   Array.isArray(data['descendants']) && 
+                   data['descendants'].length > 0) {
+                    document.getElementById('mastodon-comments-list').innerHTML = "";
+                    data['descendants'].slice(0, load_n * to_load).forEach(function(reply) {
+                        reply.account.display_name = escapeHtml(reply.account.display_name);
+                        reply.account.emojis.forEach(emoji => {
+                            reply.account.display_name = 
+                                reply.account.display_name.replace( `:${emoji.shortcode}: `,
+                                                                    `<img src="${escapeHtml(emoji.static_url)}" alt="Emoji ${emoji.shortcode}" height="20" width="20" /> `);
+                        });
+                        mastodonComment =
+                            `<div class="mastodon-comment">
+  <div class="avatar">
+    <img src="${escapeHtml(reply.account.avatar_static)}" height=60 width=60 alt="">
+    <div>
+      <div class="content">
+        <div class="author">
+          <a href="${reply.account.url}" rel="nofollow">
+            <span>${reply.account.display_name}</span>
+            <span class="disabled">${escapeHtml(reply.account.acct)}</span>
+          </a>
+          <a class="date" href="${reply.uri}" rel="nofollow">
+            ${reply.created_at.substr(0, 10)}
+          </a>
+        </div>
+        <div class="mastodon-comment-content">${reply.content}</div> 
+      </div>
+    </div> `;
+                        document.getElementById('mastodon-comments-list').appendChild(DOMPurify.sanitize(mastodonComment, {'RETURN_DOM_FRAGMENT': true}));
+                        document.getElementById('load-comment').innerText = "Load more"
+                    });
+                } else {
+                    document.getElementById('mastodon-comments-list').innerHTML = "<p>No comments found</p>";
+                }
+            }); 
+        }
+        return loader;
+    }
+
+
+    document.getElementById("load-comment").addEventListener("click", make_post_loader());
+</script>
