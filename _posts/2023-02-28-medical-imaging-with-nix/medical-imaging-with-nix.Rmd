@@ -243,7 +243,6 @@ m_user <- "cfhammill"
 m_id <- "109944483497018229"
 m_host <- "mastodon.social"
 
-
 htmltools::htmlTemplate(
     "comments.tmpl.html", m_user = m_user, m_id = m_id, m_host = m_host
 )
