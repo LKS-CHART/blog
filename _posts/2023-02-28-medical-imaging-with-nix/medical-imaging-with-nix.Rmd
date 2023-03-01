@@ -236,7 +236,7 @@ even if there are pain points.
 
 ## Acknowledgements
 
-Thanks to Ben Darwin, Chloe Pou-Prom, Meggie Debnath, and Derek Beaton for providing useful feedback on drafts of this post.
+Thanks to Ben Darwin, Chloe Pou-Prom, Meggie Debnath, Dimuth Kurukulaarachchi, and Derek Beaton for providing useful feedback on drafts of this post.
 
 ```{r, echo=FALSE, asis = TRUE}
 m_user <- "cfhammill"
