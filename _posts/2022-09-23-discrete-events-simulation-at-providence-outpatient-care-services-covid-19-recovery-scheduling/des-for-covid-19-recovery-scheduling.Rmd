@@ -1,7 +1,7 @@
 ---
 title: "Discrete Events Simulation for Covid-19 Recovery scheduling"
 description: |
-  A introduction to Descrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare.  With the Covid-19 lockdown, there was a large backlog of appointments that needed to be filled.  Providence Outpatient Services explored the use of DES to evaluate increasing Staffing numbers, changing clinic hours and booking more appointments while maintaining social distancing requirements in their clinical and waiting areas.
+  A introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare.  With the Covid-19 lockdown, there was a large backlog of appointments that needed to be filled.  Providence Outpatient Services explored the use of DES to evaluate increasing Staffing numbers, changing clinic hours and booking more appointments while maintaining social distancing requirements in their clinical and waiting areas.
   
 author:
   - name: Kevin Wang, Neil Mistry
