@@ -40,7 +40,7 @@ At Providence, with the second Covid-19 pandemic dwindling, we wanted to test sc
 
 The Providence Healthcare Center(PHC) Outpatient Service Department consists of multiple clinics providing medical appointments.  Each patient arrives, registers, and wait for the appointment in the waiting areas or vehicle.  They will then be escorted to clinical waiting areas or directed into a room.  After the appointment, they may continue to wait in the clinical waiting areas for follow ups or leave the hospital.  During this process, there may be congestion resulting from a combinations of patient behaviors, system resource and capacity (early-arrival of wheel-trans patients, max room capacity, lack of therapists); A smooth outpatient process is important for the hospital system to run efficiently for optimal patient care and quality of service.
 
-< Insert flow diagram here >
+![Outpatient clinic appointment process at Providence Healthcare in August 2020](./providence_outpatient_process_map_aug2020.jpg)
 
 Under COVID regulations, all individuals are required to maintain social distancing between each other.  To follow the regulation and minimize unnecessary contacts, the Outpatient Service Department needs to control the maximum number of patients in each area of the department.  
 Planning to reopen more outpatient services (and to reduce the backlog created by shutdowns during the first two waves of the pandemic), the outpatient department wants to test adding additional appointments to their schedule with a combination of more staffing, longer hours, more patients and additional working days, while maintaining social distancing requirements.  
@@ -51,13 +51,14 @@ The solution that was deployed for the PHC Outpatient Service Department consist
 
 1) A simulation model that helps recreate the physical space capacity and analyze the system & process performance
 
-2) designing a web user interface that requires users to input key features of the simulation for testing different scenarios. In addition, the model would output key performance indicators to help access the performance of the proposed plans/system. 
+2) Designing a web user interface that requires users to input key features of the simulation for testing different scenarios. In addition, the model would output key performance indicators to help access the performance of the proposed plans/system. 
 
+The primary input that our user can manipulate to test out scenarios is the appointment schedule.  This appointment schedule include a breakdown of the types and quantities of appointments that would be seen in Inpatient services by the day of the week (Mon, Tue, Wed..).
 
 ## Methodologies
-The simulation model is constructed using Python. ‘SimPy’ is used as the essential library to construct the simulation model, along with Pandas and NumPy to help with the data science portion of the model. The python model mainly consists of three parts:
+The simulation model is constructed using Python. [SimPy](https://simpy.readthedocs.io/en/latest/) is used as the essential library to construct the simulation model, along with Pandas and NumPy to help with the data science portion of the model. The python model mainly consists of three parts:
 
-- A defined object class called “Patient” with all necessary attributes and pre-defined calculation functions for results and outputs. Attributes include but not limit to: Patient index, appointment type, appointment clinic, wheel-trans probability, etc.
+- A defined object class called “Patient” with all necessary attributes and pre-defined calculation functions for results and outputs. Attributes include but not limit to: Patient index, appointment type, appointment clinic, probability of the patient needing wheel chair transportation from his/her home, and more.
 
 - The second part consists of logging, status update, capacity checking and calculation functions for the simulation process. Some of the process Detailed information of patient arrivals are calculated and recorded through these supporting functions.
 
