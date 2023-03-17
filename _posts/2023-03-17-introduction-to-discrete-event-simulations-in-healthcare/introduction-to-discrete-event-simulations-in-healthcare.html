@@ -88,638 +88,39 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>DSAA Blog: About this blog</title>
+  <title>Introduction to Discrete Event Simulations in Healthcare</title>
 
-  <meta property="description" itemprop="description" content="This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto"/>
+  <meta property="description" itemprop="description" content="An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare."/>
 
 
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-09-23"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-09-23"/>
+  <meta name="article:author" content="Kevin Wang, Neil Mistry"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="DSAA Blog: About this blog"/>
+  <meta property="og:title" content="Introduction to Discrete Event Simulations in Healthcare"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto"/>
+  <meta property="og:description" content="An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="DSAA Blog"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="DSAA Blog: About this blog"/>
-  <meta property="twitter:description" content="This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto"/>
+  <meta property="twitter:title" content="Introduction to Discrete Event Simulations in Healthcare"/>
+  <meta property="twitter:description" content="An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["About this blog"]},{"type":"character","attributes":{},"value":["This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","draft","category"]}},"value":[{"type":"character","attributes":{},"value":["Introduction to Discrete Event Simulations in Healthcare"]},{"type":"character","attributes":{},"value":["An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Kevin Wang, Neil Mistry"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/mingkun-wang/, https://www.linkedin.com/in/neilmistry/"]}]}]},{"type":"character","attributes":{},"value":["2022-09-23"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["post-miscellaneous"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["introduction-to-discrete-event-simulations-in-healthcare_files/anchor-4.2.2/anchor.min.js","introduction-to-discrete-event-simulations-in-healthcare_files/bowser-1.9.3/bowser.min.js","introduction-to-discrete-event-simulations-in-healthcare_files/distill-2.2.21/template.v2.js","introduction-to-discrete-event-simulations-in-healthcare_files/header-attrs-2.20/header-attrs.js","introduction-to-discrete-event-simulations-in-healthcare_files/jquery-3.6.0/jquery-3.6.0.js","introduction-to-discrete-event-simulations-in-healthcare_files/jquery-3.6.0/jquery-3.6.0.min.js","introduction-to-discrete-event-simulations-in-healthcare_files/jquery-3.6.0/jquery-3.6.0.min.map","introduction-to-discrete-event-simulations-in-healthcare_files/popper-2.6.0/popper.min.js","introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy-bundle.umd.min.js","introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy-light-border.css","introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy.css","introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy.umd.min.js","introduction-to-discrete-event-simulations-in-healthcare_files/webcomponents-2.0.0/webcomponents.js","PoissonFormula.gif","providence_outpatient_process_map_aug2020.JPG","queueing_example_possion_call_center.jpg"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  /* adjust viewport for navbar height */
-  /* helps vertically center bootstrap (non-distill) content */
-  .min-vh-100 {
-    min-height: calc(100vh - 100px) !important;
-  }
-
-  </style>
-
-  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
-                ? `<img src="${offsetURL(suggestion.preview)}"</img>`
-                : '';
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description || ''}
-                  </div>
-                  <div class="search-item-preview">
-                    ${img}
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  .nav-search {
-    font-size: x-small;
-  }
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    font-size: 1rem;
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -2074,15 +1475,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.20/header-attrs.js"></script>
-  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
-  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
-  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
-  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/header-attrs-2.20/header-attrs.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/popper-2.6.0/popper.min.js"></script>
+  <link href="introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="introduction-to-discrete-event-simulations-in-healthcare_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -2094,48 +1496,85 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"About this blog","description":"This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto","authors":[]}
+{"title":"Introduction to Discrete Event Simulations in Healthcare","description":"An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare.","authors":[{"author":"Kevin Wang, Neil Mistry","authorURL":"https://www.linkedin.com/in/mingkun-wang/, https://www.linkedin.com/in/neilmistry/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-09-23T00:00:00.000-04:00","citationText":"Mistry, 2022"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<a href="index.html" class="title">DSAA Blog</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>About this blog</h1>
+<h1>Introduction to Discrete Event Simulations in Healthcare</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto</p></p>
+<p><p>An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare.</p></p>
 </div>
 
+<div class="d-byline">
+  Kevin Wang, Neil Mistry <a href="https://www.linkedin.com/in/mingkun-wang/" class="uri">https://www.linkedin.com/in/mingkun-wang/</a>, <a href="https://www.linkedin.com/in/neilmistry/" class="uri">https://www.linkedin.com/in/neilmistry/</a> 
+  
+<br/>2022-09-23
+</div>
 
 <div class="d-article">
-<p>We are the Advanced Analytics (AA) team within the <a href="https://www.chartdatascience.ca/">Data Science and Advanced Analytics (DSAA)</a> group at <a href="https://unityhealth.to/">Unity Health Toronto</a>. Our team is based at St. Michael’s Hospital.</p>
-<p>We work on healthcare projects that aim to <strong>improve patient outcomes and hospital efficiency</strong>.</p>
-<p>Here, you will find blog posts written by various members of the AA team. Blogs will be released on a monthly basis and will cover a wide variety of topics:</p>
+<h1 id="discrete-events-simulation-at-providence-outpatient-care-services-covid-19-recovery-scheduling">Discrete Events Simulation at Providence Outpatient Care &amp; Services Covid-19 Recovery scheduling</h1>
+<p>Discrete Events Simulations (DES) are a method of modeling the operation of real world systems digitally. It does this by modeling a series of events in time. Each event is ordered by time of occurance, and the system is advanced to each event in the sequence, meanwhile updating the state of the system. This is done so that we can test hypothetical changes to the system and their impacts on metrics we are interested in, uncover bottlenecks or process challenges and make overall assessments of the system.</p>
+<p>This type of simulation is particularly useful at modeling a system with many uncertain or probabalistic steps (such as you don’t know when your next customer or patient will arrive, and you don’t know how long and what resources are required to help that customer or patient.) In sytems where there a complex number of steps, many different resources, inputs and outputs, DES may be one of the only possible ways to model.
+The underlying statsical theroes that support DES come from queueing theory. A classic example of queueing theory is the call center. In a call center you have incoming calls. You may know roughly how many calls you can expect on a day, or any given hour, and hence you know the frequency of calls.</p>
+<figure>
+<img src="queueing_example_possion_call_center.jpg" alt="Poisson Call Center Queue" />
+<figcaption aria-hidden="true">Poisson Call Center Queue</figcaption>
+</figure>
+<p>However you do not know exactly when your next call will arrive (remember this is probabiltic or uncertain). This is known as a poisson arrival process, and is modeled as:</p>
+<figure>
+<img src="PoissonFormula.gif" alt="Poisson Call Center Queue" />
+<figcaption aria-hidden="true">Poisson Call Center Queue</figcaption>
+</figure>
+<p>Lambda is the only paramter that Poisson depends on. This is your arrival rate (on average.)</p>
+<p>Queueing theory works well for a simple queue like this, where you have a single entry point for your customers, a single type of service (answering the call) with some probabalistic length of time and one exit for your customer (end of call).</p>
+<p>However with more complex system, such as an Emergency Department, we may have patients who arrive in multiple ways, have multiple possible treatments or interventions, and could have multiple exits (admission, discharge) the formulas for Queueing theory become inpracticle to model these systems. That is when we need DES!</p>
+<h2 id="background">Background</h2>
+<p>Simulation had long been used in manufacturing as there can be considerable variability in process outputs in a manufacturing line. In addition to variability, having a birds eye view of the entire process can allow us to easily assess bottlenecks in our system. Bottlenecks could be caused by varability in our process outputs, overprodcution, excess inventory, high down time or failures in machines, lack of staff or resources.</p>
+<p>We can also then make assessments to changes in our system. Lets say for example we add an additional staff member at a point in our process. Does this improve our bottleneck? What if we replicate a few steps in our process and run parallel production? Will the cost to do implement this strategy be outweighed by the benefits gained by a reduced bottleneck in this area? We can assess this in our simulation before trying it in our real world system.</p>
+<p>In addition to manufacturing, DES can be used in call centers, retail stores, warehouses, airports, EMS services and increasingly DES is used to improve healthcare systems.</p>
+<p>In each these cases, DES is commonly used to evaluating capital investment decisions, staffing or scheduling changes, evaluate process efficiencies, and even to predict bottlenecks in live systems.</p>
+<p>Commonly in healthcare, DES is used to evaluate Emergency Departments, Operating Room Suites, ICU/PACU, and Inpatient and Outpatient units. The objectives of DES in Healthcare is overwhelmingly to evaluate the effects of operational changes followed by staff and patient scheduling.</p>
+<p>At Unity Health Toronto we have used DES to evaluate changes to the physicial layout in the Emergency Department (ED), assess changes to Physician Scheduling in the ED and most recently, assess patient appointment scheduling for outpatient services.</p>
+<h2 id="des-software">DES software</h2>
+<p>There are many software applications that can build DES models available. Some provide an installer and can be used on a windows PC (ARENA, Anylogic, FlexSim, Rockwell Arena, Simul8, etc). This is great for use in 1 time simulations when you will infrequently reassess your system.</p>
+<p>We also have DES software that can be hosted remotely and can accept simulations as jobs (<a href="https://www.simul8.com/">Simul8</a> has this feature). This type of software can be useful when you want to run a simulation more frequently, perhaps even live to predict possible incoming bottlenecks. At Unity Health we have used Simul8 in the past for one time scheduling and capital allocation decisions.</p>
+<p>There are also many open source DES packages now available. Examples include <a href="https://en.wikipedia.org/wiki/DESMO-J">DESMO-J</a>, which is avaialble in Java, <a href="https://index.scala-lang.org/facsimile/facsimile">Facsimile</a>, in Scala, and <a href="https://simpy.readthedocs.io/en/latest/">SimPy</a>, avaialble in Python.</p>
+<p>For our latest project, we wanted to host an application where the user could enter in patient schedules and run the simulation remotely, on demand. We chose SimPy to accomplish this.</p>
+<h2 id="providence-outpatient-simulation-project">Providence Outpatient Simulation Project</h2>
+<p>The Providence Healthcare Center(PHC) Outpatient Service Department consists of multiple clinics providing medical appointments. Each patient arrives, registers, and wait for the appointment in the waiting areas or vehicle. They will then be escorted to clinical waiting areas or directed into a room. After the appointment, they may continue to wait in the clinical waiting areas for follow ups or leave the hospital. During this process, there may be congestion resulting from a combinations of patient behaviors, system resource and capacity (early-arrival of wheel-trans patients, max room capacity, lack of therapists); A smooth outpatient process is important for the hospital system to run efficiently for optimal patient care and quality of service.</p>
+<p>At Providence, with the second Covid-19 pandemic dwindling, we wanted to test schedules to cut down the growing backlog of outpatient appointments required to fill while ensuring safe social distancing practices within the hospital.</p>
+<figure>
+<img src="providence_outpatient_process_map_aug2020.jpg" alt="Outpatient clinic appointment process at Providence Healthcare in August 2020" />
+<figcaption aria-hidden="true">Outpatient clinic appointment process at Providence Healthcare in August 2020</figcaption>
+</figure>
+<p>Under COVID regulations, all individuals are required to maintain social distancing between each other. To follow the regulation and minimize unnecessary contacts, the Outpatient Service Department needs to control the maximum number of patients in each area of the department.<br />
+Planning to reopen more outpatient services (and to reduce the backlog created by shutdowns during the first two waves of the pandemic), the outpatient department wants to test adding additional appointments to their schedule with a combination of more staffing, longer hours, more patients and additional working days, while maintaining social distancing requirements.</p>
+<p>The solution that was deployed for the PHC Outpatient Service Department consists of two parts:</p>
+<ol type="1">
+<li><p>A simulation model that helps recreate the physical space capacity and analyze the system &amp; process performance</p></li>
+<li><p>Designing a web user interface that requires users to input key features of the simulation for testing different scenarios. In addition, the model would output key performance indicators to help access the performance of the proposed plans/system.</p></li>
+</ol>
+<p>The primary input that our user can manipulate to test out scenarios is the appointment schedule. This appointment schedule include a breakdown of the types and quantities of appointments that would be seen in Inpatient services by the day of the week (Mon, Tue, Wed..).</p>
+<p>The simulation model consists of three main parts:</p>
 <ul>
-<li><p>Deploying machine learning algorithms in the hospital</p></li>
-<li><p>Insights into what it’s like working in a data science team within the healthcare setting</p></li>
-<li><p>Summaries of our journal club discussions</p></li>
-<li><p>Cool/interesting/fun data science things we run into in our day-to-day work</p></li>
-<li><p>… and more!</p></li>
+<li><p>A defined object class called “Patient” with all necessary attributes and pre-defined calculation functions for results and outputs. Attributes include but not limit to: Patient index, appointment type, appointment clinic, probability of the patient needing wheel chair transportation from his/her home, and more.</p></li>
+<li><p>The second part consists of logging, status update, capacity checking and calculation functions for the simulation process. Some of the process Detailed information of patient arrivals are calculated and recorded through these supporting functions.</p></li>
+<li><p>The last part is the simulation model function, where it reads in user defined clinics’ capacity, registration time, and input data excel file. The model then reads the patient schedules and generates patients based on their scheduled appointment time.</p></li>
+<li><p>INITIALIZATION: Patients have two types, virtual or in-person. Virtual patients can escape all the registration steps, directly start their therapy appointment if available and leave immediately after appointment. In-person patients would just simply follow the normal outpatient process.</p></li>
+<li><p>ARRIVAL: The simulated in-person patients would arrive to the registration desk, either on their own or by wheel-trans. Their arrival type is determined based on the wheel-trans arrival probability and python randomizer. In the registration wait room, if there is enough space to allow new patients in, new patients can then get registered; else new patients would have to wait for new capacity coming up to enter the registration room.</p></li>
+<li><p>THERAPY: Once patients get registered, a schedule check would occur to see if the room and therapist booked for this patient(s) are available. If available, status would be updated, and patients can proceed to their appointments immediately. If not, patients would have to wait until the clinic/therapist is ready.</p></li>
+<li><p>DIMISSAL: During dismissal, the arrival type is first checked. If the patient arrived by wheel-trans, then the registration wait room capacity would be checked to see if there is any space available for the leaving patients. If yes, wheel-trans patients can wait till their wheel-trans service arrive. If not, they will have to wait in the clinic wait rooms for an upcoming space. If the patient arrived on their own, they could leave immediately after their appointment. Status of current room capacities would be updated accordingly.</p></li>
 </ul>
-<p>Happy reading!</p>
+<p>• During this, process, all related/interested performance stats (wait time, current number in system) are recorded for result calculations. Utilization plots for clinics/therapists are also plotted for easier understanding.
+Limitations:
+The simulation model itself basically replicates the normal outpatient service process but simplifies it by ignoring some of the variabilities in process times due to the lack of data. Instead of fitting a time distribution, we had to use a more deterministic approach by assuming a static service time for all the servicing times involved in the model. However, once enough data is collected, those distributions can be obtained by data-fitting and directly apply to the model. In this way, the model would have more randomness, and thus more realistic comparing to real life.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
