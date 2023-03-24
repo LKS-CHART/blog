@@ -29,7 +29,7 @@ The underlying statsical theories that support DES come from queueing theory.  A
 
 ![Poisson Call Center Queue](./queueing_example_possion_call_center.jpg)
 
-However you do not know exactly when your next call will arrive (remember this is probabiltic or uncertain).  This is known as a poisson arrival process, and is modeled as:
+However you do not know exactly when your next call will arrive (remember this is probabilistic or uncertain).  This is known as a Poisson arrival process, and is modeled as:
 
 ![Poisson Call Center Queue](./PoissonFormula.gif)
 
