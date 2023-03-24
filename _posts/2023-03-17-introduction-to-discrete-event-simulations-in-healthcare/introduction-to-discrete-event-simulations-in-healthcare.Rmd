@@ -43,7 +43,7 @@ However with more complex system, such as an Emergency Department, we may have p
 
 Simulation had long been used in manufacturing as there can be considerable variability in process outputs in a manufacturing line.  In addition to variability, having a birds eye view of the entire process can allow us to easily assess bottlenecks in our system.  Bottlenecks could be caused by varability in our process outputs, overprodcution, excess inventory, high down time or failures in machines, lack of staff or resources.  
 
-We can also then make assessments to changes in our system.  Lets say for example we add an additional staff member at a point in our process.  Does this improve our bottleneck?  What if we replicate a few steps in our process and run parallel production?  Will the cost to do implement this strategy be outweighed by the benefits gained by a reduced bottleneck in this area?  We can assess this in our simulation before trying it in our real world system.
+We can then make assessments to changes in our system.  Let's say for example we add an additional staff member at a point in our process.  Does this improve our bottleneck?  What if we replicate a few steps in our process and run parallel production?  Will the cost to implement this strategy be outweighed by the benefits gained by a reduced bottleneck in this area?  We can assess this in our simulation before trying it in our real world system.
 
 In addition to manufacturing, DES can be used in call centers, retail stores, warehouses, airports, EMS services and increasingly DES is used to improve healthcare systems.
 
