@@ -37,7 +37,7 @@ Lambda is the only paramter that Poisson depends on.  This is your arrival rate 
 
 Queueing theory works well for a simple queue like this, where you have a single entry point for your customers, a single type of service (answering the call) with some probabalistic length of time and one exit for your customer (end of call).
 
-However with more complex system, such as an Emergency Department, we may have patients who arrive in multiple ways, have multiple possible treatments or interventions, and could have multiple exits (admission, discharge) the formulas for Queueing theory become inpracticle to model these systems.  That is when we need DES!
+However with more complex system, such as an Emergency Department, we may have patients who arrive in multiple ways, have multiple possible treatments or interventions, and could have multiple exits (admission, discharge). The formulas for Queueing theory become impractical to model these systems.  That is when we need DES!
 
 ## Background
 
