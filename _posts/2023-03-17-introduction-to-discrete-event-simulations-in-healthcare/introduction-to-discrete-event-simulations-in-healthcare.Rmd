@@ -56,7 +56,7 @@ At Unity Health Toronto we have used DES to evaluate changes to the physicial la
 
 ## DES software
 
-There are many software applications that can build DES models available.   Some provide an installer and can be used on a windows PC (ARENA, Anylogic, FlexSim, Rockwell Arena, Simul8, etc).  This is great for use in 1 time simulations when you will infrequently reassess your system.
+There are many available software applications that can build DES models.   Some provide an installer and can be used on a windows PC (ARENA, Anylogic, FlexSim, Rockwell Arena, Simul8, etc).  This is great for use in 1 time simulations when you will infrequently reassess your system.
 
 We also have DES software that can be hosted remotely and can accept simulations as jobs ([Simul8](https://www.simul8.com/) has this feature).  This type of software can be useful when you want to run a simulation more frequently, perhaps even live to predict possible incoming bottlenecks. At Unity Health we have used Simul8 in the past for one time scheduling and capital allocation decisions.
 
