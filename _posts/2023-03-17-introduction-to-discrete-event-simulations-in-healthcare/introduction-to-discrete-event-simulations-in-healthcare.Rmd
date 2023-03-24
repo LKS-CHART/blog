@@ -49,7 +49,7 @@ In addition to manufacturing, DES can be used in call centers, retail stores, wa
 
 In each of these cases, DES is commonly used to evaluate capital investment decisions, staffing or scheduling changes, to evaluate process efficiencies, and even to predict bottlenecks in live systems.
 
-Commonly in healthcare, DES is used to evaluate Emergency Departments, Operating Room Suites, ICU/PACU, and Inpatient and Outpatient units.  The objectives of DES in Healthcare is overwhelmingly to evaluate the effects of operational changes followed by staff and patient scheduling.
+Commonly in healthcare, DES is used to evaluate Emergency Departments, Operating Room Suites, ICU/PACU, and Inpatient and Outpatient units.  The objectives of DES in healthcare is overwhelmingly to evaluate the effects of operational changes followed by staff and patient scheduling.
 
 At Unity Health Toronto we have used DES to evaluate changes to the physicial layout in the Emergency Department (ED), assess changes to Physician Scheduling in the ED and most recently, assess patient appointment scheduling for outpatient services.
 
