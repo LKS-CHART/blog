@@ -25,7 +25,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Discrete Events Simulations (DES) are a method of modeling the operation of real world systems digitally.  It does this by modeling a series of events in time.  Each event is ordered by time of occurrence, and the system is advanced to each event in the sequence, meanwhile updating the state of the system.  This is done so that we can test hypothetical changes to the system and their impacts on metrics we are interested in, uncover bottlenecks or process challenges, and make overall assessments of the system.
 
 This type of simulation is particularly useful at modeling a system with many uncertain or probabalistic steps (such as you don't know when your next customer or patient will arrive, and you don't know how long and what resources are required to help that customer or patient.)  In systems where there are a complex number of steps, many different resources, inputs and outputs, DES may be one of the only possible ways to model.
-The underlying statsical theroes that support DES come from queueing theory.  A classic example of queueing theory is the call center.  In a call center you have incoming calls.  You may know roughly how many calls you can expect on a day, or any given hour, and hence you know the frequency of calls.  
+The underlying statsical theories that support DES come from queueing theory.  A classic example of queueing theory is the call center.  In a call center you have incoming calls.  You may know roughly how many calls you can expect on a day, or any given hour, and hence you know the frequency of calls.  
 
 ![Poisson Call Center Queue](./queueing_example_possion_call_center.jpg)
 
