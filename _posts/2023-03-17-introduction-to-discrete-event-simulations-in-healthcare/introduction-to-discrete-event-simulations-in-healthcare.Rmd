@@ -69,7 +69,7 @@ There are also many open source DES packages now available.  Examples include [D
 For our project, we wanted to host an application where the user could enter in patient schedules and run the simulation remotely, on demand.  We chose SimPy to accomplish this.
 
 
-## Providence Outpatient Discrete Events Simulation Project
+## An Example of DES in the Real World: Providence Outpatient DES Project
 
 Providence Healthcare (Part of Unity Health Toronto) was experiencing challenges scheduling outpatient appointments with the onset of the second wave of the Covid-19 Pandemic in 2021.  Providence approached us to model the outpatient services using DES.  We modeled the clinic in its current state and explored alternative appointment schedules to increase the number of patients flowing through outpatient services while maintaining social distancing practices.
 
