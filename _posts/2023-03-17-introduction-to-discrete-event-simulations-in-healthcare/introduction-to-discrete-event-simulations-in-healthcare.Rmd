@@ -85,7 +85,7 @@ Planning to re-open more outpatient services (and to reduce the backlog created 
 
 The solution that was developed for the Providence Healthcare Outpatient Service Department consists of two parts:
 
-1) A simulation model that recreate the physical space capacity and analyze the system & process performance
+1) A simulation model that recreates the physical space capacity and analyzes the system & process performance
 
 2) Designing a web user interface that requires users to input key features of the simulation for testing different scenarios. In addition, the model would output key performance indicators to help access the performance of the proposed plans/system. 
 
