@@ -101,12 +101,10 @@ One limitation in our DES is the service time for each appointment. We simplifie
 
 ## DES software
 
-There are many available software applications that can build DES models. Some provide an installer and can be used on a windows PC ([ARENA](https://www.rockwellautomation.com/en-us/products/software/arena-simulation.html), [Anylogic](https://www.anylogic.com/), [FlexSim](https://www.flexsim.com/), [Simul8](https://www.simul8.com/), etc). This is great for use in 1 time simulations when you will infrequently reassess your system. -->
+There are many available software applications that can build DES models. Some provide an installer and can be used on a windows PC ([ARENA](https://www.rockwellautomation.com/en-us/products/software/arena-simulation.html), [Anylogic](https://www.anylogic.com/), [FlexSim](https://www.flexsim.com/), [Simul8](https://www.simul8.com/), etc). This is great for use in 1 time simulations when you will infrequently reassess your system.
 
-We also have DES software that can be hosted remotely and can accept simulations as jobs ([Simul8](https://www.simul8.com/) has this feature). This type of software can be useful when you want to run a simulation more frequently, perhaps even live to predict possible incoming bottlenecks. -->
-
+We also have DES software that can be hosted remotely and can accept simulations as jobs ([Simul8](https://www.simul8.com/) has this feature). This type of software can be useful when you want to run a simulation more frequently, perhaps even live to predict possible incoming bottlenecks.
 
 There are also many open source DES packages now available. Examples include [DESMO-J](https://en.wikipedia.org/wiki/DESMO-J), which is available in Java, [Facsimile](https://index.scala-lang.org/facsimile/facsimile), in Scala, and [SimPy](https://simpy.readthedocs.io/en/latest/), available in Python.
-
 
 Data Science and Advanced Analytics wanted to host an application for users to enter patient schedules and run the simulation remotely and on-demand. We chose SimPy to accomplish this.
