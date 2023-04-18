@@ -101,6 +101,11 @@ All of our performance metrics (wait time, current number in system) are recorde
 ## Conclusions
 
 <!-- Neil fill in here... -->
+<!-- We can use DES to test changes without impacting current workflows and operations.
+We can simulate in order to uncover improvements. Once we find something that works better, we can then implement it. So DES allows us to explore many possibilities to find a solution.
+
+In our case, we were able to increase the number of appointments while maintaining staffing levels and maintaining social distancing requirements. We did that with DES to help tweak schedules for appointments. 
+-->
 
 One limitation in our DES is the service time for each appointment. We simplified the length of time a patient may spend at an appointment by ignoring some of the variabilities in process times due to the lack of data. Instead of fitting a time distribution, we had to use a more deterministic approach by assuming a static service time for all the servicing times involved in the model. 
 
