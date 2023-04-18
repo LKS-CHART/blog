@@ -1,7 +1,7 @@
 ---
 title: "Putting the fun in `funneljoin`"
 description: |
-  An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package [10 min read]
+  An introduction to, an example of, and my (lazy) journey to discovering the `funneljoin` package. [10 min read]
 author:
   - name: Derek Beaton
     affiliation: DSAA, Unity Health Toronto
