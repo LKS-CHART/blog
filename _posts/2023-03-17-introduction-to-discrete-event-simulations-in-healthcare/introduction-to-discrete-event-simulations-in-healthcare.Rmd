@@ -4,12 +4,13 @@ description: |
  An introduction to Discrete Events Simulations (DES) in healthcare with an overview of the use of DES for modelling outpatient services appointments at Providence Healthcare.
  
 author:
- - name: Kevin Wang, Neil Mistry
-  url: https://www.linkedin.com/in/mingkun-wang/, https://www.linkedin.com/in/neilmistry/
-date: 2022-09-23
+  - name: Kevin Wang, Neil Mistry
+    url: https://www.linkedin.com/in/mingkun-wang/, https://www.linkedin.com/in/neilmistry/
+date: 2023-04-18
 output:
- distill::distill_article:
-  self_contained: false
+  distill::distill_article:
+    self_contained: false
+    toc: true
 draft: true
 category: post-miscellaneous
 ---
@@ -83,7 +84,7 @@ The solution that was developed for the Providence Healthcare Outpatient Service
 
 2) Designing a web user interface that requires users to input key features of the simulation for testing different scenarios. In addition, the model would output key performance indicators to help access the performance of the proposed plans/system. 
 
-The primary input that our user can manipulate to test out scenarios is the appointment schedule. This appointment schedule includes a breakdown of the types and quantities of appointments that would be seen in Outpatient Services by the day of the week (Mon, Tue, Wed..).
+The primary input that our user can manipulate to test out scenarios is the appointment schedule. This appointment schedule includes a breakdown of the types and quantities of appointments that would be seen in Outpatient Services by the day of the week (Mon, Tue, Wed, and so on).
 
 
 The simulation model consists of three main parts:
@@ -96,6 +97,10 @@ The simulation model consists of three main parts:
 
 
 All of our performance metrics (wait time, current number in system) are recorded through a trial of runs and outputted to the user. Utilization plots for clinics and service providers are also plotted. 
+
+## Conclusions
+
+<!-- Neil fill in here... -->
 
 One limitation in our DES is the service time for each appointment. We simplified the length of time a patient may spend at an appointment by ignoring some of the variabilities in process times due to the lack of data. Instead of fitting a time distribution, we had to use a more deterministic approach by assuming a static service time for all the servicing times involved in the model. 
 
