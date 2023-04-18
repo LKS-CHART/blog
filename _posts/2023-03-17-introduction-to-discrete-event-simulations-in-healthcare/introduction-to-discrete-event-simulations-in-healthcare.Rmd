@@ -90,7 +90,7 @@ All of our performance metrics (wait time, current number in system) are recorde
 
 We can use DES to test how changes to our system can affect the outcomes we are interested in improving.  
 
-At Providence health, we were able to test alternative patient schedules to measure their impact on throughput on our outpatient clinics.  We tested several schedules that would increase the number of patients we would see, and our DES could tell us if we would maintain our social distancing requirements.  Ultimately we were able to create schedules that could increase the number of patients we could see, even with our current staffing schedules. 
+At Providence health, we were able to test alternative patient schedules to measure their impact on throughput on our outpatient clinics.  We tested several schedules that would increase the number of patients we would see, and our DES could tell us if we would maintain our social distancing requirements. Ultimately we were able to create schedules that could increase the number of patients we could see, even with our current staffing schedules. 
 
 
 ## Limitation
@@ -106,7 +106,7 @@ There are many available software applications that can build DES models. Some p
 We also have DES software that can be hosted remotely and can accept simulations as jobs ([Simul8](https://www.simul8.com/) has this feature). This type of software can be useful when you want to run a simulation more frequently, perhaps even live to predict possible incoming bottlenecks. -->
 
 
-There are also many open source DES packages now available. Examples include [DESMO-J](https://en.wikipedia.org/wiki/DESMO-J), which is available in Java, [Facsimile](https://index.scala-lang.org/facsimile/facsimile), in Scala, and [SimPy](https://simpy.readthedocs.io/en/latest/), available in Python. -->
+There are also many open source DES packages now available. Examples include [DESMO-J](https://en.wikipedia.org/wiki/DESMO-J), which is available in Java, [Facsimile](https://index.scala-lang.org/facsimile/facsimile), in Scala, and [SimPy](https://simpy.readthedocs.io/en/latest/), available in Python.
 
 
 Data Science and Advanced Analytics wanted to host an application for users to enter patient schedules and run the simulation remotely and on-demand. We chose SimPy to accomplish this.
