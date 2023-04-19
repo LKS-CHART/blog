@@ -60,7 +60,7 @@ Outpatient Services consists of multiple clinics providing medical appointments.
 
 We modeled the clinic in its current state and explored alternative appointment schedules to increase the number of patients flowing through outpatient services while maintaining social distancing practices.
 
-![Outpatient clinic appointment process at Providence Healthcare in August 2020](./providence_outpatient_process_map_aug2020.jpg)
+![Outpatient clinic appointment process at Providence Healthcare in August 2020](./providence_outpatient_process_map_aug2020.JPG)
 
 Under certain pandemic-based restrictions, all individuals were required to maintain social distancing between each other. To minimize unnecessary contact, the Outpatient Service Department wanted to control the maximum number of patients in each area of the department. Planning to re-open more outpatient services (and to reduce the backlog created by shutdowns during the first two waves of the pandemic), the Outpatient Service Department modeled new schedules by adding additional appointments with a combination of more staffing, longer hours, more patients and additional working days.
 
