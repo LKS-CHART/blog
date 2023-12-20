@@ -42,7 +42,7 @@ When it comes to assembling a team, our project with the most team members, **Pr
 
 In a year that saw projects popping up like mushrooms after rain, the **Patient Flow** family stood tall, boasting the crown for the most projects.
 
-Speaking of product families, we had a new product family join us this year... the **Signal1** family, a collaboration between DSAA and [Signal1](https://signal1.ai/), bringing our total number of product families to **7**! They are also the family with the most team members at **11 members**.
+Speaking of product families, we had a new product family join us this year... the **Signal1** family, a collaboration between DSAA and [Signal1](https://signal1.ai/), bringing our total number of product families to **6**! They are also the family with the most team members at **11 members**.
 
 # Sprint improvement weeks 🛠️
 
