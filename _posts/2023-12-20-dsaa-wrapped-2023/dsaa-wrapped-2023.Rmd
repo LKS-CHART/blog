@@ -66,18 +66,29 @@ We were also fortunate to have Posit host a number of workshops for us, covering
 
 # Sharing ideas
 
-This year, we didn't just learn new things, our team members also had opportunities to exchange ideas, and share insights and experiences through talks and conferences from MIQI to the Renal Insight User Group.
+This year, we didn't just learn new things, our team members also had opportunities to exchange ideas, and share insights and experiences through talks and conferences. Our team presented about the Hemodialysis project at the [Renal Insight](https://www.constellationkidney.com/electronic-health-records/renal-insight/) User Group Meeting, shared lessons from implementing AI in healthcare from the CHARTwatch project and beyond, and discussed [estimating ROI for analytics and data projects](https://www.addevent.com/event/Qs19385054).
 
 We also hope to continue to raise our count of published blog posts! This past year, we've had team members share **3 blog posts** about [developing and deploying AI solutions in the hospital](https://lks-chart.github.io/blog/posts/2023-01-27-with-a-little-help-from-my-friends/), [creating reproducible environments for building medical imaging machine learning models with Nix](https://lks-chart.github.io/blog/posts/2023-02-28-medical-imaging-with-nix/), and [discrete event simulation in healthcare](https://lks-chart.github.io/blog/posts/2023-03-17-introduction-to-discrete-event-simulations-in-healthcare/).
 
 # The Party Planning Pandas and beyond! 🎉
 
-Let's conclude our DSAA Wrapped by recounting some of our memorable team moments from this past year, organized by our social committee: The Party Planning Pandas 🐼.
+Let's recount some of our memorable team moments from this past year, organized by our social committee: The Party Planning Pandas 🐼.
 
 - Nerf Gun Challenge: With our in-office stash of nerf guns, during this challenge, our team learned that precision and luck go hand in hand.  
 - Valentine's Day & Zoom trivia: This year, our data science team embraced AI art generators to craft charming (and maybe a little scary) Valentine's Day cards as well as adorable baby animal versions of our team.  
+
+```{r}
+knitr::include_graphics("valentines_cards_dsaa_wrapped.jpg")
+```
+
 - Summer Picnic: Sun, fun, and ICE CREAM — our summer picnic at Riverdale Park in Toronto included some painting with marshmallows, an ice cream truck, and a scavenger hunt that turned into an extended visit to Riverdale Farm!  
 - Halloween at DSAA: Our team members transformed into a raccoon, Snow White, Wednesday Adams, and everything in between.  
 - Axe Throwing: We traded our laptops for axes and unleashed our inner warriors. Let's just say, our aim in data science translated surprisingly well to hitting bullseyes.  
 
 As we wrap up this year's Wrapped, let's share a round of applause for our incredible team at DSAA and all of our collaborators. Here's to a year of innovation, collaboration, pizza, and data-driven successes!
+
+We'll leave you with some of our AI-generated holiday cards, happy holidays!
+
+```{r}
+knitr::include_graphics("ai_holiday_cards.jpg")
+```
