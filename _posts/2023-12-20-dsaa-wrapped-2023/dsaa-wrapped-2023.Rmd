@@ -25,7 +25,7 @@ Our DSAA Wrapped is based on Spotify Wrapped, an annual data-driven summary of e
 Here's our version, showcasing some of our project deployments and top team moments. This year, we focused heavily on evaluating some of our existing tools that have been deployed, and on projects that aim to improve patient flow!
 
 ```{r}
-knitr::include_graphics("dsaa_wrapped_2023.jpg")
+knitr::include_graphics("dsaa_wrapped_2023.png")
 ```
 
 # Projects
