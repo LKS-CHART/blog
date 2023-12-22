@@ -5,15 +5,15 @@
       "title": "About this blog",
       "description": "This is the blog for the Advanced Analytics (AA) team of the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto",
       "author": [],
-      "contents": "\nWe are the Advanced Analytics (AA) team within the Data Science and Advanced Analytics (DSAA) group at Unity Health Toronto. Our team is based at St. Michael’s Hospital.\nWe work on healthcare projects that aim to improve patient outcomes and hospital efficiency.\nHere, you will find blog posts written by various members of the AA team. Blogs will be released on a monthly basis and will cover a wide variety of topics:\nDeploying machine learning algorithms in the hospital\nInsights into what it’s like working in a data science team within the healthcare setting\nSummaries of our journal club discussions\nCool/interesting/fun data science things we run into in our day-to-day work\n… and more!\nHappy reading!\n\n\n\n",
-      "last_modified": "2023-02-02T15:26:33-05:00"
+      "contents": "\r\nWe are the Advanced Analytics (AA) team within the Data Science and Advanced\r\nAnalytics (DSAA) group at Unity\r\nHealth Toronto. Our team is based at St. Michael’s Hospital.\r\nWe work on healthcare projects that aim to improve patient\r\noutcomes and hospital efficiency.\r\nHere, you will find blog posts written by various members of the AA\r\nteam. Blogs will be released on a monthly basis and will cover a wide\r\nvariety of topics:\r\nDeploying machine learning algorithms in the hospital\r\nInsights into what it’s like working in a data science team\r\nwithin the healthcare setting\r\nSummaries of our journal club discussions\r\nCool/interesting/fun data science things we run into in our\r\nday-to-day work\r\n… and more!\r\nHappy reading!\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-12-22T12:47:13-05:00"
     },
     {
       "path": "index.html",
       "title": "DSAA Blog",
       "author": [],
-      "contents": "\n\n\n\n",
-      "last_modified": "2023-02-28T21:03:08-05:00"
+      "contents": "\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-12-22T12:47:13-05:00"
     }
   ],
   "collections": ["posts/posts.json"]
