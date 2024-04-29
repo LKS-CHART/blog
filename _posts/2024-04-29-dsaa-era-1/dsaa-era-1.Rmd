@@ -1,0 +1,51 @@
+---
+title: "DSAA Era 1"
+description: |
+  A short description of the post.
+author:
+  - name: Chloe Pou-Prom on behalf of DSAA
+    url: {}
+date: 2024-04-29
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - project-ed-forecasting
+  - post-miscellaneous
+draft: true
+---
+
+## The big change
+
+Clinical source systems in the hospital are silo-ed. In other words, blood test results are stored in database A, while patient admission timestamps are stored in database B. Getting access to these data required working with other teams to manually extract, clean, and merge the data for us. 
+
+[The Enterprise Data Warehouse is a game changer](link to that Youtube video).
+
+A data warehouse stores data from various source systems. This means that we only need to pull from one database to retrieve lab results, patient demographics, and a patient’s admission timestamp. 
+
+## How's the team?
+
+At this point, we’re mostly a team of data scientists. When hiring, we try to make sure we get experts in different aspects of data science: biostatistics, machine learning, operations research, forecasting.
+
+Learning is done through monthly-ish lunch&learns (examples of topics were focusing on: Git and version control, getting familiar with the EDW, Docker, package management). At this point, we were most an R-based group.
+
+A lot of learning and knowledge sharing is done through _pair programming_.
+
+## How is project management? 
+
+Project intake is handled by Muhammad. Since the team was small and we were working with a small number of projects at the time, meetings would be project-based and occur bi-weekly with the respective project team. 
+
+## How's the infrastructure?
+
+We have a separate server for development. This ensured that we could run long jobs, train models overnight, etc.
+The server was maintained by data scientists (there’s gotta be a relevant xkcd for this…)
+
+This set us up nicely to deliver the ED Forecasting tool [link here].
+
+## But...
+
+Here's where we struggled:
+
+- Our EDW was only updating once a day. What if we want to deploy something using more recent data?
+
+- Our server was pretty good for doing very data science-y things (training models!). What if we want to do something fancier like set up an API for our model predictions or build something that will be running 24/7?

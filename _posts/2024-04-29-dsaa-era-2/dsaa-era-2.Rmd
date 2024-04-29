@@ -1,0 +1,59 @@
+---
+title: "DSAA Era 2"
+description: |
+  A short description of the post.
+author:
+  - name: Chloe Pou-Prom on behalf of DSAA
+    url: {}
+date: 2024-04-29
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - project-chartwatch
+  - post-miscellaneous
+draft: true
+---
+
+## The big change
+
+We need real-time data! 
+
+The main driver for this was that we wanted to deploy an **early warning system** that would regularly pull a patient's most updated data and classify each patient into risk categories. 
+
+During model training, we found that most patients' labs and vitals data updates every 6 hours so we would want to update generate predictions with that frequency at the bare minimum!
+
+For this, we had to think more about our data pipelines...
+
+## How's the team?
+
+We focused our hiring efforts data engineers and a system administrator!
+
+However, hiring more people usually translates to more projects... <s>and more problems...</s>. We then hired more project managers because this is not something that can be handled by just one person!
+
+At this point, learning still happens through lunch&learns and pair programming sessions. However we start to see sub-groups within our team: those who focus on building data pipelines vs those who focus on taking that data and building a data science solution.
+
+## How is project management?
+
+As our team grows and our list of projects grows longer, we decided to take on an agile-like approach. This meant having two-week sprints for each ongoing project. 
+
+We broke down tasks into smaller units that could be completed within two weeks. This was very useful for the more "software-y" tasks (e.g., "write the script that will email model predictions"), but was difficult for more "data science-y" tasks (e.g., "build a 'better' model").
+
+## How's the infrastructure?
+
+The addition of a system administrator to our team is a HUGE win. This also helps our relationship with IT. 
+
+Further, we purchase an Rstudio Connect license (?). This gives us the infrastructure to deploy, schedule, and authenticate applications.
+
+All of these changes set us up nicely to deploy CHARTwatch[link].
+
+## But...
+
+Here's where we struggled:
+
+- We're pulling data in real-time… but we're going DIRECTLY to the source systems… the same ones that are being used for day-to-day work!! Uh oh...
+
+- Lots and lots of projects... agile works well for the more software-y stuff… not so much for the more data science-y things...
+
+- A successful deployment means more project requests coming in... Uh oh...
+

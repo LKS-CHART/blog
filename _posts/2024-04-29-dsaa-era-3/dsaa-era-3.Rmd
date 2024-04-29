@@ -1,0 +1,77 @@
+---
+title: "DSAA Era 3"
+description: |
+  A short description of the post.
+author:
+  - name: Chloe Pou-Prom on behalf of DSAA
+    url: {}
+date: 2024-04-29
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - project-ops-center
+  - post-miscellaneous
+draft: true
+---
+
+
+## The big change(s)
+
+
+1) We get Data Virtuality
+
+> Data virtualization offers an interface/intermediary between the source system and our code. We get the benefit of real time data without directly affecting the source system. This means we can look at building more real-time solutions.
+
+2) We focus on product development.
+
+## How's the team?
+
+Our hiring efforts focus on product development, since we are thinking more of deployment. 
+
+We also see a shift in how the team is organized. The team divides itself into the following groups: 
+
+- Advanced Analytics
+
+- Data Integration and Governance
+
+- Product Development
+
+- Project Management
+
+Each of these teams have their own internal meetings and workflows. Members of the different teams work together on different projects. Speaking of projects…
+
+
+## How is project management?
+
+There are SO many projects. Trying to maintain bi-weekly meetings for every project is unfeasible... so we shift to **product families**. Similar projects are grouped within the same family. Each team member works on a max of 2 product families. 
+
+When it comes to the way we approach our meeting structures, we borrow elements from agile, waterfall, and the data science lifecycle.
+
+
+## How's the infrastructure?
+
+Data Virtuality is the big gamechanger.
+
+It allowed us to deploy Ops Centre.
+
+And introduced a new challenge...
+
+## Downtime response
+
+Since this tool needs to be available 24/7, we implement a downtime response plan. It would be infeasible to expect everyone who worked on Ops Centre to be available 24/7.
+
+We borrow concepts from [Google's post-mortem culture](https://sre.google/sre-book/postmortem-culture/). We leverage the existing HelpDesk infrastructure.  We set up a schedule and directly link it to ServiceNow. Whoever is on-call will be directly pinged. They will then redirect or escalate as needed.
+
+
+## But...
+
+Here's where we're still struggling:
+
+- Posit Connect has been great but we’re running into limitations...
+
+- Our approach to project management is always changing...
+
+- The next big change looming on the horizon is the transition to Epic...
+
+

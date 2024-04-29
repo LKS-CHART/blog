@@ -1,0 +1,69 @@
+---
+title: "DSAA Eras"
+description: |
+  Our experiences with data science in the hospital.
+author:
+  - name: Chloe Pou-Prom on behalf of DSAA
+    url: {}
+date: 2024-04-29
+output:
+  distill::distill_article:
+    toc: true
+categories:
+  - project-ed-forecasting
+  - project-chartwatch
+  - project-ops-center
+  - post-miscellaneous
+draft: true
+---
+
+## The Big Question
+
+We often get asked variations of the following question:
+
+> How do you [do / manage / deploy / monitor] data science in [a hospital / your hospital / a hospital network / healthcare] in a team of [5 / 15 / 30]?
+
+It's always difficult to provide an answer since our process has changed a lot over time. This series of blog posts attempts to answer the question(s). 
+
+Our team has evolved, gone through different milestones and big changes. Our processes and approaches to project management have changed accordingly.
+
+For each "era", we describe our approach to data science. 
+- The posts are meant to be high-level.
+- Who are these posts for: anyone who does data science in a team, whether you're a data scientist, a project manager, a data engineer, etc.
+- There's no right or wrong answer. What worked for us may not work for you.
+
+
+## The Eras
+
+Era 1: The Enterprise Data Warehouse
+a.k.a. the one that lead to us building the [ED forecasting tool](link to tool or paper or blog)
+
+- Data: We have it, thanks to our EDW! It updates daily.
+- The team: At this point, we are a team of mostly data scientists, each with different areas of expertise.
+- Project management: Mostly project-based with bi-weekly project meetings with stakeholders.
+- Infrastructure: We have a separate server for model development. This server is managed by data scientists.
+
+Era 2: Building out our data engineering and sysadmin team
+a.k.a. the one that allowed us to deploy [CHARTwatch](link to tool/paper/blog/article)
+
+- Data: The EDW is only updated once a day... but we want more recent data. We hired data engineers that can build pipelines that pull directly from source systems.
+- The team: We focus hiring efforts on the data and sysadmin side of things.
+- Project management: As our projects list grows, we try a sprint-like approach. Also, we're constantly experimenting with various processes. Our quarterly _sprint week_ is a great time to try out something new.
+- Infrastructure: We get a new server for production while still maintaining the previous development server. We keep those environments separate.
+
+Era 3: Building out our product development team and focusing on even more real-time data
+a.k.a. the one that allowed us to deploy [Ops Centre](link)
+
+- Data: Data Virtuality gives us real time data without us having to disturb the source systems.
+- The team: Lots of people... we split off into the following sub-groups: Advanced Analytics, Data Integration and Governance, Product Development, Project Management.
+- Project management: A _loooot_ of changes. We introduce product families. We have deployed solutions that need to be available 24/7... which means we need to start thinking about _downtime protocols_. There's a mix of Agile and waterfall? We’re still figuring this out.
+- Infrastructure: Data Virtuality is a game-changer. 
+
+Era 4: What's next?
+
+- Data: We're shifting to Epic!
+- The team: ??
+- Project management: ??
+- Infrastructure: ??
+
+
