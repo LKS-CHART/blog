@@ -23,7 +23,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Confession: I rarely write unit tests. 😅
 
-Yes, I know. They\'re important and they help find critical failures. Just enter \"Are unit tests worth it?\" in your favorite search engine, and you\'ll end up with a mountain ⛰️ of blog posts, StackOverflow replies, Reddit comments, heated discussions, etc.
+Yes, I know. They're important and they help find critical failures. Just enter "Are unit tests worth it?" in your favorite search engine, and you'll end up with a mountain ⛰️ of blog posts, StackOverflow replies, Reddit comments, heated discussions, etc.
 
 Overwhelmingly, the consensus is that *yes, unit tests are worth it*.
 
@@ -84,7 +84,7 @@ All of this was identified because of my failing unit test.
 
 ## What's next?
 
-Currently, I need to run my unit tests manually. I regularly do this before pushing changes. It\'s been working (and hey, in this particular instance, it uncovered something serious!!), but it\'s not actually *enforced*. We\'re using the honor code here.
+Currently, I need to run my unit tests manually. I regularly do this before pushing changes. It's been working (and hey, in this particular instance, it uncovered something serious!!), but it's not actually *enforced*. We're using the honor code here.
 
 ![](honor.png)
 
@@ -92,8 +92,4 @@ A better approach would be to add continuous integration. In an ideal world, cha
 
 Anyway, this was a long-winded way to remind myself that yeah, unit tests help. 🙂
 
-Will I start writing more unit tests after this?
-![](try_again.png)
-
-
-
+Will I start writing more unit tests after this? ![](try_again.png)
