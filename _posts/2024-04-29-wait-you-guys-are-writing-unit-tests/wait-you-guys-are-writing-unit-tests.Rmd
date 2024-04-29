@@ -1,0 +1,99 @@
+---
+title: "Wait, you guys are writing unit tests?"
+description: |
+  A reminder.
+author:
+  - name: Chloe Pou-Prom
+    url: {}
+date: 2024-04-29
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+    - post-miscellaneous
+draft: true
+preview: unit_tests.png
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+![](unit_tests.png)
+
+Confession: I rarely write unit tests. 😅
+
+Yes, I know. They\'re important and they help find critical failures. Just enter \"Are unit tests worth it?\" in your favorite search engine, and you\'ll end up with a mountain ⛰️ of blog posts, StackOverflow replies, Reddit comments, heated discussions, etc.
+
+Overwhelmingly, the consensus is that *yes, unit tests are worth it*.
+
+And yet... a Very Official Survey[^1] shows that only 55% of data scientists write unit tests.
+
+[^1]: I asked chatgpt to make up a number. Maybe I'll poll our Slack channel to make this number more/less accurate.
+
+That being said, I did recently run into an issue that was identified by a unit test!!
+
+## What happened?
+
+**The situation**: We recently updated Data Virtuality (DV).
+
+> Data Virtuality (DV) is our data integration platform. It consolidates data from various hospital source systems and allows us to access real-time data from one platform. Many of our deployed solutions rely on DV.
+
+Anyway, we updated DV and...the upgrade went well! Applications continued running as expected!
+
+*Except*...
+
+I was working on a project post-update. Before pushing my changes to Gitlab, I ran the unit tests in my project...
+
+***And saw that one of the tests failed!!***
+
+## What *really* happened?
+
+```         
+test_that("bad sql to dv post api returns 400", {
+  sql_stmt <- "SELECT * FROM DoesNotExist LIMIT 1"
+  dv_post_sql_api_fail_strategy <- dv_post_sql_api_connection_strategy_creator(sql_stmt)
+  dv_fail_query_response <- dv_details_binder(dv_post_sql_api_fail_strategy)
+  
+  response <- dv_fail_query_response()
+  status <- as.character(response$status_code)
+  expect_equal(status, '400')
+})
+```
+
+Basically, the above unit test checks that using the DV API to send a bad SQL query should return a 400 status code.
+
+However, this test started failing because **incorrectly formatted SQL statements now return a 200 code status instead of a 400 code status**!!!!!
+
+```         
+> response <- dv_fail_query_response()
+
+> httr::content(response)
+[[1]]
+[[1]]$errorType
+[1] "SQLException"
+
+[[1]]$errorMessage
+[1] "Unexpected error when executing query without buffer cursorId=118818 sql=SELECT * FROM DoesNotExist LIMIT 1"
+
+> response$status_code
+[1] 200
+```
+
+All of this was identified because of my failing unit test.
+
+## What's next?
+
+Currently, I need to run my unit tests manually. I regularly do this before pushing changes. It\'s been working (and hey, in this particular instance, it uncovered something serious!!), but it\'s not actually *enforced*. We\'re using the honor code here.
+
+![](honor.png)
+
+A better approach would be to add continuous integration. In an ideal world, changes to Gitlab would trigger the unit tests to start running automatically.
+
+Anyway, this was a long-winded way to remind myself that yeah, unit tests help. 🙂
+
+Will I start writing more unit tests after this?
+![](try_again.png)
+
+
+
