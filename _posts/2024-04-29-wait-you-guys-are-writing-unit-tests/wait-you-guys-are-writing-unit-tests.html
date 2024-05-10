@@ -1486,34 +1486,50 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-article">
 <p><img src="unit_tests.png" /></p>
-<p>Confession: I rarely write unit tests. 😅</p>
-<p>Yes, I know. They’re important and they help find critical failures.
-Just enter “Are unit tests worth it?” in your favorite search engine,
-and you’ll end up with a mountain ⛰️ of blog posts, StackOverflow
-replies, Reddit comments, heated discussions, etc.</p>
-<p>Overwhelmingly, the consensus is that <em>yes, unit tests are worth
-it</em>.</p>
-<p>And yet… a Very Official Survey<a href="#fn1" class="footnote-ref"
-id="fnref1" role="doc-noteref"><sup>1</sup></a> shows that only 55% of
-data scientists write unit tests.</p>
+<p>Confession: I rarely write unit tests. 😅 <a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>That being said, I did recently run into an issue that was identified
 by a unit test!!</p>
 <h2 id="what-happened">What happened?</h2>
 <p><strong>The situation</strong>: We recently updated Data Virtuality
 (DV).</p>
 <blockquote>
-<p>Data Virtuality (DV) is our data integration platform. It
-consolidates data from various hospital source systems and allows us to
-access real-time data from one platform. Many of our deployed solutions
-rely on DV.</p>
+<p><a href="https://datavirtuality.com/">Data Virtuality (DV)</a> is our
+data integration platform which consolidates data from various hospital
+source systems. It offers many advantages:</p>
+<ul>
+<li><p>DV has a layer of abstraction between source systems and data
+consumers. This means that, as a data scientist, I can access real-time
+data from one view.</p></li>
+<li><p>Any changes to source systems are dealt with at the
+virtualization layer and don’t affect the user view.</p></li>
+<li><p>Query results can be reused in different places to avoid pulling
+from the source system multiple times.</p></li>
+<li><p>Additionally, if one of the source system fails, data from the
+previous update are cached.</p></li>
+</ul>
 </blockquote>
-<p>Anyway, we updated DV and…the upgrade went well! Applications
-continued running as expected!</p>
+<p>Many of our deployed applications rely on DV. It’s <em>a vital
+production tool for our team</em>.</p>
+<h3 id="the-big-update">The Big Update</h3>
+<p>It was time to update the DV version.</p>
+<p><strong>Big updates are always scary</strong> so we had started
+preparing for this a while ago. We had a <em>protocol</em> in place. We
+were headed into this upgrade, ready to roll back to an earlier version
+if ever anything went wrong.</p>
+<p>The upgrade was happening after hours to limit the impact on
+end-users. I wasn’t directly involved in the upgrade, but I was on
+standby with my phone set to max volume in case I received a panicked
+call in the middle of the night.</p>
+<p>The Big Day arrived and…</p>
+<p>…the upgrade went well!</p>
+<p>Applications continued running as expected!</p>
 <p><em>Except</em>…</p>
-<p>I was working on a project post-update. Before pushing my changes to
-Gitlab, I ran the unit tests in my project…</p>
+<p>The day after, I was working on a project post-update. Before pushing
+my changes to Gitlab, I ran the unit tests in my project…</p>
 <p><strong><em>And saw that one of the tests failed!!</em></strong></p>
-<h2 id="what-really-happened">What <em>really</em> happened?</h2>
+<h2 id="the-epic-highs-and-lows">The epic highs and lows</h2>
+<h3 id="the-failing-test">The failing test</h3>
 <pre><code>test_that(&quot;bad sql to dv post api returns 400&quot;, {
   sql_stmt &lt;- &quot;SELECT * FROM DoesNotExist LIMIT 1&quot;
   dv_post_sql_api_fail_strategy &lt;- dv_post_sql_api_connection_strategy_creator(sql_stmt)
@@ -1523,11 +1539,11 @@ Gitlab, I ran the unit tests in my project…</p>
   status &lt;- as.character(response$status_code)
   expect_equal(status, &#39;400&#39;)
 })</code></pre>
-<p>Basically, the above unit test checks that using the DV API to send a
-bad SQL query should return a 400 status code.</p>
-<p>However, this test started failing because <strong>incorrectly
-formatted SQL statements now return a 200 code status instead of a 400
-code status</strong>!!!!!</p>
+<p>Basically, the above unit test checks that sending a bad SQL query
+through the DV API should return a 400 status code.</p>
+<p>However, this test started failing because, after the update,
+<strong>incorrectly formatted SQL statements now return a 200 code
+status instead of a 400 code status</strong>!!!!!</p>
 <pre><code>&gt; response &lt;- dv_fail_query_response()
 
 &gt; httr::content(response)
@@ -1541,11 +1557,34 @@ code status</strong>!!!!!</p>
 &gt; response$status_code
 [1] 200</code></pre>
 <p>All of this was identified because of my failing unit test.</p>
+<h3 id="the-fix">The fix</h3>
+<p>Fairly straightforward.</p>
+<p>We updated the way in which we handle errors. Instead of just
+checking a response’s status code, we also need to check the response
+body.</p>
 <h2 id="whats-next">What’s next?</h2>
-<p>Currently, I need to run my unit tests manually. I regularly do this
-before pushing changes. It’s been working (and hey, in this particular
-instance, it uncovered something serious!!), but it’s not actually
-<em>enforced</em>. We’re using the honor code here.</p>
+<h3 id="more-unit-tests">More unit tests?</h3>
+<p>Definitely.</p>
+<p>As a team, we’ve been including more unit tests in our projects.
+These unit tests range from checking data processing, validating model
+predictions, and ensuring that our pipelines behave as expected. As we
+write more unit tests, we’ve been asking ourselves the following
+questions:</p>
+<ul>
+<li><p><em>When</em> should we write unit tests?</p></li>
+<li><p><em>How</em> do we write unit tests on <em>data</em>?</p></li>
+<li><p>What does a unit test for a <em>model</em> looks like?</p></li>
+</ul>
+<p>It’s difficult to answer these questions<a href="#fn2"
+class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>.</p>
+<h3 id="continuous-integration">Continuous integration?</h3>
+<p>Currently, I need to run my unit tests <strong>manually</strong>. I
+regularly do this before pushing changes. It’s been working (and hey, in
+this particular instance, it uncovered something serious!!), but it’s
+not actually <em>enforced</em><a href="#fn3" class="footnote-ref"
+id="fnref3" role="doc-noteref"><sup>3</sup></a>. We’re using the honor
+code here.</p>
 <p><img src="honor.png" /></p>
 <p>A better approach would be to add continuous integration. In an ideal
 world, changes to Gitlab would trigger the unit tests to start running
@@ -1560,9 +1599,18 @@ class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"><
 role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>I asked chatgpt to make up a number. Maybe I’ll poll our
-Slack channel to make this number more/less accurate.<a href="#fnref1"
+<li id="fn1"><p>Yes, I know. They’re important and they help find
+critical failures. Just enter “Are unit tests worth it?” in your
+favorite search engine, and you’ll end up with a mountain ⛰️ of blog
+posts, StackOverflow replies, Reddit comments, heated discussions, etc.
+that tell you: <em>yes, unit tests are worth it</em>.<a href="#fnref1"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Perhaps we can try answering these in a future blog post
+😉<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Pre-commit/pre-push hooks could help here, but they also
+rely on the honor code.<a href="#fnref3" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

@@ -21,15 +21,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ![](unit_tests.png)
 
-Confession: I rarely write unit tests. 😅
+Confession: I rarely write unit tests. 😅 [^1]
 
-Yes, I know. They're important and they help find critical failures. Just enter "Are unit tests worth it?" in your favorite search engine, and you'll end up with a mountain ⛰️ of blog posts, StackOverflow replies, Reddit comments, heated discussions, etc.
-
-Overwhelmingly, the consensus is that *yes, unit tests are worth it*.
-
-And yet... a Very Official Survey[^1] shows that only 55% of data scientists write unit tests.
-
-[^1]: I asked chatgpt to make up a number. Maybe I'll poll our Slack channel to make this number more/less accurate.
+[^1]: Yes, I know. They're important and they help find critical failures. Just enter "Are unit tests worth it?" in your favorite search engine, and you'll end up with a mountain ⛰️ of blog posts, StackOverflow replies, Reddit comments, heated discussions, etc. that tell you: *yes, unit tests are worth it*.
 
 That being said, I did recently run into an issue that was identified by a unit test!!
 
@@ -37,17 +31,41 @@ That being said, I did recently run into an issue that was identified by a unit 
 
 **The situation**: We recently updated Data Virtuality (DV).
 
-> Data Virtuality (DV) is our data integration platform. It consolidates data from various hospital source systems and allows us to access real-time data from one platform. Many of our deployed solutions rely on DV.
+> [Data Virtuality (DV)](https://datavirtuality.com/) is our data integration platform which consolidates data from various hospital source systems. It offers many advantages:
+>
+> -   DV has a layer of abstraction between source systems and data consumers. This means that, as a data scientist, I can access real-time data from one view.
+>
+> -   Any changes to source systems are dealt with at the virtualization layer and don't affect the user view.
+>
+> -   Query results can be reused in different places to avoid pulling from the source system multiple times.
+>
+> -   Additionally, if one of the source system fails, data from the previous update are cached.
 
-Anyway, we updated DV and...the upgrade went well! Applications continued running as expected!
+Many of our deployed applications rely on DV. It's *a vital production tool for our team*.
+
+### The Big Update
+
+It was time to update the DV version.
+
+**Big updates are always scary** so we had started preparing for this a while ago. We had a *protocol* in place. We were headed into this upgrade, ready to roll back to an earlier version if ever anything went wrong.
+
+The upgrade was happening after hours to limit the impact on end-users. I wasn't directly involved in the upgrade, but I was on standby with my phone set to max volume in case I received a panicked call in the middle of the night.
+
+The Big Day arrived and...
+
+...the upgrade went well!
+
+Applications continued running as expected!
 
 *Except*...
 
-I was working on a project post-update. Before pushing my changes to Gitlab, I ran the unit tests in my project...
+The day after, I was working on a project post-update. Before pushing my changes to Gitlab, I ran the unit tests in my project...
 
 ***And saw that one of the tests failed!!***
 
-## What *really* happened?
+## The epic highs and lows
+
+### The failing test
 
 ```         
 test_that("bad sql to dv post api returns 400", {
@@ -61,9 +79,9 @@ test_that("bad sql to dv post api returns 400", {
 })
 ```
 
-Basically, the above unit test checks that using the DV API to send a bad SQL query should return a 400 status code.
+Basically, the above unit test checks that sending a bad SQL query through the DV API should return a 400 status code.
 
-However, this test started failing because **incorrectly formatted SQL statements now return a 200 code status instead of a 400 code status**!!!!!
+However, this test started failing because, after the update, **incorrectly formatted SQL statements now return a 200 code status instead of a 400 code status**!!!!!
 
 ```         
 > response <- dv_fail_query_response()
@@ -82,9 +100,35 @@ However, this test started failing because **incorrectly formatted SQL statement
 
 All of this was identified because of my failing unit test.
 
+### The fix
+
+Fairly straightforward.
+
+We updated the way in which we handle errors. Instead of just checking a response's status code, we also need to check the response body.
+
 ## What's next?
 
-Currently, I need to run my unit tests manually. I regularly do this before pushing changes. It's been working (and hey, in this particular instance, it uncovered something serious!!), but it's not actually *enforced*. We're using the honor code here.
+### More unit tests?
+
+Definitely.
+
+As a team, we've been including more unit tests in our projects. These unit tests range from checking data processing, validating model predictions, and ensuring that our pipelines behave as expected. As we write more unit tests, we've been asking ourselves the following questions:
+
+-   *When* should we write unit tests?
+
+-   *How* do we write unit tests on *data*?
+
+-   What does a unit test for a *model* looks like?
+
+It's difficult to answer these questions[^2].
+
+[^2]: Perhaps we can try answering these in a future blog post 😉
+
+### Continuous integration?
+
+Currently, I need to run my unit tests **manually**. I regularly do this before pushing changes. It's been working (and hey, in this particular instance, it uncovered something serious!!), but it's not actually *enforced*[^3]. We're using the honor code here.
+
+[^3]: Pre-commit/pre-push hooks could help here, but they also rely on the honor code.
 
 ![](honor.png)
 
