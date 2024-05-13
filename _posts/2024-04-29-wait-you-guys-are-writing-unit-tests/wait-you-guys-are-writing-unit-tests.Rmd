@@ -120,7 +120,7 @@ As a team, we've been including more unit tests in our projects. These unit test
 
 -   *How* do we write unit tests on *data*?
 
--   What does a unit test for a *model* looks like?
+-   What does a unit test for a *model* look like?
 
 It's difficult to answer these questions[^4].
 
