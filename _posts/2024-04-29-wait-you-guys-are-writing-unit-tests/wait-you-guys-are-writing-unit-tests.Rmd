@@ -29,17 +29,17 @@ That being said, I did recently run into an issue that was identified by a unit 
 
 ## What happened?
 
-**The situation**: We recently updated Data Virtuality (DV).
+**The situation**: We recently updated Data Virtuality (DV), our data integration platform which consolidates data from various hospital source systems and lets us interact with data through a unified SQL API.[^2]
 
-> [Data Virtuality (DV)](https://datavirtuality.com/) is our data integration platform which consolidates data from various hospital source systems. It offers many advantages:
->
-> -   DV has a layer of abstraction between source systems and data consumers. This means that, as a data scientist, I can access real-time data from one view.
->
-> -   Any changes to source systems are dealt with at the virtualization layer and don't affect the user view.
->
-> -   Query results can be reused in different places to avoid pulling from the source system multiple times.
->
-> -   Additionally, if one of the source system fails, data from the previous update are cached.
+[^2]: We like [Data Virtuality](https://datavirtuality.com/) because:
+
+    -   It has a layer of abstraction between source systems and data consumers. This means that, as a data scientist, I can access real-time data from one view.
+
+    -   Any changes to source systems are dealt with at the virtualization layer and don't affect the user view.
+
+    -   Query results can be reused in different places to avoid pulling from the source system multiple times.
+
+    -   Additionally, if one of the source system fails, data from the previous update are cached.
 
 Many of our deployed applications rely on DV. It's *a vital production tool for our team*.
 
@@ -79,7 +79,9 @@ test_that("bad sql to dv post api returns 400", {
 })
 ```
 
-Basically, the above unit test checks that sending a bad SQL query through the DV API should return a 400 status code.
+Basically, the above unit test[^3] checks that sending a bad SQL query through the DV API should return a 400 status code.
+
+[^3]: Alright, technically it's more an *integration test,* since we're testing an external dependency.
 
 However, this test started failing because, after the update, **incorrectly formatted SQL statements now return a 200 code status instead of a 400 code status**!!!!!
 
@@ -104,7 +106,7 @@ All of this was identified because of my failing unit test.
 
 Fairly straightforward.
 
-We updated the way in which we handle errors. Instead of just checking a response's status code, we also need to check the response body.
+We updated the way in which we handle errors. Instead of just checking a response's status code, we also now check the response body.
 
 ## What's next?
 
@@ -120,15 +122,15 @@ As a team, we've been including more unit tests in our projects. These unit test
 
 -   What does a unit test for a *model* looks like?
 
-It's difficult to answer these questions[^2].
+It's difficult to answer these questions[^4].
 
-[^2]: Perhaps we can try answering these in a future blog post 😉
+[^4]: Perhaps we can try answering these in a future blog post 😉
 
 ### Continuous integration?
 
-Currently, I need to run my unit tests **manually**. I regularly do this before pushing changes. It's been working (and hey, in this particular instance, it uncovered something serious!!), but it's not actually *enforced*[^3]. We're using the honor code here.
+Currently, I run my unit tests **manually**. I regularly do this before pushing changes. It's been working (and hey, in this particular instance, it uncovered something serious!!), but it's not actually *enforced*. We're using the honor code here[^5].
 
-[^3]: Pre-commit/pre-push hooks could help here, but they also rely on the honor code.
+[^5]: Pre-commit/pre-push hooks could help here, but they also rely on the honor code.
 
 ![](honor.png)
 

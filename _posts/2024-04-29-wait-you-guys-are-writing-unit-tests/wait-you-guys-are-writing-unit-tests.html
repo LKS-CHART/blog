@@ -1492,23 +1492,10 @@ class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 by a unit test!!</p>
 <h2 id="what-happened">What happened?</h2>
 <p><strong>The situation</strong>: We recently updated Data Virtuality
-(DV).</p>
-<blockquote>
-<p><a href="https://datavirtuality.com/">Data Virtuality (DV)</a> is our
-data integration platform which consolidates data from various hospital
-source systems. It offers many advantages:</p>
-<ul>
-<li><p>DV has a layer of abstraction between source systems and data
-consumers. This means that, as a data scientist, I can access real-time
-data from one view.</p></li>
-<li><p>Any changes to source systems are dealt with at the
-virtualization layer and don’t affect the user view.</p></li>
-<li><p>Query results can be reused in different places to avoid pulling
-from the source system multiple times.</p></li>
-<li><p>Additionally, if one of the source system fails, data from the
-previous update are cached.</p></li>
-</ul>
-</blockquote>
+(DV), our data integration platform which consolidates data from various
+hospital source systems and lets us interact with data through a unified
+SQL API.<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a></p>
 <p>Many of our deployed applications rely on DV. It’s <em>a vital
 production tool for our team</em>.</p>
 <h3 id="the-big-update">The Big Update</h3>
@@ -1539,8 +1526,9 @@ my changes to Gitlab, I ran the unit tests in my project…</p>
   status &lt;- as.character(response$status_code)
   expect_equal(status, &#39;400&#39;)
 })</code></pre>
-<p>Basically, the above unit test checks that sending a bad SQL query
-through the DV API should return a 400 status code.</p>
+<p>Basically, the above unit test<a href="#fn3" class="footnote-ref"
+id="fnref3" role="doc-noteref"><sup>3</sup></a> checks that sending a
+bad SQL query through the DV API should return a 400 status code.</p>
 <p>However, this test started failing because, after the update,
 <strong>incorrectly formatted SQL statements now return a 200 code
 status instead of a 400 code status</strong>!!!!!</p>
@@ -1560,7 +1548,7 @@ status instead of a 400 code status</strong>!!!!!</p>
 <h3 id="the-fix">The fix</h3>
 <p>Fairly straightforward.</p>
 <p>We updated the way in which we handle errors. Instead of just
-checking a response’s status code, we also need to check the response
+checking a response’s status code, we also now check the response
 body.</p>
 <h2 id="whats-next">What’s next?</h2>
 <h3 id="more-unit-tests">More unit tests?</h3>
@@ -1575,16 +1563,16 @@ questions:</p>
 <li><p><em>How</em> do we write unit tests on <em>data</em>?</p></li>
 <li><p>What does a unit test for a <em>model</em> looks like?</p></li>
 </ul>
-<p>It’s difficult to answer these questions<a href="#fn2"
-class="footnote-ref" id="fnref2"
-role="doc-noteref"><sup>2</sup></a>.</p>
+<p>It’s difficult to answer these questions<a href="#fn4"
+class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>.</p>
 <h3 id="continuous-integration">Continuous integration?</h3>
-<p>Currently, I need to run my unit tests <strong>manually</strong>. I
-regularly do this before pushing changes. It’s been working (and hey, in
-this particular instance, it uncovered something serious!!), but it’s
-not actually <em>enforced</em><a href="#fn3" class="footnote-ref"
-id="fnref3" role="doc-noteref"><sup>3</sup></a>. We’re using the honor
-code here.</p>
+<p>Currently, I run my unit tests <strong>manually</strong>. I regularly
+do this before pushing changes. It’s been working (and hey, in this
+particular instance, it uncovered something serious!!), but it’s not
+actually <em>enforced</em>. We’re using the honor code here<a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>.</p>
 <p><img src="honor.png" /></p>
 <p>A better approach would be to add continuous integration. In an ideal
 world, changes to Gitlab would trigger the unit tests to start running
@@ -1605,11 +1593,28 @@ favorite search engine, and you’ll end up with a mountain ⛰️ of blog
 posts, StackOverflow replies, Reddit comments, heated discussions, etc.
 that tell you: <em>yes, unit tests are worth it</em>.<a href="#fnref1"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Perhaps we can try answering these in a future blog post
-😉<a href="#fnref2" class="footnote-back"
+<li id="fn2"><p>We like <a href="https://datavirtuality.com/">Data
+Virtuality</a> because:</p>
+<ul>
+<li><p>It has a layer of abstraction between source systems and data
+consumers. This means that, as a data scientist, I can access real-time
+data from one view.</p></li>
+<li><p>Any changes to source systems are dealt with at the
+virtualization layer and don’t affect the user view.</p></li>
+<li><p>Query results can be reused in different places to avoid pulling
+from the source system multiple times.</p></li>
+<li><p>Additionally, if one of the source system fails, data from the
+previous update are cached.</p></li>
+</ul>
+<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn3"><p>Alright, technically it’s more an <em>integration
+test,</em> since we’re testing an external dependency.<a href="#fnref3"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Perhaps we can try answering these in a future blog post
+😉<a href="#fnref4" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Pre-commit/pre-push hooks could help here, but they also
-rely on the honor code.<a href="#fnref3" class="footnote-back"
+<li id="fn5"><p>Pre-commit/pre-push hooks could help here, but they also
+rely on the honor code.<a href="#fnref5" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
