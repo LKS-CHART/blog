@@ -1,17 +1,17 @@
 ---
 title: "Wait, you guys are writing unit tests?"
 description: |
-  A reminder.
+  A reminder. [5 min read]
 author:
   - name: Chloe Pou-Prom
-    url: {}
+    affiliation: DSAA, Unity Health Toronto
 date: 2024-04-29
 output:
   distill::distill_article:
-    self_contained: false
+    toc: true
 categories:
     - post-miscellaneous
-draft: true
+draft: false
 preview: unit_tests.png
 ---
 
