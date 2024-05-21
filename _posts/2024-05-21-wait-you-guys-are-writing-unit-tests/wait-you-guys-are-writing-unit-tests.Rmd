@@ -31,15 +31,11 @@ That being said, I did recently run into an issue that was identified by a unit 
 
 **The situation**: We recently updated Data Virtuality (DV), our data integration platform which consolidates data from various hospital source systems and lets us interact with data through a unified SQL API.[^2]
 
-[^2]: We like [Data Virtuality](https://datavirtuality.com/) because:
-
-    -   It has a layer of abstraction between source systems and data consumers. This means that, as a data scientist, I can access real-time data from one view.
-
-    -   Any changes to source systems are dealt with at the virtualization layer and don't affect the user view.
-
-    -   Query results can be reused in different places to avoid pulling from the source system multiple times.
-
-    -   Additionally, if one of the source system fails, data from the previous update are cached.
+[^2]: We like [Data Virtuality](https://datavirtuality.com/) because: <BR>
+    → It has a layer of abstraction between source systems and data consumers. This means that, as a data scientist, I can access real-time data from one view.<BR>
+    → Any changes to source systems are dealt with at the virtualization layer and don't affect the user view.<BR>
+    → Query results can be reused in different places to avoid pulling from the source system multiple times.<BR>
+    → Additionally, if one of the source system fails, data from the previous update are cached.
 
 Many of our deployed applications rely on DV. It's *a vital production tool for our team*.
 
