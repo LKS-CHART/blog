@@ -18,21 +18,21 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 
-Technology is moving at a pace faster than what we’ve ever seen before, and this has led to significant changes in the healthcare industry as well. The integration of artificial intelligence (AI) is becoming increasingly critical. One key to the successful implementation of AI solutions in clinical settings lies in the effective communication between clinicians and data scientists. To that end, the Data Science and Advanced Analytics team at Unity Health Toronto has developed a project intake Form that lays the foundation for its success. The form serves this purpose by allowing clinicians to directly communicate the problems they encounter and suggest potential solutions. Here’s a closer look at the purpose of this intake form, its benefits, and how it supports our AI program.
+Technology is moving at a pace faster than what we’ve ever seen before, and this has led to significant changes in the healthcare industry as well. The integration of artificial intelligence (AI) is becoming increasingly critical. One key to the successful implementation of AI solutions in clinical settings lies in the effective communication between clinicians and data scientists. To that end, the Data Science and Advanced Analytics team at Unity Health Toronto has developed a project intake form that lays the foundation for its success. The form serves this purpose by allowing clinicians to directly communicate the problems they encounter and suggest potential solutions. Here’s a closer look at the purpose of this intake form, its benefits, and how it supports our AI program.
 
 
 # The purpose of the DSAA project intake form
 
-The DSAA project intake form is a structured document used to gather comprehensive information about clinical problems that need addressing. It is designed to capture the fil scope of an issue, from problem identification to proposed solutions, and includes detailed sections on current processes, potential improvements, and metrics for evaluation. This form is part of the first phase in our project intake process, aimed at understanding the problem, exploring available data, and assessing project feasibility.
+The DSAA project intake form is a structured document used to gather comprehensive information about clinical problems that need addressing. It is designed to capture the full scope of an issue, from problem identification to proposed solutions, and includes detailed sections on current processes, potential improvements, and metrics for evaluation. This form is part of the first phase in our project intake process, aimed at understanding the problem, exploring available data, and assessing project feasibility.
 
 # Benefits to the intake form
 
-The project intake Form brings with it several benefits. The first and most important of which is an enhanced communication. The form bridges the communication gap between clinicians and data scientists by providing a formal and standardized way to convey clinical problems and potential AI-driven solutions.
+The project intake form brings with it several benefits. The first and most important of which is an enhanced communication. The form bridges the communication gap between clinicians and data scientists by providing a formal and standardized way to convey clinical problems and potential AI-driven solutions.
 
-The form also allows for structured problem solving. By requiring detailed descriptions of the problem, current conditions, and proposed solutions, the form ensure that all aspects of an issue are considered. This comprehensive approach facilitates thorough exploration and understanding of the problem.
+The form also allows for structured problem solving. By requiring detailed descriptions of the problem, current conditions, and proposed solutions, the form ensures that all aspects of an issue are considered. This comprehensive approach facilitates thorough exploration and understanding of the problem.
 
 
-Data is extremely important for solutions considering AI or machine learning. Thankfully, the form helps to facilitate data-driven decision making. The form emphasized the need for data and metrics, encouraging clinicians to quantify issues and outcomes. This focus on data ensure that proposed solutions are based on solid evidence and measurable goals.
+Data is extremely important for solutions considering AI or machine learning. Thankfully, the form helps to facilitate data-driven decision making. The form emphasizes the need for data and metrics, encouraging clinicians to quantify issues and outcomes. This focus on data ensures that proposed solutions are based on solid evidence and measurable goals.
 
 Finally, the form helps to create a collaborative approach to problem solving. By involving various stakeholders into the process, the form promotes the collaboration between different professionals. This includes input from clinical leads, subject matter experts, and other staff members who will be impacted by the solution.
 
@@ -42,9 +42,9 @@ Finally, the form helps to create a collaborative approach to problem solving. B
 The most important benefit this form has for our AI program lies in how it allows us to identify pertinent problems faced by those in our community. The form helps us identify and prioritize clinical problems that are suitable for AI solutions. By clearly defining the problem and its impacts, we can focus our efforts on projects with the highest potential for improving patient care and operational efficiency.
 
 The form also kicks off our feasibility assessment. It gives an appropriate starting point for evaluating the availability of data, potential barriers to implementation, and the expected impact on key metrics. This rigorous assessment ensures that only viable projects proceed to the development phase.
-Finally, the detailed information gathered through the form guides the development of Ai solutions. Understanding the current process and pain points allows us to design solutions that are tailored to the specific needs of the clinicians and the healthcare system.
+Finally, the detailed information gathered through the form guides the development of AI solutions. Understanding the current process and pain points allows us to design solutions that are tailored to the specific needs of the clinicians and the healthcare system.
 
-All in all, the DSAA project intake Form is a crucial tool in our AI program, enabling effective communication between clinicians and data scientists, ensuring structured approach to problem solving, and facilitating the development of impactful AI solutions. By leveraging this form, we can better understand clinical problems, assess the feasibility of AI interventions, and ultimately improve patient care and operational efficiency in our healthcare system.
+All in all, the DSAA project intake form is a crucial tool in our AI program, enabling effective communication between clinicians and data scientists, ensuring structured approach to problem solving, and facilitating the development of impactful AI solutions. By leveraging this form, we can better understand clinical problems, assess the feasibility of AI interventions, and ultimately improve patient care and operational efficiency in our healthcare system.
 
 # The intake form and process in a nutshell
 
