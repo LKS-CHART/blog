@@ -9,7 +9,7 @@ date: 2024-06-26
 output:
   distill::distill_article:
     self_contained: false
-draft: true
+draft: false
 ---
 
 
@@ -45,3 +45,17 @@ The form also kicks off our feasibility assessment. It gives an appropriate star
 Finally, the detailed information gathered through the form guides the development of Ai solutions. Understanding the current process and pain points allows us to design solutions that are tailored to the specific needs of the clinicians and the healthcare system.
 
 All in all, the DSAA project intake Form is a crucial tool in our AI program, enabling effective communication between clinicians and data scientists, ensuring structured approach to problem solving, and facilitating the development of impactful AI solutions. By leveraging this form, we can better understand clinical problems, assess the feasibility of AI interventions, and ultimately improve patient care and operational efficiency in our healthcare system.
+
+# The intake form and process in a nutshell
+
+
+Our intake form is designed to be user-friendly, ensuring you can seamlessly provide all the essential details needed to kickstart a successful project. Right from the start, it helps you pinpoint the *project team* responsible for the initiative, making sure everyone knows who’s in charge.
+
+Next, it guides you through crafting a clear and concise *problem definition*, accompanied by an analysis of the *current conditions*. This step ensures that we fully understand the existing challenges and processes in order to set a solid foundation for our project.
+
+The next step involves a vision of the *future state*, detailing how AI will be integrated into specific workflows. What’s also important is an emphasis on the *evaluation metrics* which tell us how to measure impact and if we've successfully hit our goals. We also make sure to call out any *implementation risks* of the project before any part of the project begins. 
+
+This forward-thinking approach helps us align our goals and ensure that our AI solutions are both practical and impactful.
+
+
+In a future post, we'll make available a copy of our intake document.
