@@ -2,8 +2,9 @@
 
 This is the repo for the AA blog.
 
-Link: https://lks-chart.github.io/blog/
-Github: https://github.com/LKS-CHART/blog
+- Blog: https://lks-chart.github.io/blog/
+
+- Github: https://github.com/LKS-CHART/blog
 
 Changes to the `main` branch will launch a new job and re-render the blog.
 
