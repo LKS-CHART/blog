@@ -1,0 +1,85 @@
+---
+title: Take a patch, leave a patch
+description: |
+  Sometimes it's easier to just fix your dependencies.
+author:
+  - name: Chris Hammill
+date: 2024-10-01
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - nix
+  - software development
+  - open-source
+draft: false
+preview: open-source-stars.png
+---
+
+As data scientists, even scrappy full-stack ones like ourselves, we often find ourselves as the clients of software developers. Open-source and proprietary software providers give us tools that offer huge amounts of leverage when building data products, but sometimes you end up at the limits of your tools, and you scratch your head thinking of how to progress.
+
+Sometimes you throw in the towel, you think to yourself, this car wasn't meant to fly, I'm unlikely to convince the builder to give me the features I need. Maybe you go so far as to submit a feature request on the issue tracker, mumbling incantations in the often vain hopes that someone on the other end will pick up your quest.
+
+But this doesn't need to be the end of the story. The point of open-source software is that you can take this challenge on yourself,
+you can feel empowered to fix and tweak your tools so they work for you. Doing so is an ideal skill building exercise, you get experience reading a new codebase, often that code is of high quality so you're seeing more examples of good software architecture, and you get to learn from and engage with other open source software developers. Crack open the code and patch away! 
+
+In the ideal case, these fixes and improvements would apply for others as well. Getting your change incorporated into a dependency where others can use it is often called upstreaming. I'll give a few examples of where we ran into tooling limits and describe the process of trying to get our improvements back into the release versions of our tools. I'll also discuss what happens when we can't get our patch upstreamed, and discuss what options exist in those cases.
+
+## Image reconstruction failure
+
+As part of our work we deploy medical imaging machine learning models. These models run on images acquired within our hospital network and provide information to clinicians to help them make decisions. For one of our models, a key preprocessing step is to take a series of 2D images acquired by our computed-tomography (CT) scanners, and assemble them into a 3D image. You can think of this as essentially stacking the 2D images (2D arrays) on top of each-other so that you get a 3D array of image data. It's a bit more complicated than this, because sometimes the 2D images don't fit directly on top of each-other, and you need to use information (meta-data) from the images to tell you where in 3D space to put the 2D data. There are many subtleties to this process, and so the most common approach is to use a pre-existing specialized tool. 
+
+The tool we most commonly use for this is the excellent [dcm2niix](https://github.com/rordenlab/dcm2niix), which converts a set of 2D
+DICOM images into a 3D NIfTI image. The tool came out of neuroscience research and is most robust for dealing with MRI data, but it is able to handle CT as well.
+
+When running the model in production, we occasionally saw preprocessing failures where `dcm2niix` failed to produce an image. In most of these cases, the data were not appropriate for the model and dcm2niix was giving us early notice that our model should not run inference on these images. But there were a handful of cases where we couldn't figure out why `dcm2niix` was failing. 
+
+### Diagnosing
+
+I followed the standard (google the error message) approach and poked around the `dcm2niix` issue tracker and I came upon [an issue](https://github.com/rordenlab/dcm2niix/issues/782) that sounded a lot like ours. The package author had closed the issue because he wasn't able to reproduce the problem, so I set about trying to figure out what was happening.
+
+The error message mentioned `nan`, so I had a hunch that there was a numerical issue somewhere (e.g. divide by zero). I cloned the git repository and went looking for where that `nan` was coming from. I had some clues from the log output, so I went to find where that log message was getting generated. I found it in a ~10k line c++ file, but could trace from there where the `nan` was coming from. It was simple enough that I could recreate the calculation in python by mimicking the c++ code with the numbers from the log output. Lo and behold when I ran it through Python, no `nan` was generated, this strongly pointed to precision getting lost somewhere in the math, and producing a nonsensical result (in this case a cosine value > 1).
+
+After staring at the code a bit longer, it seemed clear to me that I just needed to ensure that cosine value was < 1. 
+
+### Fixing
+
+In order to fix open-source code you need to be able to build it from source. If I had to guess the biggest barrier to people contributing back to their tools, after generally not feeling empowered to, it would be struggling to build the project. There are dozens of build systems, with each project having their own scripts and processes regarding building, maybe you're lucky and you can simply `pip install` or `./configure && make && make install` your dependency, but that seems to be the exception, not the rule, especially when you want to keep your dev work isolated.
+
+This is somewhere using the nix package manager [the way we do](../2023-02-28-medical-imaging-with-nix) can come in handy. By providing a consistent wrapper over top of the builds for its component packages, it's relatively easy to modify a local copy of nixpkgs to build your patched dependencies for you. So I'll fork the project I want to fix, point a local nixpkgs at my fork, then confirm I can build it before I make any changes. Once I can build a the project, I am much more comfortable getting my hands dirty, making what I feel to be the necessary changes.
+
+In the case of dcm2niix, it ended up being a one-liner. Just added an additional check that the cosine value was < 1, letting the already existing special case for cosine == 1 handle it. Rebuilt the package, and it worked! Our failing scans started preprocessing correctly! I also confirmed that the standard `dcm2niix` test cases all still worked correctly.
+
+### Upstreaming
+
+Since nixpkgs was building dcm2niix directly from my fork on github, upstreaming was a simple as starting a [pull request from my fork](https://github.com/rordenlab/dcm2niix/pull/791). The package author didn't like the proposed fix, instead preferring to widen the tolerance on equality for the cosine == 1 test, but I was able to confirm that fix also solved my problem. Providing a test case and an example solution got the package fixed when the issue had previously been closed, even if my fix didn't make it all the way upstream.
+
+## Multi-instance GPUs
+
+On our team we're lucky to have a few very powerful 80G A100 GPUs on-premises. Our deployed models so far haven't required the full GPU
+(especially for inference), so we've opted to partition some of our GPUs into smaller pieces. A100 GPUs provide a feature for this called multi-instance GPUs (MIGs) which let you use fractions of the gpu in an isolated way. In order to ensure that we get a partition
+setup that persists across reboots, we ended up using NVIDIA's [`mig-parted`](https://github.com/NVIDIA/mig-parted) project, which lets you define a config file which handles the partitioning at boot.
+
+In trying to build `mig-parted` for our system, I ran into an issue where the documentation wasn't up to date. I was able to learn enough about building golang projects to make the trivial fix to the instructions. I forked the repo, made the relevant change, and issued [a PR to the project](https://github.com/NVIDIA/mig-parted/pull/28). This one was incorporated upstream, and was my first encounter with having to sign commits for a contributor agreement.
+
+### More MIG Mayhem
+
+For a recent project, we've experimented with using the [`vllm`](https://github.com/vllm-project/vllm) serving framework. Sadly for us, the package authors incorrectly assumed that the environment variables `CUDA_VISIBLE_DEVICES` will always be an integer or list of integers. NVIDIA's own tools all support using `CUDA_VISIBLE_DEVICES` with a device ID string. MIGs can only be used by passing a single device ID string. I pointed this out to the `vllm` authors, and patched the code so that `vllm` handles the case of a single device ID correctly, but they were unwilling to accept the patch, under the theory this doesn't completely solve the MIG issue (I believe it does), and would induce extra maintenance burden for the authors (I believe it doesn't). But c'est la vie, thanks again to being able to use custom copies of libraries with nix, I maintain a forked version of `vllm` with my patch applied, and we are able to use our MIGs flawlessly.
+
+## Side-stepping organizational quirks by upstreaming
+
+Many of our projects are deployed using a platform product from Posit (formerly RStudio), called Posit Connect. It provides a relatively simple and convenient interface for deploying small R and python projects. Recently our team has been thinking more about implementing continuous delivery (CD) for some of our projects, and that may involve deploying to Posit connect. To do CD, we need to be able to deploy to connect programmatically, this involves using either the R package or the [Python CLI package](https://github.com/posit-dev/rsconnect-python). However, `rsconnect-python` makes a (reasonable) assumption that when you're deploying a python application, you want to deploy the same version that is on your dev server. The only way to specify the python version is to have a functional binary for the python version you wish to deploy.
+
+For organizational reasons the highest version of Python on our Connect instance is no longer available in nixpkgs. I didn't want to install it by hand, or request a global install from our sysadmins. So I looked for alternatives. One easy approach would be to do deployment out of a docker container with the required Python. This worked, but when I realized other users without docker privileges might want to deploy, I began looking for other options.
+
+I decided - wait a minute - I can simply fix the `rsconnect-python` package so that I can pass the version to deploy as a cli argument. So I forked the repository, and went digging. After a bit of tracing, I found the chain of functions that set the python version for the deployment. The CLI application itself was a Click app (a popular CLI application building tool), so adding a new argument involved sprinkling in a few decorators, and then weaving the new argument through the chain of functions I identified. I [submitted a PR for this](https://github.com/posit-dev/rsconnect-python/pull/615) not expecting it to go anywhere, I figured it was probably too niche to get upstreamed. As I resolved to maintain my custom branch, a flurry of activity from the `rsconnect-python` maintainers saw my change get incorporated (in an improved form).
+
+## Conclusions
+
+If you work in data science and software it can be easy to feel like your dependencies are these fixed things that are handed to you by the open source communities that make them. But if you're in this line of work, you likely have the skills and tools to contribute back to the open source ecosystem that gives us so much.
+
+Don't be afraid to get in there and fix a problem if you see one, add a feature, make your tools work for you. It may just help others too.
+
+---
+
+Thanks to Chloe Pou-Prom and Ben Darwin for comments on an earlier draft. Preview image CC-BY-SA from https://www.flickr.com/photos/opensourceway/7496801912.
