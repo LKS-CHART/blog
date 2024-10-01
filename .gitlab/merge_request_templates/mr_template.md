@@ -16,8 +16,6 @@ Provide a summary of your blog post here.
 
 # Checklist (AA Blog Team Reviewers)
 
-- [ ] I have updated the blog's draft status from 'TRUE' to 'FALSE'
-
 - [ ] I have updated the date on the blog post to reflect the release date
 
 - [ ] I have renamed the blog post directory so the date matches the release date

@@ -1,0 +1,50 @@
+variables:
+  # This instructs renv to use a specific dir for its cache
+  # the gitlab job sets the $CI_PROJECT_DIR variable to the
+  # project directory, which gets filled with any matching
+  # (gitlab-runner) cache entries
+  RENV_PATHS_CACHE: ${CI_PROJECT_DIR}/cache
+  # This instructs renv to install and load packages from
+  # a specific directory. See note above regarding cached
+  # directories.
+  RENV_PATHS_LIBRARY: ${CI_PROJECT_DIR}/renv/library
+  # This configures CI to use a first clone of the git repo
+  # for each job (or maybe it's each stage?)
+  GIT_STRATEGY: clone
+
+
+# The cache is set up to persist renv cache and library
+# dirs between runs. I am not sure why the library needs
+# to be cached, but renvs weren't persisting even within
+# jobs without setting RENV_PATHS_LIBRARY, not completely
+# sure caching it is required to solve the problem, but
+# it is used in the CI vignette for renv:
+# https://rstudio.github.io/renv/articles/ci.html
+cache:
+  # Cache elements are reference by (munged) branch name
+  # this means all commits to a branch can share a cache
+  # but each branch gets their own
+  key: $CI_COMMIT_REF_SLUG
+  paths:
+    - ${RENV_PATHS_CACHE}
+    - ${RENV_PATHS_LIBRARY}
+    
+
+# We use this container instead of r-base because it
+# ships with a large number of C libraries we would
+# otherwise have to install ourselves, and I ran into
+# dpkg/apt-get issues when I tried. Also comes with
+# pandoc which is necessary for building the site
+image:
+  name: rocker/verse:3.6.3
+  
+stages:
+  - execute_r_script
+
+execute_r_script:
+  stage: execute_r_script
+  script:
+    - Rscript clean.R  # Run the R script
+  only: 
+    - gitlab-ci-test
+
