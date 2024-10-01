@@ -5,6 +5,9 @@ cache:
   key: ${CI_PROJECT_NAME}
   paths:
     - ${RENV_PATHS_CACHE}
+    
+image:
+  name: rocker/tidyverse
 
 before_script:
   - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
