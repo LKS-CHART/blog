@@ -7,7 +7,7 @@ cache:
     - ${RENV_PATHS_CACHE}
     
 image:
-  name: rocker/tidyverse
+  name: rocker/r-base:4.2.2
 
 before_script:
   - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
