@@ -18,7 +18,7 @@ Changes to the `main` branch will launch a new job and re-render the blog.
 
 # Contribute to the blog
 
-- Clone this repo
+- Clone this repo from Gitlab
 
 - Activate the renv environment: `renv::activate()`
 
