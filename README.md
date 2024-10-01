@@ -4,9 +4,11 @@ This is the repo for the AA blog.
 
 - Blog: https://lks-chart.github.io/blog/
 
-- Github: https://github.com/LKS-CHART/blog
+- Github repo (mirror): https://github.com/LKS-CHART/blog
 
-Changes to the `main` branch will launch a new job and re-render the blog.
+- Gitlab repo: https://git.unity.local/dsaa/blog
+
+Changes to the `main` branch will launch a new job on Github and re-render the blog. **To contribute to the blog, please clone the [Gitlab repo](https://git.unity.local/dsaa/blog) and create a MR on Gitlab**
 
 # Blog Team
 
