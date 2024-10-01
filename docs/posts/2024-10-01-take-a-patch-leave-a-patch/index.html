@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -49,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -72,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -86,38 +88,38 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-<title>DSAA Blog: With A Little Help From My Friends</title>
+<title>DSAA Blog: Take a patch, leave a patch</title>
 
-<meta property="description" itemprop="description" content="Accompanying blog post for the Posit Community talk: &quot;With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”."/>
+<meta property="description" itemprop="description" content="Sometimes it&#39;s easier to just fix your dependencies."/>
 
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2023-01-27"/>
-<meta property="article:created" itemprop="dateCreated" content="2023-01-27"/>
-<meta name="article:author" content="Chloe Pou-Prom"/>
+<meta property="article:published" itemprop="datePublished" content="2024-10-01"/>
+<meta property="article:created" itemprop="dateCreated" content="2024-10-01"/>
+<meta name="article:author" content="Chris Hammill"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="DSAA Blog: With A Little Help From My Friends"/>
+<meta property="og:title" content="DSAA Blog: Take a patch, leave a patch"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Accompanying blog post for the Posit Community talk: &quot;With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”."/>
+<meta property="og:description" content="Sometimes it&#39;s easier to just fix your dependencies."/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="DSAA Blog"/>
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary"/>
-<meta property="twitter:title" content="DSAA Blog: With A Little Help From My Friends"/>
-<meta property="twitter:description" content="Accompanying blog post for the Posit Community talk: &quot;With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”."/>
+<meta property="twitter:title" content="DSAA Blog: Take a patch, leave a patch"/>
+<meta property="twitter:description" content="Sometimes it&#39;s easier to just fix your dependencies."/>
 
 <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","preview"]}},"value":[{"type":"character","attributes":{},"value":["With A Little Help From My Friends"]},{"type":"character","attributes":{},"value":["Accompanying blog post for the Posit Community talk: \"With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chloe Pou-Prom"]}]}]},{"type":"character","attributes":{},"value":["2023-01-27"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["post-miscellaneous","post-talks"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["this_is_fine.png"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","preview"]}},"value":[{"type":"character","attributes":{},"value":["Take a patch, leave a patch"]},{"type":"character","attributes":{},"value":["Sometimes it's easier to just fix your dependencies."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chris Hammill"]}]}]},{"type":"character","attributes":{},"value":["2024-10-01"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["nix","software development","open-source"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["open-source-stars.png"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["ac_bug_catching.jpg","ac_ghost.png","slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf","this_is_fine.png","with-a-little-help-from-my-friends_files/anchor-4.2.2/anchor.min.js","with-a-little-help-from-my-friends_files/bowser-1.9.3/bowser.min.js","with-a-little-help-from-my-friends_files/distill-2.2.21/template.v2.js","with-a-little-help-from-my-friends_files/header-attrs-2.14/header-attrs.js","with-a-little-help-from-my-friends_files/header-attrs-2.19/header-attrs.js","with-a-little-help-from-my-friends_files/jquery-3.6.0/jquery-3.6.0.js","with-a-little-help-from-my-friends_files/jquery-3.6.0/jquery-3.6.0.min.js","with-a-little-help-from-my-friends_files/jquery-3.6.0/jquery-3.6.0.min.map","with-a-little-help-from-my-friends_files/popper-2.6.0/popper.min.js","with-a-little-help-from-my-friends_files/tippy-6.2.7/tippy-bundle.umd.min.js","with-a-little-help-from-my-friends_files/tippy-6.2.7/tippy-light-border.css","with-a-little-help-from-my-friends_files/tippy-6.2.7/tippy.css","with-a-little-help-from-my-friends_files/tippy-6.2.7/tippy.umd.min.js","with-a-little-help-from-my-friends_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["open-source-stars.png","take-a-patch-leave-a-patch_files/anchor-4.2.2/anchor.min.js","take-a-patch-leave-a-patch_files/bowser-1.9.3/bowser.min.js","take-a-patch-leave-a-patch_files/distill-2.2.21/template.v2.js","take-a-patch-leave-a-patch_files/header-attrs-2.28/header-attrs.js","take-a-patch-leave-a-patch_files/jquery-3.6.0/jquery-3.6.0.js","take-a-patch-leave-a-patch_files/jquery-3.6.0/jquery-3.6.0.min.js","take-a-patch-leave-a-patch_files/jquery-3.6.0/jquery-3.6.0.min.map","take-a-patch-leave-a-patch_files/popper-2.6.0/popper.min.js","take-a-patch-leave-a-patch_files/tippy-6.2.7/tippy-bundle.umd.min.js","take-a-patch-leave-a-patch_files/tippy-6.2.7/tippy-light-border.css","take-a-patch-leave-a-patch_files/tippy-6.2.7/tippy.css","take-a-patch-leave-a-patch_files/tippy-6.2.7/tippy.umd.min.js","take-a-patch-leave-a-patch_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2105,7 +2107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.28/header-attrs.js"></script>
   <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -2126,7 +2128,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"With A Little Help From My Friends","description":"Accompanying blog post for the Posit Community talk: \"With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”.","authors":[{"author":"Chloe Pou-Prom","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2023-01-27T00:00:00.000-05:00","citationText":"Pou-Prom, 2023"}
+{"title":"Take a patch, leave a patch","description":"Sometimes it's easier to just fix your dependencies.","authors":[{"author":"Chris Hammill","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2024-10-01T00:00:00.000-04:00","citationText":"Hammill, 2024"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2149,128 +2151,61 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>With A Little Help From My Friends</h1>
+<h1>Take a patch, leave a patch</h1>
+
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-  <a href="../../index.html#category:post-miscellaneous" class="dt-tag">post-miscellaneous</a>
-  <a href="../../index.html#category:post-talks" class="dt-tag">post-talks</a>
+  <a href="../../index.html#category:nix" class="dt-tag">nix</a>
+  <a href="../../index.html#category:software_development" class="dt-tag">software development</a>
+  <a href="../../index.html#category:open-source" class="dt-tag">open-source</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>Accompanying blog post for the Posit Community talk: “With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”.</p></p>
+<p><p>Sometimes it’s easier to just fix your dependencies.</p></p>
 </div>
 
 <div class="d-byline">
-  Chloe Pou-Prom  
+  Chris Hammill  
   
-<br/>2023-01-27
+<br/>2024-10-01
 </div>
 
 <div class="d-article">
-<blockquote>
-<p>This is a summary of “With A Little Help From My Friends: Tools and insights for developing and deploying in the hospital”, a talk given on November 15, 2022 as part of the <a href="https://www.meetup.com/posit-enterprise-community-meetup/">Posit Enterprise Community Meetup</a> series. A recording of the talk is available <a href="https://www.youtube.com/watch?v=3PSNMV7SdNE">here</a> and a PDF of the accompanying slides can be found <a href="slides_Developing_and_deploying_algorithms_in_the_hospital_2022_1115_v2.pdf">here</a>.</p>
-</blockquote>
-<h1 id="a-success-story">A success story</h1>
-<p>Here at DSAA, we developed CHARTwatch, an early warning system for detecting patient deterioration. The system runs every hour:</p>
-<ul>
-<li><p>First, CHARTwatch ingests laboratory values, vital measurements, and demographics.</p></li>
-<li><p>Then, CHARTwatch classifies each visit into the following group: <span style="color:red; font-weight: bold;">High risk</span> vs <span style="color: gold; font-weight: bold;">Medium risk</span> vs <span style="color: green; font-weight: bold;">Low risk</span>.</p></li>
-<li><p>The risk group predictions are then delivered through different methods:</p>
-<ul>
-<li><p>Emails</p></li>
-<li><p>Updates to a front-end tool</p></li>
-<li><p>Alerts sent to phones</p></li>
-</ul></li>
-</ul>
-<p>Finally, on August 2020, CHARTwatch went live and we were able to deploy to the General Internal Medicine (GIM) ward!! Developing and deploying CHARTwatch was a difficult feat and wouldn’t have been possible without the help of a few friends…</p>
-<h1 id="tools-for-development">Tools for development</h1>
-<h3 id="database-connections">Database connections</h3>
-<p>There are various data systems in the hospital, all with their own quirks and intricacies. In order to make it easier for the Advanced Analytics team to work with the different hospital databases, we developed <code>chartdb</code>, an internal R package.</p>
-<ul>
-<li>The connection functions follow the same pattern, making it easier for data scientists and data analysts to work with databases.</li>
-</ul>
-<div class="layout-chunk" data-layout="l-body">
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>con_a</span> <span class='op'>&lt;-</span> <span class='fu'>chartdb</span><span class='fu'>::</span><span class='fu'>connect_databaseA</span><span class='op'>(</span>username <span class='op'>=</span> <span class='va'>...</span>, password <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-<span class='va'>con_b</span> <span class='op'>&lt;-</span> <span class='fu'>chartdb</span><span class='fu'>::</span><span class='fu'>connect_databaseB</span><span class='op'>(</span>username <span class='op'>=</span> <span class='va'>...</span>, password <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-<span class='va'>con_edw</span> <span class='op'>&lt;-</span> <span class='fu'>chartdb</span><span class='fu'>::</span><span class='fu'>connect_edw</span><span class='op'>(</span>username <span class='op'>=</span> <span class='va'>...</span>, password <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-<span class='va'>con_soarian</span> <span class='op'>&lt;-</span> <span class='fu'>chartdb</span><span class='fu'>::</span><span class='fu'>connect_soarian</span><span class='op'>(</span>username <span class='op'>=</span> <span class='va'>...</span>, password <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-<span class='va'>con_mak</span> <span class='op'>&lt;-</span> <span class='fu'>chartdb</span><span class='fu'>::</span><span class='fu'>connect_mak</span><span class='op'>(</span>username <span class='op'>=</span> <span class='va'>...</span>, password <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-<span class='va'>con_syngo</span> <span class='op'>&lt;-</span> <span class='fu'>chartdb</span><span class='fu'>::</span><span class='fu'>connect_syngo</span><span class='op'>(</span>username <span class='op'>=</span> <span class='va'>...</span>, password <span class='op'>=</span> <span class='va'>...</span><span class='op'>)</span>
-</code></pre>
-</div>
-</div>
-<h3 id="a-reproducible-environment">A reproducible environment</h3>
-<blockquote>
-<p>A one-sentence horror story: “It works on my machine.”</p>
-</blockquote>
-<p><img src="this_is_fine.png" /></p>
-<ul>
-<li><p>To improve reproducibility, we use <a href="https://rstudio.github.io/renv/articles/renv.html">renv</a>, an R package for R dependency management.</p></li>
-<li><p>When setting up your <code>renv</code> environment, the <code>renv.lock</code> will keep track of the different packages (and their versions!!). If a new person needs to work on the project, they can use the <code>renv.lock</code> file to download the same packages and the same package versions! Woohoo!</p></li>
-</ul>
-<h3 id="package-based-development">Package-based development</h3>
-<p>Why write a package?</p>
-<ul>
-<li><p><a href="https://r-pkgs.org/">Plenty! Of! Reasons!</a></p></li>
-<li><p>In particular, writing a package makes it easy to share code and knowledge with others.</p></li>
-<li><p>And, writing a package greatly reduces the amount of times you’re copy-pasting code. Really, it’s a win-win-win situation!</p></li>
-</ul>
-<h3 id="environment-environment-environments">Environment! Environment! Environments</h3>
-<p>We typically work with 3 different environment.</p>
-<ul>
-<li><p>The <em>development</em> environment is the one on your local computer or your development server.</p></li>
-<li><p>The <em>staging</em> environment is as close to the “real” deployment environment as possible.</p></li>
-<li><p>The <em>production</em> environment is where things actually get deployed. Speaking of production environments, now’s a great time to talk about <em>the tools we need for deployment</em>. Before doing that though, time for…</p></li>
-</ul>
-<h1 id="an-interlude">An interlude</h1>
-<p>A multi-sentence horror story:</p>
-<blockquote>
-<p>In earlier attempts to deploy CHARTwatch, we were using multiple CRON jobs… that called different bash scripts… which then called different Python/R/Java scripts. Oh, and we had no separate environments. Or rather, we only had <strong>one</strong> environment, where <code>test environment = staging environment = production environment</code></p>
-</blockquote>
-<p><img src="ac_ghost.png" /></p>
-<h1 id="tools-for-deployment">Tools for deployment</h1>
-<p>Interlude over! Let’s looks the tools we need for deployment.</p>
-<h3 id="authentication">Authentication</h3>
-<p><img src="https://media.pocketgamer.com/artwork/na-29890-1584367347/Animal-Crossing-New-Horizon-Switch-11.jpg" /></p>
-<p>We rely on Posit Connect for this. Posit Connect works with the hospital Active Directory, which enables administrators to manage permissions and access. What does this mean?</p>
-<ul>
-<li><p>Developers don’t need to keep track of an extra server username and password.</p></li>
-<li><p>End-users can log in with their hospital credentials!</p></li>
-</ul>
-<h3 id="scheduling">Scheduling</h3>
-<p>Posit Connect also gives us the ability to schedule scripts through their admin interface.</p>
-<h3 id="downtime">Downtime</h3>
-<p>Knowing when things don’t work is crucial for deployment.</p>
-<ul>
-<li><p>We use <code>jarvis</code>, our own internally-developed R package, to email and Slack notifications alerting us of issues.</p></li>
-<li><p>Each project will also have <strong>downtime protocol</strong> which defines the steps that various team members must take when something isn’t working.</p>
-<ul>
-<li>For example, when a CHARTwatch downtime affects end-users, an email alert is sent to the entire hospital. Not all projects will require something like this, but since CHARTwatch is embedded in clinical care, many need to be aware of the downtime.</li>
-</ul></li>
-</ul>
-<h3 id="a-secure-way-to-download-internally-developed-packages">A secure way to download internally-developed packages</h3>
-<p>We need to limit who can access the hospital network. Posit Package Manager is a repository package management that lets us download packages while being disconnected from the Internet.</p>
-<h3 id="an-implementation-plan">An implementation plan</h3>
-<p>Deploying an early warning system in the hospital involves working with many different groups. All worked together to develop the implementation plan. Some takeaways from the implementation plan:</p>
-<ul>
-<li><p>Consider existing resources! There’s no point in re-implementing a workflow that already exists.</p>
-<ul>
-<li>For example, notifications were designed so that they fit within existing processes. Emails to charge nurses were sent at times that made the most sense based on their shifts.</li>
-</ul></li>
-<li><p>Have a silent deployment period! This is useful for identifying unexpected bugs.</p>
-<ul>
-<li>One bug we found in silent deployment was caused by a <a href="https://lks-chart.github.io/blog/posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/">particular NAsty lab…</a></li>
-</ul></li>
-</ul>
-<h1 id="find-out-more">Find out more</h1>
-<p>This is a very very very <em>very</em> brief overview of CHARTwatch and how we develop and deploy models in the hospital. Check out the reading list below for more details.</p>
-<ul>
-<li><p>To learn more about CHARTwatch’s model development and validation, see: <a href="https://proceedings.mlr.press/v126/nestor20a.html">“Preparing a Clinical Support Model for Silent Mode in General Internal Medicine” by Nestor et al. (2020)</a>.</p></li>
-<li><p>To learn more about the process changes that were required for CHARTwatch’s implementation, see: <a href="https://doi.org/10.1503/cmaj.202434">“Implementing Machine Learning in Medicine” by Verma et al. (2021)</a></p></li>
-<li><p>To read all about the technical infrastructure that lead to CHARTwatch’s deployment, see: <a href="https://doi.org/10.3389/fdgth.2022.932123">“From Compute to Care: Lessons Learned from Deploying an Early Warning System into Clinical Practice” by Pou-Prom et al. (2022)</a></p></li>
-<li><p>To find out all about the data that is used to train CHARTwatch, see: <a href="https://doi.org/10.57764/5rq7-xj70">“GIM, a dataset for predicting patient deterioration in the General Internal Medicine ward (version 1.0.0)” by Kuzulugil et al. (2022)</a></p></li>
-<li><p>This white paper by <a href="https://signal1.ai/">Signal1</a>: <a href="https://drive.google.com/file/d/1SejbynUXfyKgz4PGOf_5Ymn_oBMdUnh3/view">“The Burden of Clinical Deterioration and How One Hospital is Tackling it with Machine Learning”</a></p></li>
-</ul>
+<p>As data scientists, even scrappy full-stack ones like ourselves, we often find ourselves as the clients of software developers. Open-source and proprietary software providers give us tools that offer huge amounts of leverage when building data products, but sometimes you end up at the limits of your tools, and you scratch your head thinking of how to progress.</p>
+<p>Sometimes you throw in the towel, you think to yourself, this car wasn’t meant to fly, I’m unlikely to convince the builder to give me the features I need. Maybe you go so far as to submit a feature request on the issue tracker, mumbling incantations in the often vain hopes that someone on the other end will pick up your quest.</p>
+<p>But this doesn’t need to be the end of the story. The point of open-source software is that you can take this challenge on yourself,
+you can feel empowered to fix and tweak your tools so they work for you. Doing so is an ideal skill building exercise, you get experience reading a new codebase, often that code is of high quality so you’re seeing more examples of good software architecture, and you get to learn from and engage with other open source software developers. Crack open the code and patch away!</p>
+<p>In the ideal case, these fixes and improvements would apply for others as well. Getting your change incorporated into a dependency where others can use it is often called upstreaming. I’ll give a few examples of where we ran into tooling limits and describe the process of trying to get our improvements back into the release versions of our tools. I’ll also discuss what happens when we can’t get our patch upstreamed, and discuss what options exist in those cases.</p>
+<h2 id="image-reconstruction-failure">Image reconstruction failure</h2>
+<p>As part of our work we deploy medical imaging machine learning models. These models run on images acquired within our hospital network and provide information to clinicians to help them make decisions. For one of our models, a key preprocessing step is to take a series of 2D images acquired by our computed-tomography (CT) scanners, and assemble them into a 3D image. You can think of this as essentially stacking the 2D images (2D arrays) on top of each-other so that you get a 3D array of image data. It’s a bit more complicated than this, because sometimes the 2D images don’t fit directly on top of each-other, and you need to use information (meta-data) from the images to tell you where in 3D space to put the 2D data. There are many subtleties to this process, and so the most common approach is to use a pre-existing specialized tool.</p>
+<p>The tool we most commonly use for this is the excellent <a href="https://github.com/rordenlab/dcm2niix">dcm2niix</a>, which converts a set of 2D
+DICOM images into a 3D NIfTI image. The tool came out of neuroscience research and is most robust for dealing with MRI data, but it is able to handle CT as well.</p>
+<p>When running the model in production, we occasionally saw preprocessing failures where <code>dcm2niix</code> failed to produce an image. In most of these cases, the data were not appropriate for the model and dcm2niix was giving us early notice that our model should not run inference on these images. But there were a handful of cases where we couldn’t figure out why <code>dcm2niix</code> was failing.</p>
+<h3 id="diagnosing">Diagnosing</h3>
+<p>I followed the standard (google the error message) approach and poked around the <code>dcm2niix</code> issue tracker and I came upon <a href="https://github.com/rordenlab/dcm2niix/issues/782">an issue</a> that sounded a lot like ours. The package author had closed the issue because he wasn’t able to reproduce the problem, so I set about trying to figure out what was happening.</p>
+<p>The error message mentioned <code>nan</code>, so I had a hunch that there was a numerical issue somewhere (e.g. divide by zero). I cloned the git repository and went looking for where that <code>nan</code> was coming from. I had some clues from the log output, so I went to find where that log message was getting generated. I found it in a ~10k line c++ file, but could trace from there where the <code>nan</code> was coming from. It was simple enough that I could recreate the calculation in python by mimicking the c++ code with the numbers from the log output. Lo and behold when I ran it through Python, no <code>nan</code> was generated, this strongly pointed to precision getting lost somewhere in the math, and producing a nonsensical result (in this case a cosine value &gt; 1).</p>
+<p>After staring at the code a bit longer, it seemed clear to me that I just needed to ensure that cosine value was &lt; 1.</p>
+<h3 id="fixing">Fixing</h3>
+<p>In order to fix open-source code you need to be able to build it from source. If I had to guess the biggest barrier to people contributing back to their tools, after generally not feeling empowered to, it would be struggling to build the project. There are dozens of build systems, with each project having their own scripts and processes regarding building, maybe you’re lucky and you can simply <code>pip install</code> or <code>./configure &amp;&amp; make &amp;&amp; make install</code> your dependency, but that seems to be the exception, not the rule, especially when you want to keep your dev work isolated.</p>
+<p>This is somewhere using the nix package manager <a href="../2023-02-28-medical-imaging-with-nix">the way we do</a> can come in handy. By providing a consistent wrapper over top of the builds for its component packages, it’s relatively easy to modify a local copy of nixpkgs to build your patched dependencies for you. So I’ll fork the project I want to fix, point a local nixpkgs at my fork, then confirm I can build it before I make any changes. Once I can build a the project, I am much more comfortable getting my hands dirty, making what I feel to be the necessary changes.</p>
+<p>In the case of dcm2niix, it ended up being a one-liner. Just added an additional check that the cosine value was &lt; 1, letting the already existing special case for cosine == 1 handle it. Rebuilt the package, and it worked! Our failing scans started preprocessing correctly! I also confirmed that the standard <code>dcm2niix</code> test cases all still worked correctly.</p>
+<h3 id="upstreaming">Upstreaming</h3>
+<p>Since nixpkgs was building dcm2niix directly from my fork on github, upstreaming was a simple as starting a <a href="https://github.com/rordenlab/dcm2niix/pull/791">pull request from my fork</a>. The package author didn’t like the proposed fix, instead preferring to widen the tolerance on equality for the cosine == 1 test, but I was able to confirm that fix also solved my problem. Providing a test case and an example solution got the package fixed when the issue had previously been closed, even if my fix didn’t make it all the way upstream.</p>
+<h2 id="multi-instance-gpus">Multi-instance GPUs</h2>
+<p>On our team we’re lucky to have a few very powerful 80G A100 GPUs on-premises. Our deployed models so far haven’t required the full GPU
+(especially for inference), so we’ve opted to partition some of our GPUs into smaller pieces. A100 GPUs provide a feature for this called multi-instance GPUs (MIGs) which let you use fractions of the gpu in an isolated way. In order to ensure that we get a partition
+setup that persists across reboots, we ended up using NVIDIA’s <a href="https://github.com/NVIDIA/mig-parted"><code>mig-parted</code></a> project, which lets you define a config file which handles the partitioning at boot.</p>
+<p>In trying to build <code>mig-parted</code> for our system, I ran into an issue where the documentation wasn’t up to date. I was able to learn enough about building golang projects to make the trivial fix to the instructions. I forked the repo, made the relevant change, and issued <a href="https://github.com/NVIDIA/mig-parted/pull/28">a PR to the project</a>. This one was incorporated upstream, and was my first encounter with having to sign commits for a contributor agreement.</p>
+<h3 id="more-mig-mayhem">More MIG Mayhem</h3>
+<p>For a recent project, we’ve experimented with using the <a href="https://github.com/vllm-project/vllm"><code>vllm</code></a> serving framework. Sadly for us, the package authors incorrectly assumed that the environment variables <code>CUDA_VISIBLE_DEVICES</code> will always be an integer or list of integers. NVIDIA’s own tools all support using <code>CUDA_VISIBLE_DEVICES</code> with a device ID string. MIGs can only be used by passing a single device ID string. I pointed this out to the <code>vllm</code> authors, and patched the code so that <code>vllm</code> handles the case of a single device ID correctly, but they were unwilling to accept the patch, under the theory this doesn’t completely solve the MIG issue (I believe it does), and would induce extra maintenance burden for the authors (I believe it doesn’t). But c’est la vie, thanks again to being able to use custom copies of libraries with nix, I maintain a forked version of <code>vllm</code> with my patch applied, and we are able to use our MIGs flawlessly.</p>
+<h2 id="side-stepping-organizational-quirks-by-upstreaming">Side-stepping organizational quirks by upstreaming</h2>
+<p>Many of our projects are deployed using a platform product from Posit (formerly RStudio), called Posit Connect. It provides a relatively simple and convenient interface for deploying small R and python projects. Recently our team has been thinking more about implementing continuous delivery (CD) for some of our projects, and that may involve deploying to Posit connect. To do CD, we need to be able to deploy to connect programmatically, this involves using either the R package or the <a href="https://github.com/posit-dev/rsconnect-python">Python CLI package</a>. However, <code>rsconnect-python</code> makes a (reasonable) assumption that when you’re deploying a python application, you want to deploy the same version that is on your dev server. The only way to specify the python version is to have a functional binary for the python version you wish to deploy.</p>
+<p>For organizational reasons the highest version of Python on our Connect instance is no longer available in nixpkgs. I didn’t want to install it by hand, or request a global install from our sysadmins. So I looked for alternatives. One easy approach would be to do deployment out of a docker container with the required Python. This worked, but when I realized other users without docker privileges might want to deploy, I began looking for other options.</p>
+<p>I decided - wait a minute - I can simply fix the <code>rsconnect-python</code> package so that I can pass the version to deploy as a cli argument. So I forked the repository, and went digging. After a bit of tracing, I found the chain of functions that set the python version for the deployment. The CLI application itself was a Click app (a popular CLI application building tool), so adding a new argument involved sprinkling in a few decorators, and then weaving the new argument through the chain of functions I identified. I <a href="https://github.com/posit-dev/rsconnect-python/pull/615">submitted a PR for this</a> not expecting it to go anywhere, I figured it was probably too niche to get upstreamed. As I resolved to maintain my custom branch, a flurry of activity from the <code>rsconnect-python</code> maintainers saw my change get incorporated (in an improved form).</p>
+<h2 id="conclusions">Conclusions</h2>
+<p>If you work in data science and software it can be easy to feel like your dependencies are these fixed things that are handed to you by the open source communities that make them. But if you’re in this line of work, you likely have the skills and tools to contribute back to the open source ecosystem that gives us so much.</p>
+<p>Don’t be afraid to get in there and fix a problem if you see one, add a feature, make your tools work for you. It may just help others too.</p>
+<hr />
+<p>Thanks to Chloe Pou-Prom and Ben Darwin for comments on an earlier draft. Preview image CC-BY-SA from <a href="https://www.flickr.com/photos/opensourceway/7496801912" class="uri">https://www.flickr.com/photos/opensourceway/7496801912</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
