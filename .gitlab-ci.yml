@@ -22,6 +22,7 @@ add_file:
     - echo $CI_COMMIT_SHORT_SHA
     - echo $CI_PROJECT_PATH
     - echo $CI_COMMIT_REF_NAME
+    - echo https://oauth2:$ACCESS_TOKEN@git.unity.local/$CI_PROJECT_PATH.git
     - touch example.txt
     - date +'%Y-%m-%d' > example.txt 
     - git config user.name "DSAA Blog"
