@@ -1,9 +1,10 @@
 variables:
   RENV_PATHS_CACHE: ${CI_PROJECT_DIR}/renv/cache
   RENV_PATHS_LIBRARY: ${CI_PROJECT_DIR}/renv/library
+  GIT_STRATEGY: clone
 
 cache:
-  key: ${CI_PROJECT_NAME}
+  key: $CI_COMMIT_REF_SLUG
   paths:
     - ${RENV_PATHS_CACHE}
     - ${RENV_PATHS_LIBRARY}
@@ -25,3 +26,6 @@ add_file:
     - git commit -m "Add example.txt from $CI_COMMIT_SHORT_SHA [skip ci]" 
     - git remote rm origin && git remote add origin git@gitlab.com:$CI_PROJECT_PATH.git
     - git push origin HEAD:$CI_COMMIT_REF_NAME 
+    
+
+
