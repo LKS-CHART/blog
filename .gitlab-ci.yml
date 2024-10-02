@@ -15,21 +15,13 @@ image:
 stages:
   - execute_r_script
   
-clean_blog:
+clean_blog_and_commit:
   stage: execute_r_script
   before_script:
     - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
     - Rscript -e "renv::restore()"
   script:
     - Rscript clean.R  # Run the R script
-  only: 
-    - gitlab-ci-test
-    
-commit_new_files:
-  stage: execute_r_script
-  only: 
-    - gitlab-ci-test
-  script:
     - git config user.name "DSAA Blog"
     - git config user.email "noreply-dsaa@unityhealth.to"
     - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@git.unity.local/$CI_PROJECT_PATH.git
@@ -37,3 +29,5 @@ commit_new_files:
     - git add docs/
     - git commit -m "Prepare blog for production from $CI_COMMIT_SHORT_SHA [skip ci]"
     - git push gitlab_origin HEAD:$CI_COMMIT_REF_NAME -o ci.skip
+  only: 
+    - gitlab-ci-test
