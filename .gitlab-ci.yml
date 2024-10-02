@@ -18,6 +18,10 @@ stages:
 add_file:
   stage: add_file_test
   script:
+    - echo $ACCESS_TOKEN
+    - echo $CI_COMMIT_SHORT_SHA
+    - echo $CI_PROJECT_PATH
+    - echo $CI_COMMIT_REF_NAME
     - touch example.txt
     - date +'%Y-%m-%d' > example.txt 
     - git config user.name "DSAA Blog"
@@ -26,4 +30,4 @@ add_file:
     - git add example.txt
     - git commit -m "Add example.txt from $CI_COMMIT_SHORT_SHA [skip ci]" 
     - git push gitlab_origin HEAD:$CI_COMMIT_REF_NAME -o ci.skip
-    
+
