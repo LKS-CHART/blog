@@ -12,9 +12,9 @@ stages:
 clean_blog_and_commit:
   cache:
     key: $CI_COMMIT_REF_SLUG
-      paths:
-        - ${RENV_PATHS_CACHE}
-        - ${RENV_PATHS_LIBRARY}
+    paths:
+      - ${RENV_PATHS_CACHE}
+      - ${RENV_PATHS_LIBRARY}
   tags: [ cpu ]
   stage: execute_r_script
   before_script:
