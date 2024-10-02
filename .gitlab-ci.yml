@@ -13,22 +13,27 @@ image:
   name: rocker/tidyverse:4.2.2
 
 stages:
-  - add_file_test
+  - execute_r_script
   
-add_file:
-  stage: add_file_test
+clean_blog:
+  stage: execute_r_script
+  before_script:
+    - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
+    - Rscript -e "renv::restore()"
   script:
-    - echo $ACCESS_TOKEN
-    - echo $CI_COMMIT_SHORT_SHA
-    - echo $CI_PROJECT_PATH
-    - echo $CI_COMMIT_REF_NAME
-    - echo https://oauth2:$ACCESS_TOKEN@git.unity.local/$CI_PROJECT_PATH.git
-    - touch example.txt
-    - date +'%Y-%m-%d' > example.txt 
+    - Rscript clean.R  # Run the R script
+  only: 
+    - gitlab-ci-test
+    
+commit_new_files:
+  stage: execute_r_script
+  only: 
+    - gitlab-ci-test
+  script:
     - git config user.name "DSAA Blog"
     - git config user.email "noreply-dsaa@unityhealth.to"
     - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@git.unity.local/$CI_PROJECT_PATH.git
-    - git add example.txt
-    - git commit -m "Add example.txt from $CI_COMMIT_SHORT_SHA [skip ci]" 
+    - git add _posts/
+    - git add docs/
+    - git commit -m "Prepare blog for production from $CI_COMMIT_SHORT_SHA [skip ci]"
     - git push gitlab_origin HEAD:$CI_COMMIT_REF_NAME -o ci.skip
-
