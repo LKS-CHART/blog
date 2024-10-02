@@ -15,6 +15,7 @@ before_script:
 
 stages:
   - execute_r_script
+  - commit_new_files
 
 execute_r_script:
   stage: execute_r_script
@@ -22,4 +23,13 @@ execute_r_script:
     - Rscript clean.R  # Run the R script
   only: 
     - gitlab-ci-test
+    
+commit_new_files:
+  stage: commit_new_files
+  script:
+    - git config user.name "DSAA Blog"
+    - git config user.email "noreply-dsaa@unityhealth.to"
+    - git add .
+    - git commit -m "Prepare blog for production [skip ci]"
+    - git push HEAD:$CI_COMMIT_REF_NAME
 
