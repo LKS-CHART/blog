@@ -2,12 +2,6 @@ variables:
   RENV_PATHS_CACHE: ${CI_PROJECT_DIR}/renv/cache
   RENV_PATHS_LIBRARY: ${CI_PROJECT_DIR}/renv/library
   GIT_STRATEGY: clone
-
-cache:
-  key: $CI_COMMIT_REF_SLUG
-  paths:
-    - ${RENV_PATHS_CACHE}
-    - ${RENV_PATHS_LIBRARY}
     
 image:
   name: rocker/tidyverse:4.2.2
@@ -16,6 +10,12 @@ stages:
   - execute_r_script
   
 clean_blog_and_commit:
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+      paths:
+        - ${RENV_PATHS_CACHE}
+        - ${RENV_PATHS_LIBRARY}
+  tags: [ cpu ]
   stage: execute_r_script
   before_script:
     - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
