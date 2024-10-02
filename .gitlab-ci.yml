@@ -1,10 +1,12 @@
 variables:
   RENV_PATHS_CACHE: ${CI_PROJECT_DIR}/renv/cache
+  RENV_PATHS_LIBRARY: ${CI_PROJECT_DIR}/renv/library
 
 cache:
   key: ${CI_PROJECT_NAME}
   paths:
     - ${RENV_PATHS_CACHE}
+    - ${RENV_PATHS_LIBRARY}
     
 image:
   name: rocker/tidyverse:4.2.2
@@ -15,7 +17,6 @@ before_script:
 
 stages:
   - execute_r_script
-  - commit_new_files
 
 execute_r_script:
   stage: execute_r_script
@@ -25,7 +26,7 @@ execute_r_script:
     - gitlab-ci-test
     
 commit_new_files:
-  stage: commit_new_files
+  stage: execute_r_script
   script:
     - git config user.name "DSAA Blog"
     - git config user.email "noreply-dsaa@unityhealth.to"
