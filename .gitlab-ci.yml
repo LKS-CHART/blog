@@ -26,7 +26,7 @@ add_file:
     - date +'%Y-%m-%d' > example.txt 
     - git config user.name "DSAA Blog"
     - git config user.email "noreply-dsaa@unityhealth.to"
-    - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@gitlab.com/$CI_PROJECT_PATH.git
+    - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@git.unity.local/$CI_PROJECT_PATH.git
     - git add example.txt
     - git commit -m "Add example.txt from $CI_COMMIT_SHORT_SHA [skip ci]" 
     - git push gitlab_origin HEAD:$CI_COMMIT_REF_NAME -o ci.skip
