@@ -11,15 +11,26 @@ cache:
 image:
   name: rocker/tidyverse:4.2.2
 
-before_script:
-  - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
-  - Rscript -e "renv::restore()"
-
 stages:
-  - execute_r_script
+  - add_file_test
+  
+add_file:
+  stage: add_file_test
+  script:
+    - touch example.txt
+    - date +'%Y-%m-%d' > example.txt 
+    - git config user.name "DSAA Blog"
+    - git config user.email "noreply-dsaa@unityhealth.to"
+    - git add example.txt
+    - git commit -m "Add example.txt from $CI_COMMIT_SHORT_SHA [skip ci]" 
+    - git remote rm origin && git remote add origin git@gitlab.com:$CI_PROJECT_PATH.git
+    - git push origin HEAD:$CI_COMMIT_REF_NAME 
 
 execute_r_script:
   stage: execute_r_script
+  before_script:
+    - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
+    - Rscript -e "renv::restore()"
   script:
     - Rscript clean.R  # Run the R script
   only: 
