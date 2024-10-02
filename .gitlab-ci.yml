@@ -10,13 +10,8 @@ stages:
   - execute_r_script
   
 clean_blog_and_commit:
-  cache:
-    key: $CI_COMMIT_REF_SLUG
-    paths:
-      - ${RENV_PATHS_CACHE}
-      - ${RENV_PATHS_LIBRARY}
-  tags: [ cpu ]
   stage: execute_r_script
+  tags: [ cpu ]
   before_script:
     - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
     - Rscript -e "renv::restore()"
@@ -29,5 +24,10 @@ clean_blog_and_commit:
     - git add docs/
     - git commit -m "Prepare blog for production from $CI_COMMIT_SHORT_SHA [skip ci]"
     - git push gitlab_origin HEAD:$CI_COMMIT_REF_NAME -o ci.skip
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - ${RENV_PATHS_CACHE}
+      - ${RENV_PATHS_LIBRARY}
   only: 
     - gitlab-ci-test
