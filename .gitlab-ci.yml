@@ -10,6 +10,8 @@ stages:
   - execute_r_script
   
 clean_blog_and_commit:
+  rules:
+      - if: $CI_COMMIT_REF_PROTECTED == "true"
   stage: execute_r_script
   tags: [ cpu ]
   before_script:
@@ -29,5 +31,3 @@ clean_blog_and_commit:
     paths:
       - ${RENV_PATHS_CACHE}
       - ${RENV_PATHS_LIBRARY}
-    rules:
-      - if: $CI_COMMIT_REF_PROTECTED == "true"
