@@ -29,5 +29,5 @@ clean_blog_and_commit:
     paths:
       - ${RENV_PATHS_CACHE}
       - ${RENV_PATHS_LIBRARY}
-  only: 
-    - gitlab-ci-test
+    rules:
+      - if: $CI_COMMIT_REF_PROTECTED == "true"
