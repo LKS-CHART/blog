@@ -1,0 +1,33 @@
+variables:
+  RENV_PATHS_CACHE: ${CI_PROJECT_DIR}/renv/cache
+  RENV_PATHS_LIBRARY: ${CI_PROJECT_DIR}/renv/library
+  GIT_STRATEGY: clone
+    
+image:
+  name: rocker/tidyverse:4.2.2
+
+stages:
+  - execute_r_script
+  
+clean_blog_and_commit:
+  rules:
+      - if: $CI_COMMIT_REF_PROTECTED == "true"
+  stage: execute_r_script
+  tags: [ cpu ]
+  before_script:
+    - Rscript -e "if (!requireNamespace('renv', quietly = TRUE)) install.packages('renv')"
+    - Rscript -e "renv::restore()"
+  script:
+    - Rscript clean.R  # Run the R script
+    - git config user.name "DSAA Blog"
+    - git config user.email "noreply-dsaa@unityhealth.to"
+    - git remote add gitlab_origin https://oauth2:$ACCESS_TOKEN@git.unity.local/$CI_PROJECT_PATH.git
+    - git add _posts/
+    - git add docs/
+    - git commit -m "Prepare blog for production from $CI_COMMIT_SHORT_SHA [skip ci]"
+    - git push gitlab_origin HEAD:$CI_COMMIT_REF_NAME -o ci.skip
+  cache:
+    key: $CI_COMMIT_REF_SLUG
+    paths:
+      - ${RENV_PATHS_CACHE}
+      - ${RENV_PATHS_LIBRARY}
