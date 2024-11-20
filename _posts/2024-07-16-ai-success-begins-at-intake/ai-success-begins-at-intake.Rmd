@@ -62,3 +62,6 @@ This forward-thinking approach helps us align our goals and ensure that our AI s
 
 
 In a future post, we'll make available a copy of our intake document.
+
+
+**UPDATE** We've added a slightly modified copy of the intake form in this same directory. You can find that document [here](https://github.com/LKS-CHART/blog/tree/main/_posts/2024-07-16-ai-success-begins-at-intake).
