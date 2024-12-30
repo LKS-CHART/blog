@@ -11,7 +11,7 @@ output:
     self_contained: false
 categories:
   - post-miscellaneous
-draft: true
+draft: false
 preview: dsaa_wrapped_2024.png
 ---
 
