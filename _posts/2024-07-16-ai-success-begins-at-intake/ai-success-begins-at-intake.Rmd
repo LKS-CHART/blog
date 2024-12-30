@@ -13,6 +13,7 @@ draft: false
 categories:
   - processes
   - post-miscellaneous
+preview: project_intake.PNG
 ---
 
 
@@ -61,4 +62,4 @@ The next step involves a vision of the *future state*, detailing how AI will be 
 This forward-thinking approach helps us align our goals and ensure that our AI solutions are both practical and impactful.
 
 
-In a future post, we'll make available a copy of our intake document.
+The intake document is available [here](Templ_DSAAProjectIntakeForm_ExampleForBlog_2024_0716.docx).
