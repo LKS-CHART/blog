@@ -1,0 +1,67 @@
+---
+title: "If I had a nickel for every time NA (sodium) got interpreted as NA (Not Available)..."
+description: |
+  I'd have 2 nickels which isn't a lot but it's weird that it happened twice
+author:
+  - name: Chloe Pou-Prom
+    affiliation: DSAA, Unity Health Toronto
+date: 2025-01-20
+output: 
+  distill::distill_article:
+    md_extensions: +emoji
+    self_contained: false
+categories:
+  - language-python
+  - language-R
+  - project-chartwatch
+  - post-miscellaneous
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+The hospital recently [launched a new electronic patient record (EPR)](https://unityhealth.to/patients-and-visitors/electronic-patient-record-project/). Many of our AI tools have been put on pause due to this change. As we prepare to bring our tools back online, we've been monitoring data from the new EPR. I wanted to use this opportunity learn some Python, so I decided to build a [Quarto dashboard](https://quarto.org/docs/dashboards/) with [shiny](https://shiny.posit.co/py/) and [pandas](https://pandas.pydata.org/).
+
+Little did I know I would run into a familiar bug... 
+
+
+![](doofenschmirtz.jpg){width="80%"}
+
+
+This happened [when processing data with R](https://lks-chart.github.io/blog/posts/2022-05-09-ooh-na-na-where-are-my-sodium-labs/). And it's happened again with Python:
+
+```{python, python.reticulate = FALSE, echo = TRUE, eval = FALSE}
+import pandas
+
+df = pd.read_excel("labs.xlsx")
+```
+
+What I expect:
+
+| Lab name | Lab abbreviation |
+| --- | --- |
+| Sodium | NA |
+| Sodium in urine | NAUR |
+| Sodium in urine (24 hours) | NA24HUR |
+
+What I get: 
+
+| Lab name | Lab abbreviation |
+| --- | --- |
+| Sodium | `Missing value` |
+| Sodium in urine | NAUR |
+| Sodium in urine (24 hours) | NA24HUR |
+
+Luckily, it's a quick fix:
+
+```{python, python.reticulate= FALSE,  eval = F, echo = T}
+pd.read_excel("labs.xlsx", keep_default_na=False)
+```
+
+A quick search on StackOverflow shows that this is actually something [people](https://stackoverflow.com/questions/33952142/prevent-pandas-from-interpreting-na-as-nan-in-a-string) [regularly](https://stackoverflow.com/questions/68099492/why-does-pandas-identify-string-nan-a-nitride-of-sodium-as-a-missing-value) [encounter](https://stackoverflow.com/questions/60064695/keep-values-in-data-frame-na-sodium-in-chemistry-as-is). And this isn't just an issue for people working with sodium and/or lab values data: this also happens [with](https://stackoverflow.com/questions/31528621/is-this-correct-behavior-for-read-csv-and-a-data-value-of-na?rq=3) [country](https://stackoverflow.com/questions/62842433/how-do-i-deal-with-a-column-in-pandas-that-equals-na) [codes](https://stackoverflow.com/questions/66092223/i-have-na-in-a-column-meaning-north-america-that-shows-blank-after-csv-is-re)
+
+Anyway, tune in for a future update when I inevitably encounter this bug when coding in Julia! (Just kidding... Maybe...)
+

@@ -40,6 +40,8 @@ daily_counts_post_fix <- data %>%
     filter(cohort == "post-fix")
 ```
 
+> **January 2025 update**: [It happened again!](link to be updated)
+
 ## Silent deployment
 
 Our team had been working actively on developing [CHARTwatch](https://www.chartdatascience.ca/the-projects/an-early-warning-system-for-general-internal-medicine-), an early warning system for patients in general internal medicine at St. Michael's Hospital. In November 2019 we were ready to move to a **silent deployment phase**, which means our entire pipeline was running (from data extraction to data processing to model prediction), but no outputs were going to the end-user.
