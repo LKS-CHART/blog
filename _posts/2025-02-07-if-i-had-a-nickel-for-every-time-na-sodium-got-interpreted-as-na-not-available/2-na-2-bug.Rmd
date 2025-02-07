@@ -5,7 +5,7 @@ description: |
 author:
   - name: Chloe Pou-Prom
     affiliation: DSAA, Unity Health Toronto
-date: 2025-01-20
+date: 2025-02-07
 output: 
   distill::distill_article:
     md_extensions: +emoji
@@ -15,7 +15,8 @@ categories:
   - language-R
   - project-chartwatch
   - post-miscellaneous
-draft: true
+draft: false
+preview: doofenschmirtz.jpg
 ---
 
 

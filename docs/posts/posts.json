@@ -1,5 +1,27 @@
 [
   {
+    "path": "posts/2025-02-07-if-i-had-a-nickel-for-every-time-na-sodium-got-interpreted-as-na-not-available/",
+    "title": "If I had a nickel for every time NA (sodium) got interpreted as NA (Not Available)...",
+    "description": "I'd have 2 nickels which isn't a lot but it's weird that it happened twice",
+    "author": [
+      {
+        "name": "Chloe Pou-Prom",
+        "url": {}
+      }
+    ],
+    "date": "2025-02-07",
+    "categories": [
+      "language-python",
+      "language-R",
+      "project-chartwatch",
+      "post-miscellaneous"
+    ],
+    "contents": "\nThe hospital recently launched a new electronic patient record (EPR). Many of our AI tools have been put on pause due to this change. As we prepare to bring our tools back online, we’ve been monitoring data from the new EPR. I wanted to use this opportunity learn some Python, so I decided to build a Quarto dashboard with shiny and pandas.\nLittle did I know I would run into a familiar bug…\n\nThis happened when processing data with R. And it’s happened again with Python:\n\nimport pandas\n\ndf = pd.read_excel(\"labs.xlsx\")\n\nWhat I expect:\nLab name\nLab abbreviation\nSodium\nNA\nSodium in urine\nNAUR\nSodium in urine (24 hours)\nNA24HUR\nWhat I get:\nLab name\nLab abbreviation\nSodium\nMissing value\nSodium in urine\nNAUR\nSodium in urine (24 hours)\nNA24HUR\nLuckily, it’s a quick fix:\n\npd.read_excel(\"labs.xlsx\", keep_default_na=False)\n\nA quick search on StackOverflow shows that this is actually something people regularly encounter. And this isn’t just an issue for people working with sodium and/or lab values data: this also happens with country codes\nAnyway, tune in for a future update when I inevitably encounter this bug when coding in Julia! (Just kidding… Maybe…)\n\n\n\n",
+    "preview": "posts/2025-02-07-if-i-had-a-nickel-for-every-time-na-sodium-got-interpreted-as-na-not-available/doofenschmirtz.jpg",
+    "last_modified": "2025-02-07T10:58:19-05:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2024-12-30-dsaa-wrapped-2024/",
     "title": "DSAA Wrapped 2024",
     "description": "Reflecting on 2024. [10 min read]",
