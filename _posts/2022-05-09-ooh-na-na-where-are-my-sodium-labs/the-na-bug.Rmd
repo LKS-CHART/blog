@@ -40,7 +40,7 @@ daily_counts_post_fix <- data %>%
     filter(cohort == "post-fix")
 ```
 
-> **January 2025 update**: [It happened again!](link to be updated)
+> **February 2025 update**: [It happened again!](https://lks-chart.github.io/blog/posts/2025-02-07-if-i-had-a-nickel-for-every-time-na-sodium-got-interpreted-as-na-not-available/)
 
 ## Silent deployment
 
