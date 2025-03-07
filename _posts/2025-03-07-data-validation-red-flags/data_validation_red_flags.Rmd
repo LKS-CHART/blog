@@ -39,7 +39,7 @@ Now fast-forward to today, with data flowing in from Epic (or should we say tric
 
 While the new Epic system is up and running, DSAA still has its hands full with data and model validation before putting their AI tools back into action. But on the bright side, there have been plenty of opportunities for growth and learning along the way. Some of the highlights include:
 
--   Sharpening our Python programming skills, with a hint of R thanks to the [`polars`](https://blog.tidy-intelligence.com/posts/dplyr-vs-polars/), [`great-tables`](https://www.appsilon.com/post/great-tables), and `skimpy` libraries
+-   Sharpening our Python programming skills, with a hint of R thanks to the [`polars`](https://blog.tidy-intelligence.com/posts/dplyr-vs-polars/), [`great-tables`](https://www.appsilon.com/post/great-tables), and [`skimpy`](https://aeturrell.github.io/skimpy/) libraries
 
 -   [Exploring QMD dashboards](https://quarto.org/docs/dashboards/interactivity/shiny-python/index.html)
 
