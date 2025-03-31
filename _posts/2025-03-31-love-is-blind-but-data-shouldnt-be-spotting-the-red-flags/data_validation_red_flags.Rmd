@@ -3,7 +3,7 @@ title: "Love is Blind, But Data Shouldn't Be: Spotting the Red Flags"
 author:
   - name: Kayla Vanderkruk, Chloe Pou-Prom, Maitreyee Sidhaye
     affiliation: DSAA, Unity Health Toronto
-date: 2025-03-07
+date: 2025-03-31
 output: 
   distill::distill_article:
     md_extensions: +emoji
@@ -13,7 +13,7 @@ categories:
     - language-python
     - project-chartwatch
     - post-miscellaneous
-draft: true
+draft: false
 preview: loveisblindlogo.jpg
 ---
 
