@@ -1,0 +1,103 @@
+---
+title: "DSAA Wrapped 2025"
+description: |
+  Reflecting on 2025. [10 min read]
+author:
+  - name: Chloe Pou-Prom
+date: 2026-01-14
+output: 
+  distill::distill_article:
+    md_extensions: +emoji
+    self_contained: false
+preview: dsaa_wrapped_2025.png
+draft: false
+---
+
+TL;DR (chatgpt summary^[Removed all my movie puns :weary:]):
+
+<div style="background-color: rgba(15,46,61, 0.3); font-family: monospace; padding: 1.5rem; border-radius: 0.5rem;">The post reviews the DSAA team’s 2025, a year defined by the disruptive launch of a new electronic patient record system (Epic). All projects were temporarily sunset, with efforts shifting toward collaboration, training, and infrastructure upgrades. Key achievements included launching the national Health AI Academy, strengthening international collaboration with AI Sweden, modernizing infrastructure with Nomad and GitLab, and refining Posit tools. Once Epic stabilized, several projects were relaunched or newly deployed, including clinical tools and an HR chatbot. The year highlighted strong team culture and set the stage for new initiatives in 2026. </div>
+
+## 
+
+We are currently 14 days into 2026. Seems like a good time to reflect on the previous year... Time for another "wrapped", year in review, retrospective, whatever-you-want-to-call-it! We started off 2025 with a disruptive change: [the hospital had switched over to a new electronic patient record system](https://unityhealth.to/patients-and-visitors/electronic-patient-record-project/)! And so, in 2025, we dealt with the consequences of that change! 
+
+## One **Sunset** After Another :mountain: :car: 
+
+With the launch of Epic - our new electronic patient record system - we decided to **sunset** all of our projects. 
+
+> **1**: New electronic patient record system.
+>
+> **All of them**: Projects that we sunset.
+
+Typically, when deciding to sunset a project, we revisit the criteria outlined in [the project's intake form](https://lks-chart.github.io/blog/posts/2024-07-16-ai-success-begins-at-intake/). However, the launch of Epic was so disruptive that we decided to just go ahead and sunset everything. For select projects, we would either replace them with Epic's built-in solutions or re-launch them once the electronic patient record system had stabilized.  
+
+In the meantime... 
+
+## :musical_note: We’re going up up up it’s our moment, **together** we’re glowin :musical_note:
+
+... we focused on strengthening our **collaborations**! 
+
+> **826,308**: # of ["Loonie Dogs"](https://www.ctvnews.ca/toronto/article/toronto-blue-jays-fans-break-loonie-dogs-record-heres-how-many-hotdogs-they-ate/#:~:text=A%20spokesperson%20for%20the%20team,determine%20their%20seeding%20in%20October.) Blue Jays' fans ate during the 2025 season.
+>
+> **318**: # of people who participated in our 8-week Health AI Academy Foundations Course.
+>
+> **10**: of provinces in Canada... and coincidentally, we had Health AI Academy participants from all 10 provinces! 
+ 
+During the Epic stabilization phase, we took the opportunity to focus on our collaborations. We [continued our collaboration with AI Sweden](https://www.ai.se/en/news/ai-healthcare-gets-boost-canada-sweden-knowledge-exchange). Our team participated in [3 work packages](https://www.ai.se/en/news/three-swedish-university-hospitals-are-developing-their-practical-ai-capabilities) with various members of the AI Sweden delegation. This involved roundtable discussions and presentations that allowed us to share knowledge and findings on: technical details, project management, evaluation, and more. [We also hosted our Nordic friends in October](https://www.ai.se/en/news/swedish-delegation-visits-ai-leaders-canadian-healthcare): they got to learn more about AI adoption in Canada as well as experience the city during the Blue Jay'’ iconic playoff run.  
+
+2025 was a busy year for the DSAA team. [In collaboration with KPMG and Signal1, we launched Health AI Academy](https://unityhealth.to/about-unity-health/ai-at-unity-health/health-ai-academy), a national program aimed at training health professionals in AI and advanced analytics in healthcare. Participants enrolled in the Health AI Academy Foundations course, an 8-week online course that covered various aspects of AI in healthcare, such as data governance, fundamentals of machine learning, and change management. In addition, [a group of 20 participants took part in the Health AI Fellowship](https://unityhealth.to/2025/12/empowering-health-leaders-for-the-ai-era/), a 1-week in-person program that offered a deeper and hands-on understanding of the material covered during the Foundations course. The 2025 Fellowship cohort was a diverse group consisting of health leaders, clinicians, and operational staff, from all over the country. 
+
+## **Nomad** Supreme :ping_pong:
+
+In 2025, we also dedicated time and effort to our **infrastructure**. 
+
+> **a lot**: # of deployments on Nomad 
+> 
+> **170**: # of repositories migrated from Github to Gitlab 
+
+In preparation for our relaunches, we set up [Nomad](https://developer.hashicorp.com/nomad), a workload orchestrator to manage our deployment. This was really exciting because Nomad allows us to use a wider range of technologies, integrates well within CI/CD pipelines, and enables easy automated testing. Nomad also provides us more flexibility in how we manage access within our deployments.  
+
+This year, we also fully transitioned to GitLab. For the data scientists and software developers on the team, this wasn’t a very big change: all^[Well, not _all_. Public-facing repositories (such as the one for this blog!) still exist on GitHub.] of our code repositories were migrated over from GitHub to GitLab. However, for the rest of the team, this was a huuuuge change, since we also shifted project management to GitLab! Hello [epics, milestones, and issues](https://about.gitlab.com/blog/getting-started-with-gitlab-mastering-project-management/)! 
+
+The DSAA team (in particular, the data scientists on the team) also dedicated a significant amount of time to our [Posit solutions](https://solutions.posit.co/). This involved a lot of research and discussions around Posit Package Manager, Posit Connect, and Posit Workbench. We wanted to make sure we were configuring these tools in a way that would best address our needs. 
+
+## Wake Up Dead **Projects**: A Knives Out Mystery :detective:
+
+We **launched** a bunch of projects!  
+
+> **Too many to count**: # of new clinical workflows post-Epic 
+> 
+> **3**: # of relaunches in the ED 
+
+Some were **relaunches** (a.k.a., previously deployed projects that were re-deployed once Epic had stabilized). To the end user, everything (sort of) looks the same, but in the background, there are a LOT of changes (different data sources, different infrastructure, completely different clinical workflows, sometimes even a different model!).  
+
+And, we also managed to launch a few completely new projects!  
+
+Here are a few highlights: 
+
+- We relaunched [CHARTwatch](https://unityhealth.to/2024/09/ai-tool-study/), our early warning system, to the General Internal Medicine ward. 
+
+- We deployed an HR chatbot. This was our first user-facing large language model (LLM) deployment! (Stay tuned for a blog post on this...) 
+
+- We relaunched our ED wait times dashboard!! 
+
+
+## And the Academy Goes To... 🏆🍿 
+
+> **40,890**: the record # of daily steps by our winning participant in our quarterly step challenge (yes, we’re a very competitive group!!!) 
+> 
+> **149,449**: total # of Slack messages sent in 2025!! (yes, we’re a chatty group!!!) 
+>
+> **31**:  the total # of people in the DSAA team 
+>
+> **4 minutes**: That’s how much time you have to pitch your idea at [Angels’ Den](https://www.angelsden.ca/), an annual competition that’s very reminiscent of Dragons’ Den. Although, instead of pitching business proposals to investors, researchers pitch their research projects to judges to secure philanthropic funding. In 2025, members of our team participated in Angels’ Den and we pitched [an AI-driven tool that identifies elderly patients at risk of prolonged hospital stays](https://www.youtube.com/watch?v=c7-hVLvnp3o). 
+>
+> - We will be actively working on this in 2026! Stay tuned for more! 
+>
+> **2**: blog posts written in 2025. Let’s try to beat this number in 2026. :tada:
+
+## 
+
+_The blog image was create using Canva's [Wrapped template](https://www.canva.com/templates/EAGYfQ0dthk/)._
+
+_Thank you to Rida Malik and Derek Beaton for reviewing an early draft. Thank you to Marcel Kanso for providing Health AI Academy numbers._
