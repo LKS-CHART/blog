@@ -3,7 +3,7 @@ title: "DSAA Wrapped 2025"
 description: |
   Reflecting on 2025. [10 min read]
 author:
-  - name: Chloe Pou-Prom
+  - name: Chloe Pou-Prom on behalf of DSAA
 date: 2026-01-14
 output: 
   distill::distill_article:
@@ -105,4 +105,4 @@ Here are a few highlights:
 
 _The blog image was create using Canva's [Wrapped template](https://www.canva.com/templates/EAGYfQ0dthk/)._
 
-_Thank you to Rida Malik and Derek Beaton for reviewing an early draft. Thank you to Marcel Kanso for providing Health AI Academy numbers._
+_Thank you to Rida Malik and Derek Beaton for reviewing an early draft. Thank you to Marcel Kanso for providing Health AI Academy stats._
