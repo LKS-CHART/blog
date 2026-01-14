@@ -10,6 +10,7 @@ output:
     self_contained: false
 categories:
   - post-miscellaneous
+  - year-review
 draft: false
 preview: dsaa_wrapped_preview.PNG
 ---

@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -49,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -72,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -112,12 +114,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","preview"]}},"value":[{"type":"character","attributes":{},"value":["DSAA Wrapped"]},{"type":"character","attributes":{},"value":["Reflecting on 2022. [5 min read]"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chloe Pou-Prom, Meggie Debnath, Derek Beaton, and Cathy Zhu on behalf of DSAA"]}]}]},{"type":"character","attributes":{},"value":["2022-12-13"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["post-miscellaneous"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["dsaa_wrapped_preview.PNG"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","categories","draft","preview"]}},"value":[{"type":"character","attributes":{},"value":["DSAA Wrapped"]},{"type":"character","attributes":{},"value":["Reflecting on 2022. [5 min read]"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Chloe Pou-Prom, Meggie Debnath, Derek Beaton, and Cathy Zhu on behalf of DSAA"]}]}]},{"type":"character","attributes":{},"value":["2022-12-13"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["post-miscellaneous","year-review"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["dsaa_wrapped_preview.PNG"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["dsaa_wrapped_preview.PNG","dsaa_wrapped.PNG","dsaawrapped_files/anchor-4.2.2/anchor.min.js","dsaawrapped_files/bowser-1.9.3/bowser.min.js","dsaawrapped_files/distill-2.2.21/template.v2.js","dsaawrapped_files/header-attrs-2.14/header-attrs.js","dsaawrapped_files/jquery-3.6.0/jquery-3.6.0.js","dsaawrapped_files/jquery-3.6.0/jquery-3.6.0.min.js","dsaawrapped_files/jquery-3.6.0/jquery-3.6.0.min.map","dsaawrapped_files/popper-2.6.0/popper.min.js","dsaawrapped_files/tippy-6.2.7/tippy-bundle.umd.min.js","dsaawrapped_files/tippy-6.2.7/tippy-light-border.css","dsaawrapped_files/tippy-6.2.7/tippy.css","dsaawrapped_files/tippy-6.2.7/tippy.umd.min.js","dsaawrapped_files/webcomponents-2.0.0/webcomponents.js","pizza_kayla.jpg","pizza_meggie.jpg"]}
+  {"type":"character","attributes":{},"value":["dsaa_wrapped_preview.PNG","dsaa_wrapped.PNG","dsaawrapped_files/anchor-4.2.2/anchor.min.js","dsaawrapped_files/bowser-1.9.3/bowser.min.js","dsaawrapped_files/distill-2.2.21/template.v2.js","dsaawrapped_files/header-attrs-2.14/header-attrs.js","dsaawrapped_files/header-attrs-2.28/header-attrs.js","dsaawrapped_files/jquery-3.6.0/jquery-3.6.0.js","dsaawrapped_files/jquery-3.6.0/jquery-3.6.0.min.js","dsaawrapped_files/jquery-3.6.0/jquery-3.6.0.min.map","dsaawrapped_files/popper-2.6.0/popper.min.js","dsaawrapped_files/tippy-6.2.7/tippy-bundle.umd.min.js","dsaawrapped_files/tippy-6.2.7/tippy-light-border.css","dsaawrapped_files/tippy-6.2.7/tippy.css","dsaawrapped_files/tippy-6.2.7/tippy.umd.min.js","dsaawrapped_files/webcomponents-2.0.0/webcomponents.js","pizza_kayla.jpg","pizza_meggie.jpg"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2105,7 +2107,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="../../site_libs/header-attrs-2.28/header-attrs.js"></script>
   <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -2150,9 +2152,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="d-title">
 <h1>DSAA Wrapped</h1>
+
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
   <a href="../../index.html#category:post-miscellaneous" class="dt-tag">post-miscellaneous</a>
+  <a href="../../index.html#category:year-review" class="dt-tag">year-review</a>
 </div>
 <!--/radix_placeholder_categories-->
 <p><p>Reflecting on 2022. [5 min read]</p></p>
@@ -2261,15 +2265,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><p>More steps!</p></li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<section class="footnotes" role="doc-endnotes">
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1" role="doc-endnote"><p>We surveyed the members on DSAA and found that the most listened music genre is <em>Pop</em>, followed by various interesting variations of <em>Indie</em> (indie pop, indie soul, indie Québécois).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2" role="doc-endnote"><p>Blog post coming soon!! 🤞<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3" role="doc-endnote"><p>Fun fact: The <em>Patient Flow</em> product family is also the product family with the most Fast &amp; Furious memes.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4" role="doc-endnote"><p>blog post coming soon! :-)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5" role="doc-endnote"><p>Blog post coming soon!!! 🙏<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>We promised a few in this blog post, so now we’re on the hook!<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>We surveyed the members on DSAA and found that the most listened music genre is <em>Pop</em>, followed by various interesting variations of <em>Indie</em> (indie pop, indie soul, indie Québécois).<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Blog post coming soon!! 🤞<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Fun fact: The <em>Patient Flow</em> product family is also the product family with the most Fast &amp; Furious memes.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>blog post coming soon! :-)<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Blog post coming soon!!! 🙏<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>We promised a few in this blog post, so now we’re on the hook!<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

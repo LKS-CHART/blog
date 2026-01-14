@@ -9,17 +9,22 @@ output:
   distill::distill_article:
     md_extensions: +emoji
     self_contained: false
+categories:
+  - post-miscellaneous
+  - year-review
 preview: dsaa_wrapped_2025.png
 draft: false
 ---
 
-TL;DR (chatgpt summary^[Removed all my movie puns :weary:]):
+TL;DR (chatgpt summary^[Removed all my movie puns :smiling_face_with_tear:]):
 
 <div style="background-color: rgba(15,46,61, 0.3); font-family: monospace; padding: 1.5rem; border-radius: 0.5rem;">The post reviews the DSAA team’s 2025, a year defined by the disruptive launch of a new electronic patient record system (Epic). All projects were temporarily sunset, with efforts shifting toward collaboration, training, and infrastructure upgrades. Key achievements included launching the national Health AI Academy, strengthening international collaboration with AI Sweden, modernizing infrastructure with Nomad and GitLab, and refining Posit tools. Once Epic stabilized, several projects were relaunched or newly deployed, including clinical tools and an HR chatbot. The year highlighted strong team culture and set the stage for new initiatives in 2026. </div>
 
 ## 
 
-We are currently 14 days into 2026. Seems like a good time to reflect on the previous year... Time for another "wrapped", year in review, retrospective, whatever-you-want-to-call-it! We started off 2025 with a disruptive change: [the hospital had switched over to a new electronic patient record system](https://unityhealth.to/patients-and-visitors/electronic-patient-record-project/)! And so, in 2025, we dealt with the consequences of that change! 
+We are currently 14 days into 2026. Seems like a good time to reflect on the previous year... Time for another "wrapped", year in review, retrospective, whatever-you-want-to-call-it! [At this point, it's a tradition!](https://lks-chart.github.io/blog/#category:year-review)
+
+We started off 2025 with a disruptive change: [the hospital had switched over to a new electronic patient record system](https://unityhealth.to/patients-and-visitors/electronic-patient-record-project/)! And so, in 2025, we dealt with the consequences of that change! 
 
 ## One **Sunset** After Another :mountain: :car: 
 
@@ -67,7 +72,7 @@ We **launched** a bunch of projects!
 
 > **Too many to count**: # of new clinical workflows post-Epic 
 > 
-> **3**: # of relaunches in the ED 
+> **4**: # of projects launched (and re-launched) in the Emergency Department
 
 Some were **relaunches** (a.k.a., previously deployed projects that were re-deployed once Epic had stabilized). To the end user, everything (sort of) looks the same, but in the background, there are a LOT of changes (different data sources, different infrastructure, completely different clinical workflows, sometimes even a different model!).  
 
