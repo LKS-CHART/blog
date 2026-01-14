@@ -16,8 +16,6 @@ Changes to the `main` branch will launch a new job on Github and re-render the b
 
 - Chloe Pou-Prom
 
-- Meggie Debnath
-
 # Contribute to the blog
 
 - Clone this repo from Gitlab
