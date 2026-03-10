@@ -8,7 +8,7 @@ description: |
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-We are the Advanced Analytics (AA) team within the [Data Science and Advanced Analytics (DSAA)](https://www.chartdatascience.ca/) group at [Unity Health Toronto](https://unityhealth.to/). Our team is based at St. Michael's Hospital. 
+We are the Advanced Analytics (AA) team within the [Data Science and Advanced Analytics (DSAA)](https://unityhealth.to/about-unity-health/ai-at-unity-health/) group at [Unity Health Toronto](https://unityhealth.to/). Our team is based at St. Michael's Hospital. 
 
 We work on healthcare projects that aim to **improve patient outcomes and hospital efficiency**. 
 
