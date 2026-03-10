@@ -1,5 +1,29 @@
 [
   {
+    "path": "posts/2026-03-10-how-the-dsaa-develops-and-deploys/",
+    "title": "How the DSAA develops and deploys",
+    "description": "A short story in one slide",
+    "author": [
+      {
+        "name": "Derek Beaton",
+        "url": {}
+      }
+    ],
+    "date": "2026-03-10",
+    "categories": [
+      "language-python",
+      "language-R",
+      "development",
+      "deployment",
+      "reproducibility",
+      "post-miscellaneous"
+    ],
+    "contents": "\nOver the years we’ve frequently been asked how we do what we do. Most of the time that means process, strategy and vision, change management, and whole bunch of other things. We even have an entire course explaining pretty much everything.\nBut one thing we only sporadically or partially describe are the technical and technological bits and pieces that get us from idea to product. Until recently we were visited by a delegation from the UK representing compute and infrastructure. So we had to pull together new materials. And we compressed it all down into one slide!\nWithout further ado, The Slide!:\n\nThe Details\nIf you’ve made it this far (which isn’t all that far) you’re probably expecting some details. Great! We’re going to share some of the details! First, we borrowed the structure and format of our slide from some of our friends at Sahlgrenska. So shout out to them. Next, a few bullet points with the major highlights:\nThe obvious: R and Python are essential languages for us.\nThe somewhat obvious: CData Virtuality and Postgres handle a lot of our data\nThe suite of tools: We use a handful of tools from Posit: Workbench, Package Manager, and Connect. Workbench and Package Manager are core development tools. For us, Connect is an internal deployment platform where we keep some scheduled models or model APIs, and especially our data and model monitoring tools.\nThe “make it work” tools: All the containerization (e.g., LXD, podman), traffic, authentication/secrets (Keycloak and Vault), and orchestration (Nomad) tools\nThe “wakes us up at night” tools: Prometheus and GlitchTip help us monitor our systems and find out what’s wrong. Incredibly useful when it’s 2 a.m.\nThe tools that help us push boundaries: We use XNAT and Orthanc for medical imaging storage, viewing, annotating (all XNAT) and in our deployments (Orthanc). vLLM helps us deploy our language and generative AI models\nThe arguably most central tool: Gitlab. It does so much. Keeps everything version controlled, facilitates deployments, tracks our project status and goals.\nHiding amongst the above is a reproducibility focused package manager called Nix. We talked about it here in the context of medical imaging.\nYears of work\nIt feels pretty good that we can, now, easily compress everything into a slide and a few bullet points that get to the (technical and technological) “how do you do what you do?”\nIt’s something that’s taken years, a lot of expertise, even more learning, and sometimes hitting some (major!) roadblocks. It’s been quite a journey and on that journey we’ve matured to this state.\n\n\n\n",
+    "preview": {},
+    "last_modified": "2026-03-10T12:50:49-04:00",
+    "input_file": "how-the-dsaa-develops-and-deploys.knit.md"
+  },
+  {
     "path": "posts/2026-01-14-dsaa-wrapped-2025/",
     "title": "DSAA Wrapped 2025",
     "description": "Reflecting on 2025. [10 min read]",
