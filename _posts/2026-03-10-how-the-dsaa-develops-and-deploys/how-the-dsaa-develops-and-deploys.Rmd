@@ -17,6 +17,7 @@ categories:
   - reproducibility
   - post-miscellaneous
 draft: false
+preview: Slide15.jpg
 ---
 
 
