@@ -13,6 +13,7 @@ output:
     toc: true
 draft: false
 category: post-miscellaneous
+preview: queueing_example_possion_call_center.jpg
 ---
 
 
